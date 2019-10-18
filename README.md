@@ -1,14 +1,14 @@
 
-# known-location-service
+# MazamaLocationUtils
 
 ```
-A web service for saving and discovering "known locations" and associated
-spatial metadata.
+A suite of utility functions for discovering and managaing metadata associated
+with sets of spatially unique "known locations".
 ```
 
 ## Background
 
-This web service is intended to be used in support of data management activities
+This package is intended to be used in support of data management activities
 associated with fixed locations in space. The motivating fields include both
 air and water quality monitoring where fixed sensors report at regular time 
 intervals.
@@ -55,7 +55,7 @@ functionality here written as pseudo-code in R:
 
 ```
 # Function to retrieve "known location" metadata
-getKnownLocation <- function(
+getLocation <- function(
   longitude = NULL,
   latitude = NULL,
   collectionName = NULL,
@@ -81,7 +81,7 @@ need:
 
 ```
 # Function to add a record to a "known location" table
-addKnownLocation <- function(
+addLocation <- function(
   longitude = NULL,
   latitude = NULL
   collectionName = NULL
@@ -120,10 +120,6 @@ URL and used locally, giving scientists working with known locations instant
 access to spatial data that otherwise requires special skills, large datasets 
 and lots of compute cycles.
 
-## Web Service
-
-It shouldn't be hard to set up a web service wrapper for this functionality.
- 
 ----
 
 This project is supported by Mazama Science.
