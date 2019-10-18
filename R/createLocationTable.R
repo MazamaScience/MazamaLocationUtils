@@ -1,4 +1,28 @@
 
+#' @title Create an empty "known location" table
+#' @description Creates an empty "known location" tibble with the following columns:
+#' \itemize{
+#' \item{locationID}
+#' \item{longitude}
+#' \item{latitude}
+#' }
+#' and whatever extra \code{metadataNames} are passed in.
+#' @param collectionName Character identifier for this table, Default: NULL
+#' @param metadataNames Character names of supported spatial metadata, Default: c("countryCode", "stateCode", "timezone")
+#' @return Empty "known location" tibble with the specified metadata columns.
+#' @details TODO
+#' @examples 
+#' \dontrun{
+#' emptyTbl <- createLocationTable(
+#'   "myLocations",
+#'   metadataNames = c("countryCode", "stateCode", "elevation")
+#' )
+#' }
+#' @rdname createLocationTable
+#' @export 
+#' @importFrom MazamaCoreUtils stopIfNull
+#' @importFrom dplyr tibble filter
+#' @importFrom rlang .data
 createLocationTable <- function(
   collectionName = NULL,
   metadataNames = c("countryCode", "stateCode", "timezone")
@@ -36,7 +60,7 @@ createLocationTable <- function(
   # Now search for an ID we won't find to end up with an empty tibble with 
   # the correct column names.
   locationTbl <-
-    dplyr::filter(rlang::.data$locationID == "Rumplestiltskin")
+    dplyr::filter(.data$locationID == "Rumplestiltskin")
 
   # ----- Return ---------------------------------------------------------------
   

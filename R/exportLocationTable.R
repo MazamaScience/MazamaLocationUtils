@@ -1,4 +1,14 @@
 
+#' @title exportLocationTable
+#' @description Export a "known location" table as CSV or other format
+#' @param locationTbl Tibble of "known locations", Default: NULL
+#' @param outputType Output format, Default: 'csv'
+#' @return Representation of a "known location" table in the desired format.
+#' @details Loads
+#' @rdname exportLocationTable
+#' @export 
+#' @importFrom MazamaCoreUtils stopIfNull setIfNull
+#' @importFrom readr format_csv
 exportLocationTable <- function(
   locationTbl = NULL,
   outputType = "csv"

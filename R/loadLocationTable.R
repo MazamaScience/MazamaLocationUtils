@@ -1,4 +1,14 @@
 
+#' @title loadLocationTbl
+#' @description Load a "known location" table from the preferred directory.
+#' @param collectionName Character identifier for this table, Default: NULL
+#' @return Tibble of "known location"s.
+#' @details TODO
+#' @seealso 
+#'  \code{\link{setLocationDataDir}}
+#' @rdname loadLocationTable
+#' @export 
+#' @importFrom MazamaCoreUtils stopIfNull
 loadLocationTable <- function(
   collectionName = NULL
 ) {

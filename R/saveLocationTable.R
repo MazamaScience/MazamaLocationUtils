@@ -1,4 +1,13 @@
 
+#' @title saveLocationTable
+#' @description Save a "known location" tibble to the preferred directory.
+#' @param locationTbl Tibble of "known locations", Default: NULL
+#' @param collectionName Character identifier for this table, Default: NULL
+#' @return File path of saved file.
+#' @details TODO
+#' @rdname saveLocationTable
+#' @export 
+#' @importFrom MazamaCoreUtils stopIfNull
 saveLocationTable <- function(
   locationTbl = NULL,
   collectionName = NULL
@@ -13,7 +22,7 @@ saveLocationTable <- function(
   
   # TODO: validate locationTbl
   
-  # ----- Load data ------------------------------------------------------------
+  # ----- Save data ------------------------------------------------------------
   
   result <- try({
     
