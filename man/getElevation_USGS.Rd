@@ -4,14 +4,14 @@
 \alias{getElevation_USGS}
 \title{Get elevation data from a USGS web service}
 \usage{
-getElevation_USGS(longitude = NULL, latitude = NULL, quiet = TRUE)
+getElevation_USGS(longitude = NULL, latitude = NULL, verbose = TRUE)
 }
 \arguments{
 \item{longitude}{Single longitude in decimal degrees E, Default: NULL}
 
 \item{latitude}{Single latitude in decimal degrees N, Default: NULL}
 
-\item{quiet}{Logical controlling the generate of progress messages.}
+\item{verbose}{Logical controlling the generation of progress messages.}
 }
 \value{
 Numeric elevation value.

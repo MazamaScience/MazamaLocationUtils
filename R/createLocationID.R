@@ -1,37 +1,37 @@
 
+#' @title Create a unique locationID
+#' @description A unique locationID is created for the incoming
+#' \code{longitude} and \code{latitude}. The following code is used to generate
+#' each locationID. See the references for details.
+#' 
+#' \preformatted{
+#' # Retain accuracy up to ~.1m
+#' locationString <- paste0(
+#'   sprintf("%.7f", longitude),
+#'   "_",
+#'   sprintf("%.7f", latitude)
+#' )
+#'   
+#' # Avoid collisions until billions of records
+#' locationID <- digest::digest(locationString, algo = "xxhash64")  
+#' }
+#' 
+#' @param longitude Single longitude in decimal degrees E, Default: NULL
+#' @param latitude Single latitude in decimal degrees N, Default: NULL
+#' @return Character locationID.
+#' @references \url{https://en.wikipedia.org/wiki/Decimal_degrees}
+#' @references \url{https://www.johndcook.com/blog/2017/01/10/probability-of-secure-hash-collisions/}
+#' @rdname createLocationID
+#' @export 
+#' 
 createLocationID <- function(
   longitude = NULL,
-  latitude = NULL,
-  countryCode = NULL,
-  stateCode = NULL
+  latitude = NULL
 ) {
   
   # ----- Validate parameters --------------------------------------------------
   
-  MazamaCoreUtils::stopIfNull(longitude)
-  MazamaCoreUtils::stopIfNull(latitude)
-  MazamaCoreUtils::stopIfNull(countryCode)
-  MazamaCoreUtils::stopIfNull(stateCode)
-  
-  # countryCode
-  countryCode <- toupper(countryCode)
-  if ( !countryCode %in% countrycode::codelist[,"iso2c"] ) {
-    stop(sprintf(
-      "countryCode \"%s\" is not recognized. You must ISO 3166-1 alpha-2.",
-      countryCode
-    ))
-  }
-  
-  # TODO:  We need to create an internal list of acceptable stateCodes
-  
-  # stateCode
-  stateCode <- toupper(stateCode)
-  if ( stringr::str_length(stateCode) > 2 ) {
-    stop(sprintf(
-      "stateCode \"%s\" is not recognized. You must ISO 3166-2 alpha-2.",
-      stateCode
-    ))
-  }
+  validateLonsLats(longitude, latitude)
   
   # ----- Create location hash -------------------------------------------------
   
@@ -56,18 +56,13 @@ createLocationID <- function(
   #
   # One can imagine a table with 60K known locations so it looks like a 32 bit 
   # hash is not quite safe enough.
-
-  hashString <- digest::digest(locationString, algo = "xxhash64")
   
-  # ----- Assemble locationID --------------------------------------------------
+  # Use base::Map() to vectorise digest::digest()
+  locationID <- 
+    Map( function(x) { digest::digest(x, algo = "xxhash64") }, locationString ) %>%
+    unlist() %>%    # convert to vector
+    as.character()  # strip off names
   
-  # Here is our internal standard
-  locationID <- paste0(
-    tolower(countryCode), ".",
-    tolower(stateCode), "_",
-    hashString
-  )
-
   # ----- Return ---------------------------------------------------------------
   
   return(locationID)

@@ -56,7 +56,7 @@ because of the non-infinite resolution of spatial datasets.}
 }
 
 This package attempts to address all of these issues by maintaining a table
-of "known locations" for which CPU intensive spatial data calculations have
+of known locations for which CPU intensive spatial data calculations have
 already been performed. While requests to add new locations to the table may
 take some time, searches for spatial metadata associated with existing
 locations are simple lookups.

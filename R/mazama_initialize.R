@@ -9,9 +9,11 @@
 mazama_initialize <- function() {
 
   setSpatialDataDir("~/Data/Spatial")
+  
   loadSpatialData("EEZCountries")
   loadSpatialData("OSMTimezones")
   loadSpatialData("NaturalEarthAdm1")
+  loadSpatialData("USCensusCounties")
   
   setLocationDataDir("~/Data/KnownLocations")
   

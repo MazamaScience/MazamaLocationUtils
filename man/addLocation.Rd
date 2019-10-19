@@ -2,13 +2,13 @@
 % Please edit documentation in R/addLocation.R
 \name{addLocation}
 \alias{addLocation}
-\title{Adds a new "known location" record to a table}
+\title{Adds a new known location record to a table}
 \usage{
 addLocation(locationTbl = NULL, longitude = NULL, latitude = NULL,
-  radius = NULL, stateDataset = "NaturalEarthAdm1", quiet = TRUE)
+  radius = NULL, stateDataset = "NaturalEarthAdm1", verbose = TRUE)
 }
 \arguments{
-\item{locationTbl}{Tibble of "known locations", Default: NULL}
+\item{locationTbl}{Tibble of known locations, Default: NULL}
 
 \item{longitude}{Single longitude in decimal degrees E, Default: NULL}
 
@@ -19,10 +19,10 @@ addLocation(locationTbl = NULL, longitude = NULL, latitude = NULL,
 \item{stateDataset}{Name of spatial dataset to use for determining state
 codes, Default: 'NaturalEarthAdm1'}
 
-\item{quiet}{Logical controlling the generate of progress messages.}
+\item{verbose}{Logical controlling the generation of progress messages.}
 }
 \value{
-Updated tibble of "known locations".
+Updated tibble of known locations.
 }
 \description{
 Incoming \code{longitude} and \code{latitude} values are compared 

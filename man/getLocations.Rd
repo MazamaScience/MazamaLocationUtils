@@ -2,13 +2,13 @@
 % Please edit documentation in R/getLocations.R
 \name{getLocations}
 \alias{getLocations}
-\title{Returns "known locations"}
+\title{Returns known locations}
 \usage{
 getLocations(locationTbl = NULL, longitude = NULL, latitude = NULL,
   radius = NULL, nearestIfMultiple = FALSE)
 }
 \arguments{
-\item{locationTbl}{Tibble of "known locations", Default: NULL}
+\item{locationTbl}{Tibble of known locations, Default: NULL}
 
 \item{longitude}{Vector of longitudes in decimal degrees E, Default: NULL}
 
@@ -21,7 +21,7 @@ single location if multiple locations are found within \code{radius},
 Default: FALSE}
 }
 \value{
-Tibble of "known locations"
+Tibble of known locations
 }
 \description{
 Returns a subset tibble with all locations found in 

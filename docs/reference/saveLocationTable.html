@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>saveLocationTable — saveLocationTable • MazamaLocationUtils</title>
+<title>Save a known location table — saveLocationTable • MazamaLocationUtils</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="saveLocationTable — saveLocationTable" />
-<meta property="og:description" content="Save a &quot;known location&quot; tibble to the preferred directory." />
+<meta property="og:title" content="Save a known location table — saveLocationTable" />
+<meta property="og:description" content="Save a tibble of known locations to the preferred directory." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,27 +105,33 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>saveLocationTable</h1>
+    <h1>Save a known location table</h1>
     <small class="dont-index">Source: <a href='https://github.com/MazamaScience/MazamaCoreUtils/blob/master/R/saveLocationTable.R'><code>R/saveLocationTable.R</code></a></small>
     <div class="hidden name"><code>saveLocationTable.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Save a "known location" tibble to the preferred directory.</p>
+    <p>Save a tibble of known locations to the preferred directory.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>saveLocationTable</span>(<span class='kw'>locationTbl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>collectionName</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>saveLocationTable</span>(<span class='kw'>locationTbl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>collectionName</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>backup</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>locationTbl</th>
-      <td><p>Tibble of "known locations", Default: NULL</p></td>
+      <td><p>Tibble of known locations, Default: NULL</p></td>
     </tr>
     <tr>
       <th>collectionName</th>
       <td><p>Character identifier for this table, Default: NULL</p></td>
+    </tr>
+    <tr>
+      <th>backup</th>
+      <td><p>Logical specifying whether to save a backup version of any
+existing tables sharing <code>collectionName</code>.</p></td>
     </tr>
     </table>
 
@@ -134,7 +140,7 @@
     <p>File path of saved file.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>TODO</p>
+    <p>Backup files are saved with "YYYY-mm-ddTHH:MM:SS"</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

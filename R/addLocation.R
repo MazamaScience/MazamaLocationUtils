@@ -1,17 +1,17 @@
 
-#' @title Adds a new "known location" record to a table
+#' @title Adds a new known location record to a table
 #' @description Incoming \code{longitude} and \code{latitude} values are compared 
 #' against the incoming \code{locationTbl} to see if the are already within
 #' \code{radius} meters of an existing entry.  A new record is created for
 #' if the location is not already found in \code{locationTbl}.
-#' @param locationTbl Tibble of "known locations", Default: NULL
+#' @param locationTbl Tibble of known locations, Default: NULL
 #' @param longitude Single longitude in decimal degrees E, Default: NULL
 #' @param latitude Single latitude in decimal degrees N, Default: NULL
 #' @param radius Radius in meters, Default: NULL
 #' @param stateDataset Name of spatial dataset to use for determining state
 #' codes, Default: 'NaturalEarthAdm1'
-#' @param quiet Logical controlling the generate of progress messages.
-#' @return Updated tibble of "known locations".
+#' @param verbose Logical controlling the generation of progress messages.
+#' @return Updated tibble of known locations.
 #' @seealso 
 #'  \code{\link{addLocations}}
 #' @rdname addLocation
@@ -24,8 +24,10 @@ addLocation <- function(
   latitude = NULL,
   radius = NULL,
   stateDataset = "NaturalEarthAdm1",
-  quiet = TRUE
+  verbose = TRUE
 ) {
+  
+  validateMazamaSpatialUtils()
   
   # ----- Validate parameters --------------------------------------------------
   
@@ -39,6 +41,13 @@ addLocation <- function(
     stop(paste0(
       "Please use the plural version of the funcion for adding multiple locations.\n",
       "  addLocations(...)\n"
+    ))
+  }
+  
+  if ( !exists(stateDataset) ) {
+    stop(paste0(
+      "You must load \"stateDataset\" with: \n",
+      "  loadSpatialData(\"", stateDataset, "\")\n"
     ))
   }
   
@@ -65,7 +74,7 @@ addLocation <- function(
     longitude = longitude,
     latitude = latitude,
     stateDataset = stateDataset,
-    quiet = quiet
+    verbose = verbose
   )
     
   additionalNames <- setdiff( names(locationTbl), names(singleRecordTbl))

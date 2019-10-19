@@ -2,20 +2,20 @@
 % Please edit documentation in R/exportLocationTable.R
 \name{exportLocationTable}
 \alias{exportLocationTable}
-\title{exportLocationTable}
+\title{Export a known location table}
 \usage{
 exportLocationTable(locationTbl = NULL, outputType = "csv")
 }
 \arguments{
-\item{locationTbl}{Tibble of "known locations", Default: NULL}
+\item{locationTbl}{Tibble of known locations, Default: NULL}
 
 \item{outputType}{Output format, Default: 'csv'}
 }
 \value{
-Representation of a "known location" table in the desired format.
+Representation of a known location table in the desired format.
 }
 \description{
-Export a "known location" table as CSV or other format
+Export a known location tibble as CSV or other format.
 }
 \details{
 Loads

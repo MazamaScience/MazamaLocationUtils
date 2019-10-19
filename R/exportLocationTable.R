@@ -1,9 +1,9 @@
 
-#' @title exportLocationTable
-#' @description Export a "known location" table as CSV or other format
-#' @param locationTbl Tibble of "known locations", Default: NULL
+#' @title Export a known location table
+#' @description Export a known location tibble as CSV or other format.
+#' @param locationTbl Tibble of known locations, Default: NULL
 #' @param outputType Output format, Default: 'csv'
-#' @return Representation of a "known location" table in the desired format.
+#' @return Representation of a known location table in the desired format.
 #' @details Loads
 #' @rdname exportLocationTable
 #' @export 

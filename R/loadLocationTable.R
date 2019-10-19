@@ -1,8 +1,8 @@
 
-#' @title loadLocationTbl
-#' @description Load a "known location" table from the preferred directory.
+#' @title Locat a known location table
+#' @description Load a tibble of known locations from the preferred directory.
 #' @param collectionName Character identifier for this table, Default: NULL
-#' @return Tibble of "known location"s.
+#' @return Tibble of known locations.
 #' @details TODO
 #' @seealso 
 #'  \code{\link{setLocationDataDir}}

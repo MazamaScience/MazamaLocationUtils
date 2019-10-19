@@ -1,17 +1,17 @@
 
-#' @title Adds new "known location" records to a table
+#' @title Adds new known location records to a table
 #' @description Incoming \code{longitude} and \code{latitude} values are compared 
 #' against the incoming \code{locationTbl} to see if the are already within
 #' \code{radius} meters of an existing entry. A new record is created for
 #' each location that is not already found in \code{locationTbl}.
-#' @param locationTbl Tibble of "known locations", Default: NULL
+#' @param locationTbl Tibble of known locations, Default: NULL
 #' @param longitude Vector of longitudes in decimal degrees E, Default: NULL
 #' @param latitude Vector of latitudes in decimal degrees N, Default: NULL
 #' @param radius Radius in meters, Default: NULL
 #' @param stateDataset Name of spatial dataset to use for determining state
 #' codes, Default: 'NaturalEarthAdm1'
-#' @param quiet Logical controlling the generate of progress messages.
-#' @return Updated tibble of "known locations".
+#' @param verbose Logical controlling the generation of progress messages.
+#' @return Updated tibble of known locations.
 #' @seealso 
 #'  \code{\link{addLocation}}
 #' @rdname addLocations
@@ -24,8 +24,10 @@ addLocations <- function(
   latitude = NULL,
   radius = NULL,
   stateDataset = "NaturalEarthAdm1",
-  quiet = TRUE
+  verbose = TRUE
 ) {
+  
+  validateMazamaSpatialUtils()
   
   # ----- Validate parameters --------------------------------------------------
   
@@ -48,10 +50,17 @@ addLocations <- function(
   longitude <- longitude[!naMask]
   latitude <- latitude[!naMask]
   
-  if ( !quiet && any(naMask) ) {
+  if ( verbose && any(naMask) ) {
     message(sprintf(
       "%d of the %d requested locations have NA values",
       length(which(naMask)), incomingLength
+    ))
+  }
+  
+  if ( !exists(stateDataset) ) {
+    stop(paste0(
+      "You must load \"stateDataset\" with: \n",
+      "  loadSpatialData(\"", stateDataset, "\")\n"
     ))
   }
   
@@ -76,7 +85,7 @@ addLocations <- function(
     
     existingLocationMask <- apply(distance, 1, function(x) { any(x < radius) })
     
-    if ( !quiet && any(existingLocationMask) ) {
+    if ( verbose && any(existingLocationMask) ) {
       message(sprintf(
         "%d of the %d requested locations are already found in the locationTbl",
         length(which(existingLocationMask)), incomingLength
@@ -99,7 +108,7 @@ addLocations <- function(
     
     result <- try({
       
-      if ( !quiet ) {
+      if ( verbose ) {
         message(sprintf(
           "Working on %.7f, %.7f ...",
           longitude[i], latitude[i]
@@ -111,7 +120,7 @@ addLocations <- function(
         latitude = latitude[i],
         radius = radius,
         stateDataset = stateDataset,
-        quiet = quiet
+        verbose = verbose
       )
       
     }, silent = TRUE)

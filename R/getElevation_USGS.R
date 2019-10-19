@@ -4,7 +4,7 @@
 #' the \code{longitude} and \code{latitude}.
 #' @param longitude Single longitude in decimal degrees E, Default: NULL
 #' @param latitude Single latitude in decimal degrees N, Default: NULL
-#' @param quiet Logical controlling the generate of progress messages.
+#' @param verbose Logical controlling the generation of progress messages.
 #' @return Numeric elevation value.
 #' @references \url{https://nationalmap.gov/epqs/}
 #' @rdname getElevation_USGS
@@ -13,29 +13,13 @@
 getElevation_USGS <- function(
   longitude = NULL,
   latitude = NULL,
-  quiet = TRUE
+  verbose = TRUE
 ) {
   
   # ----- Validate parameters --------------------------------------------------
   
-  MazamaCoreUtils::stopIfNull(longitude)
-  MazamaCoreUtils::stopIfNull(latitude)
-  
-  if ( length(longitude) > 1 || length(latitude) > 1 ) {
-    stop(paste0(
-      "longitude and latitude must be single valuess"
-    ))
-  }
-  
-  # Be super careful
-  longitude <- as.numeric(longitude)
-  if ( is.na(longitude) || longitude < -180 || longitude > 180 )
-    stop("longitude must be a valid value between -180 and 180")
-  
-  latitude <- as.numeric(latitude)
-  if ( is.na(latitude) || latitude < -180 || latitude > 180 )
-    stop("latitude must be a valid value between -180 and 180")
-  
+  validateLonLat(longitude, latitude)  
+
   # ----- Get USGS elevation data ----------------------------------------------
   
   # https://nationalmap.gov/epqs/pqs.php?x=-123.4&y=47.24&units=Meters&output=json
@@ -56,7 +40,7 @@ getElevation_USGS <- function(
     
     elevation <- as.numeric(NA)
     
-    if ( !quiet ) {
+    if ( verbose ) {
       warning(sprintf(
         "USGS elevation service failed for URL %s", 
         httr::build_url(url)
@@ -81,7 +65,7 @@ getElevation_USGS <- function(
       
       elevation <- as.numeric(NA)
       
-      if ( !quiet ) {
+      if ( verbose ) {
         warning(sprintf(
           "USGS elevation service returned a NULL Elevation_Query object"
         ))

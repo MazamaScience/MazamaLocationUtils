@@ -2,21 +2,25 @@
 % Please edit documentation in R/saveLocationTable.R
 \name{saveLocationTable}
 \alias{saveLocationTable}
-\title{saveLocationTable}
+\title{Save a known location table}
 \usage{
-saveLocationTable(locationTbl = NULL, collectionName = NULL)
+saveLocationTable(locationTbl = NULL, collectionName = NULL,
+  backup = TRUE)
 }
 \arguments{
-\item{locationTbl}{Tibble of "known locations", Default: NULL}
+\item{locationTbl}{Tibble of known locations, Default: NULL}
 
 \item{collectionName}{Character identifier for this table, Default: NULL}
+
+\item{backup}{Logical specifying whether to save a backup version of any
+existing tables sharing \code{collectionName}.}
 }
 \value{
 File path of saved file.
 }
 \description{
-Save a "known location" tibble to the preferred directory.
+Save a tibble of known locations to the preferred directory.
 }
 \details{
-TODO
+Backup files are saved with "YYYY-mm-ddTHH:MM:SS"
 }

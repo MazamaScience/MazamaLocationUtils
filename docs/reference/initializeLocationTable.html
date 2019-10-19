@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Adds new known location records to a table — addLocations • MazamaLocationUtils</title>
+<title>Create an empty known location table — initializeLocationTable • MazamaLocationUtils</title>
 
 
 <!-- jquery -->
@@ -35,11 +35,25 @@
 
 
 
-<meta property="og:title" content="Adds new known location records to a table — addLocations" />
-<meta property="og:description" content="Incoming longitude and latitude values are compared 
-against the incoming locationTbl to see if the are already within
-radius meters of an existing entry. A new record is created for
-each location that is not already found in locationTbl." />
+<meta property="og:title" content="Create an empty known location table — initializeLocationTable" />
+<meta property="og:description" content="Creates an empty known location tibble with the following 
+columns of core metadata:
+locationID
+locationName
+longitude
+latitude
+elevation
+countryCode
+stateCode
+county
+timezone
+houseNumber
+street
+city
+zip
+
+
+and whatever extra spatialMetadata are passed in." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -108,65 +122,67 @@ each location that is not already found in locationTbl." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Adds new known location records to a table</h1>
-    <small class="dont-index">Source: <a href='https://github.com/MazamaScience/MazamaCoreUtils/blob/master/R/addLocations.R'><code>R/addLocations.R</code></a></small>
-    <div class="hidden name"><code>addLocations.Rd</code></div>
+    <h1>Create an empty known location table</h1>
+    <small class="dont-index">Source: <a href='https://github.com/MazamaScience/MazamaCoreUtils/blob/master/R/initializeLocationTable.R'><code>R/initializeLocationTable.R</code></a></small>
+    <div class="hidden name"><code>initializeLocationTable.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Incoming <code>longitude</code> and <code>latitude</code> values are compared 
-against the incoming <code>locationTbl</code> to see if the are already within
-<code>radius</code> meters of an existing entry. A new record is created for
-each location that is not already found in <code>locationTbl</code>.</p>
+    <p>Creates an empty known location tibble with the following 
+columns of core metadata:</p><ul>
+<li><p>locationID</p></li>
+<li><p>locationName</p></li>
+<li><p>longitude</p></li>
+<li><p>latitude</p></li>
+<li><p>elevation</p></li>
+<li><p>countryCode</p></li>
+<li><p>stateCode</p></li>
+<li><p>county</p></li>
+<li><p>timezone</p></li>
+<li><p>houseNumber</p></li>
+<li><p>street</p></li>
+<li><p>city</p></li>
+<li><p>zip</p></li>
+</ul>
+
+<p>and whatever extra <code>spatialMetadata</code> are passed in.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>addLocations</span>(<span class='kw'>locationTbl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>longitude</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>latitude</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>radius</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>stateDataset</span> <span class='kw'>=</span> <span class='st'>"NaturalEarthAdm1"</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>initializeLocationTable</span>(<span class='kw'>spatialMetadata</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>locationTbl</th>
-      <td><p>Tibble of known locations, Default: NULL</p></td>
-    </tr>
-    <tr>
-      <th>longitude</th>
-      <td><p>Vector of longitudes in decimal degrees E, Default: NULL</p></td>
-    </tr>
-    <tr>
-      <th>latitude</th>
-      <td><p>Vector of latitudes in decimal degrees N, Default: NULL</p></td>
-    </tr>
-    <tr>
-      <th>radius</th>
-      <td><p>Radius in meters, Default: NULL</p></td>
-    </tr>
-    <tr>
-      <th>stateDataset</th>
-      <td><p>Name of spatial dataset to use for determining state
-codes, Default: 'NaturalEarthAdm1'</p></td>
-    </tr>
-    <tr>
-      <th>verbose</th>
-      <td><p>Logical controlling the generation of progress messages.</p></td>
+      <th>spatialMetadata</th>
+      <td><p>Vector of character names of supported spatial 
+metadata, Default: NULL
+metadata, Default: NULL</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Updated tibble of known locations.</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <p>Empty known location tibble with the specified metadata columns.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <div class='dont-index'><p><code><a href='addLocation.html'>addLocation</a></code></p></div>
+    <p>TODO</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='no'>emptyTbl</span> <span class='kw'>&lt;-</span> <span class='fu'>initializeLocationTable</span>(
+  <span class='st'>"myLocations"</span>,
+  <span class='kw'>spatialMetadata</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"USCensusCounties"</span>)
+)
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
-      <li><a href="#see-also">See also</a></li>
+      <li><a href="#details">Details</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

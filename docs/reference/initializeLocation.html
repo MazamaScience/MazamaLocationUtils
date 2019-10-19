@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create "known location" record with core metadata — initializeLocation • MazamaLocationUtils</title>
+<title>Create known location record with core metadata — initializeLocation • MazamaLocationUtils</title>
 
 
 <!-- jquery -->
@@ -35,16 +35,22 @@
 
 
 
-<meta property="og:title" content="Create "known location" record with core metadata — initializeLocation" />
-<meta property="og:description" content="Creates a &quot;known location&quot; record with the following columns
+<meta property="og:title" content="Create known location record with core metadata — initializeLocation" />
+<meta property="og:description" content="Creates a known location record with the following columns
 of core metadata:
 locationID
+locationName
 longitude
 latitude
 elevation
 countryCode
 stateCode
+county
 timezone
+houseNumber
+street
+city
+zip
 
 " />
 <meta name="twitter:card" content="summary" />
@@ -115,27 +121,33 @@ timezone
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create "known location" record with core metadata</h1>
+    <h1>Create known location record with core metadata</h1>
     <small class="dont-index">Source: <a href='https://github.com/MazamaScience/MazamaCoreUtils/blob/master/R/initializeLocation.R'><code>R/initializeLocation.R</code></a></small>
     <div class="hidden name"><code>initializeLocation.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Creates a "known location" record with the following columns
+    <p>Creates a known location record with the following columns
 of core metadata:</p><ul>
 <li><p>locationID</p></li>
+<li><p>locationName</p></li>
 <li><p>longitude</p></li>
 <li><p>latitude</p></li>
 <li><p>elevation</p></li>
 <li><p>countryCode</p></li>
 <li><p>stateCode</p></li>
+<li><p>county</p></li>
 <li><p>timezone</p></li>
+<li><p>houseNumber</p></li>
+<li><p>street</p></li>
+<li><p>city</p></li>
+<li><p>zip</p></li>
 </ul>
 
     </div>
 
     <pre class="usage"><span class='fu'>initializeLocation</span>(<span class='kw'>longitude</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>latitude</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>stateDataset</span> <span class='kw'>=</span> <span class='st'>"NaturalEarthAdm1"</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+  <span class='kw'>stateDataset</span> <span class='kw'>=</span> <span class='st'>"NaturalEarthAdm1"</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -153,14 +165,14 @@ of core metadata:</p><ul>
       <td><p>Name of spatial dataset to use for determining state</p></td>
     </tr>
     <tr>
-      <th>quiet</th>
-      <td><p>Logical controlling the generate of progress messages.</p></td>
+      <th>verbose</th>
+      <td><p>Logical controlling the generation of progress messages.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Tibble with a single new "known location".</p>
+    <p>Tibble with a single new known location.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

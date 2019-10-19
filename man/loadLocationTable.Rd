@@ -2,7 +2,7 @@
 % Please edit documentation in R/loadLocationTable.R
 \name{loadLocationTable}
 \alias{loadLocationTable}
-\title{loadLocationTbl}
+\title{Locat a known location table}
 \usage{
 loadLocationTable(collectionName = NULL)
 }
@@ -10,10 +10,10 @@ loadLocationTable(collectionName = NULL)
 \item{collectionName}{Character identifier for this table, Default: NULL}
 }
 \value{
-Tibble of "known location"s.
+Tibble of known locations.
 }
 \description{
-Load a "known location" table from the preferred directory.
+Load a tibble of known locations from the preferred directory.
 }
 \details{
 TODO

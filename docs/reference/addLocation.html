@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Adds a new "known location" record to a table — addLocation • MazamaLocationUtils</title>
+<title>Adds a new known location record to a table — addLocation • MazamaLocationUtils</title>
 
 
 <!-- jquery -->
@@ -35,7 +35,7 @@
 
 
 
-<meta property="og:title" content="Adds a new "known location" record to a table — addLocation" />
+<meta property="og:title" content="Adds a new known location record to a table — addLocation" />
 <meta property="og:description" content="Incoming longitude and latitude values are compared 
 against the incoming locationTbl to see if the are already within
 radius meters of an existing entry.  A new record is created for
@@ -108,7 +108,7 @@ if the location is not already found in locationTbl." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Adds a new "known location" record to a table</h1>
+    <h1>Adds a new known location record to a table</h1>
     <small class="dont-index">Source: <a href='https://github.com/MazamaScience/MazamaCoreUtils/blob/master/R/addLocation.R'><code>R/addLocation.R</code></a></small>
     <div class="hidden name"><code>addLocation.Rd</code></div>
     </div>
@@ -121,14 +121,14 @@ if the location is not already found in <code>locationTbl</code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>addLocation</span>(<span class='kw'>locationTbl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>longitude</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>latitude</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>radius</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>stateDataset</span> <span class='kw'>=</span> <span class='st'>"NaturalEarthAdm1"</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+  <span class='kw'>radius</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>stateDataset</span> <span class='kw'>=</span> <span class='st'>"NaturalEarthAdm1"</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>locationTbl</th>
-      <td><p>Tibble of "known locations", Default: NULL</p></td>
+      <td><p>Tibble of known locations, Default: NULL</p></td>
     </tr>
     <tr>
       <th>longitude</th>
@@ -148,14 +148,14 @@ if the location is not already found in <code>locationTbl</code>.</p>
 codes, Default: 'NaturalEarthAdm1'</p></td>
     </tr>
     <tr>
-      <th>quiet</th>
-      <td><p>Logical controlling the generate of progress messages.</p></td>
+      <th>verbose</th>
+      <td><p>Logical controlling the generation of progress messages.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Updated tibble of "known locations".</p>
+    <p>Updated tibble of known locations.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='addLocations.html'>addLocations</a></code></p></div>

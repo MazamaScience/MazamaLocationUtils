@@ -20,9 +20,12 @@ Imports:
     dplyr,
     geodist,
     httr,
+    lubridate,
+    magrittr,
     MazamaCoreUtils,
     MazamaSpatialUtils,
     readr,
+    revgeo,
     rlang,
     stringr
 Suggests:

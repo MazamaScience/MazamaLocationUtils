@@ -2,10 +2,10 @@
 % Please edit documentation in R/initializeLocation.R
 \name{initializeLocation}
 \alias{initializeLocation}
-\title{Create "known location" record with core metadata}
+\title{Create known location record with core metadata}
 \usage{
 initializeLocation(longitude = NULL, latitude = NULL,
-  stateDataset = "NaturalEarthAdm1", quiet = TRUE)
+  stateDataset = "NaturalEarthAdm1", verbose = TRUE)
 }
 \arguments{
 \item{longitude}{Single longitude in decimal degrees E, Default: NULL}
@@ -14,21 +14,27 @@ initializeLocation(longitude = NULL, latitude = NULL,
 
 \item{stateDataset}{Name of spatial dataset to use for determining state}
 
-\item{quiet}{Logical controlling the generate of progress messages.}
+\item{verbose}{Logical controlling the generation of progress messages.}
 }
 \value{
-Tibble with a single new "known location".
+Tibble with a single new known location.
 }
 \description{
-Creates a "known location" record with the following columns
+Creates a known location record with the following columns
 of core metadata:
 \itemize{
 \item{locationID}
+\item{locationName}
 \item{longitude}
 \item{latitude}
 \item{elevation}
 \item{countryCode}
 \item{stateCode}
+\item{county}
 \item{timezone}
+\item{houseNumber}
+\item{street}
+\item{city}
+\item{zip}
 }
 }
