@@ -4,13 +4,12 @@
 \alias{createLocationTable}
 \title{Create an empty "known location" table}
 \usage{
-createLocationTable(collectionName = NULL,
-  metadataNames = c("countryCode", "stateCode", "timezone"))
+createLocationTable(spatialMetadata = NULL)
 }
 \arguments{
-\item{collectionName}{Character identifier for this table, Default: NULL}
-
-\item{metadataNames}{Character names of supported spatial metadata, Default: c("countryCode", "stateCode", "timezone")}
+\item{spatialMetadata}{Vector of character names of supported spatial 
+metadata, Default: NULL
+metadata, Default: NULL}
 }
 \value{
 Empty "known location" tibble with the specified metadata columns.
@@ -21,8 +20,12 @@ Creates an empty "known location" tibble with the following columns:
 \item{locationID}
 \item{longitude}
 \item{latitude}
+\item{elevation}
+\item{countryCode}
+\item{stateCode}
+\item{timezone}
 }
-and whatever extra \code{metadataNames} are passed in.
+and whatever extra \code{spatialMetadata} are passed in.
 }
 \details{
 TODO
@@ -31,7 +34,7 @@ TODO
 \dontrun{
 emptyTbl <- createLocationTable(
   "myLocations",
-  metadataNames = c("countryCode", "stateCode", "elevation")
+  spatialMetadata = c("USCensusCounties")
 )
 }
 }

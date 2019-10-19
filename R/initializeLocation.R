@@ -1,8 +1,31 @@
 
-initializeLocationRecord <- function(
+#' @title  Create "known location" record with core metadata
+#' @description Creates a "known location" record with the following columns
+#' of core metadata:
+#' \itemize{
+#' \item{locationID}
+#' \item{longitude}
+#' \item{latitude}
+#' \item{elevation}
+#' \item{countryCode}
+#' \item{stateCode}
+#' \item{timezone}
+#' }
+#' @param longitude Single longitude in decimal degrees E, Default: NULL
+#' @param latitude Single latitude in decimal degrees N, Default: NULL
+#' @param stateDataset Name of spatial dataset to use for determining state
+#' @param quiet Logical controlling the generate of progress messages.
+#' @return Tibble with a single new "known location".
+#' @rdname initializeLocation
+#' @export 
+#' @importFrom MazamaCoreUtils stopIfNull
+#' @importFrom MazamaSpatialUtils getCountryCode getStateCode getTimezone
+#' @importFrom dplyr tibble
+initializeLocation <- function(
   longitude = NULL,
   latitude = NULL,
-  stateDataset = "NaturalEarthAdm1"
+  stateDataset = "NaturalEarthAdm1",
+  quiet = TRUE
 ) {
   
   # ----- Validate parameters --------------------------------------------------
@@ -35,6 +58,14 @@ initializeLocationRecord <- function(
     
   }
   
+  # ----- Elevation ------------------------------------------------------------
+
+  elevation <- getElevation_USGS(
+    longitude = longitude,
+    latitude = latitude,
+    quiet = quiet
+  )  
+
   # ----- Country, State, Timezone, locationID ---------------------------------
   
   countryCode <- MazamaSpatialUtils::getCountryCode(
@@ -71,6 +102,7 @@ initializeLocationRecord <- function(
     "locationID" = locationID,
     "longitude" = longitude,
     "latitude" = latitude,
+    "elevation" = elevation,
     "countryCode" = countryCode,
     "stateCode" = stateCode,
     "timezone" = timezone

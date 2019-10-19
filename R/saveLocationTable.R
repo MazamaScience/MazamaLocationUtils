@@ -28,8 +28,7 @@ saveLocationTable <- function(
     
     fileName <- paste0(collectionName, ".rda")
     filePath <- file.path(dataDir, fileName)
-    save(list="locationTbl")
-    
+
     # Assign a name and save the data
     assign(collectionName, locationTbl)
     save(list=c(collectionName), file = filePath)

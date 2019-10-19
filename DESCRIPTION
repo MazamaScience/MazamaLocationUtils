@@ -18,10 +18,13 @@ Imports:
     countrycode,
     digest,
     dplyr,
+    geodist,
+    httr,
     MazamaCoreUtils,
     MazamaSpatialUtils,
     readr,
-    rlang
+    rlang,
+    stringr
 Suggests:
     knitr,
     markdown,

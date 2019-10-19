@@ -5,17 +5,22 @@
 #' \item{locationID}
 #' \item{longitude}
 #' \item{latitude}
+#' \item{elevation}
+#' \item{countryCode}
+#' \item{stateCode}
+#' \item{timezone}
 #' }
-#' and whatever extra \code{metadataNames} are passed in.
-#' @param collectionName Character identifier for this table, Default: NULL
-#' @param metadataNames Character names of supported spatial metadata, Default: c("countryCode", "stateCode", "timezone")
+#' and whatever extra \code{spatialMetadata} are passed in.
+#' @param spatialMetadata Vector of character names of supported spatial 
+#' metadata, Default: NULL
+#' metadata, Default: NULL
 #' @return Empty "known location" tibble with the specified metadata columns.
 #' @details TODO
 #' @examples 
 #' \dontrun{
 #' emptyTbl <- createLocationTable(
 #'   "myLocations",
-#'   metadataNames = c("countryCode", "stateCode", "elevation")
+#'   spatialMetadata = c("USCensusCounties")
 #' )
 #' }
 #' @rdname createLocationTable
@@ -24,23 +29,17 @@
 #' @importFrom dplyr tibble filter
 #' @importFrom rlang .data
 createLocationTable <- function(
-  collectionName = NULL,
-  metadataNames = c("countryCode", "stateCode", "timezone")
+  spatialMetadata = NULL
 ) {
   
   # ----- Validate parameters --------------------------------------------------
   
-  MazamaCoreUtils::stopIfNull(collectionName)
-  MazamaCoreUtils::stopIfNull(metadataNames)
-  
   # Compare against package supported metadata  
-  invalidNames <- setdiff(metadataNames, validMetadataNames)
+  invalidNames <- setdiff(spatialMetadata, validMetadataNames)
   if ( length(invalidNames) > 0 ) {
     invalidNamesString <- paste0(invalidNames, collapse = ", ")
-    stop("metadataNames contains invalid names: \"", invalidNamesString, "\"")
+    stop("spatialMetadata contains invalid names: \"", invalidNamesString, "\"")
   }
-  
-  dataDir <- getLocationDataDir()
   
   # ----- Create empty tibble --------------------------------------------------
   
@@ -50,16 +49,21 @@ createLocationTable <- function(
   locationTbl <- dplyr::tibble(
     "locationID" = as.character(NA),
     "longitude" = as.numeric(NA),
-    "latitude" = as.numeric(NA)
+    "latitude" = as.numeric(NA),
+    "elevation" = as.numeric(NA),
+    "countryCode" = as.character(NA),
+    "stateCode" = as.character(NA),
+    "timezone" = as.character(NA)
   )
   
-  for ( name in metadataNames ) {
+  for ( name in spatialMetadata ) {
     locationTbl[[name]] <- as.character(NA)
   }
 
   # Now search for an ID we won't find to end up with an empty tibble with 
   # the correct column names.
   locationTbl <-
+    locationTbl %>%
     dplyr::filter(.data$locationID == "Rumplestiltskin")
 
   # ----- Return ---------------------------------------------------------------

@@ -88,9 +88,12 @@ NULL
 #' package can generate.
 
 validMetadataNames <- c(
-  "countryCode",              # from MazamaSpatialUtils
-  "stateCode",                # from MazamaSpatialUtils
-  "timezone",                 # from MazamaSpatialUtils
+  "locationID",               # from MazamaLocationUtils::createLocationID()
+  "longitude",                # user supplied
+  "latitude",                 # user supplied
+  "countryCode",              # from MazamaSpatialUtils::getCountryCode()
+  "stateCode",                # from MazamaSpatialUtils::getStateCode()
+  "timezone",                 # from MazamaSpatialUtils::getTimezone()
   "elevation"                 # from https://nationalmap.gov/epqs/
 )
 
