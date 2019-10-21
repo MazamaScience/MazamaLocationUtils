@@ -33,4 +33,8 @@ if the location is not already found in \code{locationTbl}.
 }
 \seealso{
 \link{table_addLocation}
+
+\link{table_addSingleLocation}
+
+\link{table_removeLocation}
 }

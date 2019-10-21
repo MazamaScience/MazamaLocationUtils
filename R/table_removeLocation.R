@@ -3,10 +3,12 @@
 #' @description Incoming \code{locationID} values are compared 
 #' against the incoming \code{locationTbl} and any matches are removed.
 #' @param locationTbl Tibble of known locations, Default: NULL
-#' @param locationID Vector \code{locationID} strings, Default: NULL
+#' @param locationID Vector of \code{locationID} strings, Default: NULL
 #' @param verbose Logical controlling the generation of progress messages.
 #' @return Updated tibble of known locations.
 #' @seealso \link{table_addLocation}
+#' @seealso \link{table_addSingleLocation}
+#' @seealso \link{table_updateSingleLocation}
 #' @rdname table_removeLocation
 #' @export 
 #' @importFrom rlang .data

@@ -10,7 +10,7 @@ table_removeLocation(locationTbl = NULL, locationID = NULL,
 \arguments{
 \item{locationTbl}{Tibble of known locations, Default: NULL}
 
-\item{locationID}{Vector \code{locationID} strings, Default: NULL}
+\item{locationID}{Vector of \code{locationID} strings, Default: NULL}
 
 \item{verbose}{Logical controlling the generation of progress messages.}
 }
@@ -23,4 +23,8 @@ against the incoming \code{locationTbl} and any matches are removed.
 }
 \seealso{
 \link{table_addLocation}
+
+\link{table_addSingleLocation}
+
+\link{table_updateSingleLocation}
 }
