@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Adds new known location records to a table — addLocation • MazamaLocationUtils</title>
+<title>Oregon monitor locations dataset — or_monitors_500 • MazamaLocationUtils</title>
 
 
 <!-- jquery -->
@@ -35,11 +35,26 @@
 
 
 
-<meta property="og:title" content="Adds new known location records to a table — addLocation" />
-<meta property="og:description" content="Incoming longitude and latitude values are compared 
-against the incoming locationTbl to see if the are already within
-radius meters of an existing entry. A new record is created for
-each location that is not already found in locationTbl." />
+<meta property="og:title" content="Oregon monitor locations dataset — or_monitors_500" />
+<meta property="og:description" content="The or_monitor_500 dataset provides a set of known
+locations associated with Oregon state air quality monitors.
+This dataset was generatedon 2019-10-21 by running:
+
+library(PWFSLSmoke)
+library(MazamaLocationUtils)
+
+mazama_initialize()
+setLocationDataDir(&quot;./data&quot;)
+
+monitor &amp;lt;- monitor_loadLatest() 
+lons &amp;lt;- monitor$meta$longitude
+lats &amp;lt;- monitor$meta$latitude
+
+initializeLocationTable() 
+  addLocation(lons, lats, radius = 500) 
+  saveLocationTable(&quot;or_monitors_500&quot;)
+
+" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -111,64 +126,49 @@ each location that is not already found in locationTbl." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Adds new known location records to a table</h1>
-    <small class="dont-index">Source: <a href='https://github.com/MazamaScience/MazamaCoreUtils/blob/master/R/addLocation.R'><code>R/addLocation.R</code></a></small>
-    <div class="hidden name"><code>addLocation.Rd</code></div>
+    <h1>Oregon monitor locations dataset</h1>
+    <small class="dont-index">Source: <a href='https://github.com/MazamaScience/MazamaCoreUtils/blob/master/R/data.R'><code>R/data.R</code></a></small>
+    <div class="hidden name"><code>or_monitors_500.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Incoming <code>longitude</code> and <code>latitude</code> values are compared 
-against the incoming <code>locationTbl</code> to see if the are already within
-<code>radius</code> meters of an existing entry. A new record is created for
-each location that is not already found in <code>locationTbl</code>.</p>
+    <p>The <code>or_monitor_500</code> dataset provides a set of known
+locations associated with Oregon state air quality monitors.
+This dataset was generatedon 2019-10-21 by running:</p>
+<pre>
+library(PWFSLSmoke)
+library(MazamaLocationUtils)
+
+mazama_initialize()
+setLocationDataDir("./data")
+
+monitor &lt;- monitor_loadLatest() <!-- %&gt;% monitor_subset(stateCodes = "OR") -->
+lons &lt;- monitor$meta$longitude
+lats &lt;- monitor$meta$latitude
+
+initializeLocationTable() <!-- %&gt;% -->
+  addLocation(lons, lats, radius = 500) <!-- %&gt;% -->
+  saveLocationTable("or_monitors_500")
+</pre>
+
     </div>
 
-    <pre class="usage"><span class='fu'>addLocation</span>(<span class='kw'>locationTbl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>longitude</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>latitude</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>radius</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>stateDataset</span> <span class='kw'>=</span> <span class='st'>"NaturalEarthAdm1"</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='no'>or_monitors_500</span></pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>locationTbl</th>
-      <td><p>Tibble of known locations, Default: NULL</p></td>
-    </tr>
-    <tr>
-      <th>longitude</th>
-      <td><p>Vector of longitudes in decimal degrees E, Default: NULL</p></td>
-    </tr>
-    <tr>
-      <th>latitude</th>
-      <td><p>Vector of latitudes in decimal degrees N, Default: NULL</p></td>
-    </tr>
-    <tr>
-      <th>radius</th>
-      <td><p>Radius in meters, Default: NULL</p></td>
-    </tr>
-    <tr>
-      <th>stateDataset</th>
-      <td><p>Name of spatial dataset to use for determining state
-codes, Default: 'NaturalEarthAdm1'</p></td>
-    </tr>
-    <tr>
-      <th>verbose</th>
-      <td><p>Logical controlling the generation of progress messages.</p></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>Updated tibble of known locations.</p>
+    <p>A tibble with 40 rows and 13 columns of data.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='addSingleLocation.html'>addSingleLocation</a></p></div>
+    <div class='dont-index'><p><a href='id_monitors_500.html'>id_monitors_500</a></p>
+<p><a href='wa_monitors_500.html'>wa_monitors_500</a></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
+      <li><a href="#format">Format</a></li>
       <li><a href="#see-also">See also</a></li>
     </ul>
 
