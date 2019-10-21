@@ -65,8 +65,8 @@ addLocation <- function(
   
   # ----- Reduce to only new locations -----------------------------------------
 
-  existingLocationID <- getLocationID(locationTbl, longitude, latitude, radius)
-  existingCount <- sum(!is.na(existingLocationID))
+  foundLocationID <- getLocationID(locationTbl, longitude, latitude, radius)
+  existingCount <- sum(!is.na(foundLocationID))
   
   if ( verbose && existingCount > 0 ) {
     message(sprintf(
@@ -75,8 +75,8 @@ addLocation <- function(
     ))
   }
   
-  longitude <- longitude[is.na(existingLocationID)]
-  latitude <- latitude[is.na(existingLocationID)]
+  longitude <- longitude[is.na(foundLocationID)]
+  latitude <- latitude[is.na(foundLocationID)]
   
   # ----- Loop over new locations ----------------------------------------------
 
