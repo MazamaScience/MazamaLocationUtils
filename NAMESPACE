@@ -2,7 +2,7 @@
 
 export("%>%")
 export(addLocation)
-export(addLocations)
+export(addSingleLocation)
 export(createLocationID)
 export(exportLocationTable)
 export(getAddress_Photon)

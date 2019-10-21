@@ -1,19 +1,18 @@
 
-#' @title Adds a single new known location record to a table
+#' @title Adds new known location records to a table
 #' @description Incoming \code{longitude} and \code{latitude} values are compared 
 #' against the incoming \code{locationTbl} to see if the are already within
-#' \code{radius} meters of an existing entry.  A new record is created for
-#' if the location is not already found in \code{locationTbl}.
+#' \code{radius} meters of an existing entry. A new record is created for
+#' each location that is not already found in \code{locationTbl}.
 #' @param locationTbl Tibble of known locations, Default: NULL
-#' @param longitude Single longitude in decimal degrees E, Default: NULL
-#' @param latitude Single latitude in decimal degrees N, Default: NULL
+#' @param longitude Vector of longitudes in decimal degrees E, Default: NULL
+#' @param latitude Vector of latitudes in decimal degrees N, Default: NULL
 #' @param radius Radius in meters, Default: NULL
 #' @param stateDataset Name of spatial dataset to use for determining state
 #' codes, Default: 'NaturalEarthAdm1'
 #' @param verbose Logical controlling the generation of progress messages.
 #' @return Updated tibble of known locations.
-#' @seealso 
-#'  \code{\link{addLocations}}
+#' @seealso \link{addSingleLocation}
 #' @rdname addLocation
 #' @export 
 #' @importFrom MazamaCoreUtils stopIfNull
@@ -37,10 +36,23 @@ addLocation <- function(
   MazamaCoreUtils::stopIfNull(radius)
   MazamaCoreUtils::stopIfNull(stateDataset)
   
-  if ( length(longitude) > 1 || length(latitude) > 1 ) {
-    stop(paste0(
-      "Please use the plural version of the funcion for adding multiple locations.\n",
-      "  addLocations(...)\n"
+  if ( length(longitude) != length(latitude) )
+    stop("longitude and latitude must have the same length")
+  
+  if ( length(radius) != 1 )
+    stop("radius must be of length 1")
+  
+  incomingCount <- length(longitude)
+  
+  # Remove location pairs if either is missing
+  naMask <- is.na(longitude) | is.na(latitude)
+  longitude <- longitude[!naMask]
+  latitude <- latitude[!naMask]
+  
+  if ( verbose && any(naMask) ) {
+    message(sprintf(
+      "%d of the %d requested locations have NA values",
+      length(which(naMask)), incomingCount
     ))
   }
   
@@ -51,40 +63,63 @@ addLocation <- function(
     ))
   }
   
-  # ----- Check for existing location ------------------------------------------
+  # ----- Reduce to only new locations -----------------------------------------
+
+  existingLocationID <- getLocationID(locationTbl, longitude, latitude, radius)
+  existingCount <- sum(!is.na(existingLocationID))
   
-  locationID <- getLocationID(locationTbl, longitude, latitude, radius)
-  
-  if ( !is.na(locationID) ) {
-    stop(sprintf(
-      "The known location %s already exists < %d meters from the requested location.",
-      locationID, radius
+  if ( verbose && existingCount > 0 ) {
+    message(sprintf(
+      "%d of the %d requested locations are already found in the locationTbl",
+      existingCount, incomingCount
     ))
   }
   
-  # ----- Add new record -------------------------------------------------------
+  longitude <- longitude[is.na(existingLocationID)]
+  latitude <- latitude[is.na(existingLocationID)]
+  
+  # ----- Loop over new locations ----------------------------------------------
 
-  singleRecordTbl <- initializeLocation(
-    longitude = longitude,
-    latitude = latitude,
-    stateDataset = stateDataset,
-    verbose = verbose
-  )
-    
-  additionalNames <- setdiff( names(locationTbl), names(singleRecordTbl))
+  # NOTE:  Yes, this is a loop!
+  # NOTE:  But the task of generating spatial data takes many seconds for each
+  # NOTE:  iteration so there is nothing to be gained by making the code less
+  # NOTE:  readable with functional progamming style.
   
-  # TODO:  Create additional spatial metadata by calling a function that
-  # TODO:  handles everything.
-  
-  for ( name in additionalNames ) {
+  for ( i in seq_along(longitude) ) {
     
-    print(sprintf("Adding NA in place of actual metadata for %s", name))
-    singleRecordTbl[[name]] <- NA
+    result <- try({
+      
+      if ( verbose ) {
+        message(sprintf(
+          "Working on %.7f, %.7f ...",
+          longitude[i], latitude[i]
+        ))
+      }
+      locationTbl <- addSingleLocation(
+        locationTbl = locationTbl,
+        longitude = longitude[i],
+        latitude = latitude[i],
+        radius = radius,
+        stateDataset = stateDataset,
+        verbose = verbose
+      )
+      
+    }, silent = TRUE)
+    
+    if ( "try-error" %in% result ) {
+      # Warn but don't stop
+      warning(sprintf(
+        "Skipping with error: ", geterrmessage()
+      ))
+    }
+    
+    # Be _somewhat_ careful with memory
+    if ( 1 %% 10 == 0 ) {
+      gc()
+    }
     
   }
-  
-  locationTbl <- dplyr::bind_rows(locationTbl, singleRecordTbl)
-  
+
   # ----- Return ---------------------------------------------------------------
   
   return(locationTbl)

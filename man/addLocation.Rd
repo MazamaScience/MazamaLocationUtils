@@ -2,7 +2,7 @@
 % Please edit documentation in R/addLocation.R
 \name{addLocation}
 \alias{addLocation}
-\title{Adds a single new known location record to a table}
+\title{Adds new known location records to a table}
 \usage{
 addLocation(locationTbl = NULL, longitude = NULL, latitude = NULL,
   radius = NULL, stateDataset = "NaturalEarthAdm1", verbose = TRUE)
@@ -10,9 +10,9 @@ addLocation(locationTbl = NULL, longitude = NULL, latitude = NULL,
 \arguments{
 \item{locationTbl}{Tibble of known locations, Default: NULL}
 
-\item{longitude}{Single longitude in decimal degrees E, Default: NULL}
+\item{longitude}{Vector of longitudes in decimal degrees E, Default: NULL}
 
-\item{latitude}{Single latitude in decimal degrees N, Default: NULL}
+\item{latitude}{Vector of latitudes in decimal degrees N, Default: NULL}
 
 \item{radius}{Radius in meters, Default: NULL}
 
@@ -27,9 +27,9 @@ Updated tibble of known locations.
 \description{
 Incoming \code{longitude} and \code{latitude} values are compared 
 against the incoming \code{locationTbl} to see if the are already within
-\code{radius} meters of an existing entry.  A new record is created for
-if the location is not already found in \code{locationTbl}.
+\code{radius} meters of an existing entry. A new record is created for
+each location that is not already found in \code{locationTbl}.
 }
 \seealso{
-\code{\link{addLocations}}
+\link{addSingleLocation}
 }
