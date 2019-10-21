@@ -36,5 +36,5 @@ if the location is not already found in \code{locationTbl}.
 
 \link{table_addSingleLocation}
 
-\link{table_removeLocation}
+\link{table_removeRecord}
 }

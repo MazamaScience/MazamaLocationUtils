@@ -39,37 +39,20 @@ table_updateColumn <- function(
     MazamaCoreUtils::stopIfNull(locationID)
   
   if ( !is.null(locationID) && !is.null(locationData) ) {
-    
     if ( length(locationID) != length(locationData) ) {
       stop(sprintf(
         "locationID and locationData must have the same length"
       ))
     }
-    
   }
   
   # ----- Update column --------------------------------------------------------
   
-  # ----- Subset locationTbl ---------------------------------------------------
-  
-  # Find matches
-  foundIDs <-
-    locationTbl %>%
-    dplyr::filter(!.data$locationID %in% !!locationID) %>%
-    dplyr::pull(.data$locationID)
-  
-  if ( verbose && length(foundIDs) < length(locationID) ) {
-    warning(sprintf(
-      "only %d of %d locationIDs are found in locationTbl",
-      length(foundIDs), length(locationID)
-    ))
+  if ( is.null(locationID) && is.null(locationData) ) {
+    # Get the indices to be updated
+    recordIndex <- table_getRecordIndex(locationTbl, locationID)
+    locationTbl[[columnName]][recordIndex] <- locationData
   }
-  
-  
-  
-  # TODO:  finish this
-  
-  
   
   # ----- Return ---------------------------------------------------------------
   

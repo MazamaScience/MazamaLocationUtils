@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Adds new known location records to a table — table_addLocation • MazamaLocationUtils</title>
+<title>updates a column of metadata in a table — table_updateColumn • MazamaLocationUtils</title>
 
 
 <!-- jquery -->
@@ -35,11 +35,9 @@
 
 
 
-<meta property="og:title" content="Adds new known location records to a table — table_addLocation" />
-<meta property="og:description" content="Incoming longitude and latitude values are compared 
-against the incoming locationTbl to see if the are already within
-radius meters of an existing entry. A new record is created for
-each location that is not already found in locationTbl." />
+<meta property="og:title" content="updates a column of metadata in a table — table_updateColumn" />
+<meta property="og:description" content="For matching locationID records the assaociated 
+locatioData is used to replace any existing value in columnName." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -111,21 +109,18 @@ each location that is not already found in locationTbl." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Adds new known location records to a table</h1>
-    <small class="dont-index">Source: <a href='https://github.com/MazamaScience/MazamaCoreUtils/blob/master/R/table_addLocation.R'><code>R/table_addLocation.R</code></a></small>
-    <div class="hidden name"><code>table_addLocation.Rd</code></div>
+    <h1>updates a column of metadata in a table</h1>
+    <small class="dont-index">Source: <a href='https://github.com/MazamaScience/MazamaCoreUtils/blob/master/R/table_updateColumn.R'><code>R/table_updateColumn.R</code></a></small>
+    <div class="hidden name"><code>table_updateColumn.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Incoming <code>longitude</code> and <code>latitude</code> values are compared 
-against the incoming <code>locationTbl</code> to see if the are already within
-<code>radius</code> meters of an existing entry. A new record is created for
-each location that is not already found in <code>locationTbl</code>.</p>
+    <p>For matching <code>locationID</code> records the assaociated 
+<code>locatioData</code> is used to replace any existing value in <code>columnName</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>table_addLocation</span>(<span class='kw'>locationTbl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>longitude</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>latitude</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>radius</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>stateDataset</span> <span class='kw'>=</span> <span class='st'>"NaturalEarthAdm1"</span>,
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>table_updateColumn</span>(<span class='kw'>locationTbl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>columnName</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>locationID</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>locationData</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -135,21 +130,16 @@ each location that is not already found in <code>locationTbl</code>.</p>
       <td><p>Tibble of known locations, Default: NULL</p></td>
     </tr>
     <tr>
-      <th>longitude</th>
-      <td><p>Vector of longitudes in decimal degrees E, Default: NULL</p></td>
+      <th>columnName</th>
+      <td><p>Name to use for the new column, Default: NULL</p></td>
     </tr>
     <tr>
-      <th>latitude</th>
-      <td><p>Vector of latitudes in decimal degrees N, Default: NULL</p></td>
+      <th>locationID</th>
+      <td><p>Vector of <code>locationID</code> strings, Default: NULL</p></td>
     </tr>
     <tr>
-      <th>radius</th>
-      <td><p>Radius in meters, Default: NULL</p></td>
-    </tr>
-    <tr>
-      <th>stateDataset</th>
-      <td><p>Name of spatial dataset to use for determining state
-codes, Default: 'NaturalEarthAdm1'</p></td>
+      <th>locationData</th>
+      <td><p>Vector of data to used at matching records, Default: NULL</p></td>
     </tr>
     <tr>
       <th>verbose</th>
@@ -162,9 +152,8 @@ codes, Default: 'NaturalEarthAdm1'</p></td>
     <p>Updated tibble of known locations.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='table_addSingleLocation.html'>table_addSingleLocation</a></p>
-<p><a href='table_removeRecord.html'>table_removeRecord</a></p>
-<p><a href='table_updateSingleRecord.html'>table_updateSingleRecord</a></p></div>
+    <div class='dont-index'><p><a href='table_addColumn.html'>table_addColumn</a></p>
+<p><a href='table_removeColumn.html'>table_removeColumn</a></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

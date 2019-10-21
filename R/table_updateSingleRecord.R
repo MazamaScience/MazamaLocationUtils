@@ -12,11 +12,11 @@
 #' @return Updated tibble of known locations.
 #' @seealso \link{table_addLocation}
 #' @seealso \link{table_addSingleLocation}
-#' @seealso \link{table_removeLocation}
-#' @rdname table_updateSingleLocation
+#' @seealso \link{table_removeRecord}
+#' @rdname table_updateSingleRecord
 #' @export 
 #' @importFrom rlang .data
-table_updateSingleLocation <- function(
+table_updateSingleRecord <- function(
   locationTbl = NULL,
   locationList = NULL,
   verbose = TRUE
@@ -54,7 +54,7 @@ table_updateSingleLocation <- function(
     
     if ( verbose ) {
       warning(sprintf(
-        "No location found for %s", locationID
+        "No location found for %s", locationList$locationID
       ))
     }
     

@@ -14,7 +14,7 @@
 #' @return Updated tibble of known locations.
 #' @seealso \link{table_addLocation}
 #' @seealso \link{table_addSingleLocation}
-#' @seealso \link{table_removeLocation}
+#' @seealso \link{table_removeRecord}
 #' @rdname table_addSingleLocation
 #' @export 
 #' @importFrom MazamaCoreUtils stopIfNull

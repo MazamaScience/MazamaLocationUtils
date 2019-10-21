@@ -50,8 +50,11 @@ table_addColumn <- function(
   
   locationTbl[[columnName]] <- vector(dataClass, nrow(locationTbl))
   
-  locationTbl <- 
-    table_updateLocation(locationTbl, columnName, locationID, locationData)
+  # Update if any data are passed in
+  if ( !is.null(locationID) ) {
+    locationTbl <- 
+      table_updateColumn(locationTbl, columnName, locationID, locationData)
+  }
 
   # ----- Return ---------------------------------------------------------------
   

@@ -8,11 +8,11 @@
 #' @return Updated tibble of known locations.
 #' @seealso \link{table_addLocation}
 #' @seealso \link{table_addSingleLocation}
-#' @seealso \link{table_updateSingleLocation}
-#' @rdname table_removeLocation
+#' @seealso \link{table_updateSingleRecord}
+#' @rdname table_removeRecord
 #' @export 
 #' @importFrom rlang .data
-table_removeLocation <- function(
+table_removeRecord <- function(
   locationTbl = NULL,
   locationID = NULL,
   verbose = TRUE

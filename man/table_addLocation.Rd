@@ -34,7 +34,7 @@ each location that is not already found in \code{locationTbl}.
 \seealso{
 \link{table_addSingleLocation}
 
-\link{table_removeLocation}
+\link{table_removeRecord}
 
-\link{table_updateSingleLocation}
+\link{table_updateSingleRecord}
 }

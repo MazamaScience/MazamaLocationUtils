@@ -47,3 +47,9 @@ jon <- jon %>% table_addLocation(lons, lats, radius = 500)
 
 table_save(jon, "jon")
 
+# ----- Map
+
+maps::map("state", c("idaho", "oregon", "washington"))
+points(jon$longitude, jon$latitude)
+
+

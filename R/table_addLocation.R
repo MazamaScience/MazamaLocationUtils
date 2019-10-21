@@ -13,8 +13,8 @@
 #' @param verbose Logical controlling the generation of progress messages.
 #' @return Updated tibble of known locations.
 #' @seealso \link{table_addSingleLocation}
-#' @seealso \link{table_removeLocation}
-#' @seealso \link{table_updateSingleLocation}
+#' @seealso \link{table_removeRecord}
+#' @seealso \link{table_updateSingleRecord}
 #' @rdname table_addLocation
 #' @export 
 #' @importFrom MazamaCoreUtils stopIfNull

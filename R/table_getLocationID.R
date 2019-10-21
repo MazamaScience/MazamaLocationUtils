@@ -51,7 +51,7 @@ table_getLocationID <- function(
   
   # NOTE:  distance matrix is nrow(locationTbl) X length(longitude)
   
-  # ----- Subset ---------------------------------------------------------------
+  # ----- Find locationIDs -----------------------------------------------------
   
   locationID <- rep(as.character(NA), length(longitude))
   
