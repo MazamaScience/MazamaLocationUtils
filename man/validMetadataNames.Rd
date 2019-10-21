@@ -9,8 +9,8 @@
 validMetadataNames
 }
 \description{
-Character string identifiers of the different types of spatial metadata this
-package can generate.
+Character string identifiers of the different types of spatial 
+metadata this package can generate.
 }
 \details{
 validMetadataNames

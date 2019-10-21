@@ -43,7 +43,7 @@ addLocations <- function(
   if ( length(radius) != 1 )
     stop("radius must be of length 1")
   
-  incomingLength <- length(longitude)
+  incomingCount <- length(longitude)
   
   # Remove location pairs if either is missing
   naMask <- is.na(longitude) | is.na(latitude)
@@ -53,7 +53,7 @@ addLocations <- function(
   if ( verbose && any(naMask) ) {
     message(sprintf(
       "%d of the %d requested locations have NA values",
-      length(which(naMask)), incomingLength
+      length(which(naMask)), incomingCount
     ))
   }
   
@@ -66,36 +66,18 @@ addLocations <- function(
   
   # ----- Reduce to only new locations -----------------------------------------
 
-  # No need to do anything if this is an empty locationTbl
-  if ( nrow(locationTbl) > 0 ) {
-    
-    # Calculate a distance matrix where each row has all existing distances from
-    # one of the incoming locations.
-    distance <-
-      geodist::geodist(
-        x = cbind(
-          "x" = longitude,
-          "y" = latitude
-        ),
-        y = cbind(
-          "x" = locationTbl$longitude,
-          "y" = locationTbl$latitude
-        )
-      )
-    
-    existingLocationMask <- apply(distance, 1, function(x) { any(x < radius) })
-    
-    if ( verbose && any(existingLocationMask) ) {
-      message(sprintf(
-        "%d of the %d requested locations are already found in the locationTbl",
-        length(which(existingLocationMask)), incomingLength
-      ))
-    }
-    
-    longitude <- longitude[!existingLocationMask]
-    latitude <- latitude[!existingLocationMask]
-    
+  existingLocationID <- getLocationID(locationTbl, longitude, latitude, radius)
+  existingCount <- sum(!is.na(existingLocationID))
+  
+  if ( verbose && existingCount > 0 ) {
+    message(sprintf(
+      "%d of the %d requested locations are already found in the locationTbl",
+      existingCount, incomingCount
+    ))
   }
+  
+  longitude <- longitude[is.na(existingLocationID)]
+  latitude <- latitude[is.na(existingLocationID)]
   
   # ----- Loop over new locations ----------------------------------------------
 

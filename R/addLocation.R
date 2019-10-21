@@ -1,5 +1,5 @@
 
-#' @title Adds a new known location record to a table
+#' @title Adds a single new known location record to a table
 #' @description Incoming \code{longitude} and \code{latitude} values are compared 
 #' against the incoming \code{locationTbl} to see if the are already within
 #' \code{radius} meters of an existing entry.  A new record is created for
@@ -53,18 +53,12 @@ addLocation <- function(
   
   # ----- Check for existing location ------------------------------------------
   
-  recordsTbl <- getLocations(
-    locationTbl = locationTbl,
-    longitude = longitude,
-    latitude = latitude,
-    radius = radius,
-    nearestIfMultiple = FALSE
-  )
+  locationID <- getLocationID(locationTbl, longitude, latitude, radius)
   
-  if ( nrow(recordsTbl) > 0 ) {
+  if ( !is.na(locationID) ) {
     stop(sprintf(
-      "%d locations were found within the requested radius of %d meters",
-      nrow(recordsTbl), radius
+      "The known location %s already exists < %d meters from the requested location.",
+      locationID, radius
     ))
   }
   

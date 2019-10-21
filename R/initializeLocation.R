@@ -138,6 +138,7 @@ initializeLocation <- function(
        addressList$stateCode != stateCode ) {
     
     # Trust address data over MazamaSpatialUtils result
+    MazamaStateCode <- stateCode
     
     # Change stateCode and reset possibly incorrect county
     stateCode <- addressList$stateCode
@@ -153,7 +154,7 @@ initializeLocation <- function(
     if ( verbose ) {
       warning(sprintf(
         "For %s, using address stateCode \"%s\" over MazamaSpatialUtils \"%s\"",
-        locationName, addressList$stateCode, stateCode
+        locationName, addressList$stateCode, MazamaStateCode
       ))
     }
     

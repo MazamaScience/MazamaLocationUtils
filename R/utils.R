@@ -87,7 +87,7 @@ validateLonLat <- function(
   
   if ( length(longitude) > 1 || length(latitude) > 1 ) {
     stop(paste0(
-      "longitude and latitude must be single valuess"
+      "longitude and latitude must be single values"
     ))
   }
   

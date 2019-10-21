@@ -2,7 +2,7 @@
 % Please edit documentation in R/createLocationID.R
 \name{createLocationID}
 \alias{createLocationID}
-\title{Create a unique locationID}
+\title{Create one or more unique locationIDs}
 \usage{
 createLocationID(longitude = NULL, latitude = NULL)
 }
@@ -12,10 +12,10 @@ createLocationID(longitude = NULL, latitude = NULL)
 \item{latitude}{Single latitude in decimal degrees N, Default: NULL}
 }
 \value{
-Character locationID.
+Vector of character locationIDs.
 }
 \description{
-A unique locationID is created for the incoming
+A unique locationID is created for each incoming
 \code{longitude} and \code{latitude}. The following code is used to generate
 each locationID. See the references for details.
 

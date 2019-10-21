@@ -9,12 +9,12 @@
 A suite of utility functions providing functionality commonly 
 needed for download of satellite products and conversion to Raster objects.
 
-
 This package is intended to be used in support of data management activities
 associated with fixed locations in space. The motivating fields include both
 air and water quality monitoring where fixed sensors report at regular time 
 intervals.
-
+}
+\details{
 When working with environmental monitoring time series, one of the first things
 you have to do is create unique identifiers for each individual time series. In 
 an ideal world, each environmental time series would have both a 

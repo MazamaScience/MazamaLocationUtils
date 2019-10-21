@@ -1,6 +1,6 @@
 
-#' @title Create a unique locationID
-#' @description A unique locationID is created for the incoming
+#' @title Create one or more unique locationIDs
+#' @description A unique locationID is created for each incoming
 #' \code{longitude} and \code{latitude}. The following code is used to generate
 #' each locationID. See the references for details.
 #' 
@@ -18,7 +18,7 @@
 #' 
 #' @param longitude Single longitude in decimal degrees E, Default: NULL
 #' @param latitude Single latitude in decimal degrees N, Default: NULL
-#' @return Character locationID.
+#' @return Vector of character locationIDs.
 #' @references \url{https://en.wikipedia.org/wiki/Decimal_degrees}
 #' @references \url{https://www.johndcook.com/blog/2017/01/10/probability-of-secure-hash-collisions/}
 #' @rdname createLocationID
@@ -57,11 +57,13 @@ createLocationID <- function(
   # One can imagine a table with 60K known locations so it looks like a 32 bit 
   # hash is not quite safe enough.
   
-  # Use base::Map() to vectorise digest::digest()
-  locationID <- 
-    Map( function(x) { digest::digest(x, algo = "xxhash64") }, locationString ) %>%
-    unlist() %>%    # convert to vector
-    as.character()  # strip off names
+  # Use base::() mnapply to vectorise digest::digest()
+  locationID <- mapply( 
+    function(x) { digest::digest(x, algo = "xxhash64") }, 
+    locationString,
+    SIMPLIFY = TRUE,
+    USE.NAMES = FALSE
+  )
   
   # ----- Return ---------------------------------------------------------------
   

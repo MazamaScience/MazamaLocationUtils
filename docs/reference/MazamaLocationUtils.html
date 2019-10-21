@@ -38,67 +38,10 @@
 <meta property="og:title" content="Utilities for Managing Spatial Metadata for 'Known Locations' — MazamaLocationUtils" />
 <meta property="og:description" content="A suite of utility functions providing functionality commonly 
 needed for download of satellite products and conversion to Raster objects.
-
 This package is intended to be used in support of data management activities
 associated with fixed locations in space. The motivating fields include both
 air and water quality monitoring where fixed sensors report at regular time 
-intervals.
-When working with environmental monitoring time series, one of the first things
-you have to do is create unique identifiers for each individual time series. In 
-an ideal world, each environmental time series would have both a 
-locationID and a sensorID that uniquely identify the spatial location and 
-specific instrument making measurements. A unique timeseriesID could
-be produced as locationID_sensorID. Metadata associated with each
-time series would contain basic information needed for downstream analysis
-including at least:
-  timeseriesID, locationID, sensorID, longitude, latitude, ...
-
-
-
-Multiple sensors placed at a location could be be grouped by locationID.
-An extended timeservers for a mobile sensor would group by sensorID.
-Maps would be created using longitude, latitude.
-Time series would be accessed from a secondary data table with timeseriesID.
-
-
-Unfortunately, we are rarely supplied with a truly unique and truly spatial 
-locationID. Instead we often use sensorID or an associated non-spatial
-identifier as a standin for locationID.
-Complications we have seen include:  
-
-GPS-reported longitude and latitude can have _jitter_ in the fourth or fifth 
-decimal place making it challenging to use them to create a unique locationID.
-Sensors are sometimes _repositioned_ in what the scientist considers the &quot;same 
-location&quot;.
-Data for a single sensor goes through different processing pipelines using
-different identifiers and is later brought together as two separate timeseries.
-The radius of what constitutes a &quot;single location&quot; depends on the 
-instrumentation and scientific question being asked.
-Deriving location-based metadata from spatial datasets is computationally 
-intensive unless saved and identified with a unique locationID.
-Automated searches for spatial metadata occasionally produce incorrect results
-because of the non-infinite resolution of spatial datasets.
-
-
-This package attempts to address all of these issues by maintaining a table
-of known locations for which CPU intensive spatial data calculations have
-already been performed. While requests to add new locations to the table may
-take some time, searches for spatial metadata associated with existing
-locations are simple lookups.
-Working in this manner will solve the problems initially mentioned but also 
-provides further useful functionality.
-
-Administrators can correct entries in the collectionName table.  
-(_e.g._ locations in river bends that even high resolution spatial datasets mis-assign)
-Additional, non-automatable metadata can be added to collectionName. 
-(_e.g._ commonly used location names within a community of practice)
-Different field campaigns can have separate collectionName tables.
-.csv or .rda versions of well populated tables can be downloaded from a
-URL and used locally, giving scientists working with known locations instant
-access to spatial data that otherwise requires special skills, large datasets 
-and lots of compute cycles.
-
-" />
+intervals." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -131,7 +74,7 @@ and lots of compute cycles.
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -145,6 +88,9 @@ and lots of compute cycles.
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -175,12 +121,17 @@ and lots of compute cycles.
     <div class="ref-description">
     <p>A suite of utility functions providing functionality commonly 
 needed for download of satellite products and conversion to Raster objects.</p>
-
 <p>This package is intended to be used in support of data management activities
 associated with fixed locations in space. The motivating fields include both
 air and water quality monitoring where fixed sensors report at regular time 
 intervals.</p>
-<p>When working with environmental monitoring time series, one of the first things
+    </div>
+
+
+
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>When working with environmental monitoring time series, one of the first things
 you have to do is create unique identifiers for each individual time series. In 
 an ideal world, each environmental time series would have both a 
 <code>locationID</code> and a <code>sensorID</code> that uniquely identify the spatial location and 
@@ -236,15 +187,12 @@ access to spatial data that otherwise requires special skills, large datasets
 and lots of compute cycles.</p></li>
 </ul>
 
-    </div>
-
-
-
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#details">Details</a></li>
     </ul>
 
   </div>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get address data from the Photon API to OpenStreetMap — getAddress_Photon • MazamaLocationUtils</title>
+<title>Returns IDs of known locations — getLocationID • MazamaLocationUtils</title>
 
 
 <!-- jquery -->
@@ -35,22 +35,12 @@
 
 
 
-<meta property="og:title" content="Get address data from the Photon API to OpenStreetMap — getAddress_Photon" />
-<meta property="og:description" content="The Photon API is used get address data associated with
-the longitude and latitude. The following list of data
-is returned:
-houseNumber
-street
-city
-stateCode
-stateName
-zip
-countryCode
-countryName
-The function makes an effort to convert both state and country 
-Name into Code with codes defaulting to NA. Both 
-Name and Code are returned so that improvements can be made in 
-the conversion algorithm." />
+<meta property="og:title" content="Returns IDs of known locations — getLocationID" />
+<meta property="og:description" content="Returns a vector of locationIDs for the known locations
+that each incoming location will be assigned to within the given. If more
+than one known location exists within the given radius, the closest will be
+assigned.  NA will be returned for each incoming that cannot be 
+assigend to a known location in locationTbl." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -122,54 +112,46 @@ the conversion algorithm." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get address data from the Photon API to OpenStreetMap</h1>
-    <small class="dont-index">Source: <a href='https://github.com/MazamaScience/MazamaCoreUtils/blob/master/R/getAddress_Photon.R'><code>R/getAddress_Photon.R</code></a></small>
-    <div class="hidden name"><code>getAddress_Photon.Rd</code></div>
+    <h1>Returns IDs of known locations</h1>
+    <small class="dont-index">Source: <a href='https://github.com/MazamaScience/MazamaCoreUtils/blob/master/R/getLocationID.R'><code>R/getLocationID.R</code></a></small>
+    <div class="hidden name"><code>getLocationID.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>The Photon API is used get address data associated with
-the <code>longitude</code> and <code>latitude</code>. The following list of data
-is returned:</p><ul>
-<li><p><code>houseNumber</code></p></li>
-<li><p><code>street</code></p></li>
-<li><p><code>city</code></p></li>
-<li><p><code>stateCode</code></p></li>
-<li><p><code>stateName</code></p></li>
-<li><p><code>zip</code></p></li>
-<li><p><code>countryCode</code></p></li>
-<li><p><code>countryName</code></p></li>
-</ul><p>The function makes an effort to convert both <code>state</code> and <code>country</code> 
-<code>Name</code> into <code>Code</code> with codes defaulting to <code>NA</code>. Both 
-<code>Name</code> and <code>Code</code> are returned so that improvements can be made in 
-the conversion algorithm.</p>
+    <p>Returns a vector of <code>locationID</code>s for the known locations
+that each incoming location will be assigned to within the given. If more
+than one known location exists within the given radius, the closest will be
+assigned.  <code>NA</code> will be returned for each incoming that cannot be 
+assigend to a known location in <code>locationTbl</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>getAddress_Photon</span>(<span class='kw'>longitude</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>latitude</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>getLocationID</span>(<span class='kw'>locationTbl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>longitude</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>latitude</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>radius</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>locationTbl</th>
+      <td><p>Tibble of known locations, Default: NULL</p></td>
+    </tr>
+    <tr>
       <th>longitude</th>
-      <td><p>Single longitude in decimal degrees E, Default: NULL</p></td>
+      <td><p>Vector of longitudes in decimal degrees E, Default: NULL</p></td>
     </tr>
     <tr>
       <th>latitude</th>
-      <td><p>Single latitude in decimal degrees N, Default: NULL</p></td>
+      <td><p>Vector of latitudes in decimal degrees N, Default: NULL</p></td>
     </tr>
     <tr>
-      <th>verbose</th>
-      <td><p>Logical controlling the generation of progress messages.</p></td>
+      <th>radius</th>
+      <td><p>Radius in meters, Default: NULL</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>List of address components.</p>
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
-
-    <p><a href='http://photon.komoot.de'>http://photon.komoot.de</a></p>
+    <p>Vector of known <code>locationID</code>s.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -177,7 +159,6 @@ the conversion algorithm.</p>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
-      <li><a href="#references">References</a></li>
     </ul>
 
   </div>
