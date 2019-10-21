@@ -24,9 +24,9 @@ monitor <- monitor_loadLatest() %>% monitor_subset(stateCodes = "OR")
 lons <- monitor$meta$longitude
 lats <- monitor$meta$latitude
 
-initializeLocationTable() %>%
-  addLocation(lons, lats, radius = 500) %>%
-  saveLocationTable("or_monitors_500")
+location_initializeTable() %>%
+  table_addLocation(lons, lats, radius = 500) %>%
+  table_save("or_monitors_500")
 }
 }
 \seealso{

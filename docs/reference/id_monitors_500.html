@@ -50,9 +50,9 @@ monitor &amp;lt;- monitor_loadLatest()
 lons &amp;lt;- monitor$meta$longitude
 lats &amp;lt;- monitor$meta$latitude
 
-initializeLocationTable() 
-  addLocation(lons, lats, radius = 500) 
-  saveLocationTable(&quot;id_monitors_500&quot;)
+location_initializeTable() 
+  table_addLocation(lons, lats, radius = 500) 
+  table_save(&quot;id_monitors_500&quot;)
 
 " />
 <meta name="twitter:card" content="summary" />
@@ -146,9 +146,9 @@ monitor &lt;- monitor_loadLatest() <!-- %&gt;% monitor_subset(stateCodes = "ID")
 lons &lt;- monitor$meta$longitude
 lats &lt;- monitor$meta$latitude
 
-initializeLocationTable() <!-- %&gt;% -->
-  addLocation(lons, lats, radius = 500) <!-- %&gt;% -->
-  saveLocationTable("id_monitors_500")
+location_initializeTable() <!-- %&gt;% -->
+  table_addLocation(lons, lats, radius = 500) <!-- %&gt;% -->
+  table_save("id_monitors_500")
 </pre>
 
     </div>

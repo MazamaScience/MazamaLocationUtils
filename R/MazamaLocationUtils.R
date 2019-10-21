@@ -87,7 +87,7 @@ NULL
 #' metadata this package can generate.
 
 validMetadataNames <- c(
-  "locationID",               # from MazamaLocationUtils::createLocationID()
+  "locationID",               # from MazamaLocationUtils::location_createID()
   "longitude",                # user supplied
   "latitude",                 # user supplied
   "countryCode",              # from MazamaSpatialUtils::getCountryCode()

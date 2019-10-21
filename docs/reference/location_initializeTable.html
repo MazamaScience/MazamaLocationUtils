@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Oregon monitor locations dataset — or_monitors_500 • MazamaLocationUtils</title>
+<title>Create an empty known location table — location_initializeTable • MazamaLocationUtils</title>
 
 
 <!-- jquery -->
@@ -35,26 +35,25 @@
 
 
 
-<meta property="og:title" content="Oregon monitor locations dataset — or_monitors_500" />
-<meta property="og:description" content="The or_monitor_500 dataset provides a set of known
-locations associated with Oregon state air quality monitors.
-This dataset was generatedon 2019-10-21 by running:
+<meta property="og:title" content="Create an empty known location table — location_initializeTable" />
+<meta property="og:description" content="Creates an empty known location tibble with the following 
+columns of core metadata:
+locationID
+locationName
+longitude
+latitude
+elevation
+countryCode
+stateCode
+county
+timezone
+houseNumber
+street
+city
+zip
 
-library(PWFSLSmoke)
-library(MazamaLocationUtils)
 
-mazama_initialize()
-setLocationDataDir(&quot;./data&quot;)
-
-monitor &amp;lt;- monitor_loadLatest() 
-lons &amp;lt;- monitor$meta$longitude
-lats &amp;lt;- monitor$meta$latitude
-
-location_initializeTable() 
-  table_addLocation(lons, lats, radius = 500) 
-  table_save(&quot;or_monitors_500&quot;)
-
-" />
+and whatever extra spatialMetadata are passed in." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -126,50 +125,67 @@ location_initializeTable()
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Oregon monitor locations dataset</h1>
-    <small class="dont-index">Source: <a href='https://github.com/MazamaScience/MazamaCoreUtils/blob/master/R/data.R'><code>R/data.R</code></a></small>
-    <div class="hidden name"><code>or_monitors_500.Rd</code></div>
+    <h1>Create an empty known location table</h1>
+    <small class="dont-index">Source: <a href='https://github.com/MazamaScience/MazamaCoreUtils/blob/master/R/table_initialize.R'><code>R/table_initialize.R</code></a></small>
+    <div class="hidden name"><code>location_initializeTable.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>The <code>or_monitor_500</code> dataset provides a set of known
-locations associated with Oregon state air quality monitors.
-This dataset was generatedon 2019-10-21 by running:</p>
-<pre>
-library(PWFSLSmoke)
-library(MazamaLocationUtils)
+    <p>Creates an empty known location tibble with the following 
+columns of core metadata:</p><ul>
+<li><p>locationID</p></li>
+<li><p>locationName</p></li>
+<li><p>longitude</p></li>
+<li><p>latitude</p></li>
+<li><p>elevation</p></li>
+<li><p>countryCode</p></li>
+<li><p>stateCode</p></li>
+<li><p>county</p></li>
+<li><p>timezone</p></li>
+<li><p>houseNumber</p></li>
+<li><p>street</p></li>
+<li><p>city</p></li>
+<li><p>zip</p></li>
+</ul>
 
-mazama_initialize()
-setLocationDataDir("./data")
-
-monitor &lt;- monitor_loadLatest() <!-- %&gt;% monitor_subset(stateCodes = "OR") -->
-lons &lt;- monitor$meta$longitude
-lats &lt;- monitor$meta$latitude
-
-location_initializeTable() <!-- %&gt;% -->
-  table_addLocation(lons, lats, radius = 500) <!-- %&gt;% -->
-  table_save("or_monitors_500")
-</pre>
-
+<p>and whatever extra <code>spatialMetadata</code> are passed in.</p>
     </div>
 
-    <pre class="usage"><span class='no'>or_monitors_500</span></pre>
+    <pre class="usage"><span class='fu'>location_initializeTable</span>(<span class='kw'>spatialMetadata</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>spatialMetadata</th>
+      <td><p>Vector of character names of supported spatial 
+metadata, Default: NULL
+metadata, Default: NULL</p></td>
+    </tr>
+    </table>
 
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A tibble with 40 rows and 13 columns of data.</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <p>Empty known location tibble with the specified metadata columns.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <div class='dont-index'><p><a href='id_monitors_500.html'>id_monitors_500</a></p>
-<p><a href='wa_monitors_500.html'>wa_monitors_500</a></p></div>
+    <p>TODO</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='no'>emptyTbl</span> <span class='kw'>&lt;-</span> <span class='fu'>location_initializeTable</span>(
+  <span class='st'>"myLocations"</span>,
+  <span class='kw'>spatialMetadata</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"USCensusCounties"</span>)
+)
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#format">Format</a></li>
-      <li><a href="#see-also">See also</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
+      <li><a href="#details">Details</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

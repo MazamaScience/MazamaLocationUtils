@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Oregon monitor locations dataset — or_monitors_500 • MazamaLocationUtils</title>
+<title>Get address data from the Photon API to OpenStreetMap — location_getSingleAddress_Photon • MazamaLocationUtils</title>
 
 
 <!-- jquery -->
@@ -35,26 +35,22 @@
 
 
 
-<meta property="og:title" content="Oregon monitor locations dataset — or_monitors_500" />
-<meta property="og:description" content="The or_monitor_500 dataset provides a set of known
-locations associated with Oregon state air quality monitors.
-This dataset was generatedon 2019-10-21 by running:
-
-library(PWFSLSmoke)
-library(MazamaLocationUtils)
-
-mazama_initialize()
-setLocationDataDir(&quot;./data&quot;)
-
-monitor &amp;lt;- monitor_loadLatest() 
-lons &amp;lt;- monitor$meta$longitude
-lats &amp;lt;- monitor$meta$latitude
-
-location_initializeTable() 
-  table_addLocation(lons, lats, radius = 500) 
-  table_save(&quot;or_monitors_500&quot;)
-
-" />
+<meta property="og:title" content="Get address data from the Photon API to OpenStreetMap — location_getSingleAddress_Photon" />
+<meta property="og:description" content="The Photon API is used get address data associated with
+the longitude and latitude. The following list of data
+is returned:
+houseNumber
+street
+city
+stateCode
+stateName
+zip
+countryCode
+countryName
+The function makes an effort to convert both state and country 
+Name into Code with codes defaulting to NA. Both 
+Name and Code are returned so that improvements can be made in 
+the conversion algorithm." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -126,50 +122,63 @@ location_initializeTable()
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Oregon monitor locations dataset</h1>
-    <small class="dont-index">Source: <a href='https://github.com/MazamaScience/MazamaCoreUtils/blob/master/R/data.R'><code>R/data.R</code></a></small>
-    <div class="hidden name"><code>or_monitors_500.Rd</code></div>
+    <h1>Get address data from the Photon API to OpenStreetMap</h1>
+    <small class="dont-index">Source: <a href='https://github.com/MazamaScience/MazamaCoreUtils/blob/master/R/location_getSingleAddress_Photon.R'><code>R/location_getSingleAddress_Photon.R</code></a></small>
+    <div class="hidden name"><code>location_getSingleAddress_Photon.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>The <code>or_monitor_500</code> dataset provides a set of known
-locations associated with Oregon state air quality monitors.
-This dataset was generatedon 2019-10-21 by running:</p>
-<pre>
-library(PWFSLSmoke)
-library(MazamaLocationUtils)
-
-mazama_initialize()
-setLocationDataDir("./data")
-
-monitor &lt;- monitor_loadLatest() <!-- %&gt;% monitor_subset(stateCodes = "OR") -->
-lons &lt;- monitor$meta$longitude
-lats &lt;- monitor$meta$latitude
-
-location_initializeTable() <!-- %&gt;% -->
-  table_addLocation(lons, lats, radius = 500) <!-- %&gt;% -->
-  table_save("or_monitors_500")
-</pre>
-
+    <p>The Photon API is used get address data associated with
+the <code>longitude</code> and <code>latitude</code>. The following list of data
+is returned:</p><ul>
+<li><p><code>houseNumber</code></p></li>
+<li><p><code>street</code></p></li>
+<li><p><code>city</code></p></li>
+<li><p><code>stateCode</code></p></li>
+<li><p><code>stateName</code></p></li>
+<li><p><code>zip</code></p></li>
+<li><p><code>countryCode</code></p></li>
+<li><p><code>countryName</code></p></li>
+</ul><p>The function makes an effort to convert both <code>state</code> and <code>country</code> 
+<code>Name</code> into <code>Code</code> with codes defaulting to <code>NA</code>. Both 
+<code>Name</code> and <code>Code</code> are returned so that improvements can be made in 
+the conversion algorithm.</p>
     </div>
 
-    <pre class="usage"><span class='no'>or_monitors_500</span></pre>
+    <pre class="usage"><span class='fu'>location_getSingleAddress_Photon</span>(<span class='kw'>longitude</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>latitude</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>longitude</th>
+      <td><p>Single longitude in decimal degrees E, Default: NULL</p></td>
+    </tr>
+    <tr>
+      <th>latitude</th>
+      <td><p>Single latitude in decimal degrees N, Default: NULL</p></td>
+    </tr>
+    <tr>
+      <th>verbose</th>
+      <td><p>Logical controlling the generation of progress messages.</p></td>
+    </tr>
+    </table>
 
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A tibble with 40 rows and 13 columns of data.</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <p>List of address components.</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <div class='dont-index'><p><a href='id_monitors_500.html'>id_monitors_500</a></p>
-<p><a href='wa_monitors_500.html'>wa_monitors_500</a></p></div>
+    <p><a href='http://photon.komoot.de'>http://photon.komoot.de</a></p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#format">Format</a></li>
-      <li><a href="#see-also">See also</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
+      <li><a href="#references">References</a></li>
     </ul>
 
   </div>
