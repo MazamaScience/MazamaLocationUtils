@@ -1,6 +1,6 @@
-context("Location functions")
+context("table_removeRecord")
 
-test_that("removeLocatio()n works", {
+test_that("table_removeRecord() works", {
   locationTbl <- get(data("wa_monitors_500"))
   
   # First three from wa_monitors_500

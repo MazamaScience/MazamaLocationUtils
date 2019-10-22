@@ -7,7 +7,7 @@
 #' @importFrom MazamaSpatialUtils setSpatialDataDir loadSpatialData
 #' 
 mazama_initialize <- function() {
-
+  
   setSpatialDataDir("~/Data/Spatial")
   
   loadSpatialData("EEZCountries")

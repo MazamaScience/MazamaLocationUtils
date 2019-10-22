@@ -52,7 +52,7 @@ table_getNearestDistance <- function(
   
   # ----- Find locationIDs -----------------------------------------------------
   
-  nearestDistance <- rep(as.character(NA), length(longitude))
+  nearestDistance <- rep(as.numeric(NA), length(longitude))
   
   for ( index in seq_along(longitude) ) {
     

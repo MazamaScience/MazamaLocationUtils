@@ -5,7 +5,7 @@ library(MazamaLocationUtils)
 mazama_initialize()
 setLocationDataDir("./data")
 
-wa <- location_initializeTable()
+wa <- table_initialize()
 
 # ----- Washington
 
@@ -13,7 +13,7 @@ monitor <- monitor_loadLatest() %>% monitor_subset(stateCodes = "WA")
 lons <- monitor$meta$longitude
 lats <- monitor$meta$latitude
 
-location_initializeTable() %>%
+table_initialize() %>%
   table_addLocation(lons, lats, radius = 500) %>%
   table_save("wa_monitors_500")
 
@@ -23,7 +23,7 @@ monitor <- monitor_loadLatest() %>% monitor_subset(stateCodes = "OR")
 lons <- monitor$meta$longitude
 lats <- monitor$meta$latitude
 
-location_initializeTable() %>%
+table_initialize() %>%
   table_addLocation(lons, lats, radius = 500) %>%
   table_save("or_monitors_500")
 
@@ -33,7 +33,7 @@ monitor <- monitor_loadLatest() %>% monitor_subset(stateCodes = "ID")
 lons <- monitor$meta$longitude
 lats <- monitor$meta$latitude
 
-location_initializeTable() %>%
+table_initialize() %>%
   table_addLocation(lons, lats, radius = 500) %>%
   table_save("id_monitors_500")
 

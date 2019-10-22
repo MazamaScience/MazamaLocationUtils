@@ -76,17 +76,17 @@ NULL
 
 # ----- Internal Data -------------------------------------------------
 
-#' validMetadataNames
+#' coreMetadataNames
 #'
 #' @export
 #' @docType data
-#' @name validMetadataNames
+#' @name coreMetadataNames
 #' @title Names of standard spatial metadata columns
 #' @format A vector with 3 elements
 #' @description Character string identifiers of the different types of spatial 
 #' metadata this package can generate.
 
-validMetadataNames <- c(
+coreMetadataNames <- c(
   "locationID",               # from MazamaLocationUtils::location_createID()
   "locationName",             # from MazamaLocationUtils::location_initialize()
   "longitude",                # user supplied

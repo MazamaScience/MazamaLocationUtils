@@ -50,7 +50,7 @@ monitor &amp;lt;- monitor_loadLatest()
 lons &amp;lt;- monitor$meta$longitude
 lats &amp;lt;- monitor$meta$latitude
 
-location_initializeTable() 
+table_initialize() 
   table_addLocation(lons, lats, radius = 500) 
   table_save(&quot;id_monitors_500&quot;)
 
@@ -146,7 +146,7 @@ monitor &lt;- monitor_loadLatest() <!-- %&gt;% monitor_subset(stateCodes = "ID")
 lons &lt;- monitor$meta$longitude
 lats &lt;- monitor$meta$latitude
 
-location_initializeTable() <!-- %&gt;% -->
+table_initialize() <!-- %&gt;% -->
   table_addLocation(lons, lats, radius = 500) <!-- %&gt;% -->
   table_save("id_monitors_500")
 </pre>

@@ -27,6 +27,12 @@ table_removeColumn <- function(
       "columnName %s is not found in locationTbl", columnName
     ))
   
+  if ( columnName %in% MazamaLocationUtils::coreMetadataNames )
+    stop(sprintf(
+      "columnName %s is part of the core metdata and cannot be removed", columnName
+    ))
+  
+  
   # ----- Remove column --------------------------------------------------------
   
   locationTbl[[columnName]] <- NULL

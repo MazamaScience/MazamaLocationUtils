@@ -4,7 +4,7 @@ library(MazamaLocationUtils)
 
 mazama_initialize()
 
-jon <- location_initializeTable()
+jon <- table_initialize()
 
 # ----- Add Washington
 

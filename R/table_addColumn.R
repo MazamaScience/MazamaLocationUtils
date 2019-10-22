@@ -35,15 +35,14 @@ table_addColumn <- function(
     MazamaCoreUtils::stopIfNull(locationID)
   
   if ( !is.null(locationID) && !is.null(locationData) ) {
-    
     if ( length(locationID) != length(locationData) ) {
       stop(sprintf(
         "locationID and locationData must have the same length"
       ))
     }
-    
     dataClass <- class(locationData)
-    
+  } else {
+    dataClass <- "character"
   }
   
   # ----- Add new column -------------------------------------------------------

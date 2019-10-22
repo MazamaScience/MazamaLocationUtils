@@ -17,40 +17,27 @@
 #' \item{city}
 #' \item{zip}
 #' }
-#' 
-#' and whatever extra \code{spatialMetadata} are passed in.
-#' @param spatialMetadata Vector of character names of supported spatial 
-#' metadata, Default: NULL
-#' metadata, Default: NULL
 #' @return Empty known location tibble with the specified metadata columns.
-#' @details TODO
 #' @examples 
 #' \dontrun{
-#' emptyTbl <- location_initializeTable(
-#'   "myLocations",
-#'   spatialMetadata = c("USCensusCounties")
-#' )
+#' # Set up standard directories and spatial data
+#' mazama_initialize()
+#' 
+#' # Create an empty Tbl
+#' emptyTbl <- table_initialize()
 #' }
-#' @rdname location_initializeTable
+#' @rdname table_initialize
 #' @export 
 #' @importFrom MazamaCoreUtils stopIfNull
 #' @importFrom dplyr tibble filter
 #' @importFrom rlang .data
-location_initializeTable <- function(
-  spatialMetadata = NULL
-) {
+table_initialize <- function() {
   
   validateMazamaSpatialUtils()
   
   # ----- Validate parameters --------------------------------------------------
   
-  # Compare against package supported metadata  
-  invalidNames <- setdiff(spatialMetadata, validMetadataNames)
-  if ( length(invalidNames) > 0 ) {
-    invalidNamesString <- paste0(invalidNames, collapse = ", ")
-    stop("spatialMetadata contains invalid names: \"", invalidNamesString, "\"")
-  }
-  
+
   # ----- Create empty tibble --------------------------------------------------
   
   # Build up a tibble with a single record full of NAs
@@ -70,11 +57,6 @@ location_initializeTable <- function(
     "zip" = as.character(NA)
   )
   
-  # TODO:  Is there a better way to do this?
-  for ( name in spatialMetadata ) {
-    locationTbl[[name]] <- as.character(NA)
-  }
-
   # Now search for an ID we won't find to end up with an empty tibble with 
   # the correct column names.
   locationTbl <-
