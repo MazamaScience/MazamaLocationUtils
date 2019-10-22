@@ -9,6 +9,7 @@
 #' @param latitude Vector of latitudes in decimal degrees N, Default: NULL
 #' @param radius Radius in meters, Default: NULL
 #' @return Vector of distances from known locations.
+#' @exaamples
 #' locationTbl <- get(data("wa_monitors_500"))
 #' 
 #' # Wenatchee
