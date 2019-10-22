@@ -2,7 +2,7 @@
 % Please edit documentation in R/table_addLocation.R
 \name{table_addLocation}
 \alias{table_addLocation}
-\title{Adds new known location records to a table}
+\title{Add new known location records to a table}
 \usage{
 table_addLocation(locationTbl = NULL, longitude = NULL,
   latitude = NULL, radius = NULL, stateDataset = "NaturalEarthAdm1",

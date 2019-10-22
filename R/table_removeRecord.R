@@ -1,5 +1,5 @@
 
-#' @title Removes location records from a table
+#' @title Remove location records from a table
 #' @description Incoming \code{locationID} values are compared 
 #' against the incoming \code{locationTbl} and any matches are removed.
 #' @param locationTbl Tibble of known locations, Default: NULL

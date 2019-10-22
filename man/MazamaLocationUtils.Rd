@@ -4,7 +4,7 @@
 \name{MazamaLocationUtils}
 \alias{MazamaLocationUtils}
 \alias{MazamaLocationUtils-package}
-\title{Utilities for Managing Spatial Metadata for 'Known Locations'}
+\title{Utility Functions for Managing Known Locations}
 \description{
 A suite of utility functions providing functionality commonly 
 needed for download of satellite products and conversion to Raster objects.

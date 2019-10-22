@@ -2,7 +2,7 @@
 % Please edit documentation in R/table_removeColumn.R
 \name{table_removeColumn}
 \alias{table_removeColumn}
-\title{Removes a column of metadata in a table}
+\title{Remove a column of metadata in a table}
 \usage{
 table_removeColumn(locationTbl = NULL, columnName = NULL,
   verbose = TRUE)

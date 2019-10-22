@@ -2,7 +2,7 @@
 % Please edit documentation in R/table_removeRecord.R
 \name{table_removeRecord}
 \alias{table_removeRecord}
-\title{Removes location records from a table}
+\title{Remove location records from a table}
 \usage{
 table_removeRecord(locationTbl = NULL, locationID = NULL,
   verbose = TRUE)

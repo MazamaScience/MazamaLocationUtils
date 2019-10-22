@@ -2,7 +2,7 @@
 % Please edit documentation in R/table_updateColumn.R
 \name{table_updateColumn}
 \alias{table_updateColumn}
-\title{updates a column of metadata in a table}
+\title{Update a column of metadata in a table}
 \usage{
 table_updateColumn(locationTbl = NULL, columnName = NULL,
   locationID = NULL, locationData = NULL, verbose = TRUE)

@@ -1,5 +1,5 @@
 
-#' @title Locat a known location table
+#' @title Load a known location table
 #' @description Load a tibble of known locations from the preferred directory.
 #' @param collectionName Character identifier for this table, Default: NULL
 #' @return Tibble of known locations.

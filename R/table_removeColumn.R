@@ -1,5 +1,5 @@
 
-#' @title Removes a column of metadata in a table
+#' @title Remove a column of metadata in a table
 #' @description Remove the column matching \code{columnName}. This function 
 #' can be used in pipelines.
 #' @param locationTbl Tibble of known locations, Default: NULL

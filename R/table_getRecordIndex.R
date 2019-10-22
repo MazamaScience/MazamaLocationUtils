@@ -1,5 +1,5 @@
 
-#' @title Returns indexes of known location records
+#' @title Return indexes of known location records
 #' @description Returns a vector of \code{locationTbl} row indexes for the 
 #' locations associated with each \code{locationID}.
 #' @param locationTbl Tibble of known locations, Default: NULL

@@ -2,7 +2,7 @@
 % Please edit documentation in R/table_load.R
 \name{table_load}
 \alias{table_load}
-\title{Locat a known location table}
+\title{Load a known location table}
 \usage{
 table_load(collectionName = NULL)
 }

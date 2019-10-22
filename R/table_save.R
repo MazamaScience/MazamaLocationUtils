@@ -5,6 +5,7 @@
 #' @param collectionName Character identifier for this table, Default: NULL
 #' @param backup Logical specifying whether to save a backup version of any
 #' existing tables sharing \code{collectionName}.
+#' @param outputType Output format, Default: 'rda'
 #' @return File path of saved file.
 #' @details Backup files are saved with "YYYY-mm-ddTHH:MM:SS"
 #' @rdname table_save
@@ -14,7 +15,8 @@
 table_save <- function(
   locationTbl = NULL,
   collectionName = NULL,
-  backup = TRUE
+  backup = TRUE,
+  outputType = "rda"
 ) {
   
   # ----- Validate parameters --------------------------------------------------
@@ -24,18 +26,24 @@ table_save <- function(
   
   dataDir <- getLocationDataDir()
   
+  validOutputTypes <- c("rda", "csv")
+  validTypesString <- paste0(validOutputTypes, collapse = ", ")
+  if ( !outputType %in% validOutputTypes ) {
+    stop(sprintf(
+      "outputType \"%s\" is not recognized. Please use one of \"%s\"",
+      outputType, validTypesString
+    ))
+  }
+  
   # TODO: validate locationTbl
   
   # ----- Save data ------------------------------------------------------------
   
   result <- try({
     
-    fileName <- paste0(collectionName, ".rda")
+    fileName <- paste0(collectionName, ".", outputType)
     filePath <- file.path(dataDir, fileName)
 
-    # Assign a name
-    assign(collectionName, locationTbl)
-    
     # Save backups
     if ( backup && file.exists(filePath) ) {
       backupName <- paste0(
@@ -47,8 +55,17 @@ table_save <- function(
       file.rename(filePath, backupPath)
     }
     
-    # Save the data
-    save(list=c(collectionName), file = filePath)
+    if ( outputType == "rda" ) {
+      
+      # Assign a name and save
+      assign(collectionName, locationTbl)
+      save(list=c(collectionName), file = filePath)
+      
+    } else if ( outputType == "csv" ) {
+      
+      readr::write_csv(locationTbl, path = filePath)
+      
+    }
     
   }, silent = TRUE)
   

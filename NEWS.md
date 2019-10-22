@@ -1,8 +1,7 @@
 # Mazama LocationUtil 0.1.2
 
-* Renamed `addLocation()` to `addSingleLocation()`
-* Renamed `addLocations()` to `addLocation()`
-
+* Massive refatoring of function names.
+* Example datasets and unit tests.
 
 # Mazama LocationUtil 0.1.1
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/table_getLocationID.R
 \name{table_getLocationID}
 \alias{table_getLocationID}
-\title{Returns IDs of known locations}
+\title{Return IDs of known locations}
 \usage{
 table_getLocationID(locationTbl = NULL, longitude = NULL,
   latitude = NULL, radius = NULL)

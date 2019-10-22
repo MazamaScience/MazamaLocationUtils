@@ -117,7 +117,8 @@
     <p>Save a tibble of known locations to the preferred directory.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>table_save</span>(<span class='kw'>locationTbl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>collectionName</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>backup</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>table_save</span>(<span class='kw'>locationTbl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>collectionName</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>backup</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>outputType</span> <span class='kw'>=</span> <span class='st'>"rda"</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -134,6 +135,10 @@
       <th>backup</th>
       <td><p>Logical specifying whether to save a backup version of any
 existing tables sharing <code>collectionName</code>.</p></td>
+    </tr>
+    <tr>
+      <th>outputType</th>
+      <td><p>Output format, Default: 'rda'</p></td>
     </tr>
     </table>
 

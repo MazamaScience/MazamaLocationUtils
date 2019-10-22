@@ -1,5 +1,5 @@
 
-#' @title Adds new known location records to a table
+#' @title Add new known location records to a table
 #' @description Incoming \code{longitude} and \code{latitude} values are compared 
 #' against the incoming \code{locationTbl} to see if the are already within
 #' \code{radius} meters of an existing entry. A new record is created for

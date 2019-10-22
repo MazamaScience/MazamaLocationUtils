@@ -2,7 +2,7 @@
 % Please edit documentation in R/table_getNearestLocation.R
 \name{table_getNearestLocation}
 \alias{table_getNearestLocation}
-\title{Returns known locations}
+\title{Return known locations}
 \usage{
 table_getNearestLocation(locationTbl = NULL, longitude = NULL,
   latitude = NULL, radius = NULL)

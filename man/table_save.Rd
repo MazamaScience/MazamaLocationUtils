@@ -4,7 +4,8 @@
 \alias{table_save}
 \title{Save a known location table}
 \usage{
-table_save(locationTbl = NULL, collectionName = NULL, backup = TRUE)
+table_save(locationTbl = NULL, collectionName = NULL, backup = TRUE,
+  outputType = "rda")
 }
 \arguments{
 \item{locationTbl}{Tibble of known locations, Default: NULL}
@@ -13,6 +14,8 @@ table_save(locationTbl = NULL, collectionName = NULL, backup = TRUE)
 
 \item{backup}{Logical specifying whether to save a backup version of any
 existing tables sharing \code{collectionName}.}
+
+\item{outputType}{Output format, Default: 'rda'}
 }
 \value{
 File path of saved file.

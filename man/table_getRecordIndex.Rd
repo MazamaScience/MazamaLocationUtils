@@ -2,7 +2,7 @@
 % Please edit documentation in R/table_getRecordIndex.R
 \name{table_getRecordIndex}
 \alias{table_getRecordIndex}
-\title{Returns indexes of known location records}
+\title{Return indexes of known location records}
 \usage{
 table_getRecordIndex(locationTbl = NULL, locationID = NULL,
   verbose = TRUE)

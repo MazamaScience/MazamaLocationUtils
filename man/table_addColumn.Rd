@@ -2,7 +2,7 @@
 % Please edit documentation in R/table_addColumn.R
 \name{table_addColumn}
 \alias{table_addColumn}
-\title{Adds a new column of metadata to a table}
+\title{Add a new column of metadata to a table}
 \usage{
 table_addColumn(locationTbl = NULL, columnName = NULL,
   locationID = NULL, locationData = NULL, verbose = TRUE)

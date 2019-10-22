@@ -3,7 +3,7 @@
 \docType{data}
 \name{validMetadataNames}
 \alias{validMetadataNames}
-\title{Names of available spatial metadata}
+\title{Names of standard spatial metadata columns}
 \format{A vector with 3 elements}
 \usage{
 validMetadataNames

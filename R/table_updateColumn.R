@@ -1,5 +1,5 @@
 
-#' @title updates a column of metadata in a table
+#' @title Update a column of metadata in a table
 #' @description For matching \code{locationID} records the assaociated 
 #' \code{locatioData} is used to replace any existing value in \code{columnName}.
 #' @param locationTbl Tibble of known locations, Default: NULL

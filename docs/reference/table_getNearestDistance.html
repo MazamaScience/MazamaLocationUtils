@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Load a known location table — table_load • MazamaLocationUtils</title>
+<title>Return distances to nearest known locations — table_getNearestDistance • MazamaLocationUtils</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,11 @@
 
 
 
-<meta property="og:title" content="Load a known location table — table_load" />
-<meta property="og:description" content="Load a tibble of known locations from the preferred directory." />
+<meta property="og:title" content="Return distances to nearest known locations — table_getNearestDistance" />
+<meta property="og:description" content="Returns a distances from known locations in locationTbl,
+one for each incoming location. If no known location is found within
+radius meters for a particular
+incoming location, that distance in the vector will be NA." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -108,35 +111,45 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Load a known location table</h1>
-    <small class="dont-index">Source: <a href='https://github.com/MazamaScience/MazamaCoreUtils/blob/master/R/table_load.R'><code>R/table_load.R</code></a></small>
-    <div class="hidden name"><code>table_load.Rd</code></div>
+    <h1>Return distances to nearest known locations</h1>
+    <small class="dont-index">Source: <a href='https://github.com/MazamaScience/MazamaCoreUtils/blob/master/R/table_getNearestDistance.R'><code>R/table_getNearestDistance.R</code></a></small>
+    <div class="hidden name"><code>table_getNearestDistance.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Load a tibble of known locations from the preferred directory.</p>
+    <p>Returns a distances from known locations in <code>locationTbl</code>,
+one for each incoming location. If no known location is found within
+<code>radius</code> meters for a particular
+incoming location, that distance in the vector will be <code>NA</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>table_load</span>(<span class='kw'>collectionName</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>table_getNearestDistance</span>(<span class='kw'>locationTbl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>longitude</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>latitude</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>radius</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>collectionName</th>
-      <td><p>Character identifier for this table, Default: NULL</p></td>
+      <th>locationTbl</th>
+      <td><p>Tibble of known locations, Default: NULL</p></td>
+    </tr>
+    <tr>
+      <th>longitude</th>
+      <td><p>Vector of longitudes in decimal degrees E, Default: NULL</p></td>
+    </tr>
+    <tr>
+      <th>latitude</th>
+      <td><p>Vector of latitudes in decimal degrees N, Default: NULL</p></td>
+    </tr>
+    <tr>
+      <th>radius</th>
+      <td><p>Radius in meters, Default: NULL</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Tibble of known locations.</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>TODO</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code><a href='setLocationDataDir.html'>setLocationDataDir</a></code></p></div>
+    <p>Vector of distances from known locations.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -144,8 +157,6 @@
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
-      <li><a href="#details">Details</a></li>
-      <li><a href="#see-also">See also</a></li>
     </ul>
 
   </div>

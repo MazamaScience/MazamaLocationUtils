@@ -1,12 +1,12 @@
 Type: Package
 Package: MazamaLocationUtils
 Version: 0.1.2
-Title: Utility Functions for Production R Code
+Title: Utility Functions for Managing Known Locations
 Authors@R: c(
     person("Jonathan", "Callahan", email="jonathan.s.callahan@gmail.com", role=c("aut","cre"))
     )
 Author: Jonathan Callahan [aut, cre]
-Maintainer: Hans Martin <hans@mazamascience.com>
+Maintainer: Jonathan Callahan <jonathan.s.callahan@gmail.com>
 Description: A suite of utility functions for discovering and managaing metadata 
     associated with sets of spatially unique "known locations".
 License: GPL-3

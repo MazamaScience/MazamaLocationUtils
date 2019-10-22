@@ -1,7 +1,7 @@
 #'
 #' @docType package
 #' @name MazamaLocationUtils
-#' @title Utilities for Managing Spatial Metadata for 'Known Locations'
+#' @title Utility Functions for Managing Known Locations
 #' @description A suite of utility functions providing functionality commonly 
 #' needed for download of satellite products and conversion to Raster objects.
 #' 
@@ -81,19 +81,25 @@ NULL
 #' @export
 #' @docType data
 #' @name validMetadataNames
-#' @title Names of available spatial metadata
+#' @title Names of standard spatial metadata columns
 #' @format A vector with 3 elements
 #' @description Character string identifiers of the different types of spatial 
 #' metadata this package can generate.
 
 validMetadataNames <- c(
   "locationID",               # from MazamaLocationUtils::location_createID()
+  "locationName",             # from MazamaLocationUtils::location_initialize()
   "longitude",                # user supplied
   "latitude",                 # user supplied
+  "elevation",                # from https://nationalmap.gov/epqs/
   "countryCode",              # from MazamaSpatialUtils::getCountryCode()
   "stateCode",                # from MazamaSpatialUtils::getStateCode()
+  "county",                   # from MazamaSpatialUtils::getUSCounty()
   "timezone",                 # from MazamaSpatialUtils::getTimezone()
-  "elevation"                 # from https://nationalmap.gov/epqs/
+  "houseNumber",              # from http://photon.komoot.de/
+  "street",                   # from http://photon.komoot.de/
+  "city",                     # from http://photon.komoot.de/
+  "zip"                       # from http://photon.komoot.de/
 )
 
 # ----- Internal Package State -------------------------------------------------

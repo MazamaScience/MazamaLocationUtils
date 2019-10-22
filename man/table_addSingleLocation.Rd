@@ -2,7 +2,7 @@
 % Please edit documentation in R/table_addSingleLocation.R
 \name{table_addSingleLocation}
 \alias{table_addSingleLocation}
-\title{Adds a single new known location record to a table}
+\title{Add a single new known location record to a table}
 \usage{
 table_addSingleLocation(locationTbl = NULL, longitude = NULL,
   latitude = NULL, radius = NULL, stateDataset = "NaturalEarthAdm1",
