@@ -6,6 +6,20 @@
 #' @param locationID Vector of \code{locationID} strings, Default: NULL
 #' @param verbose Logical controlling the generation of progress messages.
 #' @return Vector of \code{locationTbl} row indexes.
+#' @examples
+#' locationTbl <- get(data("wa_monitors_500"))
+#' 
+#' # Wenatchee
+#' lon <- -120.325278
+#' lat <- 47.423333
+#' 
+#' # Get the locationID first
+#' locationID <- table_getLocationID(locationTbl, lon, lat, radius = 5000)
+#' 
+#' # Now find the row associated with this ID
+#' recordIndex <- table_getRecordIndex(locationTbl, locationID)
+#' 
+#' str(locationTbl[recordIndex,])
 #' @rdname table_getRecordIndex
 #' @export 
 #' @importFrom MazamaCoreUtils stopIfNull

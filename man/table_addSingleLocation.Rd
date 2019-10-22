@@ -31,10 +31,26 @@ against the incoming \code{locationTbl} to see if the are already within
 \code{radius} meters of an existing entry.  A new record is created for
 if the location is not already found in \code{locationTbl}.
 }
+\examples{
+\dontrun{
+# Set up standard directories and spatial data
+mazama_initialize()
+
+locationTbl <- get(data("wa_monitors_500"))
+
+# Coulee City, WA
+lon <- -119.290904
+lat <- 47.611942
+
+locationTbl <- 
+  locationTbl \%>\%
+  table_addSingleLocation(lon, lat, radius = 500)
+}
+}
 \seealso{
 \link{table_addLocation}
 
-\link{table_addSingleLocation}
-
 \link{table_removeRecord}
+
+\link{table_updateSingleRecord}
 }

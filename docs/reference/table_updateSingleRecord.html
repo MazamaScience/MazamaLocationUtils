@@ -39,8 +39,8 @@
 <meta property="og:description" content="Information in the locationList is used to replace
 existing information found in locationTbl. This function can be used
 for small tweaks to an existing locationTbl. Wholesale replacement of
-records should be performed with location_removeLocation() followed by
-location_addLocation()." />
+records should be performed with table_removeRecord() followed by
+table_addLocation()." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -121,8 +121,8 @@ location_addLocation()." />
     <p>Information in the <code>locationList</code> is used to replace
 existing information found in <code>locationTbl</code>. This function can be used
 for small tweaks to an existing <code>locationTbl</code>. Wholesale replacement of
-records should be performed with <code>location_removeLocation()</code> followed by
-<code>location_addLocation()</code>.</p>
+records should be performed with <code><a href='table_removeRecord.html'>table_removeRecord()</a></code> followed by
+<code><a href='table_addLocation.html'>table_addLocation()</a></code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>table_updateSingleRecord</span>(<span class='kw'>locationTbl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>locationList</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
@@ -155,6 +155,56 @@ columns whose values are to be replaced, Default: NULL</p></td>
 <p><a href='table_addSingleLocation.html'>table_addSingleLocation</a></p>
 <p><a href='table_removeRecord.html'>table_removeRecord</a></p></div>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>locationTbl</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/get.html'>get</a></span>(<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"wa_monitors_500"</span>))
+
+<span class='co'># Wenatchee</span>
+<span class='no'>wenatcheeRecord</span> <span class='kw'>&lt;-</span>
+  <span class='no'>locationTbl</span> <span class='kw'>%&gt;%</span>
+  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='no'>city</span> <span class='kw'>==</span> <span class='st'>"Wenatchee"</span>)
+
+<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='no'>wenatcheeRecord</span>)</div><div class='output co'>#&gt; Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	1 obs. of  13 variables:
+#&gt;  $ locationID  : chr "8e54314f43eb8746"
+#&gt;  $ locationName: chr "us.wa_8e5431"
+#&gt;  $ longitude   : num -120
+#&gt;  $ latitude    : num 47.4
+#&gt;  $ elevation   : num 249
+#&gt;  $ countryCode : chr "US"
+#&gt;  $ stateCode   : chr "WA"
+#&gt;  $ county      : chr "Chelan"
+#&gt;  $ timezone    : chr "America/Los_Angeles"
+#&gt;  $ houseNumber : chr NA
+#&gt;  $ street      : chr NA
+#&gt;  $ city        : chr "Wenatchee"
+#&gt;  $ zip         : chr "98801"</div><div class='input'>
+<span class='no'>wenatcheeID</span> <span class='kw'>&lt;-</span> <span class='no'>wenatcheeRecord</span>$<span class='no'>locationID</span>
+
+<span class='no'>locationTbl</span> <span class='kw'>&lt;-</span> <span class='fu'>table_updateSingleRecord</span>(
+  <span class='no'>locationTbl</span>,
+  <span class='kw'>locationList</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
+    <span class='kw'>locationID</span> <span class='kw'>=</span> <span class='no'>wenatcheeID</span>,
+    <span class='kw'>locationName</span> <span class='kw'>=</span> <span class='st'>"Wenatchee-Fifth St"</span>
+  )
+)
+
+<span class='co'># Look at the new record</span>
+<span class='no'>locationTbl</span> <span class='kw'>%&gt;%</span>
+  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='no'>city</span> <span class='kw'>==</span> <span class='st'>"Wenatchee"</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>()</div><div class='output co'>#&gt; Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	1 obs. of  13 variables:
+#&gt;  $ locationID  : chr "8e54314f43eb8746"
+#&gt;  $ locationName: chr "Wenatchee-Fifth St"
+#&gt;  $ longitude   : num -120
+#&gt;  $ latitude    : num 47.4
+#&gt;  $ elevation   : num 249
+#&gt;  $ countryCode : chr "US"
+#&gt;  $ stateCode   : chr "WA"
+#&gt;  $ county      : chr "Chelan"
+#&gt;  $ timezone    : chr "America/Los_Angeles"
+#&gt;  $ houseNumber : chr NA
+#&gt;  $ street      : chr NA
+#&gt;  $ city        : chr "Wenatchee"
+#&gt;  $ zip         : chr "98801"</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -162,6 +212,7 @@ columns whose values are to be replaced, Default: NULL</p></td>
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
       <li><a href="#see-also">See also</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

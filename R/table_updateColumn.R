@@ -8,6 +8,31 @@
 #' @param locationData Vector of data to used at matching records, Default: NULL
 #' @param verbose Logical controlling the generation of progress messages.
 #' @return Updated tibble of known locations.
+#' @examples
+#' locationTbl <- get(data("wa_monitors_500"))
+#' wa <- get(data("wa_airfire_meta"))
+#' 
+#' # We will merge some metadata from wa into locationTbl
+#' 
+#' # Record indices for wa
+#' wa_indices <- seq(5,65,5)
+#' wa_sub <- wa[wa_indices,]
+#' 
+#' locationID <- table_getLocationID(locationTbl, wa_sub$longitude, wa_sub$latitude, radius = 500)
+#' locationData <- wa_sub$siteName
+#' 
+#' locationTbl <- table_updateColumn(locationTbl, "siteName", locationID, locationData)
+#' 
+#' # Look at the data we attempted to merge
+#' wa$siteName[wa_indices]
+#' 
+#' # And two columns from the updated locationTbl
+#' locationTbl_indices <- table_getRecordIndex(locationTbl, locationID)
+#' locationTbl[locationTbl_indices, c("city","siteName")]
+#' 
+#' # Reord indices for testTbl
+#' 
+#' 
 #' @seealso \link{table_addColumn}
 #' @seealso \link{table_removeColumn}
 #' @rdname table_updateColumn
@@ -27,11 +52,6 @@ table_updateColumn <- function(
   MazamaCoreUtils::stopIfNull(locationTbl)
   MazamaCoreUtils::stopIfNull(columnName)
   
-  if ( !columnName %in% names(locationTbl) ) 
-    stop(sprintf(
-      "columnName %s is not found in locationTbl", columnName
-    ))
-  
   if ( !is.null(locationID) )
     MazamaCoreUtils::stopIfNull(locationData)
   
@@ -48,7 +68,11 @@ table_updateColumn <- function(
   
   # ----- Update column --------------------------------------------------------
   
-  if ( is.null(locationID) && is.null(locationData) ) {
+  # Add it first if needed
+  if ( !columnName %in% names(locationTbl) ) 
+    locationTbl <- table_addColumn(locationTbl, columnName)
+  
+  if ( !is.null(locationData) ) {
     # Get the indices to be updated
     recordIndex <- table_getRecordIndex(locationTbl, locationID)
     locationTbl[[columnName]][recordIndex] <- locationData

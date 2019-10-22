@@ -36,6 +36,17 @@ The function makes an effort to convert both \code{state} and \code{country}
 \code{Name} and \code{Code} are returned so that improvements can be made in 
 the conversion algorithm.
 }
+\examples{
+\dontrun{
+# Set up standard directories and spatial data
+mazama_initialize()
+
+# Wenatchee
+lon <- -120.325278
+lat <- 47.423333
+addressList <- location_getSingleAddress_Photon(lon, lat)
+}
+}
 \references{
 \url{http://photon.komoot.de}
 }

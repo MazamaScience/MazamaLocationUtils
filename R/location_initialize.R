@@ -23,6 +23,16 @@
 #' @param verbose Logical controlling the generation of progress messages.
 #' @return Tibble with a single new known location.
 #' @rdname location_initialize
+#' @examples
+#' \dontrun{
+#' # Set up standard directories and spatial data
+#' mazama_initialize()
+#' 
+#' # Wenatchee
+#' lon <- -120.325278
+#' lat <- 47.423333
+#' locationRecord <- location_initialize(lon, lat)
+#' }
 #' @export 
 #' @importFrom MazamaCoreUtils stopIfNull
 #' @importFrom MazamaSpatialUtils getCountryCode getStateCode getTimezone

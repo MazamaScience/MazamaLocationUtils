@@ -153,12 +153,24 @@ assigend to a known location in <code>locationTbl</code>.</p>
 
     <p>Vector of known <code>locationID</code>s.</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>locationTbl</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/get.html'>get</a></span>(<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"wa_monitors_500"</span>))
+
+<span class='co'># Wenatchee</span>
+<span class='no'>lon</span> <span class='kw'>&lt;-</span> -<span class='fl'>120.325278</span>
+<span class='no'>lat</span> <span class='kw'>&lt;-</span> <span class='fl'>47.423333</span>
+
+<span class='co'># Too small a radius will not find a match</span>
+<span class='fu'>table_getLocationID</span>(<span class='no'>locationTbl</span>, <span class='no'>lon</span>, <span class='no'>lat</span>, <span class='kw'>radius</span> <span class='kw'>=</span> <span class='fl'>50</span>)</div><div class='output co'>#&gt; [1] NA</div><div class='input'>
+<span class='co'># Expanding the radius will find one</span>
+<span class='fu'>table_getLocationID</span>(<span class='no'>locationTbl</span>, <span class='no'>lon</span>, <span class='no'>lat</span>, <span class='kw'>radius</span> <span class='kw'>=</span> <span class='fl'>5000</span>)</div><div class='output co'>#&gt; [1] "8e54314f43eb8746"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

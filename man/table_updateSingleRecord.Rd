@@ -22,8 +22,34 @@ Updated tibble of known locations.
 Information in the \code{locationList} is used to replace
 existing information found in \code{locationTbl}. This function can be used
 for small tweaks to an existing \code{locationTbl}. Wholesale replacement of
-records should be performed with \code{location_removeLocation()} followed by
-\code{location_addLocation()}.
+records should be performed with \code{table_removeRecord()} followed by
+\code{table_addLocation()}.
+}
+\examples{
+locationTbl <- get(data("wa_monitors_500"))
+
+# Wenatchee
+wenatcheeRecord <- 
+  locationTbl \%>\% 
+  dplyr::filter(city == "Wenatchee")
+
+str(wenatcheeRecord)
+
+wenatcheeID <- wenatcheeRecord$locationID
+
+locationTbl <- table_updateSingleRecord(
+  locationTbl,
+  locationList = list(
+    locationID = wenatcheeID,
+    locationName = "Wenatchee-Fifth St"
+  )
+)
+
+# Look at the new record
+locationTbl \%>\% 
+  dplyr::filter(city == "Wenatchee") \%>\%
+  str()
+
 }
 \seealso{
 \link{table_addLocation}

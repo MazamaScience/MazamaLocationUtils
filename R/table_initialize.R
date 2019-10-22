@@ -33,8 +33,6 @@
 #' @importFrom rlang .data
 table_initialize <- function() {
   
-  validateMazamaSpatialUtils()
-  
   # ----- Validate parameters --------------------------------------------------
   
 

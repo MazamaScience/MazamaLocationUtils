@@ -149,7 +149,15 @@ incoming location, that distance in the vector will be <code>NA</code>.</p>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Vector of distances from known locations.</p>
+    <p>Vector of distances from known locations.
+locationTbl &lt;- get(data("wa_monitors_500"))</p>
+<p># Wenatchee
+lon &lt;- -120.325278
+lat &lt;- 47.423333</p>
+<p># Too small a radius will not find a match
+table_getNearestDistance(locationTbl, lon, lat, radius = 50)</p>
+<p># Expanding the radius will find one
+table_getNearestDistance(locationTbl, lon, lat, radius = 5000)</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

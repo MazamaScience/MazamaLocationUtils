@@ -31,6 +31,12 @@ locationString <- paste0(
 locationID <- digest::digest(locationString, algo = "xxhash64")  
 }
 }
+\examples{
+# Wenatchee
+lon <- -120.325278
+lat <- 47.423333
+locationID <- location_createID(lon, lat)
+}
 \references{
 \url{https://en.wikipedia.org/wiki/Decimal_degrees}
 

@@ -26,3 +26,16 @@ than one known location exists within the given radius, the closest will be
 assigned.  \code{NA} will be returned for each incoming that cannot be 
 assigend to a known location in \code{locationTbl}.
 }
+\examples{
+locationTbl <- get(data("wa_monitors_500"))
+
+# Wenatchee
+lon <- -120.325278
+lat <- 47.423333
+
+# Too small a radius will not find a match
+table_getLocationID(locationTbl, lon, lat, radius = 50)
+
+# Expanding the radius will find one
+table_getLocationID(locationTbl, lon, lat, radius = 5000)
+}

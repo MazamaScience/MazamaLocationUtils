@@ -38,3 +38,14 @@ of core metadata:
 \item{zip}
 }
 }
+\examples{
+\dontrun{
+# Set up standard directories and spatial data
+mazama_initialize()
+
+# Wenatchee
+lon <- -120.325278
+lat <- 47.423333
+locationRecord <- location_initialize(lon, lat)
+}
+}

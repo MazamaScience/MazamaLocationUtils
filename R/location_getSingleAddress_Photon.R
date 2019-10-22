@@ -21,6 +21,16 @@
 #' @param latitude Single latitude in decimal degrees N, Default: NULL
 #' @param verbose Logical controlling the generation of progress messages.
 #' @return List of address components.
+#' @examples 
+#' \dontrun{
+#' # Set up standard directories and spatial data
+#' mazama_initialize()
+#' 
+#' # Wenatchee
+#' lon <- -120.325278
+#' lat <- 47.423333
+#' addressList <- location_getSingleAddress_Photon(lon, lat)
+#' }
 #' @references \url{http://photon.komoot.de}
 #' @rdname location_getSingleAddress_Photon
 #' @export 

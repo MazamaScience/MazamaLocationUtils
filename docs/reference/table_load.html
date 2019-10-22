@@ -138,6 +138,24 @@
 
     <div class='dont-index'><p><code><a href='setLocationDataDir.html'>setLocationDataDir</a></code></p></div>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='co'># Set up standard directories and spatial data</span>
+<span class='fu'><a href='mazama_initialize.html'>mazama_initialize</a></span>()
+
+<span class='no'>locationTbl</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/get.html'>get</a></span>(<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"wa_monitors_500"</span>))
+
+<span class='co'># Save it</span>
+<span class='fu'><a href='table_save.html'>table_save</a></span>(<span class='no'>locationTbl</span>, <span class='st'>"my_table"</span>)
+
+<span class='co'># Load it</span>
+<span class='no'>my_table</span> <span class='kw'>&lt;-</span> <span class='fu'>table_load</span>(<span class='st'>"my_table"</span>)
+
+<span class='co'># Modify and save again (backup of previous will be generated)</span>
+<span class='no'>my_table</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='table_addColumn.html'>table_addColumn</a></span>(<span class='st'>"my_column"</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='table_save.html'>table_save</a></span>(<span class='st'>"my_table"</span>)
+<span class='co'># }</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -146,6 +164,7 @@
       <li><a href="#value">Value</a></li>
       <li><a href="#details">Details</a></li>
       <li><a href="#see-also">See also</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

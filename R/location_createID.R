@@ -19,6 +19,11 @@
 #' @param longitude Single longitude in decimal degrees E, Default: NULL
 #' @param latitude Single latitude in decimal degrees N, Default: NULL
 #' @return Vector of character locationIDs.
+#' @examples
+#' # Wenatchee
+#' lon <- -120.325278
+#' lat <- 47.423333
+#' locationID <- location_createID(lon, lat)
 #' @references \url{https://en.wikipedia.org/wiki/Decimal_degrees}
 #' @references \url{https://www.johndcook.com/blog/2017/01/10/probability-of-secure-hash-collisions/}
 #' @rdname location_createID

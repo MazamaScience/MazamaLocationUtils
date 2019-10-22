@@ -1,10 +1,12 @@
 
 #' @title Export a known location table
-#' @description Export a known location tibble as CSV or other format.
+#' @description Export a known location tibble as CSV format.
 #' @param locationTbl Tibble of known locations, Default: NULL
 #' @param outputType Output format, Default: 'csv'
 #' @return Representation of a known location table in the desired format.
-#' @details Loads
+#' @examples
+#' locationTbl <- get(data("wa_monitors_500"))
+#' csvString <- table_export(locationTbl)
 #' @rdname table_export
 #' @export 
 #' @importFrom MazamaCoreUtils stopIfNull setIfNull
@@ -23,8 +25,6 @@ table_export <- function(
   outputType <- tolower(outputType)
   if ( !outputType %in% validOutputTypes )
     stop(paste0("outputType \"", outputType, "\" is not recognized"))
-  
-  dataDir <- getLocationDataDir()
   
   # ----- Create export --------------------------------------------------------
   

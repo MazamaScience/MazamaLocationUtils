@@ -9,6 +9,17 @@
 #' @param latitude Vector of latitudes in decimal degrees N, Default: NULL
 #' @param radius Radius in meters, Default: NULL
 #' @return Vector of distances from known locations.
+#' locationTbl <- get(data("wa_monitors_500"))
+#' 
+#' # Wenatchee
+#' lon <- -120.325278
+#' lat <- 47.423333
+#' 
+#' # Too small a radius will not find a match
+#' table_getNearestDistance(locationTbl, lon, lat, radius = 50)
+#' 
+#' # Expanding the radius will find one
+#' table_getNearestDistance(locationTbl, lon, lat, radius = 5000)
 #' @rdname table_getNearestDistance
 #' @export
 #' @importFrom MazamaCoreUtils stopIfNull

@@ -9,12 +9,22 @@
 #' @param locationData Vector of data to used at matching records, Default: NULL
 #' @param verbose Logical controlling the generation of progress messages.
 #' @return Updated tibble of known locations.
+#' @examples
+#' # Starting table
+#' locationTbl <- get(data("wa_monitors_500")) 
+#' names(locationTbl)
+#' 
+#' # Add an empty columnm
+#' locationTbl <-
+#'   locationTbl %>%
+#'   table_addColumn("siteName")
+#' names(locationTbl)
 #' @seealso \link{table_removeColumn}
 #' @seealso \link{table_updateColumn}
 #' @rdname table_addColumn
 #' @export 
 #' @importFrom MazamaCoreUtils stopIfNull
-#' @importFrom dplyr bind_rows
+#' @importFrom methods as
 table_addColumn <- function(
   locationTbl = NULL,
   columnName = NULL,
@@ -47,7 +57,7 @@ table_addColumn <- function(
   
   # ----- Add new column -------------------------------------------------------
   
-  locationTbl[[columnName]] <- vector(dataClass, nrow(locationTbl))
+  locationTbl[[columnName]] <- methods::as(rep(NA, nrow(locationTbl)), dataClass)
   
   # Update if any data are passed in
   if ( !is.null(locationID) ) {

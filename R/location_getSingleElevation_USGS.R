@@ -6,6 +6,16 @@
 #' @param latitude Single latitude in decimal degrees N, Default: NULL
 #' @param verbose Logical controlling the generation of progress messages.
 #' @return Numeric elevation value.
+#' @examples 
+#' \dontrun{
+#' # Set up standard directories and spatial data
+#' mazama_initialize()
+#' 
+#' # Wenatchee
+#' lon <- -120.325278
+#' lat <- 47.423333
+#' addressList <- location_getSingleElevation_USGS(lon, lat)
+#' }
 #' @references \url{https://nationalmap.gov/epqs/}
 #' @rdname location_getSingleElevation_USGS
 #' @export 

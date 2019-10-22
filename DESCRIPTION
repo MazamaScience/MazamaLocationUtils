@@ -21,6 +21,7 @@ Imports:
     geodist,
     httr,
     lubridate,
+    methods,
     magrittr,
     MazamaCoreUtils,
     MazamaSpatialUtils,

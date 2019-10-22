@@ -146,6 +146,16 @@ the <code>longitude</code> and <code>latitude</code>.</p>
 
     <p><a href='https://nationalmap.gov/epqs/'>https://nationalmap.gov/epqs/</a></p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='co'># Set up standard directories and spatial data</span>
+<span class='fu'><a href='mazama_initialize.html'>mazama_initialize</a></span>()
+
+<span class='co'># Wenatchee</span>
+<span class='no'>lon</span> <span class='kw'>&lt;-</span> -<span class='fl'>120.325278</span>
+<span class='no'>lat</span> <span class='kw'>&lt;-</span> <span class='fl'>47.423333</span>
+<span class='no'>addressList</span> <span class='kw'>&lt;-</span> <span class='fu'>location_getSingleElevation_USGS</span>(<span class='no'>lon</span>, <span class='no'>lat</span>)
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -153,6 +163,7 @@ the <code>longitude</code> and <code>latitude</code>.</p>
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
       <li><a href="#references">References</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

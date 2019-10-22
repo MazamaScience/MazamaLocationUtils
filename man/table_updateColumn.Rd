@@ -25,6 +25,32 @@ Updated tibble of known locations.
 For matching \code{locationID} records the assaociated 
 \code{locatioData} is used to replace any existing value in \code{columnName}.
 }
+\examples{
+locationTbl <- get(data("wa_monitors_500"))
+wa <- get(data("wa_airfire_meta"))
+
+# We will merge some metadata from wa into locationTbl
+
+# Record indices for wa
+wa_indices <- seq(5,65,5)
+wa_sub <- wa[wa_indices,]
+
+locationID <- table_getLocationID(locationTbl, wa_sub$longitude, wa_sub$latitude, radius = 500)
+locationData <- wa_sub$siteName
+
+locationTbl <- table_updateColumn(locationTbl, "siteName", locationID, locationData)
+
+# Look at the data we attempted to merge
+wa$siteName[wa_indices]
+
+# And two columns from the updated locationTbl
+locationTbl_indices <- table_getRecordIndex(locationTbl, locationID)
+locationTbl[locationTbl_indices, c("city","siteName")]
+
+# Reord indices for testTbl
+
+
+}
 \seealso{
 \link{table_addColumn}
 

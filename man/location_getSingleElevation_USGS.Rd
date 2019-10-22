@@ -21,6 +21,17 @@ Numeric elevation value.
 USGS APIs are used to determine the elevation associated with
 the \code{longitude} and \code{latitude}.
 }
+\examples{
+\dontrun{
+# Set up standard directories and spatial data
+mazama_initialize()
+
+# Wenatchee
+lon <- -120.325278
+lat <- 47.423333
+addressList <- location_getSingleElevation_USGS(lon, lat)
+}
+}
 \references{
 \url{https://nationalmap.gov/epqs/}
 }

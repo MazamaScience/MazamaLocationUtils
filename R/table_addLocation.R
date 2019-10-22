@@ -4,6 +4,7 @@
 #' against the incoming \code{locationTbl} to see if the are already within
 #' \code{radius} meters of an existing entry. A new record is created for
 #' each location that is not already found in \code{locationTbl}.
+#' @note This funciton is a vecorized version of \code{table_addSingleLocation()}.
 #' @param locationTbl Tibble of known locations, Default: NULL
 #' @param longitude Vector of longitudes in decimal degrees E, Default: NULL
 #' @param latitude Vector of latitudes in decimal degrees N, Default: NULL
@@ -12,6 +13,21 @@
 #' codes, Default: 'NaturalEarthAdm1'
 #' @param verbose Logical controlling the generation of progress messages.
 #' @return Updated tibble of known locations.
+#' @examples
+#' \dontrun{
+#' # Set up standard directories and spatial data
+#' mazama_initialize()
+#' 
+#' locationTbl <- get(data("wa_monitors_500"))
+#' 
+#' # Coulee City, WA
+#' lon <- -119.290904
+#' lat <- 47.611942
+#' 
+#' locationTbl <- 
+#'   locationTbl %>%
+#'   table_addLocation(lon, lat, radius = 500)
+#' }
 #' @seealso \link{table_addSingleLocation}
 #' @seealso \link{table_removeRecord}
 #' @seealso \link{table_updateSingleRecord}

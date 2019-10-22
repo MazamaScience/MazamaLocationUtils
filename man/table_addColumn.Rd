@@ -26,6 +26,17 @@ A new metadata column is added to the \code{locationTbl}. For
 matching \code{locationID} records the assaociated \code{locatioData} is
 inserted. Otherwise, the new column will be initialized with \code{NA}.
 }
+\examples{
+# Starting table
+locationTbl <- get(data("wa_monitors_500")) 
+names(locationTbl)
+
+# Add an empty columnm
+locationTbl <-
+  locationTbl \%>\%
+  table_addColumn("siteName")
+names(locationTbl)
+}
 \seealso{
 \link{table_removeColumn}
 

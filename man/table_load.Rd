@@ -18,6 +18,25 @@ Load a tibble of known locations from the preferred directory.
 \details{
 TODO
 }
+\examples{
+\donttest{
+# Set up standard directories and spatial data
+mazama_initialize()
+
+locationTbl <- get(data("wa_monitors_500"))
+
+# Save it
+table_save(locationTbl, "my_table")
+
+# Load it
+my_table <- table_load("my_table")
+
+# Modify and save again (backup of previous will be generated)
+my_table \%>\%
+  table_addColumn("my_column") \%>\%
+  table_save("my_table")
+}
+}
 \seealso{
 \code{\link{setLocationDataDir}}
 }

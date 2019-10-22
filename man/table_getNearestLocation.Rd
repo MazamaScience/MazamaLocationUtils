@@ -24,3 +24,16 @@ Returns a tibble of known locations from \code{locationTbl}, one
 for each incoming location. If no known location is found for a particular
 incoming location, that record in the tibble will contain all \code{NA}.
 }
+\examples{
+locationTbl <- get(data("wa_monitors_500"))
+
+# Wenatchee
+lon <- -120.325278
+lat <- 47.423333
+
+# Too small a radius will not find a match
+table_getNearestLocation(locationTbl, lon, lat, radius = 50) \%>\% str()
+
+# Expanding the radius will find one
+table_getNearestLocation(locationTbl, lon, lat, radius = 5000) \%>\% str()
+}

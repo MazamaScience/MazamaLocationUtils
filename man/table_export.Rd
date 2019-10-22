@@ -15,8 +15,9 @@ table_export(locationTbl = NULL, outputType = "csv")
 Representation of a known location table in the desired format.
 }
 \description{
-Export a known location tibble as CSV or other format.
+Export a known location tibble as CSV format.
 }
-\details{
-Loads
+\examples{
+locationTbl <- get(data("wa_monitors_500"))
+csvString <- table_export(locationTbl)
 }

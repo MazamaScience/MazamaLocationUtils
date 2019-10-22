@@ -8,6 +8,18 @@
 #' @param latitude Vector of latitudes in decimal degrees N, Default: NULL
 #' @param radius Radius in meters, Default: NULL
 #' @return Tibble of known locations.
+#' @examples
+#' locationTbl <- get(data("wa_monitors_500"))
+#' 
+#' # Wenatchee
+#' lon <- -120.325278
+#' lat <- 47.423333
+#' 
+#' # Too small a radius will not find a match
+#' table_getNearestLocation(locationTbl, lon, lat, radius = 50) %>% str()
+#' 
+#' # Expanding the radius will find one
+#' table_getNearestLocation(locationTbl, lon, lat, radius = 5000) %>% str()
 #' @rdname table_getNearestLocation
 #' @export
 #' @importFrom MazamaCoreUtils stopIfNull
@@ -35,7 +47,7 @@ table_getNearestLocation <- function(
     locationID = table_getLocationID(locationTbl, longitude, latitude, radius)
   )
   
-  subsetTbl <- dplyr::left_join(incomingIDTbl, locationTbl)
+  subsetTbl <- dplyr::left_join(incomingIDTbl, locationTbl, by = "locationID")
 
   # ----- Return ---------------------------------------------------------------
 

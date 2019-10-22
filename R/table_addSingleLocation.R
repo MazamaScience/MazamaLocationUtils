@@ -12,9 +12,24 @@
 #' codes, Default: 'NaturalEarthAdm1'
 #' @param verbose Logical controlling the generation of progress messages.
 #' @return Updated tibble of known locations.
+#' @examples
+#' \dontrun{
+#' # Set up standard directories and spatial data
+#' mazama_initialize()
+#' 
+#' locationTbl <- get(data("wa_monitors_500"))
+#' 
+#' # Coulee City, WA
+#' lon <- -119.290904
+#' lat <- 47.611942
+#' 
+#' locationTbl <- 
+#'   locationTbl %>%
+#'   table_addSingleLocation(lon, lat, radius = 500)
+#' }
 #' @seealso \link{table_addLocation}
-#' @seealso \link{table_addSingleLocation}
 #' @seealso \link{table_removeRecord}
+#' @seealso \link{table_updateSingleRecord}
 #' @rdname table_addSingleLocation
 #' @export 
 #' @importFrom MazamaCoreUtils stopIfNull
