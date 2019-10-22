@@ -47,9 +47,6 @@ wa$siteName[wa_indices]
 locationTbl_indices <- table_getRecordIndex(locationTbl, locationID)
 locationTbl[locationTbl_indices, c("city","siteName")]
 
-# Reord indices for testTbl
-
-
 }
 \seealso{
 \link{table_addColumn}

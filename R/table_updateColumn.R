@@ -30,9 +30,6 @@
 #' locationTbl_indices <- table_getRecordIndex(locationTbl, locationID)
 #' locationTbl[locationTbl_indices, c("city","siteName")]
 #' 
-#' # Reord indices for testTbl
-#' 
-#' 
 #' @seealso \link{table_addColumn}
 #' @seealso \link{table_removeColumn}
 #' @rdname table_updateColumn
