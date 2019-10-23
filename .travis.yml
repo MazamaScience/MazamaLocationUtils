@@ -18,3 +18,21 @@ r:
   - oldrel
   - release
   - devel
+
+addons:
+  apt:
+    packages:
+      - libcurl4-openssl-dev
+      - libgdal-dev
+      - libgeos-dev
+      - libjq-dev
+      - libproj-dev
+      - libprotobuf-dev
+      - libssl-dev
+      - libudunits2-dev
+      - libv8-dev
+      - protobuf-compiler
+
+
+
+
