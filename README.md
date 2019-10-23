@@ -1,3 +1,7 @@
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/MazamaLocationUtils)](https://cran.r-project.org/package=MazamaLocationUtils)
+[![Downloads](http://cranlogs.r-pkg.org/badges/MazamaLocationUtils)](https://cran.r-project.org/package=MazamaLocationUtils)
+[![Build Status](https://travis-ci.org/MazamaScience/MazamaLocationUtils.svg?branch=master)](https://travis-ci.org/MazamaScience/MazamaLocationUtils)
+
 
 # MazamaLocationUtils
 
