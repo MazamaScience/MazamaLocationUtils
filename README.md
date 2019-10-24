@@ -69,7 +69,8 @@ For collections of stationary environmental monitors that only number in the
 thousands, this entire _collection_ (_i.e._ "database") can be stored as either a 
 `.rda` or `.csv` file and will be under a megabyte in size making it fast to 
 load. This small size also makes it possible to store multiple _known location_ 
-files, each created with a different locations and different radii
+files, each created with different locations and different radii to address 
+the needs of different scientific studies.
 
 ## Immediate Advantages
 
