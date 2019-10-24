@@ -75,7 +75,7 @@ the needs of different scientific studies.
 ## Immediate Advantages
 
 Working in this manner will solve the problems initially mentioned but also 
-provides further useful functionality.
+provides further useful functionality:
 
 * Administrators can correct entries in an individual _collection_.  (_e.g._ 
 locations in river bends that even high resolution spatial datasets mis-assign)
@@ -85,7 +85,7 @@ commonly used location names within a community of practice)
 * `.csv` or `.rda` versions of well populated tables can be downloaded from a
 URL and used locally, giving scientists working with known locations instant
 access to spatial data that otherwise requires special skills, large datasets 
-and lots of compute cycles to generate.
+and many compute cycles to generate.
 
 ----
 
