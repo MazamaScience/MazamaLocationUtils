@@ -1,3 +1,7 @@
+# Mazama LocationUtil 0.1.4
+
+* Corrections to introductory vignette.
+
 # Mazama LocationUtil 0.1.3
 
 * Added introductory vignette.

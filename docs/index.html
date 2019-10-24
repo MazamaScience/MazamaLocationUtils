@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4</span>
       </span>
     </div>
 
@@ -73,6 +73,8 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
+
+
 <div id="mazamalocationutils" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#mazamalocationutils" class="anchor"></a>MazamaLocationUtils</h1></div>
@@ -106,23 +108,24 @@ with sets of spatially unique "known locations".</code></pre>
 <a href="#a-solution" class="anchor"></a>A Solution</h2>
 <p>A solution to all these problems is possible if we store spatial metadata in simple tables in a standard directory. These tables will be referred to as <em>collections</em>. Location lookups can be performed with geodesic distance calculations where a location is assigned to a pre-existing <em>known location</em> if it is within <code>radius</code> meters. These will be extremely fast.</p>
 <p>If no previously <em>known location</em> is found, the relatively slow (seconds) creation of a new <em>known location</em> metadata record can be performed and then added to the growing collection.</p>
-<p>For collections of stationary environmental monitors that only number in the thousands, this entire <em>collection</em> (<em>i.e.</em> “database”) can be stored as either a <code>.rda</code> or <code>.csv</code> file and will be under a megabyte in size making it fast to load. This small size also makes it possible to store multiple <em>known location</em> files, each created with a different locations and different radii</p>
+<p>For collections of stationary environmental monitors that only number in the thousands, this entire <em>collection</em> (<em>i.e.</em> “database”) can be stored as either a <code>.rda</code> or <code>.csv</code> file and will be under a megabyte in size making it fast to load. This small size also makes it possible to store multiple <em>known location</em> files, each created with different locations and different radii to address the needs of different scientific studies.</p>
 </div>
 <div id="immediate-advantages" class="section level2">
 <h2 class="hasAnchor">
 <a href="#immediate-advantages" class="anchor"></a>Immediate Advantages</h2>
-<p>Working in this manner will solve the problems initially mentioned but also provides further useful functionality.</p>
+<p>Working in this manner will solve the problems initially mentioned but also provides further useful functionality:</p>
 <ul>
 <li>Administrators can correct entries in an individual <em>collection</em>. (<em>e.g.</em> locations in river bends that even high resolution spatial datasets mis-assign)</li>
 <li>Additional, non-automatable metadata can be added to a <em>collection</em>. (<em>e.g.</em> commonly used location names within a community of practice)</li>
 <li>Different field campaigns can maintain separate <em>collections</em>.</li>
 <li>
-<code>.csv</code> or <code>.rda</code> versions of well populated tables can be downloaded from a URL and used locally, giving scientists working with known locations instant access to spatial data that otherwise requires special skills, large datasets and lots of compute cycles to generate.</li>
+<code>.csv</code> or <code>.rda</code> versions of well populated tables can be downloaded from a URL and used locally, giving scientists working with known locations instant access to spatial data that otherwise requires special skills, large datasets and many compute cycles to generate.</li>
 </ul>
 <hr>
 <p>This project is supported by Mazama Science.</p>
 </div>
 </div>
+
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -148,7 +151,15 @@ with sets of spatially unique "known locations".</code></pre>
 </ul>
 </div>
 
-  </div>
+  <div class="dev-status">
+<h2>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://cran.r-project.org/package=MazamaLocationUtils"><img src="http://www.r-pkg.org/badges/version/MazamaLocationUtils" alt="CRAN_Status_Badge"></a></li>
+<li><a href="https://cran.r-project.org/package=MazamaLocationUtils"><img src="http://cranlogs.r-pkg.org/badges/MazamaLocationUtils" alt="Downloads"></a></li>
+<li><a href="https://travis-ci.org/MazamaScience/MazamaLocationUtils"><img src="https://travis-ci.org/MazamaScience/MazamaLocationUtils.svg?branch=master" alt="Build Status"></a></li>
+</ul>
+</div>
+</div>
 </div>
 
 
