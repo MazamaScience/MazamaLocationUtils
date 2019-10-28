@@ -1,3 +1,7 @@
+# Mazama LocationUtil 0.1.5
+
+* Tweaks for CRAN submission.
+
 # Mazama LocationUtil 0.1.4
 
 * Corrections to introductory vignette.

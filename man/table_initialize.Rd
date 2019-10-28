@@ -29,11 +29,7 @@ columns of core metadata:
 }
 }
 \examples{
-\dontrun{
-# Set up standard directories and spatial data
-mazama_initialize()
-
 # Create an empty Tbl
 emptyTbl <- table_initialize()
-}
+print(emptyTbl)
 }

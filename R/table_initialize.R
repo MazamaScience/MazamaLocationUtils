@@ -19,13 +19,9 @@
 #' }
 #' @return Empty known location tibble with the specified metadata columns.
 #' @examples 
-#' \dontrun{
-#' # Set up standard directories and spatial data
-#' mazama_initialize()
-#' 
 #' # Create an empty Tbl
 #' emptyTbl <- table_initialize()
-#' }
+#' print(emptyTbl)
 #' @rdname table_initialize
 #' @export 
 #' @importFrom MazamaCoreUtils stopIfNull
