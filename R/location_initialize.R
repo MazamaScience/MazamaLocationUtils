@@ -24,7 +24,7 @@
 #' @return Tibble with a single new known location.
 #' @rdname location_initialize
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # Set up standard directories and spatial data
 #' mazama_initialize()
 #' 

@@ -22,7 +22,7 @@ USGS APIs are used to determine the elevation associated with
 the \code{longitude} and \code{latitude}.
 }
 \examples{
-\dontrun{
+\donttest{
 # Set up standard directories and spatial data
 mazama_initialize()
 

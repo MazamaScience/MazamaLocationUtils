@@ -14,7 +14,7 @@
 #' @param verbose Logical controlling the generation of progress messages.
 #' @return Updated tibble of known locations.
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # Set up standard directories and spatial data
 #' mazama_initialize()
 #' 

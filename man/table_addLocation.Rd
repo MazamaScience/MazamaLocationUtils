@@ -35,7 +35,7 @@ each location that is not already found in \code{locationTbl}.
 This funciton is a vecorized version of \code{table_addSingleLocation()}.
 }
 \examples{
-\dontrun{
+\donttest{
 # Set up standard directories and spatial data
 mazama_initialize()
 

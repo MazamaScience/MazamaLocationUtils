@@ -37,7 +37,7 @@ The function makes an effort to convert both \code{state} and \code{country}
 the conversion algorithm.
 }
 \examples{
-\dontrun{
+\donttest{
 # Set up standard directories and spatial data
 mazama_initialize()
 

@@ -32,7 +32,7 @@ against the incoming \code{locationTbl} to see if the are already within
 if the location is not already found in \code{locationTbl}.
 }
 \examples{
-\dontrun{
+\donttest{
 # Set up standard directories and spatial data
 mazama_initialize()
 

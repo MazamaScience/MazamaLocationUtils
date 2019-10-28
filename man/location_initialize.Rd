@@ -39,7 +39,7 @@ of core metadata:
 }
 }
 \examples{
-\dontrun{
+\donttest{
 # Set up standard directories and spatial data
 mazama_initialize()
 

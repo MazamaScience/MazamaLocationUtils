@@ -1,6 +1,6 @@
 # Mazama LocationUtil 0.1.5
 
-* Tweaks for CRAN submission.
+* Changed examples from \code{\dontrun} to \code{\donttest} per CRAN suggestion.
 
 # Mazama LocationUtil 0.1.4
 

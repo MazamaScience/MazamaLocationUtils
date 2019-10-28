@@ -22,7 +22,7 @@
 #' @param verbose Logical controlling the generation of progress messages.
 #' @return List of address components.
 #' @examples 
-#' \dontrun{
+#' \donttest{
 #' # Set up standard directories and spatial data
 #' mazama_initialize()
 #' 

@@ -7,7 +7,7 @@
 #' @param verbose Logical controlling the generation of progress messages.
 #' @return Numeric elevation value.
 #' @examples 
-#' \dontrun{
+#' \donttest{
 #' # Set up standard directories and spatial data
 #' mazama_initialize()
 #' 
