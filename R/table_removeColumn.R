@@ -11,6 +11,9 @@
 #' # Set up standard directories and spatial data
 #' mazama_initialize()
 #' 
+#' # Set the directory for saving location tables
+#' setLocationDataDir(tempdir())
+#' 
 #' locationTbl <- get(data("wa_monitors_500"))
 #' 
 #' # Save it
@@ -28,6 +31,8 @@
 #' table_load("my_table") %>%
 #'   table_removeColumn("my_column") %>%
 #'   table_save("my_table")
+#'   
+#' list.files(getLocationDataDir(), pattern = "my_table")
 #' }
 #' @seealso \link{table_addColumn}
 #' @seealso \link{table_removeColumn}

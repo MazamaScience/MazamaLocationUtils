@@ -8,13 +8,10 @@
 #' @return Numeric elevation value.
 #' @examples 
 #' \donttest{
-#' # Set up standard directories and spatial data
-#' mazama_initialize()
-#' 
 #' # Wenatchee
 #' lon <- -120.325278
 #' lat <- 47.423333
-#' addressList <- location_getSingleElevation_USGS(lon, lat)
+#' location_getSingleElevation_USGS(lon, lat)
 #' }
 #' @references \url{https://nationalmap.gov/epqs/}
 #' @rdname location_getSingleElevation_USGS

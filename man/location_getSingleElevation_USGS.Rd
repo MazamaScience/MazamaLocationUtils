@@ -23,13 +23,10 @@ the \code{longitude} and \code{latitude}.
 }
 \examples{
 \donttest{
-# Set up standard directories and spatial data
-mazama_initialize()
-
 # Wenatchee
 lon <- -120.325278
 lat <- 47.423333
-addressList <- location_getSingleElevation_USGS(lon, lat)
+location_getSingleElevation_USGS(lon, lat)
 }
 }
 \references{

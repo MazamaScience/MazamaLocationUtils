@@ -14,13 +14,17 @@ validateMazamaSpatialUtils <- function() {
        !exists("USCensusCounties") ) {
     
     stop(paste0(
-      "You must initialize MazamaSpatialUtils with:\n\n",
-      "  library(MazamaSpatialUtils)\n",
-      "  setSpatialDataDir(\"YOUR_DATA_DIR\")\n",
-      "  loadSpatialData(\"EEZCountries\")\n",
-      "  loadSpatialData(\"OSMTimezones\")\n",
-      "  loadSpatialData(\"NaturalEarthAdm1\")\n",
-      "  loadSpatialData(\"USCensusCounties\")\n"
+      "\n\nYou must have the MazamaSpatialUtils package ",
+      "as well as core datasets installed.\n\n",
+      "Install core datasets with:\n\n",
+      "  MazamaSpatialUtils::setSpatialDataDir(\"YOUR_DATA_DIR\")\n",
+      "  MazamaSpatialUtils::installSpatialData()\n\n",
+      "Once installed, initialize spatial data with:\n\n",
+      "  MazamaSpatialUtils::setSpatialDataDir(\"YOUR_DATA_DIR\")\n",
+      "  MazamaSpatialUtils::loadSpatialData(\"EEZCountries\")\n",
+      "  MazamaSpatialUtils::loadSpatialData(\"OSMTimezones\")\n",
+      "  MazamaSpatialUtils::loadSpatialData(\"NaturalEarthAdm1\")\n",
+      "  MazamaSpatialUtils::loadSpatialData(\"USCensusCounties\")\n"
     ))
     
   }

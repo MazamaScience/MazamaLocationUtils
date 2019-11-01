@@ -45,6 +45,7 @@ mazama_initialize()
 lon <- -120.325278
 lat <- 47.423333
 addressList <- location_getSingleAddress_Photon(lon, lat)
+str(addressList)
 }
 }
 \references{

@@ -26,6 +26,9 @@ can be used in pipelines.
 # Set up standard directories and spatial data
 mazama_initialize()
 
+# Set the directory for saving location tables
+setLocationDataDir(tempdir())
+
 locationTbl <- get(data("wa_monitors_500"))
 
 # Save it
@@ -43,6 +46,8 @@ my_table \%>\%
 table_load("my_table") \%>\%
   table_removeColumn("my_column") \%>\%
   table_save("my_table")
+  
+list.files(getLocationDataDir(), pattern = "my_table")
 }
 }
 \seealso{

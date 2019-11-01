@@ -36,7 +36,17 @@
 
 
 <meta property="og:title" content="Initialize with MazamaScience standard directories — mazama_initialize" />
-<meta property="og:description" content="Convenience function to initialize properly." />
+<meta property="og:description" content="Convenience function to initialize spatial data. Wraps the 
+following setup lines:
+
+MazamaSpatialUtils::setSpatialDataDir(&quot;~/Data/Spatial&quot;)
+
+MazamaSpatialUtils::loadSpatialData(&quot;EEZCountries&quot;)
+MazamaSpatialUtils::loadSpatialData(&quot;OSMTimezones&quot;)
+MazamaSpatialUtils::loadSpatialData(&quot;NaturalEarthAdm1&quot;)
+MazamaSpatialUtils::loadSpatialData(&quot;USCensusCounties&quot;)
+
+" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -69,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.6</span>
       </span>
     </div>
 
@@ -117,7 +127,17 @@
     </div>
 
     <div class="ref-description">
-    <p>Convenience function to initialize properly.</p>
+    <p>Convenience function to initialize spatial data. Wraps the 
+following setup lines:</p>
+<pre>
+MazamaSpatialUtils::setSpatialDataDir("~/Data/Spatial")
+
+MazamaSpatialUtils::loadSpatialData("EEZCountries")
+MazamaSpatialUtils::loadSpatialData("OSMTimezones")
+MazamaSpatialUtils::loadSpatialData("NaturalEarthAdm1")
+MazamaSpatialUtils::loadSpatialData("USCensusCounties")
+</pre>
+
     </div>
 
     <pre class="usage"><span class='fu'>mazama_initialize</span>()</pre>

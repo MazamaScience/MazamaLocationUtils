@@ -1,3 +1,7 @@
+# Mazama LocationUtil 0.1.6
+
+* Updated checks and explicit instructions for installing required spatial data.
+
 # Mazama LocationUtil 0.1.5
 
 * Changed examples from \code{\dontrun} to \code{\donttest} per CRAN suggestion.

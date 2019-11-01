@@ -197,25 +197,38 @@ table_getNearestLocation(
 
 ## Standard Setup
 
-Before using **MazamaLocationUtils** you must first install **MazamaSpatialUtils**
-and the accompanying spatial datasets.
+Before using **MazamaLocationUtils** you must first install 
+**MazamaSpatialUtils** and then install core spatial data with:
 
-Once that is in place, the easiest way to set things up is with 
-`mazama_initialize()` which is just a wrapper for:
-
-```{r standard_setup, echo = TRUE, eval = FALSE}
+```{r MSU_setup, echo = TRUE, eval = FALSE}
+  library(MazamaSpatialUtils)
   setSpatialDataDir("~/Data/Spatial")
-  
-  loadSpatialData("EEZCountries")
-  loadSpatialData("OSMTimezones")
-  loadSpatialData("NaturalEarthAdm1")
-  loadSpatialData("USCensusCounties")
-  
+  installSpatialData()
+```
+
+Once the required datasets have been installed, the easiest way to set things 
+up each session is with:
+
+```{r easy_setup, echo = TRUE, eval = FALSE}
+  library(MazamaLocationUtils)
+  mazama_initialize()
   setLocationDataDir("~/Data/KnownLocations")
 ```
 
+`mazama_initialize()` assumes spatial data are installed in the standard
+location and is just a wrapper for:
+
+```{r standard_setup, echo = TRUE, eval = FALSE}
+  MazamaSpatialUtils::setSpatialDataDir("~/Data/Spatial")
+  
+  MazamaSpatialUtils::loadSpatialData("EEZCountries")
+  MazamaSpatialUtils::loadSpatialData("OSMTimezones")
+  MazamaSpatialUtils::loadSpatialData("NaturalEarthAdm1")
+  MazamaSpatialUtils::loadSpatialData("USCensusCounties")
+```
+
 Every time you `table_save()` your location table, a backup will be created
-so you can experiment without losing your work. And file sizes are pretty tiny
+so you can experiment without losing your work. File sizes are pretty tiny
 so you don't have to worry about filling up your disk.
 
 ----

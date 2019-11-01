@@ -10,5 +10,15 @@ mazama_initialize()
 No return value.
 }
 \description{
-Convenience function to initialize properly.
+Convenience function to initialize spatial data. Wraps the 
+following setup lines:
+
+\preformatted{
+MazamaSpatialUtils::setSpatialDataDir("~/Data/Spatial")
+
+MazamaSpatialUtils::loadSpatialData("EEZCountries")
+MazamaSpatialUtils::loadSpatialData("OSMTimezones")
+MazamaSpatialUtils::loadSpatialData("NaturalEarthAdm1")
+MazamaSpatialUtils::loadSpatialData("USCensusCounties")
+}
 }

@@ -1,9 +1,9 @@
 #'
 #' @docType package
 #' @name MazamaLocationUtils
-#' @title Utility Functions for Managing Known Locations
-#' @description A suite of utility functions providing functionality commonly 
-#' needed for download of satellite products and conversion to Raster objects.
+#' @title Manage Spatial Metadata for Known Locations
+#' @description A suite of utility functions for discovering and managing 
+#' metadata associated with sets of spatially unique "known locations".
 #' 
 #' This package is intended to be used in support of data management activities
 #' associated with fixed locations in space. The motivating fields include both
