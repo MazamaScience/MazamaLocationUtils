@@ -4,7 +4,11 @@
 \alias{mazama_initialize}
 \title{Initialize with MazamaScience standard directories}
 \usage{
-mazama_initialize()
+mazama_initialize(spatialDataDir = "~/Data/Spatial")
+}
+\arguments{
+\item{spatialDataDir}{Directory where spatial datasets are found, 
+Default: "~/Data/Spatial"}
 }
 \value{
 No return value.
@@ -14,11 +18,26 @@ Convenience function to initialize spatial data. Wraps the
 following setup lines:
 
 \preformatted{
-MazamaSpatialUtils::setSpatialDataDir("~/Data/Spatial")
+MazamaSpatialUtils::setSpatialDataDir(spatialDataDir)
 
 MazamaSpatialUtils::loadSpatialData("EEZCountries")
 MazamaSpatialUtils::loadSpatialData("OSMTimezones")
 MazamaSpatialUtils::loadSpatialData("NaturalEarthAdm1")
 MazamaSpatialUtils::loadSpatialData("USCensusCounties")
+}
+}
+\examples{
+\donttest{
+# Set up directory for spatial data
+spatialDataDir <- tempdir() # typically "~/Data/Spatial"
+MazamaSpatialUtils::setSpatialDataDir(spatialDataDir)
+
+# Install core spatial datasets (168 MB download)
+MazamaSpatialUtils::installSpatialData()
+
+exists("NaturalEarthAdm1")
+mazama_initialize(spatialDataDir)
+exists("NaturalEarthAdm1")
+class(NaturalEarthAdm1)
 }
 }

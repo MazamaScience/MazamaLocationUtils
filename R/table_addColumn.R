@@ -14,10 +14,11 @@
 #' locationTbl <- get(data("wa_monitors_500")) 
 #' names(locationTbl)
 #' 
-#' # Add an empty columnm
+#' # Add an empty column
 #' locationTbl <-
 #'   locationTbl %>%
 #'   table_addColumn("siteName")
+#'   
 #' names(locationTbl)
 #' @seealso \link{table_removeColumn}
 #' @seealso \link{table_updateColumn}

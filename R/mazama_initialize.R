@@ -4,19 +4,37 @@
 #' following setup lines:
 #' 
 #' \preformatted{
-#' MazamaSpatialUtils::setSpatialDataDir("~/Data/Spatial")
+#' MazamaSpatialUtils::setSpatialDataDir(spatialDataDir)
 #' 
 #' MazamaSpatialUtils::loadSpatialData("EEZCountries")
 #' MazamaSpatialUtils::loadSpatialData("OSMTimezones")
 #' MazamaSpatialUtils::loadSpatialData("NaturalEarthAdm1")
 #' MazamaSpatialUtils::loadSpatialData("USCensusCounties")
 #' }
+#' @param spatialDataDir Directory where spatial datasets are found, 
+#' Default: "~/Data/Spatial"
 #' @return No return value.
 #' @rdname mazama_initialize
+#' @examples
+#' \donttest{
+#' # Set up directory for spatial data
+#' spatialDataDir <- tempdir() # typically "~/Data/Spatial"
+#' MazamaSpatialUtils::setSpatialDataDir(spatialDataDir)
+#' 
+#' # Install core spatial datasets (168 MB download)
+#' MazamaSpatialUtils::installSpatialData()
+#' 
+#' exists("NaturalEarthAdm1")
+#' mazama_initialize(spatialDataDir)
+#' exists("NaturalEarthAdm1")
+#' class(NaturalEarthAdm1)
+#' }
 #' @export 
 #' @importFrom MazamaSpatialUtils setSpatialDataDir loadSpatialData
 #' 
-mazama_initialize <- function() {
+mazama_initialize <- function(
+  spatialDataDir = "~/Data/Spatial"
+) {
   
   # Is everything already initialized?
   result <- try({
@@ -27,7 +45,7 @@ mazama_initialize <- function() {
     
     # Not initialized, so try to initialize
     result <- try({
-      MazamaSpatialUtils::setSpatialDataDir("~/Data/Spatial")
+      MazamaSpatialUtils::setSpatialDataDir(spatialDataDir)
       MazamaSpatialUtils::loadSpatialData("EEZCountries")
       MazamaSpatialUtils::loadSpatialData("OSMTimezones")
       MazamaSpatialUtils::loadSpatialData("NaturalEarthAdm1")

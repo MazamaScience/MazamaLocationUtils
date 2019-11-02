@@ -31,10 +31,11 @@ inserted. Otherwise, the new column will be initialized with \code{NA}.
 locationTbl <- get(data("wa_monitors_500")) 
 names(locationTbl)
 
-# Add an empty columnm
+# Add an empty column
 locationTbl <-
   locationTbl \%>\%
   table_addColumn("siteName")
+  
 names(locationTbl)
 }
 \seealso{

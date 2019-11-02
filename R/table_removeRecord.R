@@ -8,6 +8,7 @@
 #' @return Updated tibble of known locations.
 #' @examples
 #' locationTbl <- get(data("wa_monitors_500"))
+#' dim(locationTbl)
 #' 
 #' # Wenatchee
 #' lon <- -120.325278
@@ -18,6 +19,7 @@
 #' 
 #' # Remove it
 #' locationTbl <- table_removeRecord(locationTbl, locationID)
+#' dim(locationTbl)
 #' 
 #' # Test
 #' table_getLocationID(locationTbl, lon, lat, radius = 500)

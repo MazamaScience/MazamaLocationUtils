@@ -39,7 +39,8 @@ the conversion algorithm.
 \examples{
 \donttest{
 # Set up standard directories and spatial data
-mazama_initialize()
+spatialDataDir <- tempdir() # typically "~/Data/Spatial"
+mazama_initialize(spatialDataDir)
 
 # Wenatchee
 lon <- -120.325278

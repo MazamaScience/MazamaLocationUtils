@@ -4,28 +4,22 @@
 #' @param collectionName Character identifier for this table, Default: NULL
 #' @return Tibble of known locations.
 #' @examples
-#' \donttest{
-#' # Set up standard directories and spatial data
-#' mazama_initialize()
-#' 
 #' # Set the directory for saving location tables
 #' setLocationDataDir(tempdir())
 #' 
+#' # Load an example table and check the dimensions
 #' locationTbl <- get(data("wa_monitors_500"))
+#' dim(locationTbl)
 #' 
-#' # Save it
-#' table_save(locationTbl, "my_table")
+#' # Save it as "table_load_example"
+#' table_save(locationTbl, "table_load_example")
 #' 
-#' # Load it
-#' my_table <- table_load("my_table")
+#' # Load it and check the dimensions
+#' my_table <- table_load("table_load_example")
+#' dim(my_table)
 #' 
-#' # Modify and save again (backup of previous will be generated)
-#' my_table %>%
-#'   table_addColumn("my_column") %>%
-#'   table_save("my_table")
-#'   
-#' list.files(getLocationDataDir(), pattern = "my_table")
-#' }
+#' # Check the locationDataDir
+#' list.files(getLocationDataDir(), pattern = "table_load_example")
 #' @seealso 
 #'  \code{\link{setLocationDataDir}}
 #' @rdname table_load

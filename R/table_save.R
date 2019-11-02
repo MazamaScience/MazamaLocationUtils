@@ -8,28 +8,23 @@
 #' @param outputType Output format, Default: 'rda'
 #' @return File path of saved file.
 #' @examples
-#' \donttest{
-#' # Set up standard directories and spatial data
-#' mazama_initialize()
-#' 
 #' # Set the directory for saving location tables
 #' setLocationDataDir(tempdir())
 #' 
+#' # Load an example table and check the dimensions
 #' locationTbl <- get(data("wa_monitors_500"))
+#' dim(locationTbl)
 #' 
-#' # Save it
-#' table_save(locationTbl, "my_table")
+#' # Save it as "table_save_example"
+#' table_save(locationTbl, "table_save_example")
 #' 
-#' # Load it
-#' my_table <- table_load("my_table")
-#' 
-#' # Modify and save again (backup of previous will be generated)
-#' my_table %>%
-#'   table_addColumn("my_column") %>%
-#'   table_save("my_table")
+#' # Add a column and save again
+#' locationTbl %>% 
+#'   table_addColumn("my_column") %>% 
+#'   table_save(locationTbl, "table_save_example")
 #'   
-#' list.files(getLocationDataDir(), pattern = "my_table")
-#' }
+#' # Check the locationDataDir
+#' list.files(getLocationDataDir(), pattern = "table_save_example")
 #' @details Backup files are saved with "YYYY-mm-ddTHH:MM:SS"
 #' @rdname table_save
 #' @export 

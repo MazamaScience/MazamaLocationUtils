@@ -15,7 +15,8 @@
 #' @examples
 #' \donttest{
 #' # Set up standard directories and spatial data
-#' mazama_initialize()
+#' spatialDataDir <- tempdir() # typically "~/Data/Spatial"
+#' MazamaSpatialUtils::setSpatialDataDir(spatialDataDir)
 #' 
 #' locationTbl <- get(data("wa_monitors_500"))
 #' 

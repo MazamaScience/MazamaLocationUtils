@@ -166,10 +166,11 @@ inserted. Otherwise, the new column will be initialized with <code>NA</code>.</p
 <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>locationTbl</span>)</div><div class='output co'>#&gt;  [1] "locationID"   "locationName" "longitude"    "latitude"     "elevation"   
 #&gt;  [6] "countryCode"  "stateCode"    "county"       "timezone"     "houseNumber" 
 #&gt; [11] "street"       "city"         "zip"         </div><div class='input'>
-<span class='co'># Add an empty columnm</span>
+<span class='co'># Add an empty column</span>
 <span class='no'>locationTbl</span> <span class='kw'>&lt;-</span>
   <span class='no'>locationTbl</span> <span class='kw'>%&gt;%</span>
   <span class='fu'>table_addColumn</span>(<span class='st'>"siteName"</span>)
+
 <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>locationTbl</span>)</div><div class='output co'>#&gt;  [1] "locationID"   "locationName" "longitude"    "latitude"     "elevation"   
 #&gt;  [6] "countryCode"  "stateCode"    "county"       "timezone"     "houseNumber" 
 #&gt; [11] "street"       "city"         "zip"          "siteName"    </div></pre>

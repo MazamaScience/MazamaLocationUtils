@@ -22,32 +22,29 @@ Remove the column matching \code{columnName}. This function
 can be used in pipelines.
 }
 \examples{
-\donttest{
-# Set up standard directories and spatial data
-mazama_initialize()
+# Starting table
+locationTbl <- get(data("wa_monitors_500")) 
+names(locationTbl)
 
-# Set the directory for saving location tables
-setLocationDataDir(tempdir())
-
-locationTbl <- get(data("wa_monitors_500"))
-
-# Save it
-table_save(locationTbl, "my_table")
-
-# Load it
-my_table <- table_load("my_table")
-
-# Modify and save again (backup of previous will be generated)
-my_table \%>\%
-  table_addColumn("my_column") \%>\%
-  table_save("my_table")
+# Add a new column
+locationTbl <-
+  locationTbl \%>\%
+  table_addColumn("siteName")
   
-# Change your mind
-table_load("my_table") \%>\%
-  table_removeColumn("my_column") \%>\%
-  table_save("my_table")
-  
-list.files(getLocationDataDir(), pattern = "my_table")
+names(locationTbl)
+
+# Now remove it
+locationTbl <-
+  locationTbl \%>\%
+  table_removeColumn("siteName")
+
+names(locationTbl)
+
+\dontrun{
+# Cannot remove "core" metadata
+locationTbl <-
+  locationTbl \%>\%
+  table_removeColumn("zip")
 }
 }
 \seealso{

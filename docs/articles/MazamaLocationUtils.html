@@ -217,11 +217,9 @@ lats &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/b
   <span class="dt">latitude =</span> lats,
   <span class="dt">radius =</span> <span class="dv">50</span>
 ) <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span>(city)</code></pre></div>
-<pre><code>##  [1] NA                 "La Crosse"        NA                
-##  [4] "Sunnyside"        NA                 NA                
-##  [7] "Lake Forest Park" NA                 NA                
-## [10] NA                 NA                 NA                
-## [13] NA</code></pre>
+<pre><code>##  [1] "Chelan"    NA          NA          NA          NA         
+##  [6] NA          NA          NA          NA          NA         
+## [11] "Ritzville" NA          NA</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Any known locations within 500 meters</span>
 <span class="kw"><a href="../reference/table_getNearestLocation.html">table_getNearestLocation</a></span>(
   wa_monitors_<span class="dv">500</span>,
@@ -230,9 +228,9 @@ lats &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/b
   <span class="dt">radius =</span> <span class="dv">500</span>
 ) <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span>(city)</code></pre></div>
 <pre><code>##  [1] "Chelan"           "La Crosse"        "Tri-Cities"      
-##  [4] "Sunnyside"        "Inchelium"        "Wellpinit"       
-##  [7] "Lake Forest Park" "Okanogan County"  NA                
-## [10] "Okanogan County"  NA                 NA                
+##  [4] "Sunnyside"        NA                 "Wellpinit"       
+##  [7] "Lake Forest Park" NA                 NA                
+## [10] "Okanogan County"  "Ritzville"        "Darrington"      
 ## [13] NA</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># How about 5000 meters?</span>
 <span class="kw"><a href="../reference/table_getNearestLocation.html">table_getNearestLocation</a></span>(

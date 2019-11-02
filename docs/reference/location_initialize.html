@@ -183,12 +183,42 @@ of core metadata:</p><ul>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='co'># Set up standard directories and spatial data</span>
-<span class='fu'><a href='mazama_initialize.html'>mazama_initialize</a></span>()
-
+<span class='no'>spatialDataDir</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span>() <span class='co'># typically "~/Data/Spatial"</span>
+<span class='fu'><a href='mazama_initialize.html'>mazama_initialize</a></span>(<span class='no'>spatialDataDir</span>)</div><div class='output co'>#&gt; <span class='error'>Error in validateMazamaSpatialUtils(): </span>
+#&gt; <span class='error'></span>
+#&gt; <span class='error'>You must have the MazamaSpatialUtils package as well as core datasets installed.</span>
+#&gt; <span class='error'></span>
+#&gt; <span class='error'>Install core datasets with:</span>
+#&gt; <span class='error'></span>
+#&gt; <span class='error'>  MazamaSpatialUtils::setSpatialDataDir("YOUR_DATA_DIR")</span>
+#&gt; <span class='error'>  MazamaSpatialUtils::installSpatialData()</span>
+#&gt; <span class='error'></span>
+#&gt; <span class='error'>Once installed, initialize spatial data with:</span>
+#&gt; <span class='error'></span>
+#&gt; <span class='error'>  MazamaSpatialUtils::setSpatialDataDir("YOUR_DATA_DIR")</span>
+#&gt; <span class='error'>  MazamaSpatialUtils::loadSpatialData("EEZCountries")</span>
+#&gt; <span class='error'>  MazamaSpatialUtils::loadSpatialData("OSMTimezones")</span>
+#&gt; <span class='error'>  MazamaSpatialUtils::loadSpatialData("NaturalEarthAdm1")</span>
+#&gt; <span class='error'>  MazamaSpatialUtils::loadSpatialData("USCensusCounties")</span></div><div class='input'>
 <span class='co'># Wenatchee</span>
 <span class='no'>lon</span> <span class='kw'>&lt;-</span> -<span class='fl'>120.325278</span>
 <span class='no'>lat</span> <span class='kw'>&lt;-</span> <span class='fl'>47.423333</span>
-<span class='no'>locationRecord</span> <span class='kw'>&lt;-</span> <span class='fu'>location_initialize</span>(<span class='no'>lon</span>, <span class='no'>lat</span>)</div><div class='output co'>#&gt; <span class='message'>[1] "Getting geocode data from Photon: http://photon.komoot.de/reverse?lon=-120.325278&amp;lat=47.423333"</span></div><div class='input'># }
+<span class='no'>locationRecord</span> <span class='kw'>&lt;-</span> <span class='fu'>location_initialize</span>(<span class='no'>lon</span>, <span class='no'>lat</span>)</div><div class='output co'>#&gt; <span class='error'>Error in validateMazamaSpatialUtils(): </span>
+#&gt; <span class='error'></span>
+#&gt; <span class='error'>You must have the MazamaSpatialUtils package as well as core datasets installed.</span>
+#&gt; <span class='error'></span>
+#&gt; <span class='error'>Install core datasets with:</span>
+#&gt; <span class='error'></span>
+#&gt; <span class='error'>  MazamaSpatialUtils::setSpatialDataDir("YOUR_DATA_DIR")</span>
+#&gt; <span class='error'>  MazamaSpatialUtils::installSpatialData()</span>
+#&gt; <span class='error'></span>
+#&gt; <span class='error'>Once installed, initialize spatial data with:</span>
+#&gt; <span class='error'></span>
+#&gt; <span class='error'>  MazamaSpatialUtils::setSpatialDataDir("YOUR_DATA_DIR")</span>
+#&gt; <span class='error'>  MazamaSpatialUtils::loadSpatialData("EEZCountries")</span>
+#&gt; <span class='error'>  MazamaSpatialUtils::loadSpatialData("OSMTimezones")</span>
+#&gt; <span class='error'>  MazamaSpatialUtils::loadSpatialData("NaturalEarthAdm1")</span>
+#&gt; <span class='error'>  MazamaSpatialUtils::loadSpatialData("USCensusCounties")</span></div><div class='input'># }
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
