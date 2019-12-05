@@ -1,3 +1,7 @@
+# Mazama LocationUtil 0.1.7
+
+* Added support for API keys with `setAPIKey()` and `getAPIKey()`.
+
 # Mazama LocationUtil 0.1.6
 
 * Updated checks and explicit instructions for installing required spatial data.
