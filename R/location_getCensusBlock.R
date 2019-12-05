@@ -26,7 +26,7 @@
 #' @rdname location_getCensusBlock
 #' @export 
 #' @importFrom utils capture.output
-#' @import httr
+#' @importFrom httr GET content
 #' @importFrom stringr str_detect str_sub str_subset
 #' 
 location_getCensusBlock <- function(
