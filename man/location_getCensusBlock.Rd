@@ -14,7 +14,7 @@ location_getCensusBlock(longitude = NULL, latitude = NULL, verbose = TRUE)
 \item{verbose}{Logical controlling the generation of progress messages.}
 }
 \value{
-List of address components.
+List of census block/county/state data.
 }
 \description{
 
