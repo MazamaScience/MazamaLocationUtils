@@ -164,7 +164,7 @@ columns whose values are to be replaced, Default: NULL</p></td>
 <span class='co'># Wenatchee</span>
 <span class='no'>wenatcheeRecord</span> <span class='kw'>&lt;-</span>
   <span class='no'>locationTbl</span> <span class='kw'>%&gt;%</span>
-  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/filter.html'>filter</a></span>(<span class='no'>city</span> <span class='kw'>==</span> <span class='st'>"Wenatchee"</span>)
+  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='no'>city</span> <span class='kw'>==</span> <span class='st'>"Wenatchee"</span>)
 
 <span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='no'>wenatcheeRecord</span>)</div><div class='output co'>#&gt; Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	1 obs. of  13 variables:
 #&gt;  $ locationID  : chr "8e54314f43eb8746"
@@ -192,7 +192,7 @@ columns whose values are to be replaced, Default: NULL</p></td>
 
 <span class='co'># Look at the new record</span>
 <span class='no'>locationTbl</span> <span class='kw'>%&gt;%</span>
-  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/filter.html'>filter</a></span>(<span class='no'>city</span> <span class='kw'>==</span> <span class='st'>"Wenatchee"</span>) <span class='kw'>%&gt;%</span>
+  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='no'>city</span> <span class='kw'>==</span> <span class='st'>"Wenatchee"</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>()</div><div class='output co'>#&gt; Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	1 obs. of  13 variables:
 #&gt;  $ locationID  : chr "8e54314f43eb8746"
 #&gt;  $ locationName: chr "Wenatchee-Fifth St"
