@@ -13,7 +13,7 @@
 #' @param longitude Single longitude in decimal degrees E, Default: NULL
 #' @param latitude Single latitude in decimal degrees N, Default: NULL
 #' @param verbose Logical controlling the generation of progress messages.
-#' @return List of address components.
+#' @return List of census block/county/state data.
 #' @examples 
 #' \donttest{
 #' lon <- -77.51
