@@ -108,7 +108,7 @@ location_getSingleAddress_TexasAM <- function(
       houseNumber <- as.character(NA)
       street <- as.character(NA)
     } else {
-      parts <- str_match(address, "(\\d+) (.+)")
+      parts <- stringr::str_match(address, "(\\d+) (.+)")
       houseNumber <- parts[,2]
       street <- parts[,3]
     }

@@ -1,6 +1,7 @@
 # MazamaLocationUtils 0.1.8
 
 * New `location_getCensusBlock()` function.
+* New `location_getSingleAddress_TexasAM()` function.
 
 # MazamaLocationUtils 0.1.7
 

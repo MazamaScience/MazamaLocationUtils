@@ -33,11 +33,11 @@ spatialDataDir <- tempdir() # typically "~/Data/Spatial"
 mazama_initialize(spatialDataDir)
 
 # Wenatchee
-lon <- -120.325278
-lat <- 47.423333
+longitude <- -122.47
+latitude <- 47.47
 apiKey <- YOUR_PERSONAL_API_KEY
 
-location_getSingleAddress_TexasAM(lon, lat, apiKey)
+location_getSingleAddress_TexasAM(longitude, latitude, apiKey)
 }
 }
 \references{
