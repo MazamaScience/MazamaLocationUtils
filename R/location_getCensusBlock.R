@@ -26,7 +26,6 @@
 #' @rdname location_getCensusBlock
 #' @export 
 #' @importFrom utils capture.output
-#' @importFrom httr GET content
 #' @importFrom stringr str_detect str_sub str_subset
 #' 
 location_getCensusBlock <- function(
@@ -41,19 +40,53 @@ location_getCensusBlock <- function(
   
   # ----- Get FCC API data ----------------------------------------------
   
-  data <- GET("https://geo.fcc.gov/api/census/block/find",
-              query = list(latitude=latitude, longitude=longitude, showall=FALSE,
-                           format="json"))
+  # https://geo.fcc.gov/api/census/block/find?latitude=38.26&longitude=-77.51&showall=false&format=json
   
-  json <- content(data, "parsed")
+  # Create url
   
-  # ----- Create censusList --------------------------------------------
+  url <- httr::parse_url("https://geo.fcc.gov/api/census/block/find")
   
-  censusList <- list(
-    stateCode = json$State$code,
-    county = json$County$name,
-    censusBlock = json$Block$FIPS
+  url$query <- list(
+    latitude=latitude, 
+    longitude=longitude, 
+    showall=FALSE,
+    format="json"
   )
+  
+  # Get and parse the return
+  
+  r <- httr::GET(httr::build_url(url))
+  if ( httr::http_error(r) ) {
+    
+    censusBlock <- list()
+    
+    if ( verbose ) {
+      warning(sprintf(
+        "FCC Census Block service failed for URL %s", 
+        httr::build_url(url)
+      ))
+    }
+    
+  } else {
+    
+    returnObj <- httr::content(r)
+    censusList <- list(
+      stateCode = returnObj$State$code,
+      county = returnObj$County$name,
+      censusBlock = returnObj$Block$FIPS
+    )
+    
+    if (is.null(censusList$censusBlock) ) {
+      
+      if ( verbose ) {
+        warning(sprintf(
+          "FCC Census Block service returned NULL values."
+        ))
+      }
+      
+    }
+    
+  }
   
   # ----- Return ---------------------------------------------------------------
   
