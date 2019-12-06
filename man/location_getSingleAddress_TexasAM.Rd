@@ -5,17 +5,17 @@
 \title{Get an address from a Texas A&M web service}
 \usage{
 location_getSingleAddress_TexasAM(longitude = NULL, latitude = NULL,
-  verbose = TRUE, apiKey = NULL)
+  apiKey = NULL, verbose = TRUE)
 }
 \arguments{
 \item{longitude}{Single longitude in decimal degrees E, Default: NULL}
 
 \item{latitude}{Single latitude in decimal degrees N, Default: NULL}
 
-\item{verbose}{Logical controlling the generation of progress messages.}
-
 \item{apiKey}{Texas A&M Geocoding requires an API key. The first 2500 requests
 are free. Default: NULL}
+
+\item{verbose}{Logical controlling the generation of progress messages.}
 }
 \value{
 Numeric elevation value.
@@ -26,10 +26,17 @@ the \code{longitude} and \code{latitude}.
 }
 \examples{
 \donttest{
+library(MazamaLocationUtils)
+
+# Set up standard directories and spatial data
+spatialDataDir <- tempdir() # typically "~/Data/Spatial"
+mazama_initialize(spatialDataDir)
+
 # Wenatchee
 lon <- -120.325278
 lat <- 47.423333
-apiKey <- apiKey
+apiKey <- YOUR_PERSONAL_API_KEY
+
 location_getSingleAddress_TexasAM(lon, lat, apiKey)
 }
 }

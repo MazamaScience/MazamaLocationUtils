@@ -10,11 +10,18 @@
 #' @return Numeric elevation value.
 #' @examples 
 #' \donttest{
+#' library(MazamaLocationUtils)
+#' 
+#' # Set up standard directories and spatial data
+#' spatialDataDir <- tempdir() # typically "~/Data/Spatial"
+#' mazama_initialize(spatialDataDir)
+#' 
 #' # Wenatchee
-#' lon <- -120.325278
-#' lat <- 47.423333
-#' apiKey <- apiKey
-#' location_getSingleAddress_TexasAM(lon, lat, apiKey)
+#' longitude <- -122.47
+#' latitude <- 47.47
+#' apiKey <- YOUR_PERSONAL_API_KEY
+#' 
+#' location_getSingleAddress_TexasAM(longitude, latitude, apiKey)
 #' }
 #' @references \url{https://geoservices.tamu.edu/Services/ReverseGeocoding/WebService/v04_01/HTTP.aspx}
 #' @rdname location_getSingleAddress_TexasAM
@@ -23,15 +30,20 @@
 location_getSingleAddress_TexasAM <- function(
   longitude = NULL,
   latitude = NULL,
-  verbose = TRUE,
-  apiKey = NULL
+  apiKey = NULL,
+  verbose = TRUE
 ) {
   
   # ----- Validate parameters --------------------------------------------------
   
+  MazamaCoreUtils::stopIfNull(longitude)
+  MazamaCoreUtils::stopIfNull(latitude)
+  MazamaCoreUtils::stopIfNull(verbose)
+  MazamaCoreUtils::stopIfNull(apiKey)
+  
   validateLonLat(longitude, latitude)  
   
-  # ----- Get USGS elevation data ----------------------------------------------
+  # ----- Get Texas A&M address data -------------------------------------------
   
   # Create url
   url <- httr::parse_url("https://geoservices.tamu.edu/Services/ReverseGeocoding/WebService/v04_01/HTTP/default.aspx")
@@ -46,8 +58,8 @@ location_getSingleAddress_TexasAM <- function(
   
   
   result <- try({
-  # Get and parse the return
-  r <- httr::GET(httr::build_url(url))
+    # Get and parse the return
+    r <- httr::GET(httr::build_url(url))
   })
   
   if ( "try-error" %in% result )
@@ -56,12 +68,13 @@ location_getSingleAddress_TexasAM <- function(
   if ( httr::http_error(r) ) {
     
     addressList <- list(
-      houseNumber = as.numeric(NA),
-      street = as.numeric(NA),
-      city = as.numeric(NA),
-      stateName = as.numeric(NA),
-      zip = as.numeric(NA),
-      countryName = as.numeric(NA)
+      houseNumber = as.character(NA),
+      street = as.character(NA),
+      city = as.character(NA),
+      stateCode = as.character(NA),
+      zip = as.character(NA),
+      countryCode = as.character(NA),
+      countryName = as.character(NA)
     ) 
     
     if ( verbose ) {
@@ -73,37 +86,61 @@ location_getSingleAddress_TexasAM <- function(
     
   } else {
     
-    returnObj <- httr::content(r) %>%
-      jsonlite::fromJSON(returnObj)
+    # Get the json return
+    jsonString <- httr::content(r)
     
+    # Parse the json
+    returnObj <- as.list(jsonlite::fromJSON(jsonString,
+                                            simplifyVector = TRUE,
+                                            simplifyDataFrame = FALSE,
+                                            simplifyMatrix = FALSE,
+                                            flatten = FALSE))
+    
+    # Extract desired information
     locationInfo <- returnObj$StreetAddresses[[1]] 
-    address <- locationInfo$StreetAddress
     
-    houseNumber <- as.numeric(stringr::str_extract(address, "(\\d)+"))
+    address <- 
+      locationInfo$StreetAddress %>% 
+      stringr::str_trim()
     
-    street <- 
-      address %>%
-      stringr::str_extract_all(stringr::regex("[a-z]+", ignore_case = TRUE), simplify = TRUE) %>%
-      stringr::str_c(collapse = " ")
-    
-    if (locationInfo$StreetAddress == "") {
+    # Parse the address string into houseNumber and street
+    if ( locationInfo$StreetAddress == "" ) {
+      houseNumber <- as.character(NA)
       street <- as.character(NA)
-      houseNumber <- as.numeric(NA)
+    } else {
+      parts <- str_match(address, "(\\d+) (.+)")
+      houseNumber <- parts[,2]
+      street <- parts[,3]
     }
     
-    if (locationInfo$City == "") {
+    if ( locationInfo$City == "" ) {
       locationInfo$City <- as.character(NA)
     }
     
+    # Assemble the addressList
     addressList <- list(
       houseNumber = houseNumber,
       street = street,
       city = locationInfo$City,
-      stateName = locationInfo$State,
+      stateCode = locationInfo$State,
       zip = locationInfo$Zip,
-      countryName = "US" # Texas A&M ONLY works in US
+      countryCode = "US",
+      countryName = "United States of America" # Texas A&M ONLY works in US
     )
+    
   }
+  
+  # Fill in the stateName
+  suppressWarnings({
+    addressList$stateName <- 
+      MazamaSpatialUtils::codeToState(
+        stateCodes = addressList$stateCode,
+        countryCodes = addressList$countryCode,
+        dataset = "NaturalEarthAdm1"
+      )
+  })
+  
+  # ----- Return ---------------------------------------------------------------
   
   return(addressList)
   
