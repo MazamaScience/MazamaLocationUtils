@@ -25,6 +25,8 @@
 #' @rdname location_initialize
 #' @examples
 #' \donttest{
+#' library(MazamaLocationUtils)
+#' 
 #' # Set up standard directories and spatial data
 #' spatialDataDir <- tempdir() # typically "~/Data/Spatial"
 #' mazama_initialize(spatialDataDir)

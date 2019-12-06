@@ -27,6 +27,8 @@ Save a tibble of known locations to the preferred directory.
 Backup files are saved with "YYYY-mm-ddTHH:MM:SS"
 }
 \examples{
+library(MazamaLocationUtils)
+
 # Set the directory for saving location tables
 setLocationDataDir(tempdir())
 

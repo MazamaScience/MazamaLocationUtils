@@ -4,7 +4,8 @@
 \alias{location_getCensusBlock}
 \title{Get census block data from the FCC API}
 \usage{
-location_getCensusBlock(longitude = NULL, latitude = NULL, verbose = TRUE)
+location_getCensusBlock(longitude = NULL, latitude = NULL,
+  verbose = TRUE)
 }
 \arguments{
 \item{longitude}{Single longitude in decimal degrees E, Default: NULL}
@@ -17,10 +18,12 @@ location_getCensusBlock(longitude = NULL, latitude = NULL, verbose = TRUE)
 List of census block/county/state data.
 }
 \description{
-
+Get census block data from the FCC API
 }
 \examples{
 \donttest{
+library(MazamaLocationUtils)
+
 lon <- -77.51
 lat <- 38.26
 

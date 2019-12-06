@@ -70,7 +70,7 @@ against the incoming locationTbl and any matches are removed." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.8</span>
       </span>
     </div>
 
@@ -152,7 +152,9 @@ against the incoming <code>locationTbl</code> and any matches are removed.</p>
 <p><a href='table_updateSingleRecord.html'>table_updateSingleRecord</a></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>locationTbl</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/get.html'>get</a></span>(<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"wa_monitors_500"</span>))
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>MazamaLocationUtils</span>)
+
+<span class='no'>locationTbl</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/get.html'>get</a></span>(<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"wa_monitors_500"</span>))
 <span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span>(<span class='no'>locationTbl</span>)</div><div class='output co'>#&gt; [1] 69 13</div><div class='input'>
 <span class='co'># Wenatchee</span>
 <span class='no'>lon</span> <span class='kw'>&lt;-</span> -<span class='fl'>120.325278</span>
@@ -182,7 +184,7 @@ against the incoming <code>locationTbl</code> and any matches are removed.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Jonathan Callahan.</p>
+  <p>Developed by Jonathan Callahan, Kayleigh Wilson.</p>
 </div>
 
 <div class="pkgdown">

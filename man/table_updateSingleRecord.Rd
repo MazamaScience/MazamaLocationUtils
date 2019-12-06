@@ -26,6 +26,8 @@ records should be performed with \code{table_removeRecord()} followed by
 \code{table_addLocation()}.
 }
 \examples{
+library(MazamaLocationUtils)
+
 locationTbl <- get(data("wa_monitors_500"))
 
 # Wenatchee

@@ -33,6 +33,8 @@ if the location is not already found in \code{locationTbl}.
 }
 \examples{
 \donttest{
+library(MazamaLocationUtils)
+
 # Set up standard directories and spatial data
 spatialDataDir <- tempdir() # typically "~/Data/Spatial"
 MazamaSpatialUtils::setSpatialDataDir(spatialDataDir)

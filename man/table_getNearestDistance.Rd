@@ -26,6 +26,8 @@ one for each incoming location. If no known location is found within
 incoming location, that distance in the vector will be \code{NA}.
 }
 \examples{
+library(MazamaLocationUtils)
+
 locationTbl <- get(data("wa_monitors_500"))
 
 # Wenatchee

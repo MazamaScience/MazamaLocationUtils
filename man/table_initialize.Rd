@@ -29,6 +29,8 @@ columns of core metadata:
 }
 }
 \examples{
+library(MazamaLocationUtils)
+
 # Create an empty Tbl
 emptyTbl <- table_initialize()
 print(emptyTbl)

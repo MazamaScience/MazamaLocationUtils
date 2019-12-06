@@ -22,6 +22,8 @@ Returns a vector of \code{locationTbl} row indexes for the
 locations associated with each \code{locationID}.
 }
 \examples{
+library(MazamaLocationUtils)
+
 locationTbl <- get(data("wa_monitors_500"))
 
 # Wenatchee

@@ -22,6 +22,8 @@ Incoming \code{locationID} values are compared
 against the incoming \code{locationTbl} and any matches are removed.
 }
 \examples{
+library(MazamaLocationUtils)
+
 locationTbl <- get(data("wa_monitors_500"))
 dim(locationTbl)
 

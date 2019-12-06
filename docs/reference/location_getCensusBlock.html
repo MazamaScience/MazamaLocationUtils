@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Idaho monitor locations dataset — id_monitors_500 • MazamaLocationUtils</title>
+<title>Get census block data from the FCC API — location_getCensusBlock • MazamaLocationUtils</title>
 
 
 <!-- jquery -->
@@ -35,26 +35,8 @@
 
 
 
-<meta property="og:title" content="Idaho monitor locations dataset — id_monitors_500" />
-<meta property="og:description" content="The id_monitor_500 dataset provides a set of known
-locations associated with Idaho state air quality monitors.
-This dataset was generatedon 2019-10-21 by running:
-
-library(PWFSLSmoke)
-library(MazamaLocationUtils)
-
-mazama_initialize()
-setLocationDataDir(&quot;./data&quot;)
-
-monitor &amp;lt;- monitor_loadLatest() 
-lons &amp;lt;- monitor$meta$longitude
-lats &amp;lt;- monitor$meta$latitude
-
-table_initialize() 
-  table_addLocation(lons, lats, radius = 500) 
-  table_save(&quot;id_monitors_500&quot;)
-
-" />
+<meta property="og:title" content="Get census block data from the FCC API — location_getCensusBlock" />
+<meta property="og:description" content="Get census block data from the FCC API" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -129,50 +111,63 @@ table_initialize()
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Idaho monitor locations dataset</h1>
-    <small class="dont-index">Source: <a href='https://github.com/MazamaScience/MazamaCoreUtils/blob/master/R/data.R'><code>R/data.R</code></a></small>
-    <div class="hidden name"><code>id_monitors_500.Rd</code></div>
+    <h1>Get census block data from the FCC API</h1>
+    <small class="dont-index">Source: <a href='https://github.com/MazamaScience/MazamaCoreUtils/blob/master/R/location_getCensusBlock.R'><code>R/location_getCensusBlock.R</code></a></small>
+    <div class="hidden name"><code>location_getCensusBlock.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>The <code>id_monitor_500</code> dataset provides a set of known
-locations associated with Idaho state air quality monitors.
-This dataset was generatedon 2019-10-21 by running:</p>
-<pre>
-library(PWFSLSmoke)
-library(MazamaLocationUtils)
-
-mazama_initialize()
-setLocationDataDir("./data")
-
-monitor &lt;- monitor_loadLatest() <!-- %&gt;% monitor_subset(stateCodes = "ID") -->
-lons &lt;- monitor$meta$longitude
-lats &lt;- monitor$meta$latitude
-
-table_initialize() <!-- %&gt;% -->
-  table_addLocation(lons, lats, radius = 500) <!-- %&gt;% -->
-  table_save("id_monitors_500")
-</pre>
-
+    <p>Get census block data from the FCC API</p>
     </div>
 
-    <pre class="usage"><span class='no'>id_monitors_500</span></pre>
+    <pre class="usage"><span class='fu'>location_getCensusBlock</span>(<span class='kw'>longitude</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>latitude</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>longitude</th>
+      <td><p>Single longitude in decimal degrees E, Default: NULL</p></td>
+    </tr>
+    <tr>
+      <th>latitude</th>
+      <td><p>Single latitude in decimal degrees N, Default: NULL</p></td>
+    </tr>
+    <tr>
+      <th>verbose</th>
+      <td><p>Logical controlling the generation of progress messages.</p></td>
+    </tr>
+    </table>
 
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A tibble with 34 rows and 13 columns of data.</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <p>List of census block/county/state data.</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <div class='dont-index'><p><a href='or_monitors_500.html'>or_monitors_500</a></p>
-<p><a href='wa_monitors_500.html'>wa_monitors_500</a></p></div>
+    <p><a href='https://geo.fcc.gov/api/census/#!/block/get_block_find'>https://geo.fcc.gov/api/census/#!/block/get_block_find</a></p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>MazamaLocationUtils</span>)
+
+<span class='no'>lon</span> <span class='kw'>&lt;-</span> -<span class='fl'>77.51</span>
+<span class='no'>lat</span> <span class='kw'>&lt;-</span> <span class='fl'>38.26</span>
+
+<span class='no'>censusList</span> <span class='kw'>&lt;-</span> <span class='fu'>location_getCensusBlock</span>(<span class='no'>lon</span>, <span class='no'>lat</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='no'>censusList</span>)</div><div class='output co'>#&gt; List of 3
+#&gt;  $ stateCode  : chr "VA"
+#&gt;  $ county     : chr "Spotsylvania"
+#&gt;  $ censusBlock: chr "511770203042000"</div><div class='input'># }
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#format">Format</a></li>
-      <li><a href="#see-also">See also</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
+      <li><a href="#references">References</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

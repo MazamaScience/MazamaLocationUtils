@@ -70,7 +70,7 @@ locatioData is used to replace any existing value in columnName." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.8</span>
       </span>
     </div>
 
@@ -159,7 +159,9 @@ locatioData is used to replace any existing value in columnName." />
 <p><a href='table_removeColumn.html'>table_removeColumn</a></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>locationTbl</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/get.html'>get</a></span>(<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"wa_monitors_500"</span>))
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>MazamaLocationUtils</span>)
+
+<span class='no'>locationTbl</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/get.html'>get</a></span>(<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"wa_monitors_500"</span>))
 <span class='no'>wa</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/get.html'>get</a></span>(<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"wa_airfire_meta"</span>))
 
 <span class='co'># We will merge some metadata from wa into locationTbl</span>
@@ -216,7 +218,7 @@ locatioData is used to replace any existing value in columnName." />
 
       <footer>
       <div class="copyright">
-  <p>Developed by Jonathan Callahan.</p>
+  <p>Developed by Jonathan Callahan, Kayleigh Wilson.</p>
 </div>
 
 <div class="pkgdown">

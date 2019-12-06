@@ -16,6 +16,8 @@
 #' @return List of census block/county/state data.
 #' @examples 
 #' \donttest{
+#' library(MazamaLocationUtils)
+#' 
 #' lon <- -77.51
 #' lat <- 38.26
 #' 

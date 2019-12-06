@@ -26,6 +26,8 @@ For matching \code{locationID} records the assaociated
 \code{locatioData} is used to replace any existing value in \code{columnName}.
 }
 \examples{
+library(MazamaLocationUtils)
+
 locationTbl <- get(data("wa_monitors_500"))
 wa <- get(data("wa_airfire_meta"))
 

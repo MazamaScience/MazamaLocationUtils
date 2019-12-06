@@ -14,6 +14,8 @@
 #' @return Updated tibble of known locations.
 #' @examples
 #' \donttest{
+#' library(MazamaLocationUtils)
+#' 
 #' # Set up standard directories and spatial data
 #' spatialDataDir <- tempdir() # typically "~/Data/Spatial"
 #' MazamaSpatialUtils::setSpatialDataDir(spatialDataDir)

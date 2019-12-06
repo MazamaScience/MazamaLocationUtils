@@ -25,6 +25,8 @@ for each incoming location. If no known location is found for a particular
 incoming location, that record in the tibble will contain all \code{NA}.
 }
 \examples{
+library(MazamaLocationUtils)
+
 locationTbl <- get(data("wa_monitors_500"))
 
 # Wenatchee

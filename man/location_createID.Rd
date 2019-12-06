@@ -32,6 +32,8 @@ locationID <- digest::digest(locationString, algo = "xxhash64")
 }
 }
 \examples{
+library(MazamaLocationUtils)
+
 # Wenatchee
 lon <- -120.325278
 lat <- 47.423333

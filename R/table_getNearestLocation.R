@@ -9,6 +9,8 @@
 #' @param radius Radius in meters, Default: NULL
 #' @return Tibble of known locations.
 #' @examples
+#' library(MazamaLocationUtils)
+#' 
 #' locationTbl <- get(data("wa_monitors_500"))
 #' 
 #' # Wenatchee

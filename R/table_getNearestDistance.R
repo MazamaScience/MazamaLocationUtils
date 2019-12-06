@@ -10,6 +10,8 @@
 #' @param radius Radius in meters, Default: NULL
 #' @return Vector of distances from known locations.
 #' @examples
+#' library(MazamaLocationUtils)
+#' 
 #' locationTbl <- get(data("wa_monitors_500"))
 #' 
 #' # Wenatchee

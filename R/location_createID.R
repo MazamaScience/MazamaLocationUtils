@@ -20,6 +20,8 @@
 #' @param latitude Single latitude in decimal degrees N, Default: NULL
 #' @return Vector of character locationIDs.
 #' @examples
+#' library(MazamaLocationUtils)
+#' 
 #' # Wenatchee
 #' lon <- -120.325278
 #' lat <- 47.423333

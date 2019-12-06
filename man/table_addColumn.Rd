@@ -27,6 +27,8 @@ matching \code{locationID} records the assaociated \code{locatioData} is
 inserted. Otherwise, the new column will be initialized with \code{NA}.
 }
 \examples{
+library(MazamaLocationUtils)
+
 # Starting table
 locationTbl <- get(data("wa_monitors_500")) 
 names(locationTbl)

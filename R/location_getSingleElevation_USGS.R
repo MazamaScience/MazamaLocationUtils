@@ -8,6 +8,8 @@
 #' @return Numeric elevation value.
 #' @examples 
 #' \donttest{
+#' library(MazamaLocationUtils)
+#' 
 #' # Wenatchee
 #' lon <- -120.325278
 #' lat <- 47.423333

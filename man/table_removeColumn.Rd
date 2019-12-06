@@ -22,6 +22,8 @@ Remove the column matching \code{columnName}. This function
 can be used in pipelines.
 }
 \examples{
+library(MazamaLocationUtils)
+
 # Starting table
 locationTbl <- get(data("wa_monitors_500")) 
 names(locationTbl)
