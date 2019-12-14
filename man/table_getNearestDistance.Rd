@@ -4,8 +4,12 @@
 \alias{table_getNearestDistance}
 \title{Return distances to nearest known locations}
 \usage{
-table_getNearestDistance(locationTbl = NULL, longitude = NULL,
-  latitude = NULL, radius = NULL)
+table_getNearestDistance(
+  locationTbl = NULL,
+  longitude = NULL,
+  latitude = NULL,
+  radius = NULL
+)
 }
 \arguments{
 \item{locationTbl}{Tibble of known locations, Default: NULL}

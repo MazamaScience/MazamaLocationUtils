@@ -4,8 +4,12 @@
 \alias{location_initialize}
 \title{Create known location record with core metadata}
 \usage{
-location_initialize(longitude = NULL, latitude = NULL,
-  stateDataset = "NaturalEarthAdm1", verbose = TRUE)
+location_initialize(
+  longitude = NULL,
+  latitude = NULL,
+  stateDataset = "NaturalEarthAdm1",
+  verbose = TRUE
+)
 }
 \arguments{
 \item{longitude}{Single longitude in decimal degrees E, Default: NULL}

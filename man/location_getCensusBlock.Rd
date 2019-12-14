@@ -4,8 +4,7 @@
 \alias{location_getCensusBlock}
 \title{Get census block data from the FCC API}
 \usage{
-location_getCensusBlock(longitude = NULL, latitude = NULL,
-  verbose = TRUE)
+location_getCensusBlock(longitude = NULL, latitude = NULL, verbose = TRUE)
 }
 \arguments{
 \item{longitude}{Single longitude in decimal degrees E, Default: NULL}
@@ -18,7 +17,16 @@ location_getCensusBlock(longitude = NULL, latitude = NULL,
 List of census block/county/state data.
 }
 \description{
-Get census block data from the FCC API
+The FCC Block API is used get census block, county, and state FIPS associated with
+the \code{longitude} and \code{latitude}. The following list of data
+is returned:
+\itemize{
+\item{\code{stateCode}}
+\item{\code{county}}
+\item{\code{censusBlock}}
+}
+The data from this function should be considered to be the gold standard for state and county.
+i.e. this information could and should be used to override information we get elsewhere.
 }
 \examples{
 \donttest{

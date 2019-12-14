@@ -4,8 +4,12 @@
 \alias{table_save}
 \title{Save a known location table}
 \usage{
-table_save(locationTbl = NULL, collectionName = NULL, backup = TRUE,
-  outputType = "rda")
+table_save(
+  locationTbl = NULL,
+  collectionName = NULL,
+  backup = TRUE,
+  outputType = "rda"
+)
 }
 \arguments{
 \item{locationTbl}{Tibble of known locations, Default: NULL}

@@ -6,7 +6,7 @@
 #' \itemize{
 #' \item{\code{stateCode}}
 #' \item{\code{county}}
-#' \item{\code{censusBlock}
+#' \item{\code{censusBlock}}
 #' }
 #' The data from this function should be considered to be the gold standard for state and county.
 #' i.e. this information could and should be used to override information we get elsewhere.

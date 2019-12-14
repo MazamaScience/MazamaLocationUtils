@@ -4,8 +4,11 @@
 \alias{location_getSingleElevation_USGS}
 \title{Get elevation data from a USGS web service}
 \usage{
-location_getSingleElevation_USGS(longitude = NULL, latitude = NULL,
-  verbose = TRUE)
+location_getSingleElevation_USGS(
+  longitude = NULL,
+  latitude = NULL,
+  verbose = TRUE
+)
 }
 \arguments{
 \item{longitude}{Single longitude in decimal degrees E, Default: NULL}

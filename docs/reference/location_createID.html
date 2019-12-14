@@ -42,9 +42,9 @@ each locationID. See the references for details.
 
 # Retain accuracy up to ~.1m
 locationString &amp;lt;- paste0(
-  sprintf(&quot;
+  sprintf(&quot;%.7f&quot;, longitude),
   &quot;_&quot;,
-  sprintf(&quot;
+  sprintf(&quot;%.7f&quot;, latitude)
 )
   
 # Avoid collisions until billions of records
@@ -83,7 +83,7 @@ locationID &amp;lt;- digest::digest(locationString, algo = &quot;xxhash64&quot;)
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.9</span>
       </span>
     </div>
 
@@ -137,9 +137,9 @@ each locationID. See the references for details.</p>
 <pre>
 # Retain accuracy up to ~.1m
 locationString &lt;- paste0(
-  sprintf("<!-- %.7f", longitude), -->
+  sprintf("%.7f", longitude),
   "_",
-  sprintf("<!-- %.7f", latitude) -->
+  sprintf("%.7f", latitude)
 )
   
 # Avoid collisions until billions of records
@@ -155,11 +155,11 @@ locationID &lt;- digest::digest(locationString, algo = "xxhash64")
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>longitude</th>
-      <td><p>Single longitude in decimal degrees E, Default: NULL</p></td>
+      <td><p>Vector of longitudes in decimal degrees E, Default: NULL</p></td>
     </tr>
     <tr>
       <th>latitude</th>
-      <td><p>Single latitude in decimal degrees N, Default: NULL</p></td>
+      <td><p>Vector of latitudes in decimal degrees N, Default: NULL</p></td>
     </tr>
     </table>
 

@@ -4,8 +4,7 @@
 \alias{table_removeColumn}
 \title{Remove a column of metadata in a table}
 \usage{
-table_removeColumn(locationTbl = NULL, columnName = NULL,
-  verbose = TRUE)
+table_removeColumn(locationTbl = NULL, columnName = NULL, verbose = TRUE)
 }
 \arguments{
 \item{locationTbl}{Tibble of known locations, Default: NULL}

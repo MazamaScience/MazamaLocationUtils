@@ -4,8 +4,13 @@
 \alias{table_addColumn}
 \title{Add a new column of metadata to a table}
 \usage{
-table_addColumn(locationTbl = NULL, columnName = NULL,
-  locationID = NULL, locationData = NULL, verbose = TRUE)
+table_addColumn(
+  locationTbl = NULL,
+  columnName = NULL,
+  locationID = NULL,
+  locationData = NULL,
+  verbose = TRUE
+)
 }
 \arguments{
 \item{locationTbl}{Tibble of known locations, Default: NULL}

@@ -4,8 +4,7 @@
 \alias{table_removeRecord}
 \title{Remove location records from a table}
 \usage{
-table_removeRecord(locationTbl = NULL, locationID = NULL,
-  verbose = TRUE)
+table_removeRecord(locationTbl = NULL, locationID = NULL, verbose = TRUE)
 }
 \arguments{
 \item{locationTbl}{Tibble of known locations, Default: NULL}

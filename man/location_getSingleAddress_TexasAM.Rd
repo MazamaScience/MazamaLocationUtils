@@ -4,8 +4,12 @@
 \alias{location_getSingleAddress_TexasAM}
 \title{Get an address from a Texas A&M web service}
 \usage{
-location_getSingleAddress_TexasAM(longitude = NULL, latitude = NULL,
-  apiKey = NULL, verbose = TRUE)
+location_getSingleAddress_TexasAM(
+  longitude = NULL,
+  latitude = NULL,
+  apiKey = NULL,
+  verbose = TRUE
+)
 }
 \arguments{
 \item{longitude}{Single longitude in decimal degrees E, Default: NULL}

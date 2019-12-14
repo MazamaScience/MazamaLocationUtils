@@ -4,8 +4,7 @@
 \alias{table_getRecordIndex}
 \title{Return indexes of known location records}
 \usage{
-table_getRecordIndex(locationTbl = NULL, locationID = NULL,
-  verbose = TRUE)
+table_getRecordIndex(locationTbl = NULL, locationID = NULL, verbose = TRUE)
 }
 \arguments{
 \item{locationTbl}{Tibble of known locations, Default: NULL}

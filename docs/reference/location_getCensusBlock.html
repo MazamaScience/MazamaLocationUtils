@@ -36,7 +36,14 @@
 
 
 <meta property="og:title" content="Get census block data from the FCC API — location_getCensusBlock" />
-<meta property="og:description" content="Get census block data from the FCC API" />
+<meta property="og:description" content="The FCC Block API is used get census block, county, and state FIPS associated with
+the longitude and latitude. The following list of data
+is returned:
+stateCode
+county
+censusBlock
+The data from this function should be considered to be the gold standard for state and county.
+i.e. this information could and should be used to override information we get elsewhere." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -69,7 +76,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.9</span>
       </span>
     </div>
 
@@ -117,11 +124,17 @@
     </div>
 
     <div class="ref-description">
-    <p>Get census block data from the FCC API</p>
+    <p>The FCC Block API is used get census block, county, and state FIPS associated with
+the <code>longitude</code> and <code>latitude</code>. The following list of data
+is returned:</p><ul>
+<li><p><code>stateCode</code></p></li>
+<li><p><code>county</code></p></li>
+<li><p><code>censusBlock</code></p></li>
+</ul><p>The data from this function should be considered to be the gold standard for state and county.
+i.e. this information could and should be used to override information we get elsewhere.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>location_getCensusBlock</span>(<span class='kw'>longitude</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>latitude</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>location_getCensusBlock</span>(<span class='kw'>longitude</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>latitude</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">

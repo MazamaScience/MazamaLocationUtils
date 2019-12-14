@@ -4,9 +4,14 @@
 \alias{table_addSingleLocation}
 \title{Add a single new known location record to a table}
 \usage{
-table_addSingleLocation(locationTbl = NULL, longitude = NULL,
-  latitude = NULL, radius = NULL, stateDataset = "NaturalEarthAdm1",
-  verbose = TRUE)
+table_addSingleLocation(
+  locationTbl = NULL,
+  longitude = NULL,
+  latitude = NULL,
+  radius = NULL,
+  stateDataset = "NaturalEarthAdm1",
+  verbose = TRUE
+)
 }
 \arguments{
 \item{locationTbl}{Tibble of known locations, Default: NULL}

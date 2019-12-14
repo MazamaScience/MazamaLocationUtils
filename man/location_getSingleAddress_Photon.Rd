@@ -4,8 +4,11 @@
 \alias{location_getSingleAddress_Photon}
 \title{Get address data from the Photon API to OpenStreetMap}
 \usage{
-location_getSingleAddress_Photon(longitude = NULL, latitude = NULL,
-  verbose = TRUE)
+location_getSingleAddress_Photon(
+  longitude = NULL,
+  latitude = NULL,
+  verbose = TRUE
+)
 }
 \arguments{
 \item{longitude}{Single longitude in decimal degrees E, Default: NULL}

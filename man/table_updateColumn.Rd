@@ -4,8 +4,13 @@
 \alias{table_updateColumn}
 \title{Update a column of metadata in a table}
 \usage{
-table_updateColumn(locationTbl = NULL, columnName = NULL,
-  locationID = NULL, locationData = NULL, verbose = TRUE)
+table_updateColumn(
+  locationTbl = NULL,
+  columnName = NULL,
+  locationID = NULL,
+  locationData = NULL,
+  verbose = TRUE
+)
 }
 \arguments{
 \item{locationTbl}{Tibble of known locations, Default: NULL}
