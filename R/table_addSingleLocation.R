@@ -10,6 +10,8 @@
 #' @param radius Radius in meters, Default: NULL
 #' @param stateDataset Name of spatial dataset to use for determining state
 #' codes, Default: 'NaturalEarthAdm1'
+#' @param addressService Name of the address service to use for determining
+#' state and country codes. Default: NA. Accepted values: "photon".
 #' @param verbose Logical controlling the generation of progress messages.
 #' @return Updated tibble of known locations.
 #' @examples
@@ -43,6 +45,7 @@ table_addSingleLocation <- function(
   latitude = NULL,
   radius = NULL,
   stateDataset = "NaturalEarthAdm1",
+  addressService = NA,
   verbose = TRUE
 ) {
   
@@ -87,6 +90,7 @@ table_addSingleLocation <- function(
     longitude = longitude,
     latitude = latitude,
     stateDataset = stateDataset,
+    addressService = addressService,
     verbose = verbose
   )
     

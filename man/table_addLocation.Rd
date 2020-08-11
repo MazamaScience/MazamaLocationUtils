@@ -10,6 +10,7 @@ table_addLocation(
   latitude = NULL,
   radius = NULL,
   stateDataset = "NaturalEarthAdm1",
+  addressService = NA,
   verbose = TRUE
 )
 }
@@ -24,6 +25,9 @@ table_addLocation(
 
 \item{stateDataset}{Name of spatial dataset to use for determining state
 codes, Default: 'NaturalEarthAdm1'}
+
+\item{addressService}{Name of the address service to use for determining
+state and country codes. Default: NA. Accepted values: "photon".}
 
 \item{verbose}{Logical controlling the generation of progress messages.}
 }

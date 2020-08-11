@@ -11,6 +11,8 @@
 #' @param radius Radius in meters, Default: NULL
 #' @param stateDataset Name of spatial dataset to use for determining state
 #' codes, Default: 'NaturalEarthAdm1'
+#' @param addressService Name of the address service to use for determining
+#' state and country codes. Default: NA. Accepted values: "photon".
 #' @param verbose Logical controlling the generation of progress messages.
 #' @return Updated tibble of known locations.
 #' @examples
@@ -44,6 +46,7 @@ table_addLocation <- function(
   latitude = NULL,
   radius = NULL,
   stateDataset = "NaturalEarthAdm1",
+  addressService = NA,
   verbose = TRUE
 ) {
   
@@ -84,6 +87,9 @@ table_addLocation <- function(
     ))
   }
   
+  if( !is.na(addressService) && tolower(addressService) != "photon")
+    stop("Unkown address service.")
+  
   # ----- Reduce to only new locations -----------------------------------------
 
   foundLocationID <- table_getLocationID(locationTbl, longitude, latitude, radius)
@@ -122,6 +128,7 @@ table_addLocation <- function(
         latitude = latitude[i],
         radius = radius,
         stateDataset = stateDataset,
+        addressService = addressService,
         verbose = verbose
       )
       
