@@ -1,5 +1,6 @@
 
 #' @title  Create known location record with core metadata
+#' 
 #' @description Creates a known location record with the following columns
 #' of core metadata:
 #' \itemize{
@@ -17,14 +18,18 @@
 #' \item{city}
 #' \item{zip}
 #' }
+#' 
 #' @param longitude Single longitude in decimal degrees E, Default: NULL
 #' @param latitude Single latitude in decimal degrees N, Default: NULL
 #' @param stateDataset Name of spatial dataset to use for determining state
 #' @param addressService Name of the address service to use for determining
-#' state and country codes. Default: NA. Accepted values: "photon".
+#' the street address. Default: NA. Accepted values: "photon".
 #' @param verbose Logical controlling the generation of progress messages.
+#' 
 #' @return Tibble with a single new known location.
+#' 
 #' @rdname location_initialize
+#' 
 #' @examples
 #' \donttest{
 #' library(MazamaLocationUtils)
@@ -47,7 +52,7 @@ location_initialize <- function(
   longitude = NULL,
   latitude = NULL,
   stateDataset = "NaturalEarthAdm1",
-  addressService = NA,
+  addressService = NULL,
   verbose = TRUE
 ) {
   
@@ -58,7 +63,7 @@ location_initialize <- function(
   validateLonLat(longitude, latitude)
   
   MazamaCoreUtils::stopIfNull(stateDataset)
-
+  
   if ( !exists(stateDataset) ) {
     stop(paste0(
       "You must load \"stateDataset\" with: \n",
@@ -66,8 +71,17 @@ location_initialize <- function(
     ))
   }
   
+  if ( !is.null(addressService) ) {
+    if ( !is.character(addressService) ) {
+      stop("Currently, only the \"photon\" address service is supported.")
+    } else {
+      if ( tolower(addressService) != "photon" )
+        stop("Currently, only the \"photon\" address service is supported.")
+    }
+  }
+  
   # ----- locationID, Elevation ------------------------------------------------
-
+  
   locationID <- location_createID(
     longitude = longitude,
     latitude = latitude
@@ -78,7 +92,7 @@ location_initialize <- function(
     latitude = latitude,
     verbose = verbose
   )  
-
+  
   # ----- Country, State, County, Timezone -------------------------------------
   
   countryCode <- MazamaSpatialUtils::getCountryCode(
@@ -126,57 +140,82 @@ location_initialize <- function(
   
   # ----- Address --------------------------------------------------------------
   
-  if ( !is.na(addressService) && tolower(addressService) == "photon" ) {
-    addressList <- location_getSingleAddress_Photon(
-      longitude = longitude,
-      latitude = latitude,
-      verbose = verbose
+  if ( is.null(addressService) ) {
+    
+    addressList <- list(
+      "houseNumber" = as.character(NA),
+      "street" = as.character(NA),
+      "city" = as.character(NA),
+      "zip" = as.character(NA)
     )
-  
-    # NOTE:  The Photon reverse geocoding service returns NA for countryCode
-    # NOTE:  and stateCode when no specific address can be found. In these 
-    # NOTE:  cases (remote areas) we want to use the MazamaSpatialUtils results.
-    # NOTE:  Otherwise, we trust that Photon reverse geocoding is more accurate
-    # NOTE:  than the point-in-polygon seraches done by MazamaSpatialUtils.
     
-    if ( !is.na(addressList$countryCode) &&
-         addressList$countryCode != countryCode ) {
-      # Trust address data over MazamaSpatialUtils result
-      if ( verbose ) {
-        warning(sprintf(
-          "Using address countryCode \"%s\" over MazamaSpatialUtils \"%s\"",
-          addressList$countryCode, countryCode
-        ))
-      }
-      countryCode <- addressList$countryCode
-    }
+  } else {
     
-    if ( !is.na(addressList$stateCode) &&
-         addressList$stateCode != stateCode ) {
+    if ( tolower(addressService) != "photon" ) {
       
-      # Trust address data over MazamaSpatialUtils result
-      MazamaStateCode <- stateCode
-      
-      # Change stateCode and reset possibly incorrect county
-      stateCode <- addressList$stateCode
-      county <- as.character(NA)
-      
-      # Update locationName
-      locationName <- paste0(
-        tolower(countryCode), ".",
-        tolower(stateCode), "_",
-        stringr::str_sub(locationID, 1, 6)
+      addressList <- list(
+        "houseNumber" = as.character(NA),
+        "street" = as.character(NA),
+        "city" = as.character(NA),
+        "zip" = as.character(NA)
       )
       
-      if ( verbose ) {
-        warning(sprintf(
-          "For %s, using address stateCode \"%s\" over MazamaSpatialUtils \"%s\"",
-          locationName, addressList$stateCode, MazamaStateCode
-        ))
+    } else {
+      
+      addressList <- location_getSingleAddress_Photon(
+        longitude = longitude,
+        latitude = latitude,
+        verbose = verbose
+      )
+      
+      # NOTE:  The Photon reverse geocoding service returns NA for countryCode
+      # NOTE:  and stateCode when no specific address can be found. In these 
+      # NOTE:  cases (remote areas) we want to use the MazamaSpatialUtils results.
+      # NOTE:  Otherwise, we trust that Photon reverse geocoding is more accurate
+      # NOTE:  than the point-in-polygon seraches done by MazamaSpatialUtils.
+      
+      if ( !is.na(addressList$countryCode) &&
+           addressList$countryCode != countryCode ) {
+        # Trust address data over MazamaSpatialUtils result
+        if ( verbose ) {
+          warning(sprintf(
+            "Using address countryCode \"%s\" over MazamaSpatialUtils \"%s\"",
+            addressList$countryCode, countryCode
+          ))
+        }
+        countryCode <- addressList$countryCode
       }
       
-    }
-  }
+      if ( !is.na(addressList$stateCode) &&
+           addressList$stateCode != stateCode ) {
+        
+        # Trust address data over MazamaSpatialUtils result
+        MazamaStateCode <- stateCode
+        
+        # Change stateCode and reset possibly incorrect county
+        stateCode <- addressList$stateCode
+        county <- as.character(NA)
+        
+        # Update locationName
+        locationName <- paste0(
+          tolower(countryCode), ".",
+          tolower(stateCode), "_",
+          stringr::str_sub(locationID, 1, 6)
+        )
+        
+        if ( verbose ) {
+          warning(sprintf(
+            "For %s, using address stateCode \"%s\" over MazamaSpatialUtils \"%s\"",
+            locationName, addressList$stateCode, MazamaStateCode
+          ))
+        }
+        
+      }
+      
+    } 
+    
+  } # END is.null(addressService) check
+  
   # ----- Return ---------------------------------------------------------------
   
   locationTbl <- dplyr::tibble(

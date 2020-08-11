@@ -10,7 +10,7 @@ table_addSingleLocation(
   latitude = NULL,
   radius = NULL,
   stateDataset = "NaturalEarthAdm1",
-  addressService = NA,
+  addressService = NULL,
   verbose = TRUE
 )
 }
@@ -27,7 +27,7 @@ table_addSingleLocation(
 codes, Default: 'NaturalEarthAdm1'}
 
 \item{addressService}{Name of the address service to use for determining
-state and country codes. Default: NA. Accepted values: "photon".}
+the street address. Default: NA. Accepted values: "photon".}
 
 \item{verbose}{Logical controlling the generation of progress messages.}
 }
@@ -58,6 +58,7 @@ locationTbl <-
   locationTbl \%>\%
   table_addSingleLocation(lon, lat, radius = 500)
 }
+
 }
 \seealso{
 \link{table_addLocation}

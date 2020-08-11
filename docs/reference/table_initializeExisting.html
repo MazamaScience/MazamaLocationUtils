@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get an address from a Texas A&amp;M web service — location_getSingleAddress_TexasAM • MazamaLocationUtils</title>
+<title>Converts an existing table into a known location table — table_initializeExisting • MazamaLocationUtils</title>
 
 
 <!-- jquery -->
@@ -35,9 +35,37 @@
 
 
 
-<meta property="og:title" content="Get an address from a Texas A&amp;M web service — location_getSingleAddress_TexasAM" />
-<meta property="og:description" content="Texas A&amp;amp;M APIs are used to determine the address associated with
-the longitude and latitude." />
+<meta property="og:title" content="Converts an existing table into a known location table — table_initializeExisting" />
+<meta property="og:description" content="An existing table may have much of the data that is needed
+for a known location table. This function accepts an incoming table and
+searches for required columns:
+
+locationID
+locationName
+longitude
+latitude
+elevation
+countryCode
+stateCode
+county
+timezone
+houseNumber
+street
+city
+zip
+
+
+The longitude and latitude columns are required but all others
+are optional.
+If any of these optional columns are found, they will be used and the often 
+slow and sometimes slightly inaccurate steps to generate that information
+will be skipped. Any additional columns of information not part of the 
+required list will be retained.
+This method skips the assignment of columns like elevation and all
+address related foe;ds that require web service requests.
+Compared to initializing a brand new table and populating one record at a
+time, this is a much faster way of creating a known location table from a
+pre-existing table of metadata." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -112,20 +140,48 @@ the longitude and latitude." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get an address from a Texas A&amp;M web service</h1>
-    <small class="dont-index">Source: <a href='https://github.com/MazamaScience/MazamaCoreUtils/blob/master/R/location_getSingleAddress_TexasAM.R'><code>R/location_getSingleAddress_TexasAM.R</code></a></small>
-    <div class="hidden name"><code>location_getSingleAddress_TexasAM.Rd</code></div>
+    <h1>Converts an existing table into a known location table</h1>
+    <small class="dont-index">Source: <a href='https://github.com/MazamaScience/MazamaCoreUtils/blob/master/R/table_initializeExisting.R'><code>R/table_initializeExisting.R</code></a></small>
+    <div class="hidden name"><code>table_initializeExisting.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Texas A&amp;M APIs are used to determine the address associated with
-the <code>longitude</code> and <code>latitude</code>.</p>
+    <p>An existing table may have much of the data that is needed
+for a known location table. This function accepts an incoming table and
+searches for required columns:</p>
+<ul>
+<li><p>locationID</p></li>
+<li><p>locationName</p></li>
+<li><p>longitude</p></li>
+<li><p>latitude</p></li>
+<li><p>elevation</p></li>
+<li><p>countryCode</p></li>
+<li><p>stateCode</p></li>
+<li><p>county</p></li>
+<li><p>timezone</p></li>
+<li><p>houseNumber</p></li>
+<li><p>street</p></li>
+<li><p>city</p></li>
+<li><p>zip</p></li>
+</ul>
+
+<p>The <code>longitude</code> and <code>latitude</code> columns are required but all others
+are optional.</p>
+<p>If any of these optional columns are found, they will be used and the often 
+slow and sometimes slightly inaccurate steps to generate that information
+will be skipped. Any additional columns of information not part of the 
+required list will be retained.</p>
+<p>This method skips the assignment of columns like <code>elevation</code> and all
+address related foe;ds that require web service requests.</p>
+<p>Compared to initializing a brand new table and populating one record at a
+time, this is a much faster way of creating a known location table from a
+pre-existing table of metadata.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>location_getSingleAddress_TexasAM</span>(
-  <span class='kw'>longitude</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>latitude</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>apiKey</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+    <pre class="usage"><span class='fu'>table_initializeExisting</span>(
+  <span class='kw'>tbl</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>stateDataset</span> <span class='kw'>=</span> <span class='st'>"NaturalEarthAdm1"</span>,
+  <span class='kw'>countryCodes</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
 )</pre>
 
@@ -133,17 +189,19 @@ the <code>longitude</code> and <code>latitude</code>.</p>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>longitude</th>
-      <td><p>Single longitude in decimal degrees E, Default: NULL</p></td>
+      <th>tbl</th>
+      <td><p>Table of spatial locations that will be converted into a "known
+location" table.</p></td>
     </tr>
     <tr>
-      <th>latitude</th>
-      <td><p>Single latitude in decimal degrees N, Default: NULL</p></td>
+      <th>stateDataset</th>
+      <td><p>Name of spatial dataset to use for determining state
+codes, Default: 'NaturalEarthAdm1'</p></td>
     </tr>
     <tr>
-      <th>apiKey</th>
-      <td><p>Texas A&amp;M Geocoding requires an API key. The first 2500 requests
-are free. Default: NULL</p></td>
+      <th>countryCodes</th>
+      <td><p>Vector of country codes used to optimize spatial
+searching. (See ?MazamaSpatialUtils::getStateCode())</p></td>
     </tr>
     <tr>
       <th>verbose</th>
@@ -153,47 +211,14 @@ are free. Default: NULL</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Numeric elevation value.</p>
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+    <p>Known location tibble with the specified metadata columns.</p>
 
-    <p><a href='https://geoservices.tamu.edu/Services/ReverseGeocoding/WebService/v04_01/HTTP.aspx'>https://geoservices.tamu.edu/Services/ReverseGeocoding/WebService/v04_01/HTTP.aspx</a></p>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>MazamaLocationUtils</span>)
-
-<span class='co'># Set up standard directories and spatial data</span>
-<span class='no'>spatialDataDir</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span>() <span class='co'># typically "~/Data/Spatial"</span>
-<span class='fu'><a href='mazama_initialize.html'>mazama_initialize</a></span>(<span class='no'>spatialDataDir</span>)</div><div class='output co'>#&gt; <span class='error'>Error in validateMazamaSpatialUtils(): </span>
-#&gt; <span class='error'></span>
-#&gt; <span class='error'>You must have the MazamaSpatialUtils package as well as core datasets installed.</span>
-#&gt; <span class='error'></span>
-#&gt; <span class='error'>Install core datasets with:</span>
-#&gt; <span class='error'></span>
-#&gt; <span class='error'>  MazamaSpatialUtils::setSpatialDataDir("YOUR_DATA_DIR")</span>
-#&gt; <span class='error'>  MazamaSpatialUtils::installSpatialData()</span>
-#&gt; <span class='error'></span>
-#&gt; <span class='error'>Once installed, initialize spatial data with:</span>
-#&gt; <span class='error'></span>
-#&gt; <span class='error'>  MazamaSpatialUtils::setSpatialDataDir("YOUR_DATA_DIR")</span>
-#&gt; <span class='error'>  MazamaSpatialUtils::loadSpatialData("EEZCountries")</span>
-#&gt; <span class='error'>  MazamaSpatialUtils::loadSpatialData("OSMTimezones")</span>
-#&gt; <span class='error'>  MazamaSpatialUtils::loadSpatialData("NaturalEarthAdm1")</span>
-#&gt; <span class='error'>  MazamaSpatialUtils::loadSpatialData("USCensusCounties")</span></div><div class='input'>
-<span class='co'># Wenatchee</span>
-<span class='no'>longitude</span> <span class='kw'>&lt;-</span> -<span class='fl'>122.47</span>
-<span class='no'>latitude</span> <span class='kw'>&lt;-</span> <span class='fl'>47.47</span>
-<span class='no'>apiKey</span> <span class='kw'>&lt;-</span> <span class='no'>YOUR_PERSONAL_API_KEY</span></div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'YOUR_PERSONAL_API_KEY' not found</span></div><div class='input'>
-<span class='fu'>location_getSingleAddress_TexasAM</span>(<span class='no'>longitude</span>, <span class='no'>latitude</span>, <span class='no'>apiKey</span>)</div><div class='output co'>#&gt; <span class='error'>Error in MazamaCoreUtils::stopIfNull(apiKey): object 'apiKey' not found</span></div><div class='input'># }
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
-      <li><a href="#references">References</a></li>
-      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

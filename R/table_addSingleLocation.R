@@ -1,9 +1,11 @@
 
 #' @title Add a single new known location record to a table
+#' 
 #' @description Incoming \code{longitude} and \code{latitude} values are compared 
 #' against the incoming \code{locationTbl} to see if the are already within
 #' \code{radius} meters of an existing entry.  A new record is created for
 #' if the location is not already found in \code{locationTbl}.
+#' 
 #' @param locationTbl Tibble of known locations, Default: NULL
 #' @param longitude Single longitude in decimal degrees E, Default: NULL
 #' @param latitude Single latitude in decimal degrees N, Default: NULL
@@ -11,9 +13,11 @@
 #' @param stateDataset Name of spatial dataset to use for determining state
 #' codes, Default: 'NaturalEarthAdm1'
 #' @param addressService Name of the address service to use for determining
-#' state and country codes. Default: NA. Accepted values: "photon".
+#' the street address. Default: NA. Accepted values: "photon".
 #' @param verbose Logical controlling the generation of progress messages.
+#' 
 #' @return Updated tibble of known locations.
+#' 
 #' @examples
 #' \donttest{
 #' library(MazamaLocationUtils)
@@ -32,6 +36,7 @@
 #'   locationTbl %>%
 #'   table_addSingleLocation(lon, lat, radius = 500)
 #' }
+#' 
 #' @seealso \link{table_addLocation}
 #' @seealso \link{table_removeRecord}
 #' @seealso \link{table_updateSingleRecord}
@@ -39,13 +44,14 @@
 #' @export 
 #' @importFrom MazamaCoreUtils stopIfNull
 #' @importFrom dplyr bind_rows
+#' 
 table_addSingleLocation <- function(
   locationTbl = NULL,
   longitude = NULL,
   latitude = NULL,
   radius = NULL,
   stateDataset = "NaturalEarthAdm1",
-  addressService = NA,
+  addressService = NULL,
   verbose = TRUE
 ) {
   

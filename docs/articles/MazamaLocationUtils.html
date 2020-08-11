@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.10</span>
       </span>
     </div>
 
@@ -122,15 +122,12 @@
 <p>Lets take some metadata we have for air quality monitors in Washington state and create a <em>known location</em> table for them.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">wa &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/get.html">get</a></span>(<span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="st">"wa_airfire_meta"</span>, <span class="dt">package =</span> <span class="st">"MazamaLocationUtils"</span>))</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>(wa)</a></code></pre></div>
-<pre><code>##  [1] "monitorID"             "longitude"            
-##  [3] "latitude"              "elevation"            
-##  [5] "timezone"              "countryCode"          
-##  [7] "stateCode"             "siteName"             
-##  [9] "agencyName"            "countyName"           
-## [11] "msaName"               "monitorType"          
-## [13] "siteID"                "instrumentID"         
-## [15] "aqsID"                 "pwfslID"              
-## [17] "pwfslDataIngestSource" "telemetryAggregator"  
+<pre><code>##  [1] "monitorID"             "longitude"             "latitude"             
+##  [4] "elevation"             "timezone"              "countryCode"          
+##  [7] "stateCode"             "siteName"              "agencyName"           
+## [10] "countyName"            "msaName"               "monitorType"          
+## [13] "siteID"                "instrumentID"          "aqsID"                
+## [16] "pwfslID"               "pwfslDataIngestSource" "telemetryAggregator"  
 ## [19] "telemetryUnitID"</code></pre>
 <div id="creating-a-known-location-table" class="section level3">
 <h3 class="hasAnchor">
@@ -147,10 +144,9 @@
 <a class="sourceLine" id="cb3-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="../reference/table_addLocation.html">table_addLocation</a></span>(wa<span class="op">$</span>longitude, wa<span class="op">$</span>latitude, <span class="dt">radius =</span> <span class="dv">500</span>) </a></code></pre></div>
 <p>Right now, our <em>known locations</em> table contains only automatically generated spatial metadata:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>(wa_monitors_<span class="dv">500</span>)</a></code></pre></div>
-<pre><code>##  [1] "locationID"   "locationName" "longitude"    "latitude"    
-##  [5] "elevation"    "countryCode"  "stateCode"    "county"      
-##  [9] "timezone"     "houseNumber"  "street"       "city"        
-## [13] "zip"</code></pre>
+<pre><code>##  [1] "locationID"   "locationName" "longitude"    "latitude"     "elevation"   
+##  [6] "countryCode"  "stateCode"    "county"       "timezone"     "houseNumber" 
+## [11] "street"       "city"         "zip"</code></pre>
 </div>
 <div id="merging-external-metadata" class="section level3">
 <h3 class="hasAnchor">
@@ -185,21 +181,21 @@
 <a class="sourceLine" id="cb6-26" data-line-number="26">locationTbl_indices &lt;-<span class="st"> </span><span class="kw"><a href="../reference/table_getRecordIndex.html">table_getRecordIndex</a></span>(locationTbl, locationID)</a>
 <a class="sourceLine" id="cb6-27" data-line-number="27">locationTbl[locationTbl_indices, <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"city"</span>, <span class="st">"siteName"</span>)]</a></code></pre></div>
 <pre><code>## # A tibble: 13 x 2
-##    city               siteName                    
-##    &lt;chr&gt;              &lt;chr&gt;                       
-##  1 Chelan             Chelan-Woodin Ave           
-##  2 La Crosse          Lacrosse-Hill St            
-##  3 Tri-Cities         Kennewick-Metaline          
-##  4 Sunnyside          Sunnyside-S 16th            
-##  5 Inchelium          Inchelium                   
-##  6 Wellpinit          Wellpinit-Spokane Tribe     
-##  7 Lake Forest Park   Lake Forest Park-Town Center
-##  8 Okanogan County    Twisp-Glover St             
-##  9 Limestone Junction Maple Falls-Azure Way       
-## 10 Okanogan County    Omak-Colville Tribe         
-## 11 Ritzville          "Ritzville-Alder St "       
-## 12 Darrington         Darrington-Fir St           
-## 13 Tukwila            Tukwila_Allentown</code></pre>
+##    city               siteName                      
+##    &lt;chr&gt;              &lt;chr&gt;                         
+##  1 Chelan             "Chelan-Woodin Ave"           
+##  2 La Crosse          "Lacrosse-Hill St"            
+##  3 Tri-Cities         "Kennewick-Metaline"          
+##  4 Sunnyside          "Sunnyside-S 16th"            
+##  5 Inchelium          "Inchelium"                   
+##  6 Wellpinit          "Wellpinit-Spokane Tribe"     
+##  7 Lake Forest Park   "Lake Forest Park-Town Center"
+##  8 Okanogan County    "Twisp-Glover St"             
+##  9 Limestone Junction "Maple Falls-Azure Way"       
+## 10 Okanogan County    "Omak-Colville Tribe"         
+## 11 Ritzville          "Ritzville-Alder St "         
+## 12 Darrington         "Darrington-Fir St"           
+## 13 Tukwila            "Tukwila_Allentown"</code></pre>
 <p>Very nice.</p>
 </div>
 <div id="finding-known-locations" class="section level3">
@@ -225,10 +221,9 @@
 <a class="sourceLine" id="cb10-5" data-line-number="5">  <span class="dt">latitude =</span> lats,</a>
 <a class="sourceLine" id="cb10-6" data-line-number="6">  <span class="dt">radius =</span> <span class="dv">500</span></a>
 <a class="sourceLine" id="cb10-7" data-line-number="7">) <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span>(city)</a></code></pre></div>
-<pre><code>##  [1] NA                   NA                   "Tri-Cities"        
-##  [4] NA                   NA                   NA                  
-##  [7] "Lake Forest Park"   NA                   "Limestone Junction"
-## [10] "Okanogan County"    "Ritzville"          "Darrington"        
+<pre><code>##  [1] NA                 NA                 NA                 "Sunnyside"       
+##  [5] "Inchelium"        "Wellpinit"        "Lake Forest Park" "Okanogan County" 
+##  [9] NA                 "Okanogan County"  "Ritzville"        "Darrington"      
 ## [13] "Tukwila"</code></pre>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="co"># How about 5000 meters?</span></a>
 <a class="sourceLine" id="cb12-2" data-line-number="2"><span class="kw"><a href="../reference/table_getNearestLocation.html">table_getNearestLocation</a></span>(</a>

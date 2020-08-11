@@ -8,7 +8,7 @@ location_initialize(
   longitude = NULL,
   latitude = NULL,
   stateDataset = "NaturalEarthAdm1",
-  addressService = NA,
+  addressService = NULL,
   verbose = TRUE
 )
 }
@@ -20,7 +20,7 @@ location_initialize(
 \item{stateDataset}{Name of spatial dataset to use for determining state}
 
 \item{addressService}{Name of the address service to use for determining
-state and country codes. Default: NA. Accepted values: "photon".}
+the street address. Default: NA. Accepted values: "photon".}
 
 \item{verbose}{Logical controlling the generation of progress messages.}
 }

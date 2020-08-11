@@ -73,7 +73,7 @@ table_addLocation()." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.10</span>
       </span>
     </div>
 
@@ -171,7 +171,7 @@ columns whose values are to be replaced, Default: NULL</p></td>
   <span class='no'>locationTbl</span> <span class='kw'>%&gt;%</span>
   <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='no'>city</span> <span class='kw'>==</span> <span class='st'>"Wenatchee"</span>)
 
-<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='no'>wenatcheeRecord</span>)</div><div class='output co'>#&gt; Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	1 obs. of  13 variables:
+<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='no'>wenatcheeRecord</span>)</div><div class='output co'>#&gt; tibble [1 × 13] (S3: tbl_df/tbl/data.frame)
 #&gt;  $ locationID  : chr "8e54314f43eb8746"
 #&gt;  $ locationName: chr "us.wa_8e5431"
 #&gt;  $ longitude   : num -120
@@ -198,7 +198,7 @@ columns whose values are to be replaced, Default: NULL</p></td>
 <span class='co'># Look at the new record</span>
 <span class='no'>locationTbl</span> <span class='kw'>%&gt;%</span>
   <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='no'>city</span> <span class='kw'>==</span> <span class='st'>"Wenatchee"</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>()</div><div class='output co'>#&gt; Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	1 obs. of  13 variables:
+  <span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>()</div><div class='output co'>#&gt; tibble [1 × 13] (S3: tbl_df/tbl/data.frame)
 #&gt;  $ locationID  : chr "8e54314f43eb8746"
 #&gt;  $ locationName: chr "Wenatchee-Fifth St"
 #&gt;  $ longitude   : num -120

@@ -70,7 +70,7 @@ locations associated with each locationID." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.10</span>
       </span>
     </div>
 
@@ -160,7 +160,7 @@ locations associated with each <code>locationID</code>.</p>
 <span class='co'># Now find the row associated with this ID</span>
 <span class='no'>recordIndex</span> <span class='kw'>&lt;-</span> <span class='fu'>table_getRecordIndex</span>(<span class='no'>locationTbl</span>, <span class='no'>locationID</span>)
 
-<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='no'>locationTbl</span>[<span class='no'>recordIndex</span>,])</div><div class='output co'>#&gt; Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	1 obs. of  13 variables:
+<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='no'>locationTbl</span>[<span class='no'>recordIndex</span>,])</div><div class='output co'>#&gt; tibble [1 × 13] (S3: tbl_df/tbl/data.frame)
 #&gt;  $ locationID  : chr "8e54314f43eb8746"
 #&gt;  $ locationName: chr "us.wa_8e5431"
 #&gt;  $ longitude   : num -120

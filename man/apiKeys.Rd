@@ -4,7 +4,9 @@
 \name{apiKeys}
 \alias{apiKeys}
 \title{API keys for reverse geocoding services.}
-\format{List of character strings.}
+\format{
+List of character strings.
+}
 \description{
 This package maintains an internal set of API keys which 
 users can set using \code{setAPIKey()}. These keys will be remembered for

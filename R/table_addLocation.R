@@ -1,10 +1,13 @@
 
 #' @title Add new known location records to a table
+#' 
 #' @description Incoming \code{longitude} and \code{latitude} values are compared 
 #' against the incoming \code{locationTbl} to see if the are already within
 #' \code{radius} meters of an existing entry. A new record is created for
 #' each location that is not already found in \code{locationTbl}.
+#' 
 #' @note This funciton is a vecorized version of \code{table_addSingleLocation()}.
+#' 
 #' @param locationTbl Tibble of known locations, Default: NULL
 #' @param longitude Vector of longitudes in decimal degrees E, Default: NULL
 #' @param latitude Vector of latitudes in decimal degrees N, Default: NULL
@@ -12,9 +15,11 @@
 #' @param stateDataset Name of spatial dataset to use for determining state
 #' codes, Default: 'NaturalEarthAdm1'
 #' @param addressService Name of the address service to use for determining
-#' state and country codes. Default: NA. Accepted values: "photon".
+#' the street address. Default: NA. Accepted values: "photon".
 #' @param verbose Logical controlling the generation of progress messages.
+#' 
 #' @return Updated tibble of known locations.
+#' 
 #' @examples
 #' \donttest{
 #' library(MazamaLocationUtils)
@@ -40,13 +45,14 @@
 #' @export 
 #' @importFrom MazamaCoreUtils stopIfNull
 #' @importFrom dplyr bind_rows
+#' 
 table_addLocation <- function(
   locationTbl = NULL,
   longitude = NULL,
   latitude = NULL,
   radius = NULL,
   stateDataset = "NaturalEarthAdm1",
-  addressService = NA,
+  addressService = NULL,
   verbose = TRUE
 ) {
   
@@ -87,8 +93,14 @@ table_addLocation <- function(
     ))
   }
   
-  if( !is.na(addressService) && tolower(addressService) != "photon")
-    stop("Unkown address service.")
+  if ( !is.null(addressService) ) {
+    if ( !is.character(addressService) ) {
+      stop("Currently, only the \"photon\" address service is supported.")
+    } else {
+      if ( tolower(addressService) != "photon" )
+        stop("Currently, only the \"photon\" address service is supported.")
+    }
+  }
   
   # ----- Reduce to only new locations -----------------------------------------
 
