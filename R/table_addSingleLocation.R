@@ -12,8 +12,10 @@
 #' @param radius Radius in meters, Default: NULL
 #' @param stateDataset Name of spatial dataset to use for determining state
 #' codes, Default: 'NaturalEarthAdm1'
+#' @param elevationService Name of the elevation service to use for determining
+#' the elevation. Default: NULL. Accepted values: "usgs".
 #' @param addressService Name of the address service to use for determining
-#' the street address. Default: NA. Accepted values: "photon".
+#' the street address. Default: NULL. Accepted values: "photon".
 #' @param verbose Logical controlling the generation of progress messages.
 #' 
 #' @return Updated tibble of known locations.
@@ -51,6 +53,7 @@ table_addSingleLocation <- function(
   latitude = NULL,
   radius = NULL,
   stateDataset = "NaturalEarthAdm1",
+  elevationService = NULL,
   addressService = NULL,
   verbose = TRUE
 ) {
@@ -96,6 +99,7 @@ table_addSingleLocation <- function(
     longitude = longitude,
     latitude = latitude,
     stateDataset = stateDataset,
+    elevationService = elevationService,
     addressService = addressService,
     verbose = verbose
   )

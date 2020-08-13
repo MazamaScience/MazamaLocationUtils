@@ -22,8 +22,10 @@
 #' @param longitude Single longitude in decimal degrees E, Default: NULL
 #' @param latitude Single latitude in decimal degrees N, Default: NULL
 #' @param stateDataset Name of spatial dataset to use for determining state
+#' @param elevationService Name of the elevation service to use for determining
+#' the elevation. Default: NULL. Accepted values: "usgs".
 #' @param addressService Name of the address service to use for determining
-#' the street address. Default: NA. Accepted values: "photon".
+#' the street address. Default: NULL Accepted values: "photon".
 #' @param verbose Logical controlling the generation of progress messages.
 #' 
 #' @return Tibble with a single new known location.
@@ -52,6 +54,7 @@ location_initialize <- function(
   longitude = NULL,
   latitude = NULL,
   stateDataset = "NaturalEarthAdm1",
+  elevationService = NULL,
   addressService = NULL,
   verbose = TRUE
 ) {
@@ -80,6 +83,15 @@ location_initialize <- function(
     }
   }
   
+  if ( !is.null(elevationService) ) {
+    if ( !is.character(elevationService) ) {
+      stop("Currently, only the \"usgs\" address service is supported.")
+    } else {
+      if ( tolower(elevationService) != "usgs" )
+        stop("Currently, only the \"usgs\" address service is supported.")
+    }
+  }
+  
   # ----- locationID, Elevation ------------------------------------------------
   
   locationID <- location_createID(
@@ -87,11 +99,27 @@ location_initialize <- function(
     latitude = latitude
   )
   
-  elevation <- location_getSingleElevation_USGS(
-    longitude = longitude,
-    latitude = latitude,
-    verbose = verbose
-  )  
+  if ( is.null(elevationService) ) {
+    
+    elevation <- NA
+    
+  } else {
+    
+    if ( tolower(elevationService) != "usgs" ) {
+      
+        elevation <- NA
+      
+    } else {
+      
+      elevation <- location_getSingleElevation_USGS(
+        longitude = longitude,
+        latitude = latitude,
+        verbose = verbose
+      )  
+      
+    }
+  }
+
   
   # ----- Country, State, County, Timezone -------------------------------------
   

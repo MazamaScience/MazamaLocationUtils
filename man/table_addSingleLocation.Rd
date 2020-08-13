@@ -10,6 +10,7 @@ table_addSingleLocation(
   latitude = NULL,
   radius = NULL,
   stateDataset = "NaturalEarthAdm1",
+  elevationService = NULL,
   addressService = NULL,
   verbose = TRUE
 )
@@ -26,8 +27,11 @@ table_addSingleLocation(
 \item{stateDataset}{Name of spatial dataset to use for determining state
 codes, Default: 'NaturalEarthAdm1'}
 
+\item{elevationService}{Name of the elevation service to use for determining
+the elevation. Default: NULL. Accepted values: "usgs".}
+
 \item{addressService}{Name of the address service to use for determining
-the street address. Default: NA. Accepted values: "photon".}
+the street address. Default: NULL. Accepted values: "photon".}
 
 \item{verbose}{Logical controlling the generation of progress messages.}
 }
