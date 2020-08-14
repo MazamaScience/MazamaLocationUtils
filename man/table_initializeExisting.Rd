@@ -8,6 +8,7 @@ table_initializeExisting(
   tbl = NULL,
   stateDataset = "NaturalEarthAdm1",
   countryCodes = NULL,
+  radius = NULL,
   verbose = TRUE
 )
 }
@@ -20,6 +21,9 @@ codes, Default: 'NaturalEarthAdm1'}
 
 \item{countryCodes}{Vector of country codes used to optimize spatial
 searching. (See ?MazamaSpatialUtils::getStateCode())}
+
+\item{radius}{Maximum distance in meters between two locations that would
+be considered "too close"}
 
 \item{verbose}{Logical controlling the generation of progress messages.}
 }

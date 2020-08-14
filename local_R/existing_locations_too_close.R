@@ -56,6 +56,38 @@ c <- which(rowSums(b) > 0)
 # > c
 # [1]  120  179  325  326  738  739  750  751  770  771 1597 1598
 
+d <- which(b > 0, arr.ind = TRUE)
+#        row  col
+#  [1,]  179  120
+#  [2,]  120  179
+#  [3,]  326  325
+#  [4,]  325  326
+#  [5,]  739  738
+#  [6,]  738  739
+#  [7,]  751  750
+#  [8,]  750  751
+#  [9,]  771  770
+# [10,]  770  771
+# [11,] 1598 1597
+# [12,] 1597 1598
+
+everyOther <- d[seq(1, nrow(d), 2), ]
+
+lines <- c()
+for(i in seq(nrow(everyOther))) {
+  nwsID1 <- known_locations[everyOther[i,1],]$nwsID
+  nwsID2 <- known_locations[everyOther[i,2],]$nwsID
+  dist <- a[everyOther[i,1], everyOther[i,2]]
+  newLine <- sprintf(
+    "nwsID: %s and nwsID %s. Distance: %s m",
+    nwsID1,
+    nwsID2,
+    round(dist, 2)
+  )
+  
+  lines <- append(lines, newLine)
+}
+
 # TODO:  Use this information to extract distances from `a`` and individual records
 # TODO:  from 'known_locations' to create a nice warning message explaining
 # TODO:  what is going on.

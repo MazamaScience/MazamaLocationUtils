@@ -42,6 +42,8 @@
 #' codes, Default: 'NaturalEarthAdm1'
 #' @param countryCodes Vector of country codes used to optimize spatial
 #' searching. (See ?MazamaSpatialUtils::getStateCode())
+#' @param radius Maximum distance in meters between two locations that would
+#' be considered "too close"
 #' @param verbose Logical controlling the generation of progress messages.
 #' 
 #' @return Known location tibble with the specified metadata columns.
@@ -56,6 +58,7 @@ table_initializeExisting <- function(
   tbl = NULL,
   stateDataset = "NaturalEarthAdm1",
   countryCodes = NULL,
+  radius = NULL,
   verbose = TRUE
 ) {
   
@@ -83,6 +86,9 @@ table_initializeExisting <- function(
   
   if ( "locationID" %in% names(tbl) )
     stop("Parameter 'tbl' already has a column named \"locationID\"")
+  
+  if ( !is.null(radius) && !is.numeric(radius) )
+    stop("Parameter 'radius' must be a numeric value.")
   
   # ----- Create locationTbl ---------------------------------------------------
   
@@ -232,8 +238,59 @@ table_initializeExisting <- function(
   allColumns <- c(requiredColumns, extraColumns)
   
   # TODO:  This doesn't seem to reorder like I thought it should.
-  loctionTbl <- dplyr::select(locationTbl, all_of(allColumns))
+  locationTbl <- dplyr::select(locationTbl, all_of(allColumns))
   
+  
+  # ----- Check for locations that are too close -------------------------------
+  
+  if ( !is.null(radius) ) {
+    
+    # Calculate distances between each location
+    distances <- geodist::geodist(locationTbl)
+    
+    # Get distances that are less than the given radius
+    # NOTE: the distance between a location and itself is always zero
+    distancesLessThanR <- (distances != 0) & (distances < radius)
+    
+    # Select the locations that are "too close".
+    tooClose <- which(distancesLessThanR > 0, arr.ind = TRUE)
+    
+    # NOTE: If location a and b are too close, two entries will be returned:
+    #        row  col
+    #  [1,]  a    b
+    #  [2,]  b    a
+    #       Hence, we select every other entry:
+    tooClose <- tooClose[seq(1, nrow(tooClose), 2), ]
+    
+    tooCloseCount <- nrow(tooClose)
+    
+    # Format the first line of the warning message
+    firstLine <- sprintf(
+      "%d locations have neighbors that are < %d m away",
+      round(tooCloseCount),
+      radius
+    )
+    
+    # Create a warning line for each location pair
+    lines <- c(firstLine)
+    for ( i in seq(nrow(tooClose)) ) {
+      
+      dist <- distances[tooClose[i, 1], tooClose[i, 2]]
+      newLine <- sprintf(
+        "Entries %s %s. Distance: %s m",
+        tooClose[i, 1],
+        tooClose[i, 2],
+        round(dist, 2)
+      )
+      
+      lines <- append(lines, newLine)
+      
+    }
+
+    # Print the warning message
+    message(paste(lines, collapse = "\n"))
+  }
+
   # ----- Return ---------------------------------------------------------------
   
   return(locationTbl)
