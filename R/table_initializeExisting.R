@@ -42,11 +42,19 @@
 #' codes, Default: 'NaturalEarthAdm1'
 #' @param countryCodes Vector of country codes used to optimize spatial
 #' searching. (See ?MazamaSpatialUtils::getStateCode())
-#' @param radius Maximum distance in meters between two locations that would
-#' be considered "too close"
+#' @param radius Radius in meters, Default: NULL 
 #' @param verbose Logical controlling the generation of progress messages.
 #' 
-#' @return Known location tibble with the specified metadata columns.
+#' @return Known location tibble with the specified metadata columns. Any 
+#' locations whose circles (as defined by \code{radius}) overlap will generate
+#' warning messages. 
+#' 
+#' It is incumbent upon the user to address these issue by one of:
+#' 
+#' \enumerate{
+#' \item{reduce the radius until no overlaps occur}
+#' \item{assign one of the overlapping locations to the other location}
+#' }
 #' 
 #' @rdname table_initializeExisting
 #' @export 
@@ -67,6 +75,7 @@ table_initializeExisting <- function(
   # ----- Validate parameters --------------------------------------------------
   
   MazamaCoreUtils::stopIfNull(tbl)
+  MazamaCoreUtils::stopIfNull(radius)
   
   if ( !"data.frame" %in% class(tbl) )
     stop("Parameter 'tbl' is not of class \"data.frame\".")
@@ -87,15 +96,17 @@ table_initializeExisting <- function(
   if ( "locationID" %in% names(tbl) )
     stop("Parameter 'tbl' already has a column named \"locationID\"")
   
-  if ( !is.null(radius) && !is.numeric(radius) )
+  if ( !is.numeric(radius) )
     stop("Parameter 'radius' must be a numeric value.")
+  
+  diameter <- 2 * radius
   
   # ----- Create locationTbl ---------------------------------------------------
   
   tblColumns <- names(tbl)
   
   locationTbl <- tbl
-
+  
   # * locationID -----
   
   locationTbl$locationID <- location_createID(
@@ -116,7 +127,7 @@ table_initializeExisting <- function(
     
     if ( verbose ) 
       message("Searching for countryCodes...")
-
+    
     locationTbl$countryCode <- MazamaSpatialUtils::getCountryCode(
       lon = locationTbl$longitude,
       lat = locationTbl$latitude,
@@ -143,7 +154,7 @@ table_initializeExisting <- function(
     )
     
   }
-
+  
   # * locationName -----
   
   if ( !"locationName" %in% tblColumns ) {
@@ -240,57 +251,77 @@ table_initializeExisting <- function(
   # TODO:  This doesn't seem to reorder like I thought it should.
   locationTbl <- dplyr::select(locationTbl, all_of(allColumns))
   
-  
   # ----- Check for locations that are too close -------------------------------
   
-  if ( !is.null(radius) ) {
+  # Calculate distances between each location
+  distances <- geodist::geodist(locationTbl)
+  
+  # Get distances that are less than the given diameter
+  # NOTE: the distance between a location and itself is always zero
+  distancesLessThanR <- (distances != 0) & (distances < diameter )
+  
+  # Select the locations that are "too close".
+  tooClose <- which(distancesLessThanR > 0, arr.ind = TRUE)
+  
+  if ( nrow(tooClose) > 0 ) {
     
-    # Calculate distances between each location
-    distances <- geodist::geodist(locationTbl)
+    # NOTE:  If location a and b are too close, two entries will be returned:
+    # NOTE:        row  col
+    # NOTE:   [#,]  a    b
+    # NOTE:    ...
+    # NOTE:   [#,]  b    a
+    #
+    # NOTE:  While often the case, there is no guarantee that complementary
+    # NOTE:  rows will be adjacent to eachother. The next couple of lines
+    # NOTE:  find the rows that have the same indices and reduce the table to
+    # NOTE:  only unique pairs.
     
-    # Get distances that are less than the given radius
-    # NOTE: the distance between a location and itself is always zero
-    distancesLessThanR <- (distances != 0) & (distances < radius)
-    
-    # Select the locations that are "too close".
-    tooClose <- which(distancesLessThanR > 0, arr.ind = TRUE)
-    
-    # NOTE: If location a and b are too close, two entries will be returned:
-    #        row  col
-    #  [1,]  a    b
-    #  [2,]  b    a
-    #       Hence, we select every other entry:
-    tooClose <- tooClose[seq(1, nrow(tooClose), 2), ]
+    sortedMatrix <- t(apply(tooClose, 1, sort))
+    tooClose <- sortedMatrix[!duplicated(sortedMatrix),]
     
     tooCloseCount <- nrow(tooClose)
     
     # Format the first line of the warning message
     firstLine <- sprintf(
-      "%d locations have neighbors that are < %d m away",
+      "%d locations have neighbors that are < %d m apart\n",
       round(tooCloseCount),
-      radius
+      diameter
     )
     
-    # Create a warning line for each location pair
-    lines <- c(firstLine)
-    for ( i in seq(nrow(tooClose)) ) {
+    # Create a vector of lines, on for each tooClose location pair
+    tooCloseLines <- vector("character", length = tooCloseCount)
+    for ( i in seq_len(nrow(tooClose)) ) {
       
       dist <- distances[tooClose[i, 1], tooClose[i, 2]]
-      newLine <- sprintf(
-        "Entries %s %s. Distance: %s m",
+      tooCloseLines[i] <- sprintf(
+        "Distance: %6.1f -- rows %s %s",
+        round(dist, 1),
         tooClose[i, 1],
-        tooClose[i, 2],
-        round(dist, 2)
+        tooClose[i, 2]
       )
       
-      lines <- append(lines, newLine)
-      
     }
+    
+    instructions <- "
+The presence of locations closer than twice the specified radius invalidate the 
+uniqueness of a 'known locations' table and should be rectified. There are two 
+basic options:
 
-    # Print the warning message
-    message(paste(lines, collapse = "\n"))
+  1) Reduce the radius to less than the minimum distance.
+  2) Manually merge nearby locations to share the same longitude, latitude and
+     locationID
+     
+Please review the returned locationTbl for the identified rows.
+
+  "
+    
+    lines <- c(firstLine, tooCloseLines, instructions)
+    
+    # Paste the lines together
+    warning(paste(lines, collapse = "\n"))
+    
   }
-
+  
   # ----- Return ---------------------------------------------------------------
   
   return(locationTbl)

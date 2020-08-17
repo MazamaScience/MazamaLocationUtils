@@ -22,13 +22,21 @@ codes, Default: 'NaturalEarthAdm1'}
 \item{countryCodes}{Vector of country codes used to optimize spatial
 searching. (See ?MazamaSpatialUtils::getStateCode())}
 
-\item{radius}{Maximum distance in meters between two locations that would
-be considered "too close"}
+\item{radius}{Radius in meters, Default: NULL}
 
 \item{verbose}{Logical controlling the generation of progress messages.}
 }
 \value{
-Known location tibble with the specified metadata columns.
+Known location tibble with the specified metadata columns. Any 
+locations whose circles (as defined by \code{radius}) overlap will generate
+warning messages. 
+
+It is incumbent upon the user to address these issue by one of:
+
+\enumerate{
+\item{reduce the radius until no overlaps occur}
+\item{assign one of the overlapping locations to the other location}
+}
 }
 \description{
 An existing table may have much of the data that is needed
