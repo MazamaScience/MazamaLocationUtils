@@ -55,7 +55,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/MazamaScience/MazamaCoreUtils">
+  <a href="https://github.com/MazamaScience/MazamaLocationUtils">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -78,7 +78,7 @@
             
             <h4 class="date">2019-10-22</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/MazamaScience/MazamaCoreUtils/blob/master/vignettes/MazamaLocationUtils.Rmd"><code>vignettes/MazamaLocationUtils.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/MazamaScience/MazamaLocationUtils/blob/master/vignettes/MazamaLocationUtils.Rmd"><code>vignettes/MazamaLocationUtils.Rmd</code></a></small>
       <div class="hidden name"><code>MazamaLocationUtils.Rmd</code></div>
 
     </div>
@@ -213,8 +213,9 @@
 <a class="sourceLine" id="cb8-9" data-line-number="9">  <span class="dt">latitude =</span> lats,</a>
 <a class="sourceLine" id="cb8-10" data-line-number="10">  <span class="dt">radius =</span> <span class="dv">50</span></a>
 <a class="sourceLine" id="cb8-11" data-line-number="11">) <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span>(city)</a></code></pre></div>
-<pre><code>##  [1] "Chelan"    NA          NA          NA          NA          "Wellpinit"
-##  [7] NA          NA          NA          NA          NA          NA         
+<pre><code>##  [1] NA                 NA                 NA                 NA                
+##  [5] NA                 NA                 "Lake Forest Park" NA                
+##  [9] NA                 NA                 NA                 NA                
 ## [13] NA</code></pre>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="co"># Any known locations within 500 meters</span></a>
 <a class="sourceLine" id="cb10-2" data-line-number="2"><span class="kw"><a href="../reference/table_getNearestLocation.html">table_getNearestLocation</a></span>(</a>
@@ -223,11 +224,11 @@
 <a class="sourceLine" id="cb10-5" data-line-number="5">  <span class="dt">latitude =</span> lats,</a>
 <a class="sourceLine" id="cb10-6" data-line-number="6">  <span class="dt">radius =</span> <span class="dv">500</span></a>
 <a class="sourceLine" id="cb10-7" data-line-number="7">) <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span>(city)</a></code></pre></div>
-<pre><code>##  [1] "Chelan"             "La Crosse"          NA                  
+<pre><code>##  [1] NA                   NA                   "Tri-Cities"        
 ##  [4] NA                   "Inchelium"          "Wellpinit"         
-##  [7] NA                   NA                   "Limestone Junction"
-## [10] NA                   NA                   NA                  
-## [13] NA</code></pre>
+##  [7] "Lake Forest Park"   "Okanogan County"    "Limestone Junction"
+## [10] "Okanogan County"    NA                   "Darrington"        
+## [13] "Tukwila"</code></pre>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="co"># How about 5000 meters?</span></a>
 <a class="sourceLine" id="cb12-2" data-line-number="2"><span class="kw"><a href="../reference/table_getNearestLocation.html">table_getNearestLocation</a></span>(</a>
 <a class="sourceLine" id="cb12-3" data-line-number="3">  wa_monitors_<span class="dv">500</span>,</a>
@@ -285,7 +286,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Jonathan Callahan, Kayleigh Wilson.</p>
+  <p>Developed by Jonathan Callahan, Eli Grosman, Kayleigh Wilson.</p>
 </div>
 
 <div class="pkgdown">
