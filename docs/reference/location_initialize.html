@@ -156,6 +156,7 @@ of core metadata:</p><ul>
   <span class='kw'>longitude</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>latitude</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>stateDataset</span> <span class='kw'>=</span> <span class='st'>"NaturalEarthAdm1"</span>,
+  <span class='kw'>elevationService</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>addressService</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
 )</pre>
@@ -176,9 +177,14 @@ of core metadata:</p><ul>
       <td><p>Name of spatial dataset to use for determining state</p></td>
     </tr>
     <tr>
+      <th>elevationService</th>
+      <td><p>Name of the elevation service to use for determining
+the elevation. Default: NULL. Accepted values: "usgs".</p></td>
+    </tr>
+    <tr>
       <th>addressService</th>
       <td><p>Name of the address service to use for determining
-the street address. Default: NA. Accepted values: "photon".</p></td>
+the street address. Default: NULL Accepted values: "photon".</p></td>
     </tr>
     <tr>
       <th>verbose</th>

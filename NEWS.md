@@ -2,6 +2,8 @@
 
 * Added `table_initializeExisting()` for fast conversion of an existing 
 table of spatial metadata into a standardized "known location" table.
+* Added `table_findOverlappingLocations()` to help choose an appropriate radius
+when initializing frorm an existing metadata table.
 * Added `addressService` argument to `table_addLocation()`, 
 `table_addSingleLocation() and `location_initialize()` to skip the address
 step that requires web services.

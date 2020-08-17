@@ -213,7 +213,9 @@
 <a class="sourceLine" id="cb8-9" data-line-number="9">  <span class="dt">latitude =</span> lats,</a>
 <a class="sourceLine" id="cb8-10" data-line-number="10">  <span class="dt">radius =</span> <span class="dv">50</span></a>
 <a class="sourceLine" id="cb8-11" data-line-number="11">) <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span>(city)</a></code></pre></div>
-<pre><code>##  [1] NA NA NA NA NA NA NA NA NA NA NA NA NA</code></pre>
+<pre><code>##  [1] "Chelan"    NA          NA          NA          NA          "Wellpinit"
+##  [7] NA          NA          NA          NA          NA          NA         
+## [13] NA</code></pre>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="co"># Any known locations within 500 meters</span></a>
 <a class="sourceLine" id="cb10-2" data-line-number="2"><span class="kw"><a href="../reference/table_getNearestLocation.html">table_getNearestLocation</a></span>(</a>
 <a class="sourceLine" id="cb10-3" data-line-number="3">  wa_monitors_<span class="dv">500</span>,</a>
@@ -221,10 +223,11 @@
 <a class="sourceLine" id="cb10-5" data-line-number="5">  <span class="dt">latitude =</span> lats,</a>
 <a class="sourceLine" id="cb10-6" data-line-number="6">  <span class="dt">radius =</span> <span class="dv">500</span></a>
 <a class="sourceLine" id="cb10-7" data-line-number="7">) <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span>(city)</a></code></pre></div>
-<pre><code>##  [1] NA                 NA                 NA                 "Sunnyside"       
-##  [5] "Inchelium"        "Wellpinit"        "Lake Forest Park" "Okanogan County" 
-##  [9] NA                 "Okanogan County"  "Ritzville"        "Darrington"      
-## [13] "Tukwila"</code></pre>
+<pre><code>##  [1] "Chelan"             "La Crosse"          NA                  
+##  [4] NA                   "Inchelium"          "Wellpinit"         
+##  [7] NA                   NA                   "Limestone Junction"
+## [10] NA                   NA                   NA                  
+## [13] NA</code></pre>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="co"># How about 5000 meters?</span></a>
 <a class="sourceLine" id="cb12-2" data-line-number="2"><span class="kw"><a href="../reference/table_getNearestLocation.html">table_getNearestLocation</a></span>(</a>
 <a class="sourceLine" id="cb12-3" data-line-number="3">  wa_monitors_<span class="dv">500</span>,</a>
