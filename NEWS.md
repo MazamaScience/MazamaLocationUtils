@@ -1,3 +1,7 @@
+# MazamaLocationUtils 0.1.11
+
+* Added unit test for `table_findOverlappingLocations()`.
+
 # MazamaLocationUtils 0.1.10
 
 * Added `table_initializeExisting()` for fast conversion of an existing 

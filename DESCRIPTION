@@ -1,15 +1,13 @@
 Type: Package
 Package: MazamaLocationUtils
-Version: 0.1.10
+Version: 0.1.11
 Title: Manage Spatial Metadata for Known Locations
 Authors@R: c(
     person("Jonathan", "Callahan", email="jonathan.s.callahan@gmail.com", role=c("aut","cre")),
-    person("Eli", "Grosman", email="eligrosman1@gmail.com", role=c("aut")),
-    person("Kayleigh", "Wilson", email="andrakayleigh@gmail.com", role=c("aut"))
+    person("Eli", "Grosman", email="eligrosman1@gmail.com", role=c("aut"))
     )
 Author: Jonathan Callahan [aut, cre],
     Eli Grosman [aut],
-    Kayleigh Wilson [aut],
     Oliver Fogelin [aut]
 Maintainer: Jonathan Callahan <jonathan.s.callahan@gmail.com>
 Description: A suite of utility functions for discovering and managing metadata 
