@@ -7,6 +7,7 @@
 location_getSingleAddress_Photon(
   longitude = NULL,
   latitude = NULL,
+  baseUrl = "https://photon.komoot.io/reverse",
   verbose = TRUE
 )
 }
@@ -14,6 +15,8 @@ location_getSingleAddress_Photon(
 \item{longitude}{Single longitude in decimal degrees E, Default: NULL}
 
 \item{latitude}{Single latitude in decimal degrees N, Default: NULL}
+
+\item{baseUrl}{Base URL for data queries.}
 
 \item{verbose}{Logical controlling the generation of progress messages.}
 }

@@ -19,6 +19,7 @@
 #' the conversion algorithm.
 #' @param longitude Single longitude in decimal degrees E, Default: NULL
 #' @param latitude Single latitude in decimal degrees N, Default: NULL
+#' @param baseUrl Base URL for data queries.
 #' @param verbose Logical controlling the generation of progress messages.
 #' @return List of address components.
 #' @examples 
@@ -39,12 +40,13 @@
 #' @rdname location_getSingleAddress_Photon
 #' @export 
 #' @importFrom utils capture.output
-#' @importFrom revgeo revgeo
+#' @importFrom jsonlite fromJSON
 #' @importFrom stringr str_detect str_sub str_subset
 #' 
 location_getSingleAddress_Photon <- function(
   longitude = NULL,
   latitude = NULL,
+  baseUrl = "https://photon.komoot.io/reverse",
   verbose = TRUE
 ) {
   
@@ -55,30 +57,39 @@ location_getSingleAddress_Photon <- function(
   validateLonLat(longitude, latitude)  
   
   # ----- Get Photon address data ----------------------------------------------
-  
-  result <- try({
+
+  .params <- list(
+    lon = longitude,
+    lat = latitude
+  )
     
-    # Capture output to deal with revgeo print() statements
-    outputString <- utils::capture.output({
-      revgeoList <- revgeo::revgeo(
-        longitude = longitude, 
-        latitude = latitude, 
-        provider = NULL, # default to Photon
-        output = "hash"
-      )
-    })
-    if ( verbose )
-      message(outputString)
-    
+  suppressWarnings({
+    r <- httr::GET(baseUrl, query = .params)
   })
+
+  if ( httr::http_error(r) ) {
+    stop("An error has occured while querying the Photon API.")
+  }
+    
+  fileString <- httr::content(r, 'text', encoding = 'UTF-8')
+    
+  if ( stringr::str_detect(fileString, "404 Not found") ) {
+    stop("The Photon API returned no data for the provided longitude and latitude.")
+  }
   
-  if ( "try-error" %in% result )
-    stop(geterrmessage())
+  photonJSON <- jsonlite::fromJSON(fileString)
+  photonList <- photonJSON$features$properties
   
+  # ----- Validate Photon Address Data -----------------------------------------
+
   # Replace "... Not Found" with NA
-  revgeoList <- lapply(revgeoList, function(x) {
-    if ( stringr::str_detect(x, "Not Found") ) {
-      return(as.character(NA))
+  photonList <- lapply(photonList, function(x) {
+    if ( typeof(x) == "character" ) {
+      if ( stringr::str_detect(x, "Not Found") ) {
+        return(as.character(NA))
+      } else {
+        return(x)
+      }
     } else {
       return(x)
     }
@@ -89,47 +100,72 @@ location_getSingleAddress_Photon <- function(
   # NOTE:  a zip in Colleville specified as "SUPER ONE FOODS". So we have to 
   # NOTE:  validate that as well.
   
-  revgeoList$housenumber <- as.character(NA)
-  revgeoList$street <- as.character(NA)
+  photonList$housenumber <- as.character(NA)
+  photonList$street <- as.character(NA)
   
-  if ( revgeoList$country %in% c("United States of America") ) {
-    zip <- 
-      stringr::str_sub(revgeoList$zip, 1, 5) %>%
+  if ( photonList$country %in% c("United States") ) {
+    postcode <- 
+      stringr::str_sub(photonList$postcode, 1, 5) %>%
       stringr::str_subset("^[0-9]{5}$")
-    if ( length(zip) > 0 ) {
-      revgeoList$zip <- zip
+    if ( length(postcode) > 0 ) {
+      photonList$postcode <- postcode
     } else {
-      revgeoList$zip <- as.character(NA)
+      photonList$postcode <- as.character(NA)
     }
+  }
+  
+  # NOTE: Sometimes state contains the state code and sometimes contains the state name
+  if ( nchar(photonList$state) > 2 ) {
+    photonList$stateName = photonList$state
+    photonList$stateCode = as.character(NA)
+  } else {
+    photonList$stateName = as.character(NA)
+    photonList$stateCode = photonList$state
   }
   
   # ----- Create addressList ---------------------------------------------------
   
   addressList <- list(
-    houseNumber = revgeoList$housenumber,
-    street = revgeoList$street,
-    city = revgeoList$city,
-    stateName = revgeoList$state,
-    zip = revgeoList$zip,
-    countryName = revgeoList$country
+    houseNumber = photonList$housenumber,
+    street = photonList$street,
+    city = photonList$city,
+    stateName = photonList$stateName,
+    stateCode = photonList$stateCode,
+    zip = photonList$postcode,
+    countryName = photonList$country,
+    countryCode = photonList$countrycode
   )
   
   # countryCode 
-  suppressWarnings({
-    addressList$countryCode <- 
-      MazamaSpatialUtils::countryToCode(addressList$countryName)
-  })
-  
+  if ( is.na(addressList$countryCode) ) {
+    suppressWarnings({
+      addressList$countryCode <- 
+        MazamaSpatialUtils::countryToCode(addressList$countryName)
+    })
+  }
+
   # stateCode
-  suppressWarnings({
-    addressList$stateCode <- 
-      MazamaSpatialUtils::stateToCode(
-        stateNames = addressList$stateName,
-        countryCodes = addressList$countryCode,
-        dataset = "NaturalEarthAdm1"
-      )
-  })
+  if ( is.na(addressList$stateCode) ) {
+    suppressWarnings({
+      addressList$stateCode <- 
+        MazamaSpatialUtils::stateToCode(
+          stateNames = addressList$stateName,
+          countryCodes = addressList$countryCode,
+          dataset = "NaturalEarthAdm1"
+        )
+    }) 
+  }
   
+  # stateName
+  if ( is.na(addressList$stateName) ) {
+    suppressWarnings({
+      addressList$stateName <- 
+        MazamaSpatialUtils::US_stateCodeToName(
+          stateCode = addressList$stateCode
+        )
+    }) 
+  }
+
   # ----- Return ---------------------------------------------------------------
   
   return(addressList)
