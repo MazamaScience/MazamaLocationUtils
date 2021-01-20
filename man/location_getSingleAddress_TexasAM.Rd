@@ -29,7 +29,7 @@ Texas A&M APIs are used to determine the address associated with
 the \code{longitude} and \code{latitude}.
 }
 \examples{
-\donttest{
+\dontrun{
 library(MazamaLocationUtils)
 
 # Set up standard directories and spatial data
@@ -43,6 +43,7 @@ apiKey <- YOUR_PERSONAL_API_KEY
 
 location_getSingleAddress_TexasAM(longitude, latitude, apiKey)
 }
+
 }
 \references{
 \url{https://geoservices.tamu.edu/Services/ReverseGeocoding/WebService/v04_01/HTTP.aspx}

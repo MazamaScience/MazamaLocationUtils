@@ -27,6 +27,7 @@ List of address components.
 The Photon API is used get address data associated with
 the \code{longitude} and \code{latitude}. The following list of data
 is returned:
+
 \itemize{
 \item{\code{houseNumber}}
 \item{\code{street}}
@@ -37,6 +38,7 @@ is returned:
 \item{\code{countryCode}}
 \item{\code{countryName}}
 }
+
 The function makes an effort to convert both \code{state} and \code{country} 
 \code{Name} into \code{Code} with codes defaulting to \code{NA}. Both 
 \code{Name} and \code{Code} are returned so that improvements can be made in 
@@ -56,7 +58,8 @@ lat <- 47.423333
 addressList <- location_getSingleAddress_Photon(lon, lat)
 str(addressList)
 }
+
 }
 \references{
-\url{http://photon.komoot.de}
+\url{http://photon.komoot.io}
 }

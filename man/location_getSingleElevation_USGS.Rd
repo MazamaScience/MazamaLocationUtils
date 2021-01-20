@@ -33,6 +33,7 @@ lon <- -120.325278
 lat <- 47.423333
 location_getSingleElevation_USGS(lon, lat)
 }
+
 }
 \references{
 \url{https://nationalmap.gov/epqs/}

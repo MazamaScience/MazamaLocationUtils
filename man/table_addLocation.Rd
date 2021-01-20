@@ -64,6 +64,8 @@ lat <- 47.611942
 locationTbl <- 
   locationTbl \%>\%
   table_addLocation(lon, lat, radius = 500)
+  
+dplyr::glimpse(locationTbl)
 }
 }
 \seealso{

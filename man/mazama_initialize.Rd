@@ -34,9 +34,6 @@ library(MazamaLocationUtils)
 spatialDataDir <- tempdir() # typically "~/Data/Spatial"
 MazamaSpatialUtils::setSpatialDataDir(spatialDataDir)
 
-# Install core spatial datasets (168 MB download)
-MazamaSpatialUtils::installSpatialData()
-
 exists("NaturalEarthAdm1")
 mazama_initialize(spatialDataDir)
 exists("NaturalEarthAdm1")

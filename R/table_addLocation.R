@@ -39,6 +39,8 @@
 #' locationTbl <- 
 #'   locationTbl %>%
 #'   table_addLocation(lon, lat, radius = 500)
+#'   
+#' dplyr::glimpse(locationTbl)
 #' }
 #' @seealso \link{table_addSingleLocation}
 #' @seealso \link{table_removeRecord}

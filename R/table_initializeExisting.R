@@ -254,7 +254,7 @@ table_initializeExisting <- function(
   # ----- Check for locations that are too close -------------------------------
   
   # Calculate distances between each location
-  distances <- geodist::geodist(locationTbl)
+  distances <- geodist::geodist(locationTbl, measure = "geodesic")
   
   # Get distances that are less than the given diameter
   # NOTE: the distance between a location and itself is always zero

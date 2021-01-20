@@ -1,5 +1,22 @@
-
+#' @rdname location_initialize
+#' @export 
+#' @importFrom MazamaCoreUtils stopIfNull
+#' @importFrom MazamaSpatialUtils getCountryCode getStateCode getTimezone
+#' @importFrom dplyr tibble
+#' @importFrom stringr str_sub
+#' 
 #' @title  Create known location record with core metadata
+#' 
+#' @param longitude Single longitude in decimal degrees E, Default: NULL
+#' @param latitude Single latitude in decimal degrees N, Default: NULL
+#' @param stateDataset Name of spatial dataset to use for determining state
+#' @param elevationService Name of the elevation service to use for determining
+#' the elevation. Default: NULL. Accepted values: "usgs".
+#' @param addressService Name of the address service to use for determining
+#' the street address. Default: NULL Accepted values: "photon".
+#' @param verbose Logical controlling the generation of progress messages.
+#' 
+#' @return Tibble with a single new known location.
 #' 
 #' @description Creates a known location record with the following columns
 #' of core metadata:
@@ -19,19 +36,6 @@
 #' \item{zip}
 #' }
 #' 
-#' @param longitude Single longitude in decimal degrees E, Default: NULL
-#' @param latitude Single latitude in decimal degrees N, Default: NULL
-#' @param stateDataset Name of spatial dataset to use for determining state
-#' @param elevationService Name of the elevation service to use for determining
-#' the elevation. Default: NULL. Accepted values: "usgs".
-#' @param addressService Name of the address service to use for determining
-#' the street address. Default: NULL Accepted values: "photon".
-#' @param verbose Logical controlling the generation of progress messages.
-#' 
-#' @return Tibble with a single new known location.
-#' 
-#' @rdname location_initialize
-#' 
 #' @examples
 #' \donttest{
 #' library(MazamaLocationUtils)
@@ -45,11 +49,7 @@
 #' lat <- 47.423333
 #' locationRecord <- location_initialize(lon, lat)
 #' }
-#' @export 
-#' @importFrom MazamaCoreUtils stopIfNull
-#' @importFrom MazamaSpatialUtils getCountryCode getStateCode getTimezone
-#' @importFrom dplyr tibble
-#' @importFrom stringr str_sub
+
 location_initialize <- function(
   longitude = NULL,
   latitude = NULL,

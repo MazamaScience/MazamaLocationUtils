@@ -1,12 +1,18 @@
-
+#' @rdname location_getSingleElevation_USGS
+#' @export 
+#' 
 #' @title Get elevation data from a USGS web service
-#' @description USGS APIs are used to determine the elevation associated with
-#' the \code{longitude} and \code{latitude}.
+#' 
 #' @param longitude Single longitude in decimal degrees E, Default: NULL
 #' @param latitude Single latitude in decimal degrees N, Default: NULL
 #' @param verbose Logical controlling the generation of progress messages.
+#' 
 #' @return Numeric elevation value.
-#' @examples 
+#' 
+#' @description USGS APIs are used to determine the elevation associated with
+#' the \code{longitude} and \code{latitude}.
+#' 
+#' @examples
 #' \donttest{
 #' library(MazamaLocationUtils)
 #' 
@@ -15,9 +21,8 @@
 #' lat <- 47.423333
 #' location_getSingleElevation_USGS(lon, lat)
 #' }
+#' 
 #' @references \url{https://nationalmap.gov/epqs/}
-#' @rdname location_getSingleElevation_USGS
-#' @export 
 #' 
 location_getSingleElevation_USGS <- function(
   longitude = NULL,

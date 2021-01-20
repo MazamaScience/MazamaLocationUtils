@@ -1,15 +1,21 @@
-
+#' @rdname location_getSingleAddress_TexasAM
+#' @export 
+#' 
 #' @title Get an address from a Texas A&M web service
-#' @description Texas A&M APIs are used to determine the address associated with
-#' the \code{longitude} and \code{latitude}.
+#' 
 #' @param longitude Single longitude in decimal degrees E, Default: NULL
 #' @param latitude Single latitude in decimal degrees N, Default: NULL
 #' @param verbose Logical controlling the generation of progress messages.
 #' @param apiKey Texas A&M Geocoding requires an API key. The first 2500 requests
 #' are free. Default: NULL
+#' 
 #' @return Numeric elevation value.
-#' @examples 
-#' \donttest{
+#' 
+#' @description Texas A&M APIs are used to determine the address associated with
+#' the \code{longitude} and \code{latitude}.
+#' 
+#' @examples
+#' \dontrun{
 #' library(MazamaLocationUtils)
 #' 
 #' # Set up standard directories and spatial data
@@ -23,9 +29,8 @@
 #' 
 #' location_getSingleAddress_TexasAM(longitude, latitude, apiKey)
 #' }
+#' 
 #' @references \url{https://geoservices.tamu.edu/Services/ReverseGeocoding/WebService/v04_01/HTTP.aspx}
-#' @rdname location_getSingleAddress_TexasAM
-#' @export 
 #' 
 location_getSingleAddress_TexasAM <- function(
   longitude = NULL,

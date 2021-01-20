@@ -1,8 +1,22 @@
-
+#' @rdname location_getSingleAddress_Photon
+#' @export 
+#' @importFrom utils capture.output
+#' @importFrom jsonlite fromJSON
+#' @importFrom stringr str_detect str_sub str_subset
+#' 
 #' @title Get address data from the Photon API to OpenStreetMap
+#' 
+#' @param longitude Single longitude in decimal degrees E, Default: NULL
+#' @param latitude Single latitude in decimal degrees N, Default: NULL
+#' @param baseUrl Base URL for data queries.
+#' @param verbose Logical controlling the generation of progress messages.
+#' 
+#' @return List of address components.
+#' 
 #' @description The Photon API is used get address data associated with
 #' the \code{longitude} and \code{latitude}. The following list of data
 #' is returned:
+#' 
 #' \itemize{
 #' \item{\code{houseNumber}}
 #' \item{\code{street}}
@@ -13,16 +27,13 @@
 #' \item{\code{countryCode}}
 #' \item{\code{countryName}}
 #' }
+#' 
 #' The function makes an effort to convert both \code{state} and \code{country} 
 #' \code{Name} into \code{Code} with codes defaulting to \code{NA}. Both 
 #' \code{Name} and \code{Code} are returned so that improvements can be made in 
 #' the conversion algorithm.
-#' @param longitude Single longitude in decimal degrees E, Default: NULL
-#' @param latitude Single latitude in decimal degrees N, Default: NULL
-#' @param baseUrl Base URL for data queries.
-#' @param verbose Logical controlling the generation of progress messages.
-#' @return List of address components.
-#' @examples 
+#' 
+#' @examples
 #' \donttest{
 #' library(MazamaLocationUtils)
 #' 
@@ -36,12 +47,8 @@
 #' addressList <- location_getSingleAddress_Photon(lon, lat)
 #' str(addressList)
 #' }
-#' @references \url{http://photon.komoot.de}
-#' @rdname location_getSingleAddress_Photon
-#' @export 
-#' @importFrom utils capture.output
-#' @importFrom jsonlite fromJSON
-#' @importFrom stringr str_detect str_sub str_subset
+#' 
+#' @references \url{http://photon.komoot.io}
 #' 
 location_getSingleAddress_Photon <- function(
   longitude = NULL,

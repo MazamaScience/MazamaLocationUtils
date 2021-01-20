@@ -46,8 +46,9 @@ test_that("passing radius = 2000 returns expected output", {
   expect_equal(class(result), c("tbl_df", "tbl", "data.frame"))
   
   # Is it the expected tibble?
-  correctTbl <- dplyr::tibble(row1 = c(2, 12, 2), row2 = c(34, 34, 9), distance = c(2500, 3328, 3762))
+  correctTbl <- dplyr::tibble(row1 = c(2, 12, 2), row2 = c(34, 34, 9), distance = c(2497, 3329, 3762))
   expect_equal(result$row1, correctTbl$row1)
   expect_equal(result$row2, correctTbl$row2)
   expect_equal(round(result$distance, 0), correctTbl$distance)
+  
 })
