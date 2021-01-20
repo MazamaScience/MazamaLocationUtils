@@ -4,9 +4,10 @@
 * Updated requirements to **geodist** 0.0.6.007 to handle errors finding longitude
 and latitude columns in the passed in tibble.
 * `geodist::geodist()` is now always called with `measure = "geodesic"` to avoid
-warning messages from `geodist()` about inaccuracies with `measure = "cheap"
+warning messages from `geodist()` about inaccuracies with `measure = "cheap"`
 (the default).
 * `mazama_initialize()` now installs required datasets if they are missing.
+* Updated to require **MazamaSpatialUtils** 0.7.
 
 # MazamaLocationUtils 0.1.11
 
