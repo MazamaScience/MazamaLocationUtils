@@ -1,7 +1,11 @@
+# MazamaLocationUtils 0.1.13
+
+* Updated to require **geodist** 0.0.7.
+
 # MazamaLocationUtils 0.1.12
 
 * Updated `location_getSingleAddress_Photon()` to remove **revgeo** dependency.
-* Updated requirements to **geodist** 0.0.6.007 to handle errors finding longitude
+* Updated to require **geodist** 0.0.6.007 to handle errors finding longitude
 and latitude columns in the passed in tibble.
 * `geodist::geodist()` is now always called with `measure = "geodesic"` to avoid
 warning messages from `geodist()` about inaccuracies with `measure = "cheap"`
