@@ -96,10 +96,10 @@ coreMetadataNames <- c(
   "stateCode",                # from MazamaSpatialUtils::getStateCode()
   "county",                   # from MazamaSpatialUtils::getUSCounty()
   "timezone",                 # from MazamaSpatialUtils::getTimezone()
-  "houseNumber",              # from http://photon.komoot.io/
-  "street",                   # from http://photon.komoot.io/
-  "city",                     # from http://photon.komoot.io/
-  "zip"                       # from http://photon.komoot.io/
+  "houseNumber",              # from https://photon.komoot.io/
+  "street",                   # from https://photon.komoot.io/
+  "city",                     # from https://photon.komoot.io/
+  "zip"                       # from https://photon.komoot.io/
 )
 
 # ----- Internal Package State -------------------------------------------------

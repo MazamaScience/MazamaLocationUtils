@@ -48,7 +48,7 @@
 #' str(addressList)
 #' }
 #' 
-#' @references \url{http://photon.komoot.io}
+#' @references \url{https://photon.komoot.io}
 #' 
 location_getSingleAddress_Photon <- function(
   longitude = NULL,
