@@ -39,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -56,7 +56,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/MazamaScience/MazamaLocationUtils/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -70,8 +70,7 @@
 
       
 
-      </header><script src="MazamaLocationUtils_files/header-attrs-2.5/header-attrs.js"></script><link href="MazamaLocationUtils_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
-<script src="MazamaLocationUtils_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
+      </header><script src="MazamaLocationUtils_files/header-attrs-2.10/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Introduction to MazamaLocationUtils</h1>
@@ -185,7 +184,7 @@
 <span class="co"># Lets see how we did</span>
 <span class="va">locationTbl_indices</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/table_getRecordIndex.html">table_getRecordIndex</a></span><span class="op">(</span><span class="va">locationTbl</span>, <span class="va">locationID</span><span class="op">)</span>
 <span class="va">locationTbl</span><span class="op">[</span><span class="va">locationTbl_indices</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"city"</span>, <span class="st">"siteName"</span><span class="op">)</span><span class="op">]</span></code></pre></div>
-<pre><code>## # A tibble: 13 x 2
+<pre><code>## # A tibble: 13 × 2
 ##    city               siteName                      
 ##    &lt;chr&gt;              &lt;chr&gt;                         
 ##  1 Chelan             "Chelan-Woodin Ave"           
@@ -219,9 +218,7 @@
   latitude <span class="op">=</span> <span class="va">lats</span>,
   radius <span class="op">=</span> <span class="fl">50</span>
 <span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">city</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] NA           NA           NA           "Sunnyside"  NA          
-##  [6] NA           NA           NA           NA           NA          
-## [11] NA           "Darrington" NA</code></pre>
+<pre><code>##  [1] NA NA NA NA NA NA NA NA NA NA NA NA NA</code></pre>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Any known locations within 500 meters</span>
 <span class="fu"><a href="../reference/table_getNearestLocation.html">table_getNearestLocation</a></span><span class="op">(</span>
@@ -230,11 +227,10 @@
   latitude <span class="op">=</span> <span class="va">lats</span>,
   radius <span class="op">=</span> <span class="fl">500</span>
 <span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">city</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] "Chelan"             "La Crosse"          NA                  
-##  [4] "Sunnyside"          NA                   "Wellpinit"         
-##  [7] "Lake Forest Park"   "Okanogan County"    "Limestone Junction"
-## [10] "Okanogan County"    "Ritzville"          "Darrington"        
-## [13] NA</code></pre>
+<pre><code>##  [1] NA                 NA                 "Tri-Cities"       "Sunnyside"       
+##  [5] "Inchelium"        "Wellpinit"        "Lake Forest Park" "Okanogan County" 
+##  [9] NA                 NA                 "Ritzville"        NA                
+## [13] "Tukwila"</code></pre>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># How about 5000 meters?</span>
 <span class="fu"><a href="../reference/table_getNearestLocation.html">table_getNearestLocation</a></span><span class="op">(</span>
