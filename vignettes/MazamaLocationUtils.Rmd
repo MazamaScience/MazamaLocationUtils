@@ -25,16 +25,16 @@ you have to do is create unique identifiers for each individual time series. In
 an ideal world, each environmental time series would have both a 
 `locationID` and a `sensorID` that uniquely identify the spatial location and 
 specific instrument making measurements. A unique `timeseriesID` could
-be produced as `locationID_sensorID`. Location metadata associated with each
-time series would contain basic information needed for downstream analysis
+be produced as `locationID_sensorID`. Metadata associated with each
+`timeseriesID` would contain basic information needed for downstream analysis
 including at least:
 
 `timeseriesID, locationID, sensorID, longitude, latitude, ...`
 
-* Multiple sensors placed at a location could be be grouped by `locationID`.
+* Multiple sensors placed at a single location could be be grouped by `locationID`.
 * An extended time series for a mobile sensor would group by `sensorID`.
 * Maps would be created using `longitude, latitude`.
-* Time series would be accessed from a secondary `data` table with `timeseriesID`.
+* Time series would be accessed from a secondary `data` table with `timeseriesID` column names.
 
 Unfortunately, we are rarely supplied with a truly unique and truly spatial 
 `locationID`. Instead we often use `sensorID` or an associated non-spatial

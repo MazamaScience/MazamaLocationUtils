@@ -89,13 +89,13 @@
 <h2 class="hasAnchor">
 <a href="#background" class="anchor"></a>Background</h2>
 <p>This package is intended to be used in support of data management activities associated with fixed locations in space. The motivating fields include both air and water quality monitoring where fixed sensors report at regular time intervals.</p>
-<p>When working with environmental monitoring time series, one of the first things you have to do is create unique identifiers for each individual time series. In an ideal world, each environmental time series would have both a <code>locationID</code> and a <code>sensorID</code> that uniquely identify the spatial location and specific instrument making measurements. A unique <code>timeseriesID</code> could be produced as <code>locationID_sensorID</code>. Location metadata associated with each time series would contain basic information needed for downstream analysis including at least:</p>
+<p>When working with environmental monitoring time series, one of the first things you have to do is create unique identifiers for each individual time series. In an ideal world, each environmental time series would have both a <code>locationID</code> and a <code>sensorID</code> that uniquely identify the spatial location and specific instrument making measurements. A unique <code>timeseriesID</code> could be produced as <code>locationID_sensorID</code>. Metadata associated with each <code>timeseriesID</code> would contain basic information needed for downstream analysis including at least:</p>
 <p><code>timeseriesID, locationID, sensorID, longitude, latitude, ...</code></p>
 <ul>
-<li>Multiple sensors placed at a location could be be grouped by <code>locationID</code>.</li>
+<li>Multiple sensors placed at a single location could be be grouped by <code>locationID</code>.</li>
 <li>An extended time series for a mobile sensor would group by <code>sensorID</code>.</li>
 <li>Maps would be created using <code>longitude, latitude</code>.</li>
-<li>Time series would be accessed from a secondary <code>data</code> table with <code>timeseriesID</code>.</li>
+<li>Time series would be accessed from a secondary <code>data</code> table with <code>timeseriesID</code> column names.</li>
 </ul>
 <p>Unfortunately, we are rarely supplied with a truly unique and truly spatial <code>locationID</code>. Instead we often use <code>sensorID</code> or an associated non-spatial identifier as a stand-in for <code>locationID</code>.</p>
 <p>Complications we have seen include:</p>
@@ -218,7 +218,10 @@
   latitude <span class="op">=</span> <span class="va">lats</span>,
   radius <span class="op">=</span> <span class="fl">50</span>
 <span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">city</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] NA NA NA NA NA NA NA NA NA NA NA NA NA</code></pre>
+<pre><code>##  [1] NA                 NA                 NA                 NA                
+##  [5] NA                 NA                 "Lake Forest Park" NA                
+##  [9] NA                 NA                 NA                 NA                
+## [13] NA</code></pre>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Any known locations within 500 meters</span>
 <span class="fu"><a href="../reference/table_getNearestLocation.html">table_getNearestLocation</a></span><span class="op">(</span>
@@ -228,8 +231,8 @@
   radius <span class="op">=</span> <span class="fl">500</span>
 <span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">city</span><span class="op">)</span></code></pre></div>
 <pre><code>##  [1] NA                 NA                 "Tri-Cities"       "Sunnyside"       
-##  [5] "Inchelium"        "Wellpinit"        "Lake Forest Park" "Okanogan County" 
-##  [9] NA                 NA                 "Ritzville"        NA                
+##  [5] "Inchelium"        "Wellpinit"        "Lake Forest Park" NA                
+##  [9] NA                 "Okanogan County"  NA                 "Darrington"      
 ## [13] "Tukwila"</code></pre>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># How about 5000 meters?</span>
