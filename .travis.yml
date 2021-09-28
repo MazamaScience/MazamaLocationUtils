@@ -1,6 +1,6 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 #
-# .travis.ytml file examples:
+# .travis.yml file examples:
 #
 #  * https://github.com/cdeterman/gpuR/blob/develop/.travis.yml
 

@@ -1,3 +1,7 @@
+# MazamaLocationUtils 0.1.14
+
+* New `table_leaflet()` function to display locations and metadata.
+
 # MazamaLocationUtils 0.1.13
 
 * Updated to require **geodist** 0.0.7.
@@ -9,7 +13,7 @@
 and latitude columns in the passed in tibble.
 * `geodist::geodist()` is now always called with `measure = "geodesic"` to avoid
 warning messages from `geodist()` about inaccuracies with `measure = "cheap"`
-(the default).
+(the `geodist()` default).
 * `mazama_initialize()` now installs required datasets if they are missing.
 * Updated to require **MazamaSpatialUtils** 0.7.
 

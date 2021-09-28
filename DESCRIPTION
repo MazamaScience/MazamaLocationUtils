@@ -1,6 +1,6 @@
 Type: Package
 Package: MazamaLocationUtils
-Version: 0.1.13
+Version: 0.1.14
 Title: Manage Spatial Metadata for Known Locations
 Authors@R: c(
     person("Jonathan", "Callahan", email="jonathan.s.callahan@gmail.com", role=c("aut","cre")),
@@ -10,7 +10,7 @@ Author: Jonathan Callahan [aut, cre],
     Eli Grosman [aut]
 Maintainer: Jonathan Callahan <jonathan.s.callahan@gmail.com>
 Description: A suite of utility functions for discovering and managing metadata 
-    associated with sets of spatially unique "known locations".
+    associated with spatially unique "known locations".
 License: GPL-3
 URL: https://github.com/MazamaScience/MazamaLocationUtils
 BugReports: https://github.com/MazamaScience/MazamaLocationUtils/issues
@@ -22,13 +22,15 @@ Imports:
     geodist (>= 0.0.7),
     httr,
     jsonlite,
+    leaflet,
     lubridate,
-    methods,
     magrittr,
+    methods,
     MazamaCoreUtils,
     MazamaSpatialUtils (>= 0.7),
     readr,
     rlang,
+    sp,
     stringr
 Suggests:
     knitr,
@@ -39,4 +41,4 @@ Suggests:
 Encoding: UTF-8
 VignetteBuilder: knitr
 LazyData: true
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
