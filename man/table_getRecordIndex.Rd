@@ -7,9 +7,9 @@
 table_getRecordIndex(locationTbl = NULL, locationID = NULL, verbose = TRUE)
 }
 \arguments{
-\item{locationTbl}{Tibble of known locations, Default: NULL}
+\item{locationTbl}{Tibble of known locations.}
 
-\item{locationID}{Vector of \code{locationID} strings, Default: NULL}
+\item{locationID}{Vector of \code{locationID} strings.}
 
 \item{verbose}{Logical controlling the generation of progress messages.}
 }

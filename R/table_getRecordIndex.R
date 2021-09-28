@@ -2,8 +2,8 @@
 #' @title Return indexes of known location records
 #' @description Returns a vector of \code{locationTbl} row indexes for the 
 #' locations associated with each \code{locationID}.
-#' @param locationTbl Tibble of known locations, Default: NULL
-#' @param locationID Vector of \code{locationID} strings, Default: NULL
+#' @param locationTbl Tibble of known locations.
+#' @param locationID Vector of \code{locationID} strings.
 #' @param verbose Logical controlling the generation of progress messages.
 #' @return Vector of \code{locationTbl} row indexes.
 #' @examples
@@ -34,7 +34,7 @@ table_getRecordIndex <- function(
   
   # ----- Validate parameters --------------------------------------------------
   
-  MazamaCoreUtils::stopIfNull(locationTbl)
+  MazamaLocationUtils::validateLocationTbl(locationTbl, locationOnly = FALSE)
   MazamaCoreUtils::stopIfNull(locationID)
   
   invalidIDs <- setdiff(names(locationID), locationTbl$locationID)

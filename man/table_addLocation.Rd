@@ -16,13 +16,13 @@ table_addLocation(
 )
 }
 \arguments{
-\item{locationTbl}{Tibble of known locations, Default: NULL}
+\item{locationTbl}{Tibble of known locations.}
 
-\item{longitude}{Vector of longitudes in decimal degrees E, Default: NULL}
+\item{longitude}{Vector of longitudes in decimal degrees E.}
 
-\item{latitude}{Vector of latitudes in decimal degrees N, Default: NULL}
+\item{latitude}{Vector of latitudes in decimal degrees N.}
 
-\item{radius}{Radius in meters, Default: NULL}
+\item{radius}{Radius in meters.}
 
 \item{stateDataset}{Name of spatial dataset to use for determining state
 codes, Default: 'NaturalEarthAdm1'}

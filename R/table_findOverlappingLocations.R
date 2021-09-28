@@ -9,7 +9,7 @@
 #' locations early on so that decisions can be made about the apporpriateness
 #' of the specified \code{radius}.
 #' 
-#' @param tbl Tibble with \code{longitude} and \code{latitude} columns.
+#' @param locationTbl Tibble of known locations.
 #' @param radius Radius in meters.
 #' 
 #' @return Tibble of row indices and distances for those locations which overlap. 
@@ -43,33 +43,27 @@
 #' @importFrom rlang .data
 #' 
 table_findOverlappingLocations <- function(
-  tbl = NULL,
+  locationTbl = NULL,
   radius = NULL
 ) {
   
   # ----- Validate parameters --------------------------------------------------
   
-  MazamaCoreUtils::stopIfNull(tbl)
+  MazamaLocationUtils::validateLocationTbl(locationTbl, locationOnly = TRUE)
   MazamaCoreUtils::stopIfNull(radius)
-  
-  if ( !"data.frame" %in% class(tbl) )
-    stop("Parameter 'tbl' is not of class \"data.frame\".")
-  
-  if ( !"longitude" %in% names(tbl) )
-    stop("Parameter 'tbl' does not have a 'longitude' column.")
-  
-  if ( !"latitude" %in% names(tbl) )
-    stop("Parameter 'tbl' does not have a 'latitude' column.")
   
   if ( !is.numeric(radius) )
     stop("Parameter 'radius' must be a numeric value.")
   
-  diameter <- 2 * radius
+  if ( !is.numeric(radius) )
+    stop("Parameter 'radius' must be a numeric value.")
+  
+  diameter <- 2 * round(radius)
   
   # ----- Check for locations that are too close -------------------------------
   
   # Calculate distances between each location
-  distances <- geodist::geodist(tbl, measure = "geodesic")
+  distances <- geodist::geodist(locationTbl, measure = "geodesic")
   
   # Get distances that are less than the given diameter
   # NOTE: the distance between a location and itself is always zero

@@ -4,10 +4,10 @@
 \alias{table_findOverlappingLocations}
 \title{Finds overlapping locations in a known locations table.}
 \usage{
-table_findOverlappingLocations(tbl = NULL, radius = NULL)
+table_findOverlappingLocations(locationTbl = NULL, radius = NULL)
 }
 \arguments{
-\item{tbl}{Tibble with \code{longitude} and \code{latitude} columns.}
+\item{locationTbl}{Tibble of known locations.}
 
 \item{radius}{Radius in meters.}
 }

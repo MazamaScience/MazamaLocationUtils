@@ -16,13 +16,13 @@ table_addSingleLocation(
 )
 }
 \arguments{
-\item{locationTbl}{Tibble of known locations, Default: NULL}
+\item{locationTbl}{Tibble of known locations.}
 
-\item{longitude}{Single longitude in decimal degrees E, Default: NULL}
+\item{longitude}{Single longitude in decimal degrees E.}
 
-\item{latitude}{Single latitude in decimal degrees N, Default: NULL}
+\item{latitude}{Single latitude in decimal degrees N.}
 
-\item{radius}{Radius in meters, Default: NULL}
+\item{radius}{Radius in meters.}
 
 \item{stateDataset}{Name of spatial dataset to use for determining state
 codes, Default: 'NaturalEarthAdm1'}

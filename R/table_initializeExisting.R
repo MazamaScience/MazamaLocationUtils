@@ -42,7 +42,7 @@
 #' codes, Default: 'NaturalEarthAdm1'
 #' @param countryCodes Vector of country codes used to optimize spatial
 #' searching. (See ?MazamaSpatialUtils::getStateCode())
-#' @param radius Radius in meters, Default: NULL 
+#' @param radius Radius in meters. 
 #' @param verbose Logical controlling the generation of progress messages.
 #' 
 #' @return Known location tibble with the specified metadata columns. Any 
@@ -74,17 +74,8 @@ table_initializeExisting <- function(
   
   # ----- Validate parameters --------------------------------------------------
   
-  MazamaCoreUtils::stopIfNull(tbl)
+  MazamaLocationUtils::validateLocationTbl(locationTbl, locationOnly = TRUE)
   MazamaCoreUtils::stopIfNull(radius)
-  
-  if ( !"data.frame" %in% class(tbl) )
-    stop("Parameter 'tbl' is not of class \"data.frame\".")
-  
-  if ( !"longitude" %in% names(tbl) )
-    stop("Parameter 'tbl' does not have a 'longitude' column.")
-  
-  if ( !"latitude" %in% names(tbl) )
-    stop("Parameter 'tbl' does not have a 'latitude' column.")
   
   if ( !exists(stateDataset) ) {
     stop(paste0(
@@ -99,7 +90,7 @@ table_initializeExisting <- function(
   if ( !is.numeric(radius) )
     stop("Parameter 'radius' must be a numeric value.")
   
-  diameter <- 2 * radius
+  diameter <- 2 * round(radius)
   
   # ----- Create locationTbl ---------------------------------------------------
   

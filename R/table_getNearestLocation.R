@@ -4,10 +4,10 @@
 #' 
 #' @title Return known locations
 #' 
-#' @param locationTbl Tibble of known locations, Default: NULL
-#' @param longitude Vector of longitudes in decimal degrees E, Default: NULL
-#' @param latitude Vector of latitudes in decimal degrees N, Default: NULL
-#' @param radius Radius in meters, Default: NULL
+#' @param locationTbl Tibble of known locations.
+#' @param longitude Vector of longitudes in decimal degrees E.
+#' @param latitude Vector of latitudes in decimal degrees N.
+#' @param radius Radius in meters.
 #' 
 #' @return Tibble of known locations.
 #' 
@@ -39,9 +39,8 @@ table_getNearestLocation <- function(
 
   # ----- Validate parameters --------------------------------------------------
 
-  MazamaCoreUtils::stopIfNull(locationTbl)
-  MazamaCoreUtils::stopIfNull(longitude)
-  MazamaCoreUtils::stopIfNull(latitude)
+  MazamaLocationUtils::validateLocationTbl(locationTbl, locationOnly = TRUE)
+  MazamaLocationUtils::validateLonsLats(longitude, latitude)
   MazamaCoreUtils::stopIfNull(radius)
 
   radius <- round(radius)

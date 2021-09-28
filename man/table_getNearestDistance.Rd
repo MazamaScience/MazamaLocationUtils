@@ -12,19 +12,19 @@ table_getNearestDistance(
 )
 }
 \arguments{
-\item{locationTbl}{Tibble of known locations, Default: NULL}
+\item{locationTbl}{Tibble of known locations.}
 
-\item{longitude}{Vector of longitudes in decimal degrees E, Default: NULL}
+\item{longitude}{Vector of longitudes in decimal degrees E.}
 
-\item{latitude}{Vector of latitudes in decimal degrees N, Default: NULL}
+\item{latitude}{Vector of latitudes in decimal degrees N.}
 
-\item{radius}{Radius in meters, Default: NULL}
+\item{radius}{Radius in meters.}
 }
 \value{
 Vector of distances from known locations.
 }
 \description{
-Returns a distances from known locations in \code{locationTbl},
+Returns distances from known locations in \code{locationTbl},
 one for each incoming location. If no known location is found within
 \code{radius} meters for a particular
 incoming location, that distance in the vector will be \code{NA}.

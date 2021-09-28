@@ -8,10 +8,10 @@
 #' 
 #' @note This funciton is a vecorized version of \code{table_addSingleLocation()}.
 #' 
-#' @param locationTbl Tibble of known locations, Default: NULL
-#' @param longitude Vector of longitudes in decimal degrees E, Default: NULL
-#' @param latitude Vector of latitudes in decimal degrees N, Default: NULL
-#' @param radius Radius in meters, Default: NULL
+#' @param locationTbl Tibble of known locations.
+#' @param longitude Vector of longitudes in decimal degrees E.
+#' @param latitude Vector of latitudes in decimal degrees N.
+#' @param radius Radius in meters.
 #' @param stateDataset Name of spatial dataset to use for determining state
 #' codes, Default: 'NaturalEarthAdm1'
 #' @param elevationService Name of the elevation service to use for determining
@@ -65,7 +65,7 @@ table_addLocation <- function(
   
   # ----- Validate parameters --------------------------------------------------
   
-  MazamaCoreUtils::stopIfNull(locationTbl)
+  MazamaLocationUtils::validateLocationTbl(locationTbl, locationOnly = FALSE)
   MazamaCoreUtils::stopIfNull(longitude)
   MazamaCoreUtils::stopIfNull(latitude)
   MazamaCoreUtils::stopIfNull(radius)
@@ -90,6 +90,9 @@ table_addLocation <- function(
       length(which(naMask)), incomingCount
     ))
   }
+  
+  # Validate remaining locations
+  MazamaLocationUtils::validateLonsLats(longitude, latitude)
   
   if ( !exists(stateDataset) ) {
     stop(paste0(

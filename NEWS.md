@@ -1,6 +1,13 @@
-# MazamaLocationUtils 0.1.14
+# MazamaLocationUtils 0.2.0
+
+Version 0.2.x focuses on harmonizing function arguments and providing additional
+functionality that was found to be useful.
 
 * New `table_leaflet()` function to display locations and metadata.
+* Update function arguments to consistently use `locationTbl` whenever in
+incoming table includes `longitude` and `latitude` variables.
+* Improved validation of arguments in all `table_~()` functions.
+* Added \code{na.rm} argument to `validateLonsLats()`.
 
 # MazamaLocationUtils 0.1.13
 

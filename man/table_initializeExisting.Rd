@@ -22,7 +22,7 @@ codes, Default: 'NaturalEarthAdm1'}
 \item{countryCodes}{Vector of country codes used to optimize spatial
 searching. (See ?MazamaSpatialUtils::getStateCode())}
 
-\item{radius}{Radius in meters, Default: NULL}
+\item{radius}{Radius in meters.}
 
 \item{verbose}{Logical controlling the generation of progress messages.}
 }

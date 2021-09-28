@@ -5,10 +5,10 @@
 #' than one known location exists within the given radius, the closest will be
 #' assigned.  \code{NA} will be returned for each incoming that cannot be 
 #' assigend to a known location in \code{locationTbl}.
-#' @param locationTbl Tibble of known locations, Default: NULL
-#' @param longitude Vector of longitudes in decimal degrees E, Default: NULL
-#' @param latitude Vector of latitudes in decimal degrees N, Default: NULL
-#' @param radius Radius in meters, Default: NULL
+#' @param locationTbl Tibble of known locations.
+#' @param longitude Vector of longitudes in decimal degrees E.
+#' @param latitude Vector of latitudes in decimal degrees N.
+#' @param radius Radius in meters.
 #' @return Vector of known \code{locationID}s.
 #' @examples
 #' locationTbl <- get(data("wa_monitors_500"))
@@ -36,10 +36,12 @@ table_getLocationID <- function(
   
   # ----- Validate parameters --------------------------------------------------
   
-  MazamaCoreUtils::stopIfNull(locationTbl)
-  MazamaCoreUtils::stopIfNull(longitude)
-  MazamaCoreUtils::stopIfNull(latitude)
+  MazamaLocationUtils::validateLocationTbl(locationTbl, locationOnly = FALSE)
+  MazamaLocationUtils::validateLonsLats(longitude, latitude)
   MazamaCoreUtils::stopIfNull(radius)
+  
+  if ( !is.numeric(radius) )
+    stop("Parameter 'radius' must be a numeric value.")
   
   radius <- round(radius)
   

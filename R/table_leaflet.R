@@ -44,7 +44,7 @@ table_leaflet <- function(
 
   # ----- Validate parameters --------------------------------------------------
 
-  MazamaCoreUtils::stopIfNull(locationTbl)
+  MazamaLocationUtils::validateLocationTbl(locationTbl, locationOnly = FALSE)
   MazamaCoreUtils::stopIfNull(maptype)
   
   if ( !is.null(extraVars) ) {

@@ -1,13 +1,13 @@
 
 #' @title Return distances to nearest known locations
-#' @description Returns a distances from known locations in \code{locationTbl},
+#' @description Returns distances from known locations in \code{locationTbl},
 #' one for each incoming location. If no known location is found within
 #' \code{radius} meters for a particular
 #' incoming location, that distance in the vector will be \code{NA}.
-#' @param locationTbl Tibble of known locations, Default: NULL
-#' @param longitude Vector of longitudes in decimal degrees E, Default: NULL
-#' @param latitude Vector of latitudes in decimal degrees N, Default: NULL
-#' @param radius Radius in meters, Default: NULL
+#' @param locationTbl Tibble of known locations.
+#' @param longitude Vector of longitudes in decimal degrees E.
+#' @param latitude Vector of latitudes in decimal degrees N.
+#' @param radius Radius in meters.
 #' @return Vector of distances from known locations.
 #' @examples
 #' library(MazamaLocationUtils)
@@ -37,11 +37,13 @@ table_getNearestDistance <- function(
 
   # ----- Validate parameters --------------------------------------------------
 
-  MazamaCoreUtils::stopIfNull(locationTbl)
-  MazamaCoreUtils::stopIfNull(longitude)
-  MazamaCoreUtils::stopIfNull(latitude)
+  MazamaLocationUtils::validateLocationTbl(locationTbl, locationOnly = TRUE)
+  MazamaLocationUtils::validateLonsLats(longitude, latitude)
   MazamaCoreUtils::stopIfNull(radius)
 
+  if ( !is.numeric(radius) )
+    stop("Parameter 'radius' must be a numeric value.")
+  
   radius <- round(radius)
 
   # ----- Calculate distances --------------------------------------------------
