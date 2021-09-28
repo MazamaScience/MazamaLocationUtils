@@ -15,6 +15,10 @@ incoming table includes `longitude` and `latitude` variables.
 that are too close (_i.e._ separated by < (2 * radius)).
 * New `table_addCoreMetadata()` function adds columns of \code{NA} values for
 any missing core metadata but does not perform any spatial calculations.
+* New `table_leafletAdd()` function to make it easier to compare "known locations"
+tables."
+* Updated `table_initializeExisting()` to only perform spatial searches where
+data is missing in the incoming table. This greatly speeds up performance.
 
 # MazamaLocationUtils 0.1.13
 

@@ -5,16 +5,17 @@
 \title{Converts an existing table into a known location table}
 \usage{
 table_initializeExisting(
-  tbl = NULL,
+  locationTbl = NULL,
   stateDataset = "NaturalEarthAdm1",
   countryCodes = NULL,
   radius = NULL,
+  measure = "geodesic",
   verbose = TRUE
 )
 }
 \arguments{
-\item{tbl}{Table of spatial locations that will be converted into a "known
-location" table.}
+\item{locationTbl}{Tibble of known locations. This input tibble need not be a 
+standardized "known location" with all required columns. They will be added.}
 
 \item{stateDataset}{Name of spatial dataset to use for determining state
 codes, Default: 'NaturalEarthAdm1'}
@@ -23,6 +24,9 @@ codes, Default: 'NaturalEarthAdm1'}
 searching. (See ?MazamaSpatialUtils::getStateCode())}
 
 \item{radius}{Radius in meters.}
+
+\item{measure}{One of "haversine" "vincenty", "geodesic", or "cheap" 
+specifying desired method of geodesic distance calculation. See \code{?geodist::geodist}.}
 
 \item{verbose}{Logical controlling the generation of progress messages.}
 }
@@ -64,11 +68,11 @@ are optional.
 
 If any of these optional columns are found, they will be used and the often 
 slow and sometimes slightly inaccurate steps to generate that information
-will be skipped. Any additional columns of information not part of the 
-required list will be retained.
+will be skipped for locations with that data. Any additional columns of 
+information not part of the required core metadata will be retained.
 
 This method skips the assignment of columns like \code{elevation} and all
-address related foe;ds that require web service requests.
+address related fields that require web service requests.
 
 Compared to initializing a brand new table and populating one record at a
 time, this is a much faster way of creating a known location table from a

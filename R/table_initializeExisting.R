@@ -26,23 +26,25 @@
 #' 
 #' If any of these optional columns are found, they will be used and the often 
 #' slow and sometimes slightly inaccurate steps to generate that information
-#' will be skipped. Any additional columns of information not part of the 
-#' required list will be retained.
+#' will be skipped for locations with that data. Any additional columns of 
+#' information not part of the required core metadata will be retained.
 #' 
 #' This method skips the assignment of columns like \code{elevation} and all
-#' address related foe;ds that require web service requests.
+#' address related fields that require web service requests.
 #' 
 #' Compared to initializing a brand new table and populating one record at a
 #' time, this is a much faster way of creating a known location table from a
 #' pre-existing table of metadata.
 #' 
-#' @param tbl Table of spatial locations that will be converted into a "known
-#' location" table.
+#' @param locationTbl Tibble of known locations. This input tibble need not be a 
+#' standardized "known location" with all required columns. They will be added.
 #' @param stateDataset Name of spatial dataset to use for determining state
 #' codes, Default: 'NaturalEarthAdm1'
 #' @param countryCodes Vector of country codes used to optimize spatial
 #' searching. (See ?MazamaSpatialUtils::getStateCode())
 #' @param radius Radius in meters. 
+#' @param measure One of "haversine" "vincenty", "geodesic", or "cheap" 
+#' specifying desired method of geodesic distance calculation. See \code{?geodist::geodist}.
 #' @param verbose Logical controlling the generation of progress messages.
 #' 
 #' @return Known location tibble with the specified metadata columns. Any 
@@ -63,10 +65,11 @@
 #' @importFrom rlang .data
 #' 
 table_initializeExisting <- function(
-  tbl = NULL,
+  locationTbl = NULL,
   stateDataset = "NaturalEarthAdm1",
   countryCodes = NULL,
   radius = NULL,
+  measure = "geodesic",
   verbose = TRUE
 ) {
   
@@ -84,8 +87,8 @@ table_initializeExisting <- function(
     ))
   }
   
-  if ( "locationID" %in% names(tbl) )
-    stop("Parameter 'tbl' already has a column named \"locationID\"")
+  if ( "locationID" %in% names(locationTbl) )
+    stop("Parameter 'locationTbl' already has a column named \"locationID\"")
   
   if ( !is.numeric(radius) )
     stop("Parameter 'radius' must be a numeric value.")
@@ -94,154 +97,130 @@ table_initializeExisting <- function(
   
   # ----- Create locationTbl ---------------------------------------------------
   
-  tblColumns <- names(tbl)
-  
-  locationTbl <- tbl
+  locationTbl <- table_addCoreMetadata(locationTbl)
   
   # * locationID -----
   
-  locationTbl$locationID <- location_createID(
-    longitude = locationTbl$longitude,
-    latitude = locationTbl$latitude
-  )
+  # locationID should have been added by table_add
+  if (anyNA(locationTbl$locationID)) {
+    locationTbl$locationID <- location_createID(
+      longitude = locationTbl$longitude,
+      latitude = locationTbl$latitude
+    )
+  }
   
   # * elevation -----
   
-  if ( !"elevation" %in% tblColumns ) {
-    # Slow web service so skip for now
-    locationTbl$elevation <- as.numeric(NA)
-  }
+  # Slow web service so skip for now
   
   # * countryCode -----
   
-  if ( !"countryCode" %in% tblColumns ) {
-    
-    if ( verbose ) 
-      message("Searching for countryCodes...")
-    
-    locationTbl$countryCode <- MazamaSpatialUtils::getCountryCode(
-      lon = locationTbl$longitude,
-      lat = locationTbl$latitude,
-      dataset = "EEZCountries",
-      countryCodes = countryCodes,
-      useBuffering = FALSE
-    )
-    
-  }
+  tbl_1 <- dplyr::filter(locationTbl, !is.na(.data$countryCode))
+  tbl_2 <- dplyr::filter(locationTbl, is.na(.data$countryCode))
+  
+  if ( verbose ) 
+    message(sprintf("Creating countryCodes for %d locations ...", nrow(tbl_2)))
+  
+  tbl_2$countryCode <- MazamaSpatialUtils::getCountryCode(
+    lon = tbl_2$longitude,
+    lat = tbl_2$latitude,
+    dataset = "EEZCountries",
+    countryCodes = countryCodes,
+    useBuffering = FALSE
+  )
+  
+  locationTbl <- dplyr::bind_rows(tbl_1, tbl_2)
   
   # * stateCode -----
   
-  if ( !"stateCode" %in% tblColumns ) {
-    
-    if ( verbose ) 
-      message("Searching for stateCodes...")
-    
-    locationTbl$stateCode <- MazamaSpatialUtils::getStateCode(
-      lon = locationTbl$longitude,
-      lat = locationTbl$latitude,
-      dataset = stateDataset,
-      countryCodes = countryCodes,
-      useBuffering = TRUE
-    )
-    
-  }
+  tbl_1 <- dplyr::filter(locationTbl, !is.na(.data$stateCode))
+  tbl_2 <- dplyr::filter(locationTbl, is.na(.data$stateCode))
+  
+  if ( verbose ) 
+    message(sprintf("Creating stateCodes for %d locations ...", nrow(tbl_2)))
+  
+  tbl_2$stateCode <- MazamaSpatialUtils::getStateCode(
+    lon = tbl_2$longitude,
+    lat = tbl_2$latitude,
+    dataset = stateDataset,
+    countryCodes = countryCodes,
+    useBuffering = TRUE
+  )
+  
+  locationTbl <- dplyr::bind_rows(tbl_1, tbl_2)
   
   # * locationName -----
   
-  if ( !"locationName" %in% tblColumns ) {
-    
-    # NOTE:  The default locationName is intended to give folks a more memorable
-    # NOTE:  handel than the locationID but is not guaranteed to be unique. It is 
-    # NOTE:  expected that users will add their own, more relevant names 
-    # NOTE:  appropriate for the community of practice using a particular
-    # NOTE:  collectionName of known locations.
-    
-    locationTbl$locationName <- paste0(
-      tolower(locationTbl$countryCode), ".",
-      tolower(locationTbl$stateCode), "_",
-      stringr::str_sub(locationTbl$locationID, 1, 6)
-    )
-    
-  }
+  # NOTE:  The default locationName is intended to give folks a more memorable
+  # NOTE:  handel than the locationID but is not guaranteed to be unique. It is 
+  # NOTE:  expected that users will add their own, more relevant names 
+  # NOTE:  appropriate for the community of practice using a particular
+  # NOTE:  collectionName of known locations.
+  
+  tbl_1 <- dplyr::filter(locationTbl, !is.na(.data$locationName))
+  tbl_2 <- dplyr::filter(locationTbl, is.na(.data$locationName))
+  
+  if ( verbose ) 
+    message(sprintf("Creating locationNames for %d locations ...", nrow(tbl_2)))
+  
+  tbl_2$locationName <- paste0(
+    tolower(tbl_2$countryCode), ".",
+    tolower(tbl_2$stateCode), "_",
+    stringr::str_sub(tbl_2$locationID, 1, 6)
+  )
+  
+  locationTbl <- dplyr::bind_rows(tbl_1, tbl_2)
   
   # * county -----
   
-  if ( !"county" %in% tblColumns ) {
-    
-    if ( verbose ) 
-      message("Searching for counties...")
-    
-    locationTbl$county <- MazamaSpatialUtils::getUSCounty(
-      lon = locationTbl$longitude,
-      lat = locationTbl$latitude,
-      dataset = "USCensusCounties",
-      useBuffering = TRUE
-    )
-    
-  }
+  tbl_1 <- dplyr::filter(locationTbl, !is.na(.data$county))
+  tbl_2 <- dplyr::filter(locationTbl, is.na(.data$county))
+  
+  if ( verbose ) 
+    message(sprintf("Creating counties for %d locations ...", nrow(tbl_2)))
+  
+  tbl_2$county <- MazamaSpatialUtils::getUSCounty(
+    lon = tbl_2$longitude,
+    lat = tbl_2$latitude,
+    dataset = "USCensusCounties",
+    useBuffering = TRUE
+  )
+  
+  locationTbl <- dplyr::bind_rows(tbl_1, tbl_2)
   
   # * timezone -----
+
+  tbl_1 <- dplyr::filter(locationTbl, !is.na(.data$timezone))
+  tbl_2 <- dplyr::filter(locationTbl, is.na(.data$timezone))
   
-  if ( !"timezone" %in% tblColumns ) {
-    
-    if ( verbose ) 
-      message("Searching for timezones...")
-    
-    timezone <- MazamaSpatialUtils::getTimezone(
-      lon = locationTbl$longitude,
-      lat = locationTbl$latitude,
-      dataset = "OSMTimezones",
-      countryCodes = countryCodes,
-      useBuffering = TRUE
-    )
-    
-  }
+  if ( verbose ) 
+    message(sprintf("Creating timezones for %d locations ...", nrow(tbl_2)))
+  
+  tbl_2$county <- MazamaSpatialUtils::getTimezone(
+    lon = tbl_2$longitude,
+    lat = tbl_2$latitude,
+    dataset = "OSMTimezones",
+    useBuffering = TRUE
+  )
+  
+  locationTbl <- dplyr::bind_rows(tbl_1, tbl_2)
   
   # * houseNumber -----
   
-  if ( !"houseNumber" %in% tblColumns ) {
-    # Slow web service so skip for now
-    locationTbl$houseNumber <- as.character(NA)
-  }
+  # Slow web service so skip for now
   
   # * street -----
   
-  if ( !"street" %in% tblColumns ) {
-    # Slow web service so skip for now
-    locationTbl$street <- as.character(NA)
-  }
+  # Slow web service so skip for now
   
   # * city -----
   
-  if ( !"city" %in% tblColumns ) {
-    # Slow web service so skip for now
-    locationTbl$city <- as.character(NA)
-  }
-  
+  # Slow web service so skip for now
+
   # * zip -----
   
-  if ( !"zip" %in% tblColumns ) {
-    # Slow web service so skip for now
-    locationTbl$zip <- as.character(NA)
-  }
-  
-  # ----- Reorganize locationTbl -----------------------------------------------
-  
-  requiredColumns <- c(
-    "locationID", "locationName", 
-    "longitude", "latitude", "elevation", 
-    "countryCode", "stateCode", "county", "timezone", 
-    "houseNumber", "street", "city", "zip"
-  )
-  
-  extraColumns <- setdiff(tblColumns, requiredColumns)
-  
-  # This is the preferred order
-  allColumns <- c(requiredColumns, extraColumns)
-  
-  # TODO:  This doesn't seem to reorder like I thought it should.
-  locationTbl <- dplyr::select(locationTbl, all_of(allColumns))
-  
+  # Slow web service so skip for now
+
   # ----- Check for locations that are too close -------------------------------
   
   # Calculate distances between each location

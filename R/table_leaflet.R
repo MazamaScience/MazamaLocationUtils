@@ -109,11 +109,6 @@ table_leaflet <- function(
     zoom <- 12
   }
 
-  # Convert locations to SpatialPointsDataFrame
-  locationTbl <- locationTbl[!is.na(locationTbl$latitude),]
-  SPDF <- sp::SpatialPointsDataFrame(coords = cbind(locationTbl$longitude,locationTbl$latitude),
-                                     data = as.data.frame(locationTbl))
-
   # Convert maptype to a character string that addProviderTiles can read
   if ( missing(maptype) || maptype == 'terrain') {
     providerTiles <- "Esri.WorldTopoMap"
@@ -127,9 +122,17 @@ table_leaflet <- function(
     providerTiles <- maptype
   }
 
+  # ----- Create SPDF ----------------------------------------------------------
+  
+  # Convert locations to SpatialPointsDataFrame
+  locationTbl <- locationTbl[!is.na(locationTbl$latitude),]
+  SPDF <- sp::SpatialPointsDataFrame(coords = cbind(locationTbl$longitude,locationTbl$latitude),
+                                     data = as.data.frame(locationTbl))
+  
   # ----- Create leaflet map ---------------------------------------------------
   
-  m <- leaflet::leaflet(SPDF) %>%
+  m <- 
+    leaflet::leaflet(SPDF) %>%
     leaflet::setView(lng = mean(lonRange), lat = mean(latRange), zoom = zoom) %>%
     leaflet::addProviderTiles(providerTiles) %>%
     leaflet::addCircleMarkers(

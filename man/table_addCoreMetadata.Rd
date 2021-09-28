@@ -4,11 +4,11 @@
 \alias{table_addCoreMetadata}
 \title{Addes missing metadata columns a known location table}
 \usage{
-table_addCoreMetadata(tbl = NULL)
+table_addCoreMetadata(locationTbl = NULL)
 }
 \arguments{
-\item{tbl}{Table of spatial locations that will be converted into a "known
-location" table.}
+\item{locationTbl}{Tibble of known locations. This input tibble need not be a 
+standardized "known location" with all required columns. They will be added.}
 }
 \value{
 Tibble with the metadata columns required in a "known locations" table.

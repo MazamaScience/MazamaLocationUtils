@@ -39,8 +39,8 @@
 #' investigation. But further work is required to produce a valid table of
 #' "known locations" associated with a specific radius.
 #' 
-#' @param tbl Table of spatial locations that will be converted into a "known
-#' location" table.
+#' @param locationTbl Tibble of known locations. This input tibble need not be a 
+#' standardized "known location" with all required columns. They will be added.
 #' 
 #' @return Tibble with the metadata columns required in a "known locations" table.
 #' 
@@ -51,7 +51,7 @@
 #' @importFrom rlang .data
 #' 
 table_addCoreMetadata <- function(
-  tbl = NULL
+  locationTbl = NULL
 ) {
   
   validateMazamaSpatialUtils()
@@ -62,9 +62,7 @@ table_addCoreMetadata <- function(
 
   # ----- Create locationTbl ---------------------------------------------------
   
-  tblColumns <- names(tbl)
-  
-  locationTbl <- tbl
+  incomingTblColumns <- names(locationTbl)
   
   # * locationID -----
   
@@ -75,61 +73,61 @@ table_addCoreMetadata <- function(
   
   # * elevation -----
   
-  if ( !"elevation" %in% tblColumns ) {
+  if ( !"elevation" %in% incomingTblColumns ) {
     locationTbl$elevation <- as.numeric(NA)
   }
   
   # * countryCode -----
   
-  if ( !"countryCode" %in% tblColumns ) {
+  if ( !"countryCode" %in% incomingTblColumns ) {
     locationTbl$countryCode <- as.character(NA)
   }
   
   # * stateCode -----
   
-  if ( !"stateCode" %in% tblColumns ) {
+  if ( !"stateCode" %in% incomingTblColumns ) {
     locationTbl$stateCode <- as.character(NA)
   }
   
   # * locationName -----
   
-  if ( !"locationName" %in% tblColumns ) {
+  if ( !"locationName" %in% incomingTblColumns ) {
     locationTbl$locationName <- as.character(NA)
   }
   
   # * county -----
   
-  if ( !"county" %in% tblColumns ) {
+  if ( !"county" %in% incomingTblColumns ) {
     locationTbl$county <- as.character(NA)
   }
   
   # * timezone -----
   
-  if ( !"timezone" %in% tblColumns ) {
+  if ( !"timezone" %in% incomingTblColumns ) {
     locationTbl$timezone <- as.character(NA)
   }
   
   # * houseNumber -----
   
-  if ( !"houseNumber" %in% tblColumns ) {
+  if ( !"houseNumber" %in% incomingTblColumns ) {
     locationTbl$houseNumber <- as.character(NA)
   }
   
   # * street -----
   
-  if ( !"street" %in% tblColumns ) {
+  if ( !"street" %in% incomingTblColumns ) {
     locationTbl$street <- as.character(NA)
   }
   
   # * city -----
   
-  if ( !"city" %in% tblColumns ) {
+  if ( !"city" %in% incomingTblColumns ) {
     locationTbl$city <- as.character(NA)
   }
   
   # * zip -----
   
-  if ( !"zip" %in% tblColumns ) {
+  if ( !"zip" %in% incomingTblColumns ) {
     locationTbl$zip <- as.character(NA)
   }
   
@@ -142,13 +140,13 @@ table_addCoreMetadata <- function(
     "houseNumber", "street", "city", "zip"
   )
   
-  extraColumns <- setdiff(tblColumns, requiredColumns)
+  extraColumns <- setdiff(incomingTblColumns, requiredColumns)
   
   # This is the preferred order
   allColumns <- c(requiredColumns, extraColumns)
   
   # TODO:  This doesn't seem to reorder like I thought it should.
-  locationTbl <- dplyr::select(locationTbl, all_of(allColumns))
+  locationTbl <- dplyr::select(locationTbl, dplyr::all_of(allColumns))
   
   # ----- Return ---------------------------------------------------------------
   
