@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -117,12 +117,21 @@
       <small>Source: <a href='https://github.com/MazamaScience/MazamaLocationUtils/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="mazamalocationutils-0114" class="section level1">
-<h1 class="page-header" data-toc-text="0.1.14">
-<a href="#mazamalocationutils-0114" class="anchor"></a>MazamaLocationUtils 0.1.14<small> Unreleased </small>
+    <div id="mazamalocationutils-020" class="section level1">
+<h1 class="page-header" data-toc-text="0.2.0">
+<a href="#mazamalocationutils-020" class="anchor"></a>MazamaLocationUtils 0.2.0<small> Unreleased </small>
 </h1>
+<p>Version 0.2.x focuses on additional functionality that was found to be useful after initial work with the package.</p>
 <ul>
 <li>New <code><a href="../reference/table_leaflet.html">table_leaflet()</a></code> function to display locations and metadata.</li>
+<li>Update function arguments to consistently use <code>locationTbl</code> whenever in incoming table includes <code>longitude</code> and <code>latitude</code> variables.</li>
+<li>Improved validation of arguments in all <code>table_~()</code> functions.</li>
+<li>Added <code>na.rm</code> argument to <code><a href="../reference/validateLonsLats.html">validateLonsLats()</a></code>.</li>
+<li>Added <code>measure</code> argument to <code><a href="../reference/table_findOverlappingLocations.html">table_findOverlappingLocations()</a></code>, <code><a href="../reference/table_getLocationID.html">table_getLocationID()</a></code> and <code><a href="../reference/table_getNearestDistance.html">table_getNearestDistance()</a></code>.</li>
+<li>
+<code><a href="../reference/table_findOverlappingLocations.html">table_findOverlappingLocations()</a></code> renamed to <code><a href="../reference/table_findOverlappingDistances.html">table_findOverlappingDistances()</a></code>.</li>
+<li>New <code><a href="../reference/table_findOverlappingLocations.html">table_findOverlappingLocations()</a></code> function returns a tibble of all locations that are too close (<em>i.e.</em> separated by &lt; (2 * radius)).</li>
+<li>New <code><a href="../reference/table_addCoreMetadata.html">table_addCoreMetadata()</a></code> function adds columns of \code{NA} values for any missing core metadata but does not perform any spatial calculations.</li>
 </ul>
 </div>
     <div id="mazamalocationutils-0113" class="section level1">

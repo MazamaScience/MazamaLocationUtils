@@ -1,13 +1,20 @@
 # MazamaLocationUtils 0.2.0
 
-Version 0.2.x focuses on harmonizing function arguments and providing additional
-functionality that was found to be useful.
+Version 0.2.x focuses on  additional functionality that was found to be useful 
+after initial work with the package.
 
 * New `table_leaflet()` function to display locations and metadata.
 * Update function arguments to consistently use `locationTbl` whenever in
 incoming table includes `longitude` and `latitude` variables.
 * Improved validation of arguments in all `table_~()` functions.
-* Added \code{na.rm} argument to `validateLonsLats()`.
+* Added `na.rm` argument to `validateLonsLats()`.
+* Added `measure` argument to `table_findOverlappingLocations()`, 
+`table_getLocationID()` and `table_getNearestDistance()`.
+* `table_findOverlappingLocations()` renamed to `table_findOverlappingDistances()`.
+* New `table_findOverlappingLocations()` function returns a tibble of all locations
+that are too close (_i.e._ separated by < (2 * radius)).
+* New `table_addCoreMetadata()` function adds columns of \code{NA} values for
+any missing core metadata but does not perform any spatial calculations.
 
 # MazamaLocationUtils 0.1.13
 

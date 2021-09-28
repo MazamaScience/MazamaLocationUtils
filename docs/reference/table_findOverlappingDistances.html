@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Set location data directory — setLocationDataDir • MazamaLocationUtils</title>
+<title>Find overlapping distances in a known locations table. — table_findOverlappingDistances • MazamaLocationUtils</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,13 @@
 
 
 
-<meta property="og:title" content="Set location data directory — setLocationDataDir" />
-<meta property="og:description" content="Sets the data directory where known location data tables are located.
-If the directory does not exist, it will be created." />
+<meta property="og:title" content="Find overlapping distances in a known locations table. — table_findOverlappingDistances" />
+<meta property="og:description" content="Calculate distances between all locations within a known
+locations table and returns a tibble with the row indices and separation 
+distances of those records with overlapping locations.
+It is useful when working with new metadata tables to identify overlapping
+locations early on so that decisions can be made about the apporpriateness
+of the specified radius." />
 
 
 
@@ -115,35 +119,67 @@ If the directory does not exist, it will be created." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Set location data directory</h1>
-    <small class="dont-index">Source: <a href='https://github.com/MazamaScience/MazamaLocationUtils/blob/master/R/MazamaLocationUtils.R'><code>R/MazamaLocationUtils.R</code></a></small>
-    <div class="hidden name"><code>setLocationDataDir.Rd</code></div>
+    <h1>Find overlapping distances in a known locations table.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/MazamaScience/MazamaLocationUtils/blob/master/R/table_findOverlappingDistances.R'><code>R/table_findOverlappingDistances.R</code></a></small>
+    <div class="hidden name"><code>table_findOverlappingDistances.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Sets the data directory where known location data tables are located.
-If the directory does not exist, it will be created.</p>
+    <p>Calculate distances between all locations within a known
+locations table and returns a tibble with the row indices and separation 
+distances of those records with overlapping locations.</p>
+<p>It is useful when working with new metadata tables to identify overlapping
+locations early on so that decisions can be made about the apporpriateness
+of the specified <code>radius</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>setLocationDataDir</span><span class='op'>(</span><span class='va'>dataDir</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>table_findOverlappingDistances</span><span class='op'>(</span>
+  locationTbl <span class='op'>=</span> <span class='cn'>NULL</span>,
+  radius <span class='op'>=</span> <span class='cn'>NULL</span>,
+  measure <span class='op'>=</span> <span class='st'>"geodesic"</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>dataDir</th>
-      <td><p>Directory where location tables are stored.</p></td>
+      <th>locationTbl</th>
+      <td><p>Tibble of known locations.</p></td>
+    </tr>
+    <tr>
+      <th>radius</th>
+      <td><p>Radius in meters. Locations are guaranteed to be separatde by 2*R.</p></td>
+    </tr>
+    <tr>
+      <th>measure</th>
+      <td><p>One of "haversine" "vincenty", "geodesic", or "cheap" 
+specifying desired method of geodesic distance calculation. See <code><a href='https://rdrr.io/pkg/geodist/man/geodist.html'>?geodist::geodist</a></code>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Silently returns previous value of the data directory.</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <p>Tibble of row indices and distances for those locations which overlap.</p>
 
-    <div class='dont-index'><p><a href='LocationDataDir.html'>LocationDataDir</a></p>
-<p><a href='getLocationDataDir.html'>getLocationDataDir</a></p></div>
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/MazamaScience/MazamaLocationUtils'>MazamaLocationUtils</a></span><span class='op'>)</span>
 
+<span class='va'>meta</span> <span class='op'>&lt;-</span> <span class='va'>wa_airfire_meta</span>
+
+<span class='co'># Anything locations closer than 2 km? (diameter = 2*radius)</span>
+<span class='fu'>table_findOverlappingDistances</span><span class='op'>(</span><span class='va'>meta</span>, radius <span class='op'>=</span> <span class='fl'>1000</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 0 × 3</span>
+#&gt; <span style='color: #949494;'># … with 3 variables: row1 &lt;dbl&gt;, row2 &lt;dbl&gt;, distance &lt;dbl&gt;</span></div><div class='input'>
+<span class='co'># How about 4 km?</span>
+<span class='fu'>table_findOverlappingDistances</span><span class='op'>(</span><span class='va'>meta</span>, radius <span class='op'>=</span> <span class='fl'>2000</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 3 × 3</span>
+#&gt;    row1  row2 distance
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span>     2    34    <span style='text-decoration: underline;'>2</span>497.
+#&gt; <span style='color: #BCBCBC;'>2</span>    12    34    <span style='text-decoration: underline;'>3</span>329.
+#&gt; <span style='color: #BCBCBC;'>3</span>     2     9    <span style='text-decoration: underline;'>3</span>762.</div><div class='input'>
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

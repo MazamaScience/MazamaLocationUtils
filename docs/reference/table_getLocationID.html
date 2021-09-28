@@ -76,7 +76,7 @@ assigend to a known location in locationTbl." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -135,7 +135,8 @@ assigend to a known location in <code>locationTbl</code>.</p>
   locationTbl <span class='op'>=</span> <span class='cn'>NULL</span>,
   longitude <span class='op'>=</span> <span class='cn'>NULL</span>,
   latitude <span class='op'>=</span> <span class='cn'>NULL</span>,
-  radius <span class='op'>=</span> <span class='cn'>NULL</span>
+  radius <span class='op'>=</span> <span class='cn'>NULL</span>,
+  measure <span class='op'>=</span> <span class='st'>"geodesic"</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -143,19 +144,24 @@ assigend to a known location in <code>locationTbl</code>.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>locationTbl</th>
-      <td><p>Tibble of known locations, Default: NULL</p></td>
+      <td><p>Tibble of known locations.</p></td>
     </tr>
     <tr>
       <th>longitude</th>
-      <td><p>Vector of longitudes in decimal degrees E, Default: NULL</p></td>
+      <td><p>Vector of longitudes in decimal degrees E.</p></td>
     </tr>
     <tr>
       <th>latitude</th>
-      <td><p>Vector of latitudes in decimal degrees N, Default: NULL</p></td>
+      <td><p>Vector of latitudes in decimal degrees N.</p></td>
     </tr>
     <tr>
       <th>radius</th>
-      <td><p>Radius in meters, Default: NULL</p></td>
+      <td><p>Radius in meters.</p></td>
+    </tr>
+    <tr>
+      <th>measure</th>
+      <td><p>One of "haversine" "vincenty", "geodesic", or "cheap" 
+specifying desired method of geodesic distance calculation. See <code><a href='https://rdrr.io/pkg/geodist/man/geodist.html'>?geodist::geodist</a></code>.</p></td>
     </tr>
     </table>
 

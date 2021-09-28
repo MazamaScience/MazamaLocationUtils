@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Set location data directory — setLocationDataDir • MazamaLocationUtils</title>
+<title>Addes missing metadata columns a known location table — table_addCoreMetadata • MazamaLocationUtils</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,34 @@
 
 
 
-<meta property="og:title" content="Set location data directory — setLocationDataDir" />
-<meta property="og:description" content="Sets the data directory where known location data tables are located.
-If the directory does not exist, it will be created." />
+<meta property="og:title" content="Addes missing metadata columns a known location table — table_addCoreMetadata" />
+<meta property="og:description" content="An existing table will be amended to guarantee that it includes
+the following core metadata columns.
+
+locationID
+locationName
+longitude
+latitude
+elevation
+countryCode
+stateCode
+county
+timezone
+houseNumber
+street
+city
+zip
+
+
+The longitude and latitude columns are required to exist in the
+incoming tibble but all others are optional.
+If any of these core metadata columns are found, they will be retained.
+The locationID will be generated (anew if already found) from existing
+longitude and latitude data.
+Other core metadata columns will be filled with NA values of the 
+proper type.
+The result is a table with all of the core metadata columns. Theses columns
+must then be filled in to create a usable &quot;known locations&quot; table." />
 
 
 
@@ -115,34 +140,62 @@ If the directory does not exist, it will be created." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Set location data directory</h1>
-    <small class="dont-index">Source: <a href='https://github.com/MazamaScience/MazamaLocationUtils/blob/master/R/MazamaLocationUtils.R'><code>R/MazamaLocationUtils.R</code></a></small>
-    <div class="hidden name"><code>setLocationDataDir.Rd</code></div>
+    <h1>Addes missing metadata columns a known location table</h1>
+    <small class="dont-index">Source: <a href='https://github.com/MazamaScience/MazamaLocationUtils/blob/master/R/table_addCoreMetadata.R'><code>R/table_addCoreMetadata.R</code></a></small>
+    <div class="hidden name"><code>table_addCoreMetadata.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Sets the data directory where known location data tables are located.
-If the directory does not exist, it will be created.</p>
+    <p>An existing table will be amended to guarantee that it includes
+the following core metadata columns.</p>
+<ul>
+<li><p>locationID</p></li>
+<li><p>locationName</p></li>
+<li><p>longitude</p></li>
+<li><p>latitude</p></li>
+<li><p>elevation</p></li>
+<li><p>countryCode</p></li>
+<li><p>stateCode</p></li>
+<li><p>county</p></li>
+<li><p>timezone</p></li>
+<li><p>houseNumber</p></li>
+<li><p>street</p></li>
+<li><p>city</p></li>
+<li><p>zip</p></li>
+</ul>
+
+<p>The <code>longitude</code> and <code>latitude</code> columns are required to exist in the
+incoming tibble but all others are optional.</p>
+<p>If any of these core metadata columns are found, they will be retained.</p>
+<p>The <code>locationID</code> will be generated (anew if already found) from existing
+longitude and latitude data.</p>
+<p>Other core metadata columns will be filled with <code>NA</code> values of the 
+proper type.</p>
+<p>The result is a table with all of the core metadata columns. Theses columns
+must then be filled in to create a usable "known locations" table.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>setLocationDataDir</span><span class='op'>(</span><span class='va'>dataDir</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>table_addCoreMetadata</span><span class='op'>(</span>tbl <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>dataDir</th>
-      <td><p>Directory where location tables are stored.</p></td>
+      <th>tbl</th>
+      <td><p>Table of spatial locations that will be converted into a "known
+location" table.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Silently returns previous value of the data directory.</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <p>Tibble with the metadata columns required in a "known locations" table.</p>
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <div class='dont-index'><p><a href='LocationDataDir.html'>LocationDataDir</a></p>
-<p><a href='getLocationDataDir.html'>getLocationDataDir</a></p></div>
+    <p>No check is performed for overlapping locations. The returned tibble
+has the structure of a "known locations" table and is a good starting place
+investigation. But further work is required to produce a valid table of
+"known locations" associated with a specific radius.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

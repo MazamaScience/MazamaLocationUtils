@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Set location data directory — setLocationDataDir • MazamaLocationUtils</title>
+<title>Validate a location table — validateLocationTbl • MazamaLocationUtils</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,10 @@
 
 
 
-<meta property="og:title" content="Set location data directory — setLocationDataDir" />
-<meta property="og:description" content="Sets the data directory where known location data tables are located.
-If the directory does not exist, it will be created." />
+<meta property="og:title" content="Validate a location table — validateLocationTbl" />
+<meta property="og:description" content="Ensures that the incoming table has numeric longitude and
+latitude columns. 
+longitude and latitude." />
 
 
 
@@ -115,34 +116,36 @@ If the directory does not exist, it will be created." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Set location data directory</h1>
-    <small class="dont-index">Source: <a href='https://github.com/MazamaScience/MazamaLocationUtils/blob/master/R/MazamaLocationUtils.R'><code>R/MazamaLocationUtils.R</code></a></small>
-    <div class="hidden name"><code>setLocationDataDir.Rd</code></div>
+    <h1>Validate a location table</h1>
+    <small class="dont-index">Source: <a href='https://github.com/MazamaScience/MazamaLocationUtils/blob/master/R/utils.R'><code>R/utils.R</code></a></small>
+    <div class="hidden name"><code>validateLocationTbl.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Sets the data directory where known location data tables are located.
-If the directory does not exist, it will be created.</p>
+    <p>Ensures that the incoming table has numeric <code>longitude</code> and
+<code>latitude</code> columns. 
+<code>longitude</code> and latitude.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>setLocationDataDir</span><span class='op'>(</span><span class='va'>dataDir</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>validateLocationTbl</span><span class='op'>(</span>locationTbl <span class='op'>=</span> <span class='cn'>NULL</span>, locationOnly <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>dataDir</th>
-      <td><p>Directory where location tables are stored.</p></td>
+      <th>locationTbl</th>
+      <td><p>Tibble of known locations.</p></td>
+    </tr>
+    <tr>
+      <th>locationOnly</th>
+      <td><p>Logical specifying whether to check for all standard
+columns.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Silently returns previous value of the data directory.</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><a href='LocationDataDir.html'>LocationDataDir</a></p>
-<p><a href='getLocationDataDir.html'>getLocationDataDir</a></p></div>
+    <p>Invisibly returns <code>TRUE</code> if no error message has been generated.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

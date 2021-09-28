@@ -8,7 +8,8 @@ table_getLocationID(
   locationTbl = NULL,
   longitude = NULL,
   latitude = NULL,
-  radius = NULL
+  radius = NULL,
+  measure = "geodesic"
 )
 }
 \arguments{
@@ -19,6 +20,9 @@ table_getLocationID(
 \item{latitude}{Vector of latitudes in decimal degrees N.}
 
 \item{radius}{Radius in meters.}
+
+\item{measure}{One of "haversine" "vincenty", "geodesic", or "cheap" 
+specifying desired method of geodesic distance calculation. See \code{?geodist::geodist}.}
 }
 \value{
 Vector of known \code{locationID}s.

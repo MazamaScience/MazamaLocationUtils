@@ -9,6 +9,8 @@
 #' @param longitude Vector of longitudes in decimal degrees E.
 #' @param latitude Vector of latitudes in decimal degrees N.
 #' @param radius Radius in meters.
+#' @param measure One of "haversine" "vincenty", "geodesic", or "cheap" 
+#' specifying desired method of geodesic distance calculation. See \code{?geodist::geodist}.
 #' @return Vector of known \code{locationID}s.
 #' @examples
 #' locationTbl <- get(data("wa_monitors_500"))
@@ -31,7 +33,8 @@ table_getLocationID <- function(
   locationTbl = NULL,
   longitude = NULL,
   latitude = NULL,
-  radius = NULL
+  radius = NULL,
+  measure = "geodesic"
 ) {
   
   # ----- Validate parameters --------------------------------------------------
@@ -60,7 +63,7 @@ table_getLocationID <- function(
       paired = FALSE,
       sequential = FALSE,
       pad = FALSE,
-      measure = "geodesic"
+      measure = measure
     )
   
   # NOTE:  distance matrix is nrow(locationTbl) X length(longitude)

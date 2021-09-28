@@ -11,6 +11,8 @@
 #' 
 #' @param locationTbl Tibble of known locations.
 #' @param radius Radius in meters.
+#' @param measure One of "haversine" "vincenty", "geodesic", or "cheap" 
+#' specifying desired method of geodesic distance calculation. See \code{?geodist::geodist}.
 #' 
 #' @return Tibble of row indices and distances for those locations which overlap. 
 #' 
@@ -20,21 +22,14 @@
 #' meta <- wa_airfire_meta
 #' 
 #' # Anything locations closer than 2 km? (diameter = 2*radius)
-#' table_findOverlappingLocations(meta, radius = 1000)
+#' meta %>%
+#'   table_findOverlappingLocations(radius = 1000) %>%
+#'   dplyr::select(monitorID, siteName, timezone)
 #' 
 #' # How about 4 km?
-#' table_findOverlappingLocations(meta, radius = 2000)
-#' 
-#' # Let's look at those locations
-#' 
-#' tooCloseTbl <- table_findOverlappingLocations(meta, radius = 2000)
-#' 
-#' for ( i in seq_len(nrow(tooCloseTbl)) ) {
-#'   rows <- as.numeric(tooCloseTbl[i, 1:2])
-#'   cat(sprintf("\n%5.1f meters apart:\n", tooCloseTbl$distance[i]))
-#'   print(meta[rows, c('longitude', 'latitude', 'siteName')])
-#' }
-#' 
+#' meta %>%
+#'   table_findOverlappingLocations(radius = 2000) %>%
+#'   dplyr::select(monitorID, siteName, timezone)
 #' 
 #' @rdname table_findOverlappingLocations
 #' @export 
@@ -44,7 +39,8 @@
 #' 
 table_findOverlappingLocations <- function(
   locationTbl = NULL,
-  radius = NULL
+  radius = NULL,
+  measure = "geodesic"
 ) {
   
   # ----- Validate parameters --------------------------------------------------
@@ -55,64 +51,11 @@ table_findOverlappingLocations <- function(
   if ( !is.numeric(radius) )
     stop("Parameter 'radius' must be a numeric value.")
   
-  if ( !is.numeric(radius) )
-    stop("Parameter 'radius' must be a numeric value.")
+  # ----- Subset locationTbl ---------------------------------------------------
   
-  diameter <- 2 * round(radius)
-  
-  # ----- Check for locations that are too close -------------------------------
-  
-  # Calculate distances between each location
-  distances <- geodist::geodist(locationTbl, measure = "geodesic")
-  
-  # Get distances that are less than the given diameter
-  # NOTE: the distance between a location and itself is always zero
-  distancesLessThanR <- (distances != 0) & (distances < diameter )
-  
-  # Select the locations that are "too close".
-  tooClose <- which(distancesLessThanR > 0, arr.ind = TRUE)
-  
-  if ( nrow(tooClose) == 0 ) {
-    
-    # Return an empty tibble
-    tooCloseTbl <- 
-      dplyr::tibble(
-        row1 = 1,
-        row2 = 1,
-        distance = as.numeric(NA)
-      ) %>% dplyr::filter(
-        .data$row1 == -999
-      )
-    
-  } else {
-    # NOTE:  If location a and b are too close, two entries will be returned:
-    # NOTE:        row  col
-    # NOTE:   [#,]  a    b
-    # NOTE:    ...
-    # NOTE:   [#,]  b    a
-    #
-    # NOTE:  While often the case, there is no guarantee that complementary
-    # NOTE:  rows will be adjacent to eachother. The next couple of lines
-    # NOTE:  find the rows that have the same indices and reduce the table to
-    # NOTE:  only unique pairs.
-    
-    sortedMatrix <- t(apply(tooClose, 1, sort))
-    tooClose <- sortedMatrix[!duplicated(sortedMatrix),]
-    
-    tooCloseTbl <- dplyr::tibble(
-      row1 = tooClose[,1],
-      row2 = tooClose[,2],
-      distance = as.numeric(NA)
-    )
-    
-    for ( i in seq_len(nrow(tooClose)) ) {
-      tooCloseTbl$distance[i] <- 
-        distances[tooCloseTbl$row1[i], tooCloseTbl$row2[i]]
-    }
-    
-    tooCloseTbl <- tooCloseTbl %>% dplyr::arrange(.data$distance)
-    
-  }
+  overlappingTbl <- table_findOverlappingDistances(locationTbl, radius, measure)
+  indices <- c(dplyr::pull(overlappingTbl, 1), dplyr::pull(overlappingTbl, 2))
+  tooCloseTbl <- locationTbl[indices,]
   
   # ----- Return ---------------------------------------------------------------
   
