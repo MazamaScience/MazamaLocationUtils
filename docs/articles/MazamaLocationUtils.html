@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.13</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.14</span>
       </span>
     </div>
 
@@ -218,10 +218,7 @@
   latitude <span class="op">=</span> <span class="va">lats</span>,
   radius <span class="op">=</span> <span class="fl">50</span>
 <span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">city</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] NA                 NA                 NA                 NA                
-##  [5] NA                 NA                 "Lake Forest Park" NA                
-##  [9] NA                 NA                 NA                 NA                
-## [13] NA</code></pre>
+<pre><code>##  [1] NA NA NA NA NA NA NA NA NA NA NA NA NA</code></pre>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Any known locations within 500 meters</span>
 <span class="fu"><a href="../reference/table_getNearestLocation.html">table_getNearestLocation</a></span><span class="op">(</span>
@@ -230,10 +227,10 @@
   latitude <span class="op">=</span> <span class="va">lats</span>,
   radius <span class="op">=</span> <span class="fl">500</span>
 <span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">city</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] NA                 NA                 "Tri-Cities"       "Sunnyside"       
-##  [5] "Inchelium"        "Wellpinit"        "Lake Forest Park" NA                
-##  [9] NA                 "Okanogan County"  NA                 "Darrington"      
-## [13] "Tukwila"</code></pre>
+<pre><code>##  [1] "Chelan"           NA                 "Tri-Cities"       NA                
+##  [5] "Inchelium"        NA                 "Lake Forest Park" "Okanogan County" 
+##  [9] NA                 NA                 "Ritzville"        "Darrington"      
+## [13] NA</code></pre>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># How about 5000 meters?</span>
 <span class="fu"><a href="../reference/table_getNearestLocation.html">table_getNearestLocation</a></span><span class="op">(</span>

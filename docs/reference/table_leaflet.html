@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Save a known location table — table_save • MazamaLocationUtils</title>
+<title>Leaflet interactive map for known locations — table_leaflet • MazamaLocationUtils</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="Save a known location table — table_save" />
-<meta property="og:description" content="Save a tibble of known locations to the preferred directory." />
+<meta property="og:title" content="Leaflet interactive map for known locations — table_leaflet" />
+<meta property="og:description" content="This function creates interactive maps that will be displayed in
+  RStudio's 'Viewer' tab." />
 
 
 
@@ -114,20 +115,21 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Save a known location table</h1>
-    <small class="dont-index">Source: <a href='https://github.com/MazamaScience/MazamaLocationUtils/blob/master/R/table_save.R'><code>R/table_save.R</code></a></small>
-    <div class="hidden name"><code>table_save.Rd</code></div>
+    <h1>Leaflet interactive map for known locations</h1>
+    <small class="dont-index">Source: <a href='https://github.com/MazamaScience/MazamaLocationUtils/blob/master/R/table_leaflet.R'><code>R/table_leaflet.R</code></a></small>
+    <div class="hidden name"><code>table_leaflet.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Save a tibble of known locations to the preferred directory.</p>
+    <p>This function creates interactive maps that will be displayed in
+  RStudio's 'Viewer' tab.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>table_save</span><span class='op'>(</span>
+    <pre class="usage"><span class='fu'>table_leaflet</span><span class='op'>(</span>
   locationTbl <span class='op'>=</span> <span class='cn'>NULL</span>,
-  collectionName <span class='op'>=</span> <span class='cn'>NULL</span>,
-  backup <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  outputType <span class='op'>=</span> <span class='st'>"rda"</span>
+  maptype <span class='op'>=</span> <span class='st'>"terrain"</span>,
+  extraVars <span class='op'>=</span> <span class='cn'>NULL</span>,
+  color <span class='op'>=</span> <span class='st'>"blue"</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -135,51 +137,42 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>locationTbl</th>
-      <td><p>Tibble of known locations, Default: NULL</p></td>
+      <td><p>Tibble of known locations.</p></td>
     </tr>
     <tr>
-      <th>collectionName</th>
-      <td><p>Character identifier for this table, Default: NULL</p></td>
+      <th>maptype</th>
+      <td><p>Optional name of leaflet ProviderTiles to use, e.g. <code>terrain</code>.</p></td>
     </tr>
     <tr>
-      <th>backup</th>
-      <td><p>Logical specifying whether to save a backup version of any
-existing tables sharing <code>collectionName</code>.</p></td>
+      <th>extraVars</th>
+      <td><p>Character vector of addition <code>locationTbl</code> column names
+to be shown in leaflet popups.</p></td>
     </tr>
     <tr>
-      <th>outputType</th>
-      <td><p>Output format, Default: 'rda'</p></td>
+      <th>color</th>
+      <td><p>Named color to use for map icons.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>File path of saved file.</p>
+    <p>A leaflet "plot" object which, if not assigned, is rendered in
+Rstudio's 'Viewer' tab.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Backup files are saved with "YYYY-mm-ddTHH:MM:SS"</p>
+    <p>The <code>maptype</code> argument is mapped onto leaflet "ProviderTile"
+  names. Current mappings include:</p><ol>
+<li><p>"roadmap" -- "OpenStreetMap"</p></li>
+<li><p>"satellite" -- "Esri.WorldImagery"</p></li>
+<li><p>"terrain" -- "Esri.WorldTopoMap"</p></li>
+<li><p>"toner" -- "Stamen.Toner"</p></li>
+</ol>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/MazamaScience/MazamaLocationUtils'>MazamaLocationUtils</a></span><span class='op'>)</span>
+<p>If a character string not listed above is provided, it will be used as the
+underlying map tile if available. See
+<a href='https://leaflet-extras.github.io/leaflet-providers/'>https://leaflet-extras.github.io/leaflet-providers/</a> for a list of
+"provider tiles" to use as the background map.</p>
 
-<span class='co'># Set the directory for saving location tables</span>
-<span class='fu'><a href='setLocationDataDir.html'>setLocationDataDir</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-
-<span class='co'># Load an example table and check the dimensions</span>
-<span class='va'>locationTbl</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/get.html'>get</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>"wa_monitors_500"</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span><span class='op'>(</span><span class='va'>locationTbl</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] 69 13</div><div class='input'>
-<span class='co'># Save it as "table_save_example"</span>
-<span class='fu'>table_save</span><span class='op'>(</span><span class='va'>locationTbl</span>, <span class='st'>"table_save_example"</span><span class='op'>)</span>
-
-<span class='co'># Add a column and save again</span>
-<span class='va'>locationTbl</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='table_addColumn.html'>table_addColumn</a></span><span class='op'>(</span><span class='st'>"my_column"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>table_save</span><span class='op'>(</span><span class='va'>locationTbl</span>, <span class='st'>"table_save_example"</span><span class='op'>)</span>
-  
-<span class='co'># Check the locationDataDir</span>
-<span class='fu'><a href='https://rdrr.io/r/base/list.files.html'>list.files</a></span><span class='op'>(</span><span class='fu'><a href='getLocationDataDir.html'>getLocationDataDir</a></span><span class='op'>(</span><span class='op'>)</span>, pattern <span class='op'>=</span> <span class='st'>"table_save_example"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "table_save_example.rda"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

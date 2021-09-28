@@ -4,12 +4,22 @@
 \alias{table_leaflet}
 \title{Leaflet interactive map for known locations}
 \usage{
-table_leaflet(locationTbl = NULL, maptype = "terrain")
+table_leaflet(
+  locationTbl = NULL,
+  maptype = "terrain",
+  extraVars = NULL,
+  color = "blue"
+)
 }
 \arguments{
 \item{locationTbl}{Tibble of known locations.}
 
 \item{maptype}{Optional name of leaflet ProviderTiles to use, e.g. \code{terrain}.}
+
+\item{extraVars}{Character vector of addition \code{locationTbl} column names
+to be shown in leaflet popups.}
+
+\item{color}{Named color to use for map icons.}
 }
 \value{
 A leaflet "plot" object which, if not assigned, is rendered in

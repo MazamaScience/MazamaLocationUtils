@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.13</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.14</span>
       </span>
     </div>
 
@@ -117,6 +117,14 @@
       <small>Source: <a href='https://github.com/MazamaScience/MazamaLocationUtils/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="mazamalocationutils-0114" class="section level1">
+<h1 class="page-header" data-toc-text="0.1.14">
+<a href="#mazamalocationutils-0114" class="anchor"></a>MazamaLocationUtils 0.1.14<small> Unreleased </small>
+</h1>
+<ul>
+<li>New <code><a href="../reference/table_leaflet.html">table_leaflet()</a></code> function to display locations and metadata.</li>
+</ul>
+</div>
     <div id="mazamalocationutils-0113" class="section level1">
 <h1 class="page-header" data-toc-text="0.1.13">
 <a href="#mazamalocationutils-0113" class="anchor"></a>MazamaLocationUtils 0.1.13<small> 2021-01-28 </small>
@@ -133,7 +141,7 @@
 <li>Updated <code><a href="../reference/location_getSingleAddress_Photon.html">location_getSingleAddress_Photon()</a></code> to remove <strong>revgeo</strong> dependency.</li>
 <li>Updated to require <strong>geodist</strong> 0.0.6.007 to handle errors finding longitude and latitude columns in the passed in tibble.</li>
 <li>
-<code><a href="https://rdrr.io/pkg/geodist/man/geodist.html">geodist::geodist()</a></code> is now always called with <code>measure = "geodesic"</code> to avoid warning messages from <code>geodist()</code> about inaccuracies with <code>measure = "cheap"</code> (the default).</li>
+<code><a href="https://rdrr.io/pkg/geodist/man/geodist.html">geodist::geodist()</a></code> is now always called with <code>measure = "geodesic"</code> to avoid warning messages from <code>geodist()</code> about inaccuracies with <code>measure = "cheap"</code> (the <code>geodist()</code> default).</li>
 <li>
 <code><a href="../reference/mazama_initialize.html">mazama_initialize()</a></code> now installs required datasets if they are missing.</li>
 <li>Updated to require <strong>MazamaSpatialUtils</strong> 0.7.</li>

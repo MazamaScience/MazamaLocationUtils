@@ -2,6 +2,9 @@
 #'
 #' @param locationTbl Tibble of known locations.
 #' @param maptype Optional name of leaflet ProviderTiles to use, e.g. \code{terrain}.
+#' @param extraVars Character vector of addition \code{locationTbl} column names
+#' to be shown in leaflet popups.  
+#' @param color Named color to use for map icons.
 #'
 #' @description This function creates interactive maps that will be displayed in
 #'   RStudio's 'Viewer' tab.
@@ -31,24 +34,29 @@
 
 table_leaflet <- function(
   locationTbl = NULL,
-  maptype = "terrain"
+  maptype = "terrain",
+  extraVars = NULL,
+  color = "blue"
 ) {
 
   radius <- 10
-  col <- "blue"
   opacity <- 0.5
 
   # ----- Validate parameters --------------------------------------------------
 
   MazamaCoreUtils::stopIfNull(locationTbl)
   MazamaCoreUtils::stopIfNull(maptype)
+  
+  if ( !is.null(extraVars) ) {
+    if ( ! extraVars %in% names(locationTbl) ) {
+      stop("Variables in 'extraVars' not found in 'locationTbl'")
+    }
+  }
 
-  # ----- Figure out names for a legend and colors for each point --------------
-
-  # Ignore warnings from RColorBrewer as leaflet::colorBin does the right thing
+  # ----- Create popup text ----------------------------------------------------
 
   # Create popupText
-  locationTbl$popupText <- paste0(
+  popupText <- paste0(
     "<b>", locationTbl$locationName, "</b><br>",
     "locationID = ", locationTbl$locationID, "<br>",
     "longitude = ", locationTbl$longitude, ", ", "latitude = ", locationTbl$latitude, "<br>",
@@ -58,7 +66,24 @@ table_leaflet <- function(
     "address = ", locationTbl$houseNumber, ", ", locationTbl$street, ", ", locationTbl$city, ", ", 
     locationTbl$stateCode, ", ", locationTbl$zip, "<br>"
   )
+  
+  # Add extra vars
+  for ( i in seq_along(popupText) ) {
 
+    extraText <- vector("character", length(extraVars))
+    for ( j in seq_along(extraVars) ) {
+      var <- extraVars[j]
+      extraText[j] <- paste0("<b>", var, " = ", locationTbl[i, var], "</b><br>")
+    }
+    extraText <- paste0(extraText, collapse = "")
+
+    popupText[i] <- paste0(popupText[i], extraText)
+  }
+
+  locationTbl$popupText <- popupText
+  
+  # ----- Leaflet options ------------------------------------------------------
+  
   # Extract view information
   lonRange <- range(locationTbl$longitude, na.rm = TRUE)
   latRange <- range(locationTbl$latitude, na.rm = TRUE)
@@ -102,7 +127,8 @@ table_leaflet <- function(
     providerTiles <- maptype
   }
 
-  # Create leaflet map
+  # ----- Create leaflet map ---------------------------------------------------
+  
   m <- leaflet::leaflet(SPDF) %>%
     leaflet::setView(lng = mean(lonRange), lat = mean(latRange), zoom = zoom) %>%
     leaflet::addProviderTiles(providerTiles) %>%
