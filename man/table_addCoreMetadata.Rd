@@ -44,7 +44,7 @@ longitude and latitude data.
 Other core metadata columns will be filled with \code{NA} values of the 
 proper type.
 
-The result is a table with all of the core metadata columns. Theses columns
+The result is a tibble with all of the core metadata columns. Theses columns
 must then be filled in to create a usable "known locations" table.
 }
 \note{

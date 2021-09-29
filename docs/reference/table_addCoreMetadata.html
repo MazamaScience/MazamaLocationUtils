@@ -65,7 +65,7 @@ The locationID will be generated (anew if already found) from existing
 longitude and latitude data.
 Other core metadata columns will be filled with NA values of the 
 proper type.
-The result is a table with all of the core metadata columns. Theses columns
+The result is a tibble with all of the core metadata columns. Theses columns
 must then be filled in to create a usable &quot;known locations&quot; table." />
 
 
@@ -171,19 +171,19 @@ incoming tibble but all others are optional.</p>
 longitude and latitude data.</p>
 <p>Other core metadata columns will be filled with <code>NA</code> values of the 
 proper type.</p>
-<p>The result is a table with all of the core metadata columns. Theses columns
+<p>The result is a tibble with all of the core metadata columns. Theses columns
 must then be filled in to create a usable "known locations" table.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>table_addCoreMetadata</span><span class='op'>(</span>tbl <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>table_addCoreMetadata</span><span class='op'>(</span>locationTbl <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>tbl</th>
-      <td><p>Table of spatial locations that will be converted into a "known
-location" table.</p></td>
+      <th>locationTbl</th>
+      <td><p>Tibble of known locations. This input tibble need not be a 
+standardized "known location" with all required columns. They will be added.</p></td>
     </tr>
     </table>
 

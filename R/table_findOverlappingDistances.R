@@ -52,17 +52,26 @@ table_findOverlappingDistances <- function(
   
   # ----- Calculate distances --------------------------------------------------
 
-  distance <-
-    geodist::geodist(
-      x = cbind(
-        "x" = locationTbl$longitude,
-        "y" = locationTbl$latitude
-      ),
-      paired = FALSE,
-      sequential = FALSE,
-      pad = FALSE,
-      measure = measure
-    )
+  # NOTE:  Suppress annoying message:
+  #
+  # Maximum distance is > 100km. The 'cheap' measure is inaccurate over such
+  # large distances, you'd likely be better using a different 'measure'.
+  
+  suppressMessages({
+
+    distance <-
+      geodist::geodist(
+        x = cbind(
+          "x" = locationTbl$longitude,
+          "y" = locationTbl$latitude
+        ),
+        paired = FALSE,
+        sequential = FALSE,
+        pad = FALSE,
+        measure = measure
+      )
+    
+  })
   
   # NOTE:  distance matrix is nrow(locationTbl) X length(longitude)
   

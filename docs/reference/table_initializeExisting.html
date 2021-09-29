@@ -63,10 +63,10 @@ The longitude and latitude columns are required but all others
 are optional.
 If any of these optional columns are found, they will be used and the often 
 slow and sometimes slightly inaccurate steps to generate that information
-will be skipped. Any additional columns of information not part of the 
-required list will be retained.
+will be skipped for locations with that data. Any additional columns of 
+information not part of the required core metadata will be retained.
 This method skips the assignment of columns like elevation and all
-address related foe;ds that require web service requests.
+address related fields that require web service requests.
 Compared to initializing a brand new table and populating one record at a
 time, this is a much faster way of creating a known location table from a
 pre-existing table of metadata." />
@@ -172,20 +172,21 @@ searches for required columns:</p>
 are optional.</p>
 <p>If any of these optional columns are found, they will be used and the often 
 slow and sometimes slightly inaccurate steps to generate that information
-will be skipped. Any additional columns of information not part of the 
-required list will be retained.</p>
+will be skipped for locations with that data. Any additional columns of 
+information not part of the required core metadata will be retained.</p>
 <p>This method skips the assignment of columns like <code>elevation</code> and all
-address related foe;ds that require web service requests.</p>
+address related fields that require web service requests.</p>
 <p>Compared to initializing a brand new table and populating one record at a
 time, this is a much faster way of creating a known location table from a
 pre-existing table of metadata.</p>
     </div>
 
     <pre class="usage"><span class='fu'>table_initializeExisting</span><span class='op'>(</span>
-  tbl <span class='op'>=</span> <span class='cn'>NULL</span>,
+  locationTbl <span class='op'>=</span> <span class='cn'>NULL</span>,
   stateDataset <span class='op'>=</span> <span class='st'>"NaturalEarthAdm1"</span>,
   countryCodes <span class='op'>=</span> <span class='cn'>NULL</span>,
   radius <span class='op'>=</span> <span class='cn'>NULL</span>,
+  measure <span class='op'>=</span> <span class='st'>"geodesic"</span>,
   verbose <span class='op'>=</span> <span class='cn'>TRUE</span>
 <span class='op'>)</span></pre>
 
@@ -193,9 +194,9 @@ pre-existing table of metadata.</p>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>tbl</th>
-      <td><p>Table of spatial locations that will be converted into a "known
-location" table.</p></td>
+      <th>locationTbl</th>
+      <td><p>Tibble of known locations. This input tibble need not be a 
+standardized "known location" with all required columns. They will be added.</p></td>
     </tr>
     <tr>
       <th>stateDataset</th>
@@ -210,6 +211,11 @@ searching. (See ?MazamaSpatialUtils::getStateCode())</p></td>
     <tr>
       <th>radius</th>
       <td><p>Radius in meters.</p></td>
+    </tr>
+    <tr>
+      <th>measure</th>
+      <td><p>One of "haversine" "vincenty", "geodesic", or "cheap" 
+specifying desired method of geodesic distance calculation. See <code><a href='https://rdrr.io/pkg/geodist/man/geodist.html'>?geodist::geodist</a></code>.</p></td>
     </tr>
     <tr>
       <th>verbose</th>

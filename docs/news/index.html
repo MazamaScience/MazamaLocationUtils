@@ -132,6 +132,8 @@
 <code><a href="../reference/table_findOverlappingLocations.html">table_findOverlappingLocations()</a></code> renamed to <code><a href="../reference/table_findOverlappingDistances.html">table_findOverlappingDistances()</a></code>.</li>
 <li>New <code><a href="../reference/table_findOverlappingLocations.html">table_findOverlappingLocations()</a></code> function returns a tibble of all locations that are too close (<em>i.e.</em> separated by &lt; (2 * radius)).</li>
 <li>New <code><a href="../reference/table_addCoreMetadata.html">table_addCoreMetadata()</a></code> function adds columns of \code{NA} values for any missing core metadata but does not perform any spatial calculations.</li>
+<li>New <code><a href="../reference/table_leafletAdd.html">table_leafletAdd()</a></code> function to make it easier to compare “known locations” tables."</li>
+<li>Updated <code><a href="../reference/table_initializeExisting.html">table_initializeExisting()</a></code> to only perform spatial searches where data is missing in the incoming table. This greatly speeds up performance.</li>
 </ul>
 </div>
     <div id="mazamalocationutils-0113" class="section level1">

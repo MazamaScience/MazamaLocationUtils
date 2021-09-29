@@ -31,7 +31,7 @@
 #' Other core metadata columns will be filled with \code{NA} values of the 
 #' proper type.
 #' 
-#' The result is a table with all of the core metadata columns. Theses columns
+#' The result is a tibble with all of the core metadata columns. Theses columns
 #' must then be filled in to create a usable "known locations" table.
 #' 
 #' @note No check is performed for overlapping locations. The returned tibble
@@ -145,8 +145,10 @@ table_addCoreMetadata <- function(
   # This is the preferred order
   allColumns <- c(requiredColumns, extraColumns)
   
-  # TODO:  This doesn't seem to reorder like I thought it should.
-  locationTbl <- dplyr::select(locationTbl, dplyr::all_of(allColumns))
+  # Reorder and convert to tibble
+  locationTbl <- 
+    dplyr::select(locationTbl, dplyr::all_of(allColumns)) %>%
+    dplyr::as_tibble()
   
   # ----- Return ---------------------------------------------------------------
   
