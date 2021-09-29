@@ -9,11 +9,11 @@ data is missing in the incoming table. This greatly speeds up performance.
 tables."
 * New `table_addCoreMetadata()` function adds columns of \code{NA} values for
 any missing core metadata but does not perform any spatial calculations.
-* New `table_findOverlappingLocations()` function returns a tibble of all locations
-that are too close (_i.e._ separated by < (2 * radius)).
-* `table_findOverlappingLocations()` renamed to `table_findOverlappingDistances()`.
-* Added `measure` argument to `table_findOverlappingLocations()`, 
-`table_getLocationID()` and `table_getNearestDistance()`.
+* New `table_findAdjacentLocations()` function returns a tibble of all locations
+that are too close (_i.e._ separated by < `distanceThreshold`).
+* `table_findOverlappingLocations()` renamed to `table_findAdjacentDistances()`.
+* Added `measure` argument to `table_findAdjacentLocations()`, 
+`table_findAdjacentDistances()`, `table_getLocationID()` and `table_getNearestDistance()`.
 * Added `na.rm` argument to `validateLonsLats()`.
 * Improved validation of arguments in all `table_~()` functions.
 * Update function arguments to consistently use `locationTbl` whenever in
