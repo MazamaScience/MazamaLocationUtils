@@ -8,7 +8,7 @@ table_initializeExisting(
   locationTbl = NULL,
   stateDataset = "NaturalEarthAdm1",
   countryCodes = NULL,
-  radius = NULL,
+  distanceThreshold = NULL,
   measure = "geodesic",
   verbose = TRUE
 )
@@ -23,7 +23,7 @@ codes, Default: 'NaturalEarthAdm1'}
 \item{countryCodes}{Vector of country codes used to optimize spatial
 searching. (See ?MazamaSpatialUtils::getStateCode())}
 
-\item{radius}{Radius in meters.}
+\item{distanceThreshold}{Distance in meters.}
 
 \item{measure}{One of "haversine" "vincenty", "geodesic", or "cheap" 
 specifying desired method of geodesic distance calculation. See \code{?geodist::geodist}.}
@@ -32,13 +32,13 @@ specifying desired method of geodesic distance calculation. See \code{?geodist::
 }
 \value{
 Known location tibble with the specified metadata columns. Any 
-locations whose circles (as defined by \code{radius}) overlap will generate
+locations whose circles (as defined by \code{distanceThreshold}) overlap will generate
 warning messages. 
 
 It is incumbent upon the user to address these issue by one of:
 
 \enumerate{
-\item{reduce the radius until no overlaps occur}
+\item{reduce the distanceThreshold until no overlaps occur}
 \item{assign one of the overlapping locations to the other location}
 }
 }
@@ -77,4 +77,10 @@ address related fields that require web service requests.
 Compared to initializing a brand new table and populating one record at a
 time, this is a much faster way of creating a known location table from a
 pre-existing table of metadata.
+}
+\note{
+The measure \code{"cheap"} may be used to speed things up depending on
+the spatial scale being considered. Distances calculated with 
+\code{measure = "cheap"} will vary by a few meters compared with those 
+calculated using \code{measure = "geodesic"}.
 }

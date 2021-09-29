@@ -30,7 +30,7 @@ lon <- -120.325278
 lat <- 47.423333
 
 # Get the locationID first
-locationID <- table_getLocationID(locationTbl, lon, lat, radius = 5000)
+locationID <- table_getLocationID(locationTbl, lon, lat, distanceThreshold = 5000)
 
 # Now find the row associated with this ID
 recordIndex <- table_getRecordIndex(locationTbl, locationID)

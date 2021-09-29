@@ -131,7 +131,7 @@ incoming location, that record in the tibble will contain all <code>NA</code>.</
   locationTbl <span class='op'>=</span> <span class='cn'>NULL</span>,
   longitude <span class='op'>=</span> <span class='cn'>NULL</span>,
   latitude <span class='op'>=</span> <span class='cn'>NULL</span>,
-  radius <span class='op'>=</span> <span class='cn'>NULL</span>
+  distanceThreshold <span class='op'>=</span> <span class='cn'>NULL</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -150,8 +150,8 @@ incoming location, that record in the tibble will contain all <code>NA</code>.</
       <td><p>Vector of latitudes in decimal degrees N.</p></td>
     </tr>
     <tr>
-      <th>radius</th>
-      <td><p>Radius in meters.</p></td>
+      <th>distanceThreshold</th>
+      <td><p>Distance in meters.</p></td>
     </tr>
     </table>
 
@@ -168,8 +168,8 @@ incoming location, that record in the tibble will contain all <code>NA</code>.</
 <span class='va'>lon</span> <span class='op'>&lt;-</span> <span class='op'>-</span><span class='fl'>120.325278</span>
 <span class='va'>lat</span> <span class='op'>&lt;-</span> <span class='fl'>47.423333</span>
 
-<span class='co'># Too small a radius will not find a match</span>
-<span class='fu'>table_getNearestLocation</span><span class='op'>(</span><span class='va'>locationTbl</span>, <span class='va'>lon</span>, <span class='va'>lat</span>, radius <span class='op'>=</span> <span class='fl'>50</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='co'># Too small a distanceThreshold will not find a match</span>
+<span class='fu'>table_getNearestLocation</span><span class='op'>(</span><span class='va'>locationTbl</span>, <span class='va'>lon</span>, <span class='va'>lat</span>, distanceThreshold <span class='op'>=</span> <span class='fl'>50</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; tibble [1 × 13] (S3: tbl_df/tbl/data.frame)
 #&gt;  $ locationID  : chr NA
 #&gt;  $ locationName: chr NA
@@ -184,8 +184,8 @@ incoming location, that record in the tibble will contain all <code>NA</code>.</
 #&gt;  $ street      : chr NA
 #&gt;  $ city        : chr NA
 #&gt;  $ zip         : chr NA</div><div class='input'>
-<span class='co'># Expanding the radius will find one</span>
-<span class='fu'>table_getNearestLocation</span><span class='op'>(</span><span class='va'>locationTbl</span>, <span class='va'>lon</span>, <span class='va'>lat</span>, radius <span class='op'>=</span> <span class='fl'>5000</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='co'># Expanding the distanceThreshold will find one</span>
+<span class='fu'>table_getNearestLocation</span><span class='op'>(</span><span class='va'>locationTbl</span>, <span class='va'>lon</span>, <span class='va'>lat</span>, distanceThreshold <span class='op'>=</span> <span class='fl'>5000</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; tibble [1 × 13] (S3: tbl_df/tbl/data.frame)
 #&gt;  $ locationID  : chr "8e54314f43eb8746"
 #&gt;  $ locationName: chr "us.wa_8e5431"

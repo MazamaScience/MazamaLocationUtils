@@ -178,10 +178,18 @@ locatioData is used to replace any existing value in columnName." />
 <span class='va'>wa_indices</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>5</span>,<span class='fl'>65</span>,<span class='fl'>5</span><span class='op'>)</span>
 <span class='va'>wa_sub</span> <span class='op'>&lt;-</span> <span class='va'>wa</span><span class='op'>[</span><span class='va'>wa_indices</span>,<span class='op'>]</span>
 
-<span class='va'>locationID</span> <span class='op'>&lt;-</span> <span class='fu'><a href='table_getLocationID.html'>table_getLocationID</a></span><span class='op'>(</span><span class='va'>locationTbl</span>, <span class='va'>wa_sub</span><span class='op'>$</span><span class='va'>longitude</span>, <span class='va'>wa_sub</span><span class='op'>$</span><span class='va'>latitude</span>, radius <span class='op'>=</span> <span class='fl'>500</span><span class='op'>)</span>
+<span class='va'>locationID</span> <span class='op'>&lt;-</span> 
+  <span class='fu'><a href='table_getLocationID.html'>table_getLocationID</a></span><span class='op'>(</span>
+    <span class='va'>locationTbl</span>, 
+    <span class='va'>wa_sub</span><span class='op'>$</span><span class='va'>longitude</span>, 
+    <span class='va'>wa_sub</span><span class='op'>$</span><span class='va'>latitude</span>, 
+    distanceThreshold <span class='op'>=</span> <span class='fl'>500</span>
+  <span class='op'>)</span>
+  
 <span class='va'>locationData</span> <span class='op'>&lt;-</span> <span class='va'>wa_sub</span><span class='op'>$</span><span class='va'>siteName</span>
 
-<span class='va'>locationTbl</span> <span class='op'>&lt;-</span> <span class='fu'>table_updateColumn</span><span class='op'>(</span><span class='va'>locationTbl</span>, <span class='st'>"siteName"</span>, <span class='va'>locationID</span>, <span class='va'>locationData</span><span class='op'>)</span>
+<span class='va'>locationTbl</span> <span class='op'>&lt;-</span> 
+  <span class='fu'>table_updateColumn</span><span class='op'>(</span><span class='va'>locationTbl</span>, <span class='st'>"siteName"</span>, <span class='va'>locationID</span>, <span class='va'>locationData</span><span class='op'>)</span>
 
 <span class='co'># Look at the data we attempted to merge</span>
 <span class='va'>wa</span><span class='op'>$</span><span class='va'>siteName</span><span class='op'>[</span><span class='va'>wa_indices</span><span class='op'>]</span>

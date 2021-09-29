@@ -36,25 +36,30 @@
 #' time, this is a much faster way of creating a known location table from a
 #' pre-existing table of metadata.
 #' 
+#' @note The measure \code{"cheap"} may be used to speed things up depending on
+#' the spatial scale being considered. Distances calculated with 
+#' \code{measure = "cheap"} will vary by a few meters compared with those 
+#' calculated using \code{measure = "geodesic"}.
+#' 
 #' @param locationTbl Tibble of known locations. This input tibble need not be a 
 #' standardized "known location" with all required columns. They will be added.
 #' @param stateDataset Name of spatial dataset to use for determining state
 #' codes, Default: 'NaturalEarthAdm1'
 #' @param countryCodes Vector of country codes used to optimize spatial
 #' searching. (See ?MazamaSpatialUtils::getStateCode())
-#' @param radius Radius in meters. 
+#' @param distanceThreshold Distance in meters. 
 #' @param measure One of "haversine" "vincenty", "geodesic", or "cheap" 
 #' specifying desired method of geodesic distance calculation. See \code{?geodist::geodist}.
 #' @param verbose Logical controlling the generation of progress messages.
 #' 
 #' @return Known location tibble with the specified metadata columns. Any 
-#' locations whose circles (as defined by \code{radius}) overlap will generate
+#' locations whose circles (as defined by \code{distanceThreshold}) overlap will generate
 #' warning messages. 
 #' 
 #' It is incumbent upon the user to address these issue by one of:
 #' 
 #' \enumerate{
-#' \item{reduce the radius until no overlaps occur}
+#' \item{reduce the distanceThreshold until no overlaps occur}
 #' \item{assign one of the overlapping locations to the other location}
 #' }
 #' 
@@ -68,7 +73,7 @@ table_initializeExisting <- function(
   locationTbl = NULL,
   stateDataset = "NaturalEarthAdm1",
   countryCodes = NULL,
-  radius = NULL,
+  distanceThreshold = NULL,
   measure = "geodesic",
   verbose = TRUE
 ) {
@@ -78,7 +83,7 @@ table_initializeExisting <- function(
   # ----- Validate parameters --------------------------------------------------
   
   MazamaLocationUtils::validateLocationTbl(locationTbl, locationOnly = TRUE)
-  MazamaCoreUtils::stopIfNull(radius)
+  MazamaCoreUtils::stopIfNull(distanceThreshold)
   
   if ( !exists(stateDataset) ) {
     stop(paste0(
@@ -90,10 +95,8 @@ table_initializeExisting <- function(
   if ( "locationID" %in% names(locationTbl) )
     stop("Parameter 'locationTbl' already has a column named \"locationID\"")
   
-  if ( !is.numeric(radius) )
-    stop("Parameter 'radius' must be a numeric value.")
-  
-  diameter <- 2 * round(radius)
+  if ( !is.numeric(distanceThreshold) )
+    stop("Parameter 'distanceThreshold' must be a numeric value.")
   
   # ----- Create locationTbl ---------------------------------------------------
   
@@ -243,19 +246,19 @@ table_initializeExisting <- function(
   
   # Slow web service so skip for now
 
-  # ----- Check for locations that are too close -------------------------------
+  # ----- Check for adjaceent locations ----------------------------------------
   
   # # Calculate distances between each location
   # distances <- geodist::geodist(locationTbl, measure = "geodesic")
   # 
-  # # Get distances that are less than the given diameter
+  # # Get distances that are less than the given distanceThreshold
   # # NOTE: the distance between a location and itself is always zero
-  # distancesLessThanR <- (distances != 0) & (distances < diameter )
+  # distancesLessThanR <- (distances != 0) & (distances < distanceThreshold )
   # 
-  # # Select the locations that are "too close".
+  # # Select the locations that are "adjacent".
   # overlappingTbl <- which(distancesLessThanR > 0, arr.ind = TRUE)
   
-  overlappingTbl <- table_findOverlappingDistances(locationTbl, radius, measure)
+  overlappingTbl <- table_findAdjacentDistances(locationTbl, distanceThreshold, measure)
 
   if ( nrow(overlappingTbl) > 0 ) {
     
@@ -265,7 +268,7 @@ table_initializeExisting <- function(
     firstLine <- sprintf(
       "%d locations have neighbors that are < %d m apart\n",
       round(overlappingCount),
-      diameter
+      distanceThreshold
     )
     
     # Create a vector of lines, on for each overlappingTbl location pair
@@ -282,11 +285,11 @@ table_initializeExisting <- function(
     }
     
     instructions <- sprintf("
-The presence of locations closer than twice the specified radius invalidate the 
+The presence of locations closer than twice the specified distanceThreshold invalidate the 
 uniqueness of a 'known locations' table and should be rectified. There are several 
 basic options:
 
-  1) Reduce the radius to less than the half the minimum distance.
+  1) Reduce the distanceThreshold to less than the half the minimum distance.
   2) Manually remove one location from each pair.
   3) Manually merge nearby locations to share the same longitude, latitude and
      locationID
@@ -294,10 +297,10 @@ basic options:
 Please review the returned locationTbl for the identified rows with:
 
 locationTbl %%>%%
-  table_findOverlappingLocations(radius = %d, measure = \"%s\") %%>%%
+  table_findAdjacentLocations(distanceThreshold = %d, measure = \"%s\") %%>%%
   table_leaflet()
 
-  ", round(radius), measure)
+  ", round(distanceThreshold), measure)
     
     lines <- c(firstLine, overlappingLines, instructions)
     

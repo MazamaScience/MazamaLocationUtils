@@ -51,5 +51,5 @@ must then be filled in to create a usable "known locations" table.
 No check is performed for overlapping locations. The returned tibble
 has the structure of a "known locations" table and is a good starting place
 investigation. But further work is required to produce a valid table of
-"known locations" associated with a specific radius.
+"known locations" associated with a specific spatial scale.
 }

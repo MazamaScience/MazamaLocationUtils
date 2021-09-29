@@ -41,8 +41,8 @@
 
 <meta property="og:title" content="Add new known location records to a table — table_addLocation" />
 <meta property="og:description" content="Incoming longitude and latitude values are compared 
-against the incoming locationTbl to see if the are already within
-radius meters of an existing entry. A new record is created for
+against the incoming locationTbl to see if they are already within
+distanceThreshold meters of an existing entry. A new record is created for
 each location that is not already found in locationTbl." />
 
 
@@ -124,8 +124,8 @@ each location that is not already found in locationTbl." />
 
     <div class="ref-description">
     <p>Incoming <code>longitude</code> and <code>latitude</code> values are compared 
-against the incoming <code>locationTbl</code> to see if the are already within
-<code>radius</code> meters of an existing entry. A new record is created for
+against the incoming <code>locationTbl</code> to see if they are already within
+<code>distanceThreshold</code> meters of an existing entry. A new record is created for
 each location that is not already found in <code>locationTbl</code>.</p>
     </div>
 
@@ -133,7 +133,7 @@ each location that is not already found in <code>locationTbl</code>.</p>
   locationTbl <span class='op'>=</span> <span class='cn'>NULL</span>,
   longitude <span class='op'>=</span> <span class='cn'>NULL</span>,
   latitude <span class='op'>=</span> <span class='cn'>NULL</span>,
-  radius <span class='op'>=</span> <span class='cn'>NULL</span>,
+  distanceThreshold <span class='op'>=</span> <span class='cn'>NULL</span>,
   stateDataset <span class='op'>=</span> <span class='st'>"NaturalEarthAdm1"</span>,
   elevationService <span class='op'>=</span> <span class='cn'>NULL</span>,
   addressService <span class='op'>=</span> <span class='cn'>NULL</span>,
@@ -156,8 +156,8 @@ each location that is not already found in <code>locationTbl</code>.</p>
       <td><p>Vector of latitudes in decimal degrees N.</p></td>
     </tr>
     <tr>
-      <th>radius</th>
-      <td><p>Radius in meters.</p></td>
+      <th>distanceThreshold</th>
+      <td><p>Distance in meters.</p></td>
     </tr>
     <tr>
       <th>stateDataset</th>
@@ -185,7 +185,7 @@ the street address. Default: NULL. Accepted values: "photon".</p></td>
     <p>Updated tibble of known locations.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>This funciton is a vecorized version of <code><a href='table_addSingleLocation.html'>table_addSingleLocation()</a></code>.</p>
+    <p>This function is a vectorized version of <code><a href='table_addSingleLocation.html'>table_addSingleLocation()</a></code>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><a href='table_addSingleLocation.html'>table_addSingleLocation</a></p>
@@ -208,7 +208,7 @@ the street address. Default: NULL. Accepted values: "photon".</p></td>
 
 <span class='va'>locationTbl</span> <span class='op'>&lt;-</span> 
   <span class='va'>locationTbl</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>table_addLocation</span><span class='op'>(</span><span class='va'>lon</span>, <span class='va'>lat</span>, radius <span class='op'>=</span> <span class='fl'>500</span><span class='op'>)</span>
+  <span class='fu'>table_addLocation</span><span class='op'>(</span><span class='va'>lon</span>, <span class='va'>lat</span>, distanceThreshold <span class='op'>=</span> <span class='fl'>500</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>Working on -119.2909040, 47.6119420 ...</span></div><div class='input'>  
 <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://pillar.r-lib.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>locationTbl</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; Rows: 70

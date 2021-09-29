@@ -164,14 +164,14 @@ against the incoming <code>locationTbl</code> and any matches are removed.</p>
 <span class='va'>lat</span> <span class='op'>&lt;-</span> <span class='fl'>47.423333</span>
 
 <span class='co'># Get the locationID first</span>
-<span class='va'>locationID</span> <span class='op'>&lt;-</span> <span class='fu'><a href='table_getLocationID.html'>table_getLocationID</a></span><span class='op'>(</span><span class='va'>locationTbl</span>, <span class='va'>lon</span>, <span class='va'>lat</span>, radius <span class='op'>=</span> <span class='fl'>500</span><span class='op'>)</span>
+<span class='va'>locationID</span> <span class='op'>&lt;-</span> <span class='fu'><a href='table_getLocationID.html'>table_getLocationID</a></span><span class='op'>(</span><span class='va'>locationTbl</span>, <span class='va'>lon</span>, <span class='va'>lat</span>, distanceThreshold <span class='op'>=</span> <span class='fl'>500</span><span class='op'>)</span>
 
 <span class='co'># Remove it</span>
 <span class='va'>locationTbl</span> <span class='op'>&lt;-</span> <span class='fu'>table_removeRecord</span><span class='op'>(</span><span class='va'>locationTbl</span>, <span class='va'>locationID</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span><span class='op'>(</span><span class='va'>locationTbl</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 69 13</div><div class='input'>
 <span class='co'># Test</span>
-<span class='fu'><a href='table_getLocationID.html'>table_getLocationID</a></span><span class='op'>(</span><span class='va'>locationTbl</span>, <span class='va'>lon</span>, <span class='va'>lat</span>, radius <span class='op'>=</span> <span class='fl'>500</span><span class='op'>)</span>
+<span class='fu'><a href='table_getLocationID.html'>table_getLocationID</a></span><span class='op'>(</span><span class='va'>locationTbl</span>, <span class='va'>lon</span>, <span class='va'>lat</span>, distanceThreshold <span class='op'>=</span> <span class='fl'>500</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] NA</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

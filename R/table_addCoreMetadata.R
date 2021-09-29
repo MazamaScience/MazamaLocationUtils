@@ -37,7 +37,7 @@
 #' @note No check is performed for overlapping locations. The returned tibble
 #' has the structure of a "known locations" table and is a good starting place
 #' investigation. But further work is required to produce a valid table of
-#' "known locations" associated with a specific radius.
+#' "known locations" associated with a specific spatial scale.
 #' 
 #' @param locationTbl Tibble of known locations. This input tibble need not be a 
 #' standardized "known location" with all required columns. They will be added.

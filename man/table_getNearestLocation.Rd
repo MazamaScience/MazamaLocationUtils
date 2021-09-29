@@ -8,7 +8,7 @@ table_getNearestLocation(
   locationTbl = NULL,
   longitude = NULL,
   latitude = NULL,
-  radius = NULL
+  distanceThreshold = NULL
 )
 }
 \arguments{
@@ -18,7 +18,7 @@ table_getNearestLocation(
 
 \item{latitude}{Vector of latitudes in decimal degrees N.}
 
-\item{radius}{Radius in meters.}
+\item{distanceThreshold}{Distance in meters.}
 }
 \value{
 Tibble of known locations.
@@ -37,9 +37,9 @@ locationTbl <- get(data("wa_monitors_500"))
 lon <- -120.325278
 lat <- 47.423333
 
-# Too small a radius will not find a match
-table_getNearestLocation(locationTbl, lon, lat, radius = 50) \%>\% str()
+# Too small a distanceThreshold will not find a match
+table_getNearestLocation(locationTbl, lon, lat, distanceThreshold = 50) \%>\% str()
 
-# Expanding the radius will find one
-table_getNearestLocation(locationTbl, lon, lat, radius = 5000) \%>\% str()
+# Expanding the distanceThreshold will find one
+table_getNearestLocation(locationTbl, lon, lat, distanceThreshold = 5000) \%>\% str()
 }

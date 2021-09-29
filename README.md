@@ -45,7 +45,7 @@ decimal place making it challenging to use them to create a unique `locationID`.
 location".
 * Data for a single sensor goes through different processing pipelines using
 different identifiers and is later brought together as two separate timeseries.
-* The radius of what constitutes a "single location" depends on the 
+* The spatial scale of what constitutes a "single location" depends on the 
 instrumentation and scientific question being asked.
 * Deriving location-based metadata from spatial datasets is computationally 
 intensive unless saved and identified with a unique `locationID`.
@@ -59,7 +59,7 @@ A solution to all these problems is possible if we store spatial metadata in
 simple tables in a standard directory. These tables will be referred to as 
 _collections_. Location lookups can be performed with
 geodesic distance calculations where a location is assigned to a pre-existing
-_known location_ if it is within `radius` meters. These will be extremely fast.
+_known location_ if it is within `distanceThreshold` meters. These will be extremely fast.
 
 If no previously _known location_ is found, the relatively slow (seconds)
 creation of a new _known location_ metadata record can be performed and then 

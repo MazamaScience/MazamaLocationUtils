@@ -20,10 +20,18 @@
 #' wa_indices <- seq(5,65,5)
 #' wa_sub <- wa[wa_indices,]
 #' 
-#' locationID <- table_getLocationID(locationTbl, wa_sub$longitude, wa_sub$latitude, radius = 500)
+#' locationID <- 
+#'   table_getLocationID(
+#'     locationTbl, 
+#'     wa_sub$longitude, 
+#'     wa_sub$latitude, 
+#'     distanceThreshold = 500
+#'   )
+#'   
 #' locationData <- wa_sub$siteName
 #' 
-#' locationTbl <- table_updateColumn(locationTbl, "siteName", locationID, locationData)
+#' locationTbl <- 
+#'   table_updateColumn(locationTbl, "siteName", locationID, locationData)
 #' 
 #' # Look at the data we attempted to merge
 #' wa$siteName[wa_indices]

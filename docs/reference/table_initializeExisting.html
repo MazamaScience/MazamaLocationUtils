@@ -185,7 +185,7 @@ pre-existing table of metadata.</p>
   locationTbl <span class='op'>=</span> <span class='cn'>NULL</span>,
   stateDataset <span class='op'>=</span> <span class='st'>"NaturalEarthAdm1"</span>,
   countryCodes <span class='op'>=</span> <span class='cn'>NULL</span>,
-  radius <span class='op'>=</span> <span class='cn'>NULL</span>,
+  distanceThreshold <span class='op'>=</span> <span class='cn'>NULL</span>,
   measure <span class='op'>=</span> <span class='st'>"geodesic"</span>,
   verbose <span class='op'>=</span> <span class='cn'>TRUE</span>
 <span class='op'>)</span></pre>
@@ -209,8 +209,8 @@ codes, Default: 'NaturalEarthAdm1'</p></td>
 searching. (See ?MazamaSpatialUtils::getStateCode())</p></td>
     </tr>
     <tr>
-      <th>radius</th>
-      <td><p>Radius in meters.</p></td>
+      <th>distanceThreshold</th>
+      <td><p>Distance in meters.</p></td>
     </tr>
     <tr>
       <th>measure</th>
@@ -226,14 +226,20 @@ specifying desired method of geodesic distance calculation. See <code><a href='h
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>Known location tibble with the specified metadata columns. Any 
-locations whose circles (as defined by <code>radius</code>) overlap will generate
+locations whose circles (as defined by <code>distanceThreshold</code>) overlap will generate
 warning messages.</p>
 <p>It is incumbent upon the user to address these issue by one of:</p>
 <ol>
-<li><p>reduce the radius until no overlaps occur</p></li>
+<li><p>reduce the distanceThreshold until no overlaps occur</p></li>
 <li><p>assign one of the overlapping locations to the other location</p></li>
 </ol>
 
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>The measure <code>"cheap"</code> may be used to speed things up depending on
+the spatial scale being considered. Distances calculated with 
+<code>measure = "cheap"</code> will vary by a few meters compared with those 
+calculated using <code>measure = "geodesic"</code>.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

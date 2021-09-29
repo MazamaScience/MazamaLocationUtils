@@ -42,9 +42,9 @@
 <meta property="og:title" content="Return IDs of known locations — table_getLocationID" />
 <meta property="og:description" content="Returns a vector of locationIDs for the known locations
 that each incoming location will be assigned to within the given. If more
-than one known location exists within the given radius, the closest will be
+than one known location exists within the given distanceThreshold, the closest will be
 assigned.  NA will be returned for each incoming that cannot be 
-assigend to a known location in locationTbl." />
+assigned to a known location in locationTbl." />
 
 
 
@@ -126,16 +126,16 @@ assigend to a known location in locationTbl." />
     <div class="ref-description">
     <p>Returns a vector of <code>locationID</code>s for the known locations
 that each incoming location will be assigned to within the given. If more
-than one known location exists within the given radius, the closest will be
+than one known location exists within the given <code>distanceThreshold</code>, the closest will be
 assigned.  <code>NA</code> will be returned for each incoming that cannot be 
-assigend to a known location in <code>locationTbl</code>.</p>
+assigned to a known location in <code>locationTbl</code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>table_getLocationID</span><span class='op'>(</span>
   locationTbl <span class='op'>=</span> <span class='cn'>NULL</span>,
   longitude <span class='op'>=</span> <span class='cn'>NULL</span>,
   latitude <span class='op'>=</span> <span class='cn'>NULL</span>,
-  radius <span class='op'>=</span> <span class='cn'>NULL</span>,
+  distanceThreshold <span class='op'>=</span> <span class='cn'>NULL</span>,
   measure <span class='op'>=</span> <span class='st'>"geodesic"</span>
 <span class='op'>)</span></pre>
 
@@ -155,8 +155,8 @@ assigend to a known location in <code>locationTbl</code>.</p>
       <td><p>Vector of latitudes in decimal degrees N.</p></td>
     </tr>
     <tr>
-      <th>radius</th>
-      <td><p>Radius in meters.</p></td>
+      <th>distanceThreshold</th>
+      <td><p>Distance in meters.</p></td>
     </tr>
     <tr>
       <th>measure</th>
@@ -168,6 +168,12 @@ specifying desired method of geodesic distance calculation. See <code><a href='h
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>Vector of known <code>locationID</code>s.</p>
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>The measure <code>"cheap"</code> may be used to speed things up depending on
+the spatial scale being considered. Distances calculated with 
+<code>measure = "cheap"</code> will vary by a few meters compared with those 
+calculated using <code>measure = "geodesic"</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='va'>locationTbl</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/get.html'>get</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>"wa_monitors_500"</span><span class='op'>)</span><span class='op'>)</span>
@@ -176,11 +182,11 @@ specifying desired method of geodesic distance calculation. See <code><a href='h
 <span class='va'>lon</span> <span class='op'>&lt;-</span> <span class='op'>-</span><span class='fl'>120.325278</span>
 <span class='va'>lat</span> <span class='op'>&lt;-</span> <span class='fl'>47.423333</span>
 
-<span class='co'># Too small a radius will not find a match</span>
-<span class='fu'>table_getLocationID</span><span class='op'>(</span><span class='va'>locationTbl</span>, <span class='va'>lon</span>, <span class='va'>lat</span>, radius <span class='op'>=</span> <span class='fl'>50</span><span class='op'>)</span>
+<span class='co'># Too small a distanceThreshold will not find a match</span>
+<span class='fu'>table_getLocationID</span><span class='op'>(</span><span class='va'>locationTbl</span>, <span class='va'>lon</span>, <span class='va'>lat</span>, distanceThreshold <span class='op'>=</span> <span class='fl'>50</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] NA</div><div class='input'>
-<span class='co'># Expanding the radius will find one</span>
-<span class='fu'>table_getLocationID</span><span class='op'>(</span><span class='va'>locationTbl</span>, <span class='va'>lon</span>, <span class='va'>lat</span>, radius <span class='op'>=</span> <span class='fl'>5000</span><span class='op'>)</span>
+<span class='co'># Expanding the distanceThreshold will find one</span>
+<span class='fu'>table_getLocationID</span><span class='op'>(</span><span class='va'>locationTbl</span>, <span class='va'>lon</span>, <span class='va'>lat</span>, distanceThreshold <span class='op'>=</span> <span class='fl'>5000</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "8e54314f43eb8746"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

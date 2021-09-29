@@ -17,14 +17,14 @@
 #' lat <- 47.423333
 #' 
 #' # Get the locationID first
-#' locationID <- table_getLocationID(locationTbl, lon, lat, radius = 500)
+#' locationID <- table_getLocationID(locationTbl, lon, lat, distanceThreshold = 500)
 #' 
 #' # Remove it
 #' locationTbl <- table_removeRecord(locationTbl, locationID)
 #' dim(locationTbl)
 #' 
 #' # Test
-#' table_getLocationID(locationTbl, lon, lat, radius = 500)
+#' table_getLocationID(locationTbl, lon, lat, distanceThreshold = 500)
 #' @seealso \link{table_addLocation}
 #' @seealso \link{table_addSingleLocation}
 #' @seealso \link{table_updateSingleRecord}

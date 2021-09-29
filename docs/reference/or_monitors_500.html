@@ -55,7 +55,7 @@ lons &amp;lt;- monitor$meta$longitude
 lats &amp;lt;- monitor$meta$latitude
 
 table_initialize() &amp;lt;!-- %&amp;gt;% --&amp;gt;
-  table_addLocation(lons, lats, radius = 500) &amp;lt;!-- %&amp;gt;% --&amp;gt;
+  table_addLocation(lons, lats, distanceThreshold = 500) &amp;lt;!-- %&amp;gt;% --&amp;gt;
   table_save(&quot;or_monitors_500&quot;)
 
 " />
@@ -153,7 +153,7 @@ lons &lt;- monitor$meta$longitude
 lats &lt;- monitor$meta$latitude
 
 table_initialize() &lt;!-- %&gt;% --&gt;
-  table_addLocation(lons, lats, radius = 500) &lt;!-- %&gt;% --&gt;
+  table_addLocation(lons, lats, distanceThreshold = 500) &lt;!-- %&gt;% --&gt;
   table_save("or_monitors_500")
 </pre>
 
