@@ -58,15 +58,7 @@ table_leaflet <- function(
   
   if ( locationOnly ) {
     
-    # Fill in missing locationID (used as layerName below)
-    if ( !"locationID" %in% names(locationTbl) ) {
-      message("You can speed things up by pre-generating a 'locationID' column.")
-      message("Creating 'locationID' ...")
-      locationTbl$locationID <- location_createID(locationTbl$longitude, locationTbl$latitude)
-    }
-    
     popupText <- paste0(
-      "locationID = ", locationTbl$locationID, "<br>",
       "longitude = ", locationTbl$longitude, ", ", "latitude = ", locationTbl$latitude, "<br>"
     )
     
@@ -156,7 +148,6 @@ table_leaflet <- function(
     leaflet::addProviderTiles(providerTiles) %>%
     leaflet::addCircleMarkers(
       popup = locationTbl$popupText,
-      layerId = locationTbl$locationID,
       ...
     )
   

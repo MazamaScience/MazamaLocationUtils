@@ -44,15 +44,7 @@ table_leafletAdd <- function(
   
   if ( locationOnly ) {
     
-    # Fill in missing locationID (used as layerName below)
-    if ( !"locationID" %in% names(locationTbl) ) {
-      message("You can speed things up by pre-generating a 'locationID' column.")
-      message("Creating 'locationID' ...")
-      locationTbl$locationID <- location_createID(locationTbl$longitude, locationTbl$latitude)
-    }
-    
     popupText <- paste0(
-      "locationID = ", locationTbl$locationID, "<br>",
       "longitude = ", locationTbl$longitude, ", ", "latitude = ", locationTbl$latitude, "<br>"
     )
     
@@ -95,7 +87,6 @@ table_leafletAdd <- function(
       lng = locationTbl$longitude,
       lat = locationTbl$latitude,
       popup = locationTbl$popupText,
-      layerId = locationTbl$locationID,
       ...
     )
   
