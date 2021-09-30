@@ -8,7 +8,8 @@ table_leafletAdd(
   map = NULL,
   locationTbl = NULL,
   extraVars = NULL,
-  color = "red"
+  locationOnly = FALSE,
+  ...
 )
 }
 \arguments{
@@ -19,7 +20,10 @@ table_leafletAdd(
 \item{extraVars}{Character vector of addition \code{locationTbl} column names
 to be shown in leaflet popups.}
 
-\item{color}{Named color to use for map icons.}
+\item{locationOnly}{Logical specifying whether to check for all standard
+columns.}
+
+\item{...}{Additional arguments passed to \code{leaflet::addCircleMarker()}.}
 }
 \value{
 A leaflet "plot" object which, if not assigned, is rendered in

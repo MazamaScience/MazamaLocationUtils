@@ -4,7 +4,9 @@
 #' @param maptype Optional name of leaflet ProviderTiles to use, e.g. \code{terrain}.
 #' @param extraVars Character vector of addition \code{locationTbl} column names
 #' to be shown in leaflet popups.  
-#' @param color Named color to use for map icons.
+#' @param locationOnly Logical specifying whether to check for all standard
+#' columns.
+#' @param ... Additional arguments passed to \code{leaflet::addCircleMarker()}.
 #'
 #' @description This function creates interactive maps that will be displayed in
 #'   RStudio's 'Viewer' tab.
@@ -36,48 +38,57 @@ table_leaflet <- function(
   locationTbl = NULL,
   maptype = "terrain",
   extraVars = NULL,
-  color = "blue"
+  locationOnly = FALSE,
+  ...
 ) {
-
-  radius <- 10
-  opacity <- 0.5
-
+  
   # ----- Validate parameters --------------------------------------------------
-
-  MazamaLocationUtils::validateLocationTbl(locationTbl, locationOnly = FALSE)
+  
+  MazamaLocationUtils::validateLocationTbl(locationTbl, locationOnly = locationOnly)
   MazamaCoreUtils::stopIfNull(maptype)
   
   if ( !is.null(extraVars) ) {
-    if ( ! extraVars %in% names(locationTbl) ) {
+    unrecognizedVars <- setdiff(extraVars, names(locationTbl))
+    if ( length(unrecognizedVars) > 0 ) {
       stop("Variables in 'extraVars' not found in 'locationTbl'")
     }
   }
-
-  # ----- Create popup text ----------------------------------------------------
-
-  # Create popupText
-  popupText <- paste0(
-    "<b>", locationTbl$locationName, "</b><br>",
-    "locationID = ", locationTbl$locationID, "<br>",
-    "longitude = ", locationTbl$longitude, ", ", "latitude = ", locationTbl$latitude, "<br>",
-    "timezone = ", locationTbl$timezone, "<br>",
-    "ISO = ", locationTbl$countryCode, ".", locationTbl$stateCode, "<br>",
-    "county = ", locationTbl$county, "<br>",
-    "address = ", locationTbl$houseNumber, ", ", locationTbl$street, ", ", locationTbl$city, ", ", 
-    locationTbl$stateCode, ", ", locationTbl$zip, "<br>"
-  )
   
-  # Add extra vars
-  for ( i in seq_along(popupText) ) {
-
-    extraText <- vector("character", length(extraVars))
-    for ( j in seq_along(extraVars) ) {
-      var <- extraVars[j]
-      extraText[j] <- paste0("<b>", var, " = ", locationTbl[i, var], "</b><br>")
+  # ----- Create popup text ----------------------------------------------------
+  
+  if ( locationOnly ) {
+    
+    popupText <- paste0(
+      "longitude = ", locationTbl$longitude, ", ", "latitude = ", locationTbl$latitude, "<br>"
+    )
+    
+  } else {
+    
+    # Create popupText
+    popupText <- paste0(
+      "<b>", locationTbl$locationName, "</b><br>",
+      "locationID = ", locationTbl$locationID, "<br>",
+      "longitude = ", locationTbl$longitude, ", ", "latitude = ", locationTbl$latitude, "<br>",
+      "timezone = ", locationTbl$timezone, "<br>",
+      "ISO = ", locationTbl$countryCode, ".", locationTbl$stateCode, "<br>",
+      "county = ", locationTbl$county, "<br>",
+      "address = ", locationTbl$houseNumber, ", ", locationTbl$street, ", ", locationTbl$city, ", ", 
+      locationTbl$stateCode, ", ", locationTbl$zip, "<br>"
+    )
+    
+    # Add extra vars
+    for ( i in seq_along(popupText) ) {
+      
+      extraText <- vector("character", length(extraVars))
+      for ( j in seq_along(extraVars) ) {
+        var <- extraVars[j]
+        extraText[j] <- paste0(var, " = ", locationTbl[i, var], "<br>")
+      }
+      extraText <- paste0(extraText, collapse = "")
+      
+      popupText[i] <- paste0(popupText[i], "<hr>", extraText)
     }
-    extraText <- paste0(extraText, collapse = "")
-
-    popupText[i] <- paste0(popupText[i], extraText)
+    
   }
 
   locationTbl$popupText <- popupText
@@ -108,7 +119,7 @@ table_leaflet <- function(
   } else {
     zoom <- 12
   }
-
+  
   # Convert maptype to a character string that addProviderTiles can read
   if ( missing(maptype) || maptype == 'terrain') {
     providerTiles <- "Esri.WorldTopoMap"
@@ -121,7 +132,7 @@ table_leaflet <- function(
   } else {
     providerTiles <- maptype
   }
-
+  
   # ----- Create SPDF ----------------------------------------------------------
   
   # Convert locations to SpatialPointsDataFrame
@@ -136,16 +147,13 @@ table_leaflet <- function(
     leaflet::setView(lng = mean(lonRange), lat = mean(latRange), zoom = zoom) %>%
     leaflet::addProviderTiles(providerTiles) %>%
     leaflet::addCircleMarkers(
-      radius = radius,
-      fillColor = col,
-      fillOpacity = opacity,
-      stroke = FALSE,
       popup = locationTbl$popupText,
-      layerId = locationTbl$locationID
+      layerId = locationTbl$locationID,
+      ...
     )
-
+  
   # ----- Return ---------------------------------------------------------------
-
+  
   return(m)
-
+  
 }
