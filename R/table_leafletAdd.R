@@ -17,7 +17,6 @@
 #' @rdname table_leafletAdd
 #' @export 
 #' @importFrom MazamaCoreUtils stopIfNull
-#' @importFrom sp SpatialPointsDataFrame
 #' @importFrom leaflet leaflet setView addProviderTiles addCircleMarkers
 
 table_leafletAdd <- function(

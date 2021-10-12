@@ -52,31 +52,8 @@ validateLonsLats <- function(
   na.rm = FALSE
 ) {
   
-  MazamaCoreUtils::stopIfNull(longitude)
-  MazamaCoreUtils::stopIfNull(latitude)
-  
-  if ( length(longitude) != length(latitude) ) {
-    stop(paste0(
-      "longitude and latitude must have the same length"
-    ))
-  }
-  
-  # Remove locations with NAs
-  if ( na.rm ) {
-    good_mask <- !is.na(longitude) & !is.na(latitude)
-    longitude <- longitude[good_mask]
-    latitude <- latitude[good_mask]
-  }
-  
-  longitude <- as.numeric(longitude)
-  if ( anyNA(longitude) || any(longitude < -180) || any(longitude > 180 ))
-    stop("all longitudes must be valid values between -180 and 180")
-  
-  latitude <- as.numeric(latitude)
-  if ( anyNA(latitude) || any(latitude < -180) || any(latitude > 180) )
-    stop("all latitudes must be a valid values between -180 and 180")
-  
-  return(invisible(TRUE))
+  returnVal <- MazamaCoreUtils::validateLonsLats(longitude, latitude, na.rm)
+  return(invisible(returnVal))
   
 }
 
@@ -96,24 +73,8 @@ validateLonLat <- function(
   latitude = NULL
 ) {
   
-  MazamaCoreUtils::stopIfNull(longitude)
-  MazamaCoreUtils::stopIfNull(latitude)
-  
-  if ( length(longitude) > 1 || length(latitude) > 1 ) {
-    stop(paste0(
-      "longitude and latitude must be single values"
-    ))
-  }
-  
-  longitude <- as.numeric(longitude)
-  if ( is.na(longitude) || longitude < -180 || longitude > 180 )
-    stop("longitude must be a valid value between -180 and 180")
-  
-  latitude <- as.numeric(latitude)
-  if ( is.na(latitude) || latitude < -180 || latitude > 180 )
-    stop("latitude must be a valid value between -180 and 180")
-  
-  return(invisible(TRUE))
+  returnVal <- MazamaCoreUtils::validateLonLat(longitude, latitude)
+  return(invisible(returnVal))
   
 }
 

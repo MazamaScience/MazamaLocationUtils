@@ -49,10 +49,10 @@ location_getCensusBlock <- function(
   url <- httr::parse_url("https://geo.fcc.gov/api/census/block/find")
   
   url$query <- list(
-    latitude=latitude, 
-    longitude=longitude, 
-    showall=FALSE,
-    format="json"
+    latitude = latitude, 
+    longitude = longitude, 
+    showall = FALSE,
+    format = "json"
   )
   
   # Get and parse the return

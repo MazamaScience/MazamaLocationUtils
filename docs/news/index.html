@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
       </span>
     </div>
 
@@ -117,23 +117,32 @@
       <small>Source: <a href='https://github.com/MazamaScience/MazamaLocationUtils/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="mazamalocationutils-021" class="section level1">
+<h1 class="page-header" data-toc-text="0.2.1">
+<a href="#mazamalocationutils-021" class="anchor"></a>MazamaLocationUtils 0.2.1<small> Unreleased </small>
+</h1>
+<ul>
+<li>Using <strong>MazamaCoreUtils</strong> version of <code><a href="../reference/validateLonLat.html">validateLonLat()</a></code>, <code><a href="../reference/validateLonsLats.html">validateLonsLats()</a></code>, <code>createLocationID()</code>.</li>
+<li>Removed dependency on <strong>sp</strong> package.</li>
+</ul>
+</div>
     <div id="mazamalocationutils-020" class="section level1">
 <h1 class="page-header" data-toc-text="0.2.0">
-<a href="#mazamalocationutils-020" class="anchor"></a>MazamaLocationUtils 0.2.0<small> Unreleased </small>
+<a href="#mazamalocationutils-020" class="anchor"></a>MazamaLocationUtils 0.2.0<small> 2021-10-05 </small>
 </h1>
 <p>Version 0.2.x focuses on usability improvements after initial work with the package.</p>
 <ul>
 <li><strong>Renamed <code>radius</code> to <code>distanceThreshold</code> throughout for clarity.</strong></li>
-<li>Updated <code><a href="../reference/table_initializeExisting.html">table_initializeExisting()</a></code> to only perform spatial searches where data is missing in the incoming table. This greatly speeds up performance.</li>
+<li>Updated <code><a href="../reference/table_initializeExisting.html">table_initializeExisting()</a></code> to only perform spatial searches where data are missing in the incoming table. This greatly speeds up performance.</li>
 <li>New <code><a href="../reference/table_leafletAdd.html">table_leafletAdd()</a></code> function to make it easier to compare “known locations” tables."</li>
-<li>New <code><a href="../reference/table_addCoreMetadata.html">table_addCoreMetadata()</a></code> function adds columns of \code{NA} values for any missing core metadata but does not perform any spatial calculations.</li>
+<li>New <code><a href="../reference/table_addCoreMetadata.html">table_addCoreMetadata()</a></code> function adds columns of <code>NA</code> values for any missing core metadata but does not perform any spatial calculations.</li>
 <li>New <code><a href="../reference/table_findAdjacentLocations.html">table_findAdjacentLocations()</a></code> function returns a tibble of all locations that are too close (<em>i.e.</em> separated by &lt; <code>distanceThreshold</code>).</li>
 <li>
 <code>table_findOverlappingLocations()</code> renamed to <code><a href="../reference/table_findAdjacentDistances.html">table_findAdjacentDistances()</a></code>.</li>
 <li>Added <code>measure</code> argument to <code><a href="../reference/table_findAdjacentLocations.html">table_findAdjacentLocations()</a></code>, <code><a href="../reference/table_findAdjacentDistances.html">table_findAdjacentDistances()</a></code>, <code><a href="../reference/table_getLocationID.html">table_getLocationID()</a></code> and <code><a href="../reference/table_getNearestDistance.html">table_getNearestDistance()</a></code>.</li>
 <li>Added <code>na.rm</code> argument to <code><a href="../reference/validateLonsLats.html">validateLonsLats()</a></code>.</li>
 <li>Improved validation of arguments in all <code>table_~()</code> functions.</li>
-<li>Update function arguments to consistently use <code>locationTbl</code> whenever in incoming table includes <code>longitude</code> and <code>latitude</code> variables.</li>
+<li>Update function arguments to consistently use <code>locationTbl</code> whenever an incoming table includes <code>longitude</code> and <code>latitude</code> variables.</li>
 <li>New <code><a href="../reference/table_leaflet.html">table_leaflet()</a></code> function to display locations and metadata.</li>
 </ul>
 </div>
@@ -173,7 +182,7 @@
 </h1>
 <ul>
 <li>Added <code><a href="../reference/table_initializeExisting.html">table_initializeExisting()</a></code> for fast conversion of an existing table of spatial metadata into a standardized “known location” table.</li>
-<li>Added <code>table_findOverlappingLocations()</code> to help choose an appropriate radius when initializing frorm an existing metadata table.</li>
+<li>Added <code>table_findOverlappingLocations()</code> to help choose an appropriate radius when initializing from an existing metadata table.</li>
 <li>Added <code>addressService</code> argument to <code><a href="../reference/table_addLocation.html">table_addLocation()</a></code>, <code>table_addSingleLocation() and</code>location_initialize()` to skip the address step that requires web services.</li>
 </ul>
 </div>
@@ -239,7 +248,7 @@
 <a href="#mazamalocationutils-012" class="anchor"></a>MazamaLocationUtils 0.1.2<small> Unreleased </small>
 </h1>
 <ul>
-<li>Massive refatoring of function names.</li>
+<li>Massive refactoring of function names.</li>
 <li>Example datasets and unit tests.</li>
 </ul>
 </div>

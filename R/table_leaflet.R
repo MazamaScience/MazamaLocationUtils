@@ -31,7 +31,7 @@
 #' @rdname table_leaflet
 #' @export 
 #' @importFrom MazamaCoreUtils stopIfNull
-#' @importFrom sp SpatialPointsDataFrame
+#' @importFrom rlang .data
 #' @importFrom leaflet leaflet setView addProviderTiles addCircleMarkers
 
 table_leaflet <- function(
@@ -135,19 +135,22 @@ table_leaflet <- function(
   
   # ----- Create SPDF ----------------------------------------------------------
   
-  # Convert locations to SpatialPointsDataFrame
-  locationTbl <- locationTbl[!is.na(locationTbl$latitude),]
-  SPDF <- sp::SpatialPointsDataFrame(coords = cbind(locationTbl$longitude,locationTbl$latitude),
-                                     data = as.data.frame(locationTbl))
+  # Filter out missing location data
+  locationTbl <-
+    locationTbl %>%
+    dplyr::filter(!is.na(.data$latitude)) %>%
+    dplyr::filter(!is.na(.data$longitude))
   
   # ----- Create leaflet map ---------------------------------------------------
   
   m <- 
-    leaflet::leaflet(SPDF) %>%
+    leaflet::leaflet(locationTbl) %>%
     leaflet::setView(lng = mean(lonRange), lat = mean(latRange), zoom = zoom) %>%
     leaflet::addProviderTiles(providerTiles) %>%
     leaflet::addCircleMarkers(
       popup = locationTbl$popupText,
+      lat = ~latitude,
+      lng = ~longitude,
       ...
     )
   
