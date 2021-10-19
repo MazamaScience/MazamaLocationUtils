@@ -30,12 +30,16 @@ table_leafletAdd <- function(
   # ----- Validate parameters --------------------------------------------------
   
   MazamaCoreUtils::stopIfNull(map)
+  
+  if ( !"leaflet" %in% class(map) )
+    stop("'map' is not a leaflet map")
+  
   MazamaLocationUtils::validateLocationTbl(locationTbl, locationOnly = locationOnly)
   
   if ( !is.null(extraVars) ) {
     unrecognizedVars <- setdiff(extraVars, names(locationTbl))
     if ( length(unrecognizedVars) > 0 ) {
-      stop("Variables in 'extraVars' not found in 'locationTbl'")
+      stop("variables in 'extraVars' not found in 'locationTbl'")
     }
   }
   

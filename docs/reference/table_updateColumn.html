@@ -41,7 +41,8 @@
 
 <meta property="og:title" content="Update a column of metadata in a table — table_updateColumn" />
 <meta property="og:description" content="For matching locationID records the assaociated 
-locatioData is used to replace any existing value in columnName." />
+locatioData is used to replace any existing value in columnName.
+NA values in locationID will be ignored." />
 
 
 
@@ -73,7 +74,7 @@ locatioData is used to replace any existing value in columnName." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
       </span>
     </div>
 
@@ -122,7 +123,8 @@ locatioData is used to replace any existing value in columnName." />
 
     <div class="ref-description">
     <p>For matching <code>locationID</code> records the assaociated 
-<code>locatioData</code> is used to replace any existing value in <code>columnName</code>.</p>
+<code>locatioData</code> is used to replace any existing value in <code>columnName</code>.
+<code>NA</code> values in <code>locationID</code> will be ignored.</p>
     </div>
 
     <pre class="usage"><span class='fu'>table_updateColumn</span><span class='op'>(</span>
@@ -193,32 +195,32 @@ locatioData is used to replace any existing value in columnName." />
 
 <span class='co'># Look at the data we attempted to merge</span>
 <span class='va'>wa</span><span class='op'>$</span><span class='va'>siteName</span><span class='op'>[</span><span class='va'>wa_indices</span><span class='op'>]</span>
-</div><div class='output co'>#&gt;  [1] "Chelan-Woodin Ave"            "Lacrosse-Hill St"            
-#&gt;  [3] "Kennewick-Metaline"           "Sunnyside-S 16th"            
-#&gt;  [5] "Inchelium"                    "Wellpinit-Spokane Tribe"     
-#&gt;  [7] "Lake Forest Park-Town Center" "Twisp-Glover St"             
-#&gt;  [9] "Maple Falls-Azure Way"        "Omak-Colville Tribe"         
-#&gt; [11] "Ritzville-Alder St "          "Darrington-Fir St"           
-#&gt; [13] "Tukwila_Allentown"           </div><div class='input'>
+</div><div class='output co'>#&gt;  [1] "Twisp-Ewell St"             "Cheeka Peak"               
+#&gt;  [3] "Tacoma-Alexander Ave"       "Auburn 29th St"            
+#&gt;  [5] "Anacortes-202 Ave (SO-AQS)" "Quincy 3rd"                
+#&gt;  [7] "Tulalip-Totem Beach Rd"     "Shelton-W Franklin"        
+#&gt;  [9] "Ellensburg-Ruby St"         "Wenatchee-Fifth St"        
+#&gt; [11] "Walla Walla-12th St"        "Chehalis-Market Blvd"      
+#&gt; [13] "Tacoma-S 36th St"          </div><div class='input'>
 <span class='co'># And two columns from the updated locationTbl</span>
 <span class='va'>locationTbl_indices</span> <span class='op'>&lt;-</span> <span class='fu'><a href='table_getRecordIndex.html'>table_getRecordIndex</a></span><span class='op'>(</span><span class='va'>locationTbl</span>, <span class='va'>locationID</span><span class='op'>)</span>
-<span class='va'>locationTbl</span><span class='op'>[</span><span class='va'>locationTbl_indices</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"city"</span>,<span class='st'>"siteName"</span><span class='op'>)</span><span class='op'>]</span>
+<span class='va'>locationTbl</span><span class='op'>[</span><span class='va'>locationTbl_indices</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"city"</span>, <span class='st'>"siteName"</span><span class='op'>)</span><span class='op'>]</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 13 × 2</span>
-#&gt;    city               siteName                      
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>              <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                         
-#&gt; <span style='color: #BCBCBC;'> 1</span> Chelan             <span style='color: #949494;'>"</span>Chelan-Woodin Ave<span style='color: #949494;'>"</span>           
-#&gt; <span style='color: #BCBCBC;'> 2</span> La Crosse          <span style='color: #949494;'>"</span>Lacrosse-Hill St<span style='color: #949494;'>"</span>            
-#&gt; <span style='color: #BCBCBC;'> 3</span> Tri-Cities         <span style='color: #949494;'>"</span>Kennewick-Metaline<span style='color: #949494;'>"</span>          
-#&gt; <span style='color: #BCBCBC;'> 4</span> Sunnyside          <span style='color: #949494;'>"</span>Sunnyside-S 16th<span style='color: #949494;'>"</span>            
-#&gt; <span style='color: #BCBCBC;'> 5</span> Inchelium          <span style='color: #949494;'>"</span>Inchelium<span style='color: #949494;'>"</span>                   
-#&gt; <span style='color: #BCBCBC;'> 6</span> Wellpinit          <span style='color: #949494;'>"</span>Wellpinit-Spokane Tribe<span style='color: #949494;'>"</span>     
-#&gt; <span style='color: #BCBCBC;'> 7</span> Lake Forest Park   <span style='color: #949494;'>"</span>Lake Forest Park-Town Center<span style='color: #949494;'>"</span>
-#&gt; <span style='color: #BCBCBC;'> 8</span> Okanogan County    <span style='color: #949494;'>"</span>Twisp-Glover St<span style='color: #949494;'>"</span>             
-#&gt; <span style='color: #BCBCBC;'> 9</span> Limestone Junction <span style='color: #949494;'>"</span>Maple Falls-Azure Way<span style='color: #949494;'>"</span>       
-#&gt; <span style='color: #BCBCBC;'>10</span> Okanogan County    <span style='color: #949494;'>"</span>Omak-Colville Tribe<span style='color: #949494;'>"</span>         
-#&gt; <span style='color: #BCBCBC;'>11</span> Ritzville          <span style='color: #949494;'>"</span>Ritzville-Alder St <span style='color: #949494;'>"</span>         
-#&gt; <span style='color: #BCBCBC;'>12</span> Darrington         <span style='color: #949494;'>"</span>Darrington-Fir St<span style='color: #949494;'>"</span>           
-#&gt; <span style='color: #BCBCBC;'>13</span> Tukwila            <span style='color: #949494;'>"</span>Tukwila_Allentown<span style='color: #949494;'>"</span>           </div><div class='input'>
+#&gt;    city            siteName                  
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                     
+#&gt; <span style='color: #BCBCBC;'> 1</span> Okanogan County Twisp-Ewell St            
+#&gt; <span style='color: #BCBCBC;'> 2</span> <span style='color: #BB0000;'>NA</span>              <span style='color: #BB0000;'>NA</span>                        
+#&gt; <span style='color: #BCBCBC;'> 3</span> Tacoma          Tacoma-Alexander Ave      
+#&gt; <span style='color: #BCBCBC;'> 4</span> Auburn          Auburn 29th St            
+#&gt; <span style='color: #BCBCBC;'> 5</span> Anacortes       Anacortes-202 Ave (SO-AQS)
+#&gt; <span style='color: #BCBCBC;'> 6</span> Quincy          Quincy 3rd                
+#&gt; <span style='color: #BCBCBC;'> 7</span> Tulalip Bay     Tulalip-Totem Beach Rd    
+#&gt; <span style='color: #BCBCBC;'> 8</span> Shelton         Shelton-W Franklin        
+#&gt; <span style='color: #BCBCBC;'> 9</span> Ellensburg      Ellensburg-Ruby St        
+#&gt; <span style='color: #BCBCBC;'>10</span> Wenatchee       Wenatchee-Fifth St        
+#&gt; <span style='color: #BCBCBC;'>11</span> Walla Walla     Walla Walla-12th St       
+#&gt; <span style='color: #BCBCBC;'>12</span> Chehalis        Chehalis-Market Blvd      
+#&gt; <span style='color: #BCBCBC;'>13</span> Tacoma          Tacoma-S 36th St          </div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -231,7 +233,7 @@ locatioData is used to replace any existing value in columnName." />
 
       <footer>
       <div class="copyright">
-  <p>Developed by Jonathan Callahan, Eli Grosman.</p>
+  <p>Developed by Jonathan Callahan.</p>
 </div>
 
 <div class="pkgdown">

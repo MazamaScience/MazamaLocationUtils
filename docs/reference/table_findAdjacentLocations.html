@@ -77,7 +77,7 @@ of the specified distanceThreshold." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
       </span>
     </div>
 
@@ -177,19 +177,34 @@ calculated using <code>measure = "geodesic"</code>.</p>
 <span class='va'>meta</span> <span class='op'>%&gt;%</span>
   <span class='fu'>table_findAdjacentLocations</span><span class='op'>(</span>distanceThreshold <span class='op'>=</span> <span class='fl'>2000</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
   <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>monitorID</span>, <span class='va'>siteName</span>, <span class='va'>timezone</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] monitorID siteName  timezone 
-#&gt; &lt;0 rows&gt; (or 0-length row.names)</div><div class='input'>
+</div><div class='output co'>#&gt;                                                           monitorID siteName
+#&gt; lon_.122.671_lat_47.029_usfs.1078 lon_.122.671_lat_47.029_usfs.1078         
+#&gt; lon_.122.677_lat_47.028_usfs.1078 lon_.122.677_lat_47.028_usfs.1078         
+#&gt;                                              timezone
+#&gt; lon_.122.671_lat_47.029_usfs.1078 America/Los_Angeles
+#&gt; lon_.122.677_lat_47.028_usfs.1078 America/Los_Angeles</div><div class='input'>
 <span class='co'># How about 4 km?</span>
 <span class='va'>meta</span> <span class='op'>%&gt;%</span>
   <span class='fu'>table_findAdjacentLocations</span><span class='op'>(</span>distanceThreshold <span class='op'>=</span> <span class='fl'>4000</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
   <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>monitorID</span>, <span class='va'>siteName</span>, <span class='va'>timezone</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;                   monitorID              siteName            timezone
-#&gt; 530330057_01   530330057_01      Seattle-Duwamish America/Los_Angeles
-#&gt; 530330030_01   530330030_01 Seattle-10th &amp; Weller America/Los_Angeles
-#&gt; 530330057_01.1 530330057_01      Seattle-Duwamish America/Los_Angeles
-#&gt; 530330080_01   530330080_01   Seattle-Beacon Hill America/Los_Angeles
-#&gt; 530330080_01.1 530330080_01   Seattle-Beacon Hill America/Los_Angeles
-#&gt; 530331011_01   530331011_01    Seattle-South Park America/Los_Angeles</div><div class='input'>
+</div><div class='output co'>#&gt;                                                           monitorID
+#&gt; lon_.122.671_lat_47.029_usfs.1078 lon_.122.671_lat_47.029_usfs.1078
+#&gt; 530330057_01                                           530330057_01
+#&gt; 530330080_01                                           530330080_01
+#&gt; 530330057_01.1                                         530330057_01
+#&gt; lon_.122.677_lat_47.028_usfs.1078 lon_.122.677_lat_47.028_usfs.1078
+#&gt; 530330080_01.1                                         530330080_01
+#&gt; 530330030_01                                           530330030_01
+#&gt; 530331011_01                                           530331011_01
+#&gt;                                                siteName            timezone
+#&gt; lon_.122.671_lat_47.029_usfs.1078                       America/Los_Angeles
+#&gt; 530330057_01                           Seattle-Duwamish America/Los_Angeles
+#&gt; 530330080_01                        Seattle-Beacon Hill America/Los_Angeles
+#&gt; 530330057_01.1                         Seattle-Duwamish America/Los_Angeles
+#&gt; lon_.122.677_lat_47.028_usfs.1078                       America/Los_Angeles
+#&gt; 530330080_01.1                      Seattle-Beacon Hill America/Los_Angeles
+#&gt; 530330030_01                      Seattle-10th &amp; Weller America/Los_Angeles
+#&gt; 530331011_01                         Seattle-South Park America/Los_Angeles</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -202,7 +217,7 @@ calculated using <code>measure = "geodesic"</code>.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Jonathan Callahan, Eli Grosman.</p>
+  <p>Developed by Jonathan Callahan.</p>
 </div>
 
 <div class="pkgdown">

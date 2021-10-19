@@ -123,11 +123,11 @@ location_getSingleAddress_Photon <- function(
   
   # NOTE: Sometimes state contains the state code and sometimes contains the state name
   if ( nchar(photonList$state) > 2 ) {
-    photonList$stateName = photonList$state
-    photonList$stateCode = as.character(NA)
+    photonList$stateName <- photonList$state
+    photonList$stateCode <- as.character(NA)
   } else {
-    photonList$stateName = as.character(NA)
-    photonList$stateCode = photonList$state
+    photonList$stateName <- as.character(NA)
+    photonList$stateCode <- photonList$state
   }
   
   # ----- Create addressList ---------------------------------------------------

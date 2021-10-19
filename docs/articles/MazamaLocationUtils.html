@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
       </span>
     </div>
 
@@ -148,7 +148,7 @@
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">wa_monitors_500</span><span class="op">)</span></code></pre></div>
 <pre><code>##  [1] "locationID"   "locationName" "longitude"    "latitude"     "elevation"   
-##  [6] "countryCode"  "stateCode"    "county"       "timezone"     "houseNumber" 
+##  [6] "countryCode"  "stateCode"    "countyName"   "timezone"     "houseNumber" 
 ## [11] "street"       "city"         "zip"</code></pre>
 </div>
 <div id="merging-external-metadata" class="section level3">
@@ -185,21 +185,21 @@
 <span class="va">locationTbl_indices</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/table_getRecordIndex.html">table_getRecordIndex</a></span><span class="op">(</span><span class="va">locationTbl</span>, <span class="va">locationID</span><span class="op">)</span>
 <span class="va">locationTbl</span><span class="op">[</span><span class="va">locationTbl_indices</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"city"</span>, <span class="st">"siteName"</span><span class="op">)</span><span class="op">]</span></code></pre></div>
 <pre><code>## # A tibble: 13 × 2
-##    city               siteName                      
-##    &lt;chr&gt;              &lt;chr&gt;                         
-##  1 Chelan             "Chelan-Woodin Ave"           
-##  2 La Crosse          "Lacrosse-Hill St"            
-##  3 Tri-Cities         "Kennewick-Metaline"          
-##  4 Sunnyside          "Sunnyside-S 16th"            
-##  5 Inchelium          "Inchelium"                   
-##  6 Wellpinit          "Wellpinit-Spokane Tribe"     
-##  7 Lake Forest Park   "Lake Forest Park-Town Center"
-##  8 Okanogan County    "Twisp-Glover St"             
-##  9 Limestone Junction "Maple Falls-Azure Way"       
-## 10 Okanogan County    "Omak-Colville Tribe"         
-## 11 Ritzville          "Ritzville-Alder St "         
-## 12 Darrington         "Darrington-Fir St"           
-## 13 Tukwila            "Tukwila_Allentown"</code></pre>
+##    city            siteName                  
+##    &lt;chr&gt;           &lt;chr&gt;                     
+##  1 Okanogan County Twisp-Ewell St            
+##  2 &lt;NA&gt;            &lt;NA&gt;                      
+##  3 Tacoma          Tacoma-Alexander Ave      
+##  4 Auburn          Auburn 29th St            
+##  5 Anacortes       Anacortes-202 Ave (SO-AQS)
+##  6 Quincy          Quincy 3rd                
+##  7 Tulalip Bay     Tulalip-Totem Beach Rd    
+##  8 Shelton         Shelton-W Franklin        
+##  9 Ellensburg      Ellensburg-Ruby St        
+## 10 Wenatchee       Wenatchee-Fifth St        
+## 11 Walla Walla     Walla Walla-12th St       
+## 12 Chehalis        Chehalis-Market Blvd      
+## 13 Tacoma          Tacoma-S 36th St</code></pre>
 <p>Very nice.</p>
 </div>
 <div id="finding-known-locations" class="section level3">
@@ -227,11 +227,9 @@
   latitude <span class="op">=</span> <span class="va">lats</span>,
   distanceThreshold <span class="op">=</span> <span class="fl">500</span>
 <span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">city</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] "Chelan"             "La Crosse"          "Tri-Cities"        
-##  [4] "Sunnyside"          NA                   "Wellpinit"         
-##  [7] "Lake Forest Park"   "Okanogan County"    "Limestone Junction"
-## [10] NA                   NA                   NA                  
-## [13] "Tukwila"</code></pre>
+<pre><code>##  [1] NA           NA           NA           NA           "Anacortes" 
+##  [6] "Quincy"     NA           "Shelton"    "Ellensburg" NA          
+## [11] NA           NA           NA</code></pre>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># How about 5000 meters?</span>
 <span class="fu"><a href="../reference/table_getNearestLocation.html">table_getNearestLocation</a></span><span class="op">(</span>
@@ -240,11 +238,10 @@
   latitude <span class="op">=</span> <span class="va">lats</span>,
   distanceThreshold <span class="op">=</span> <span class="fl">5000</span>
 <span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">city</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] "Chelan"             "La Crosse"          "Tri-Cities"        
-##  [4] "Sunnyside"          "Inchelium"          "Wellpinit"         
-##  [7] "Lake Forest Park"   "Okanogan County"    "Limestone Junction"
-## [10] "Okanogan County"    "Ritzville"          "Darrington"        
-## [13] "Tukwila"</code></pre>
+<pre><code>##  [1] "Okanogan County" NA                "Tacoma"          "Auburn"         
+##  [5] "Anacortes"       "Quincy"          "Tulalip Bay"     "Shelton"        
+##  [9] "Ellensburg"      "Wenatchee"       "Walla Walla"     "Chehalis"       
+## [13] "Tacoma"</code></pre>
 </div>
 </div>
 <div id="standard-setup" class="section level2">
@@ -285,7 +282,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Jonathan Callahan, Eli Grosman.</p>
+  <p>Developed by Jonathan Callahan.</p>
 </div>
 
 <div class="pkgdown">

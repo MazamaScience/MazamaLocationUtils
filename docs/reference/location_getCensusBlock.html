@@ -44,7 +44,7 @@
 the longitude and latitude. The following list of data
 is returned:
 stateCode
-county
+countyName
 censusBlock
 The data from this function should be considered to be the gold standard for state and county.
 i.e. this information could and should be used to override information we get elsewhere." />
@@ -79,7 +79,7 @@ i.e. this information could and should be used to override information we get el
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
       </span>
     </div>
 
@@ -131,7 +131,7 @@ i.e. this information could and should be used to override information we get el
 the <code>longitude</code> and <code>latitude</code>. The following list of data
 is returned:</p><ul>
 <li><p><code>stateCode</code></p></li>
-<li><p><code>county</code></p></li>
+<li><p><code>countyName</code></p></li>
 <li><p><code>censusBlock</code></p></li>
 </ul><p>The data from this function should be considered to be the gold standard for state and county.
 i.e. this information could and should be used to override information we get elsewhere.</p>
@@ -174,7 +174,7 @@ i.e. this information could and should be used to override information we get el
 <span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>censusList</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; List of 3
 #&gt;  $ stateCode  : chr "VA"
-#&gt;  $ county     : chr "Spotsylvania"
+#&gt;  $ countyName : chr "Spotsylvania"
 #&gt;  $ censusBlock: chr "511770203042000"</div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
@@ -188,7 +188,7 @@ i.e. this information could and should be used to override information we get el
 
       <footer>
       <div class="copyright">
-  <p>Developed by Jonathan Callahan, Eli Grosman.</p>
+  <p>Developed by Jonathan Callahan.</p>
 </div>
 
 <div class="pkgdown">

@@ -73,7 +73,7 @@ against the incoming locationTbl and any matches are removed." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
       </span>
     </div>
 
@@ -158,7 +158,7 @@ against the incoming <code>locationTbl</code> and any matches are removed.</p>
 
 <span class='va'>locationTbl</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/get.html'>get</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>"wa_monitors_500"</span><span class='op'>)</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span><span class='op'>(</span><span class='va'>locationTbl</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] 69 13</div><div class='input'>
+</div><div class='output co'>#&gt; [1] 68 13</div><div class='input'>
 <span class='co'># Wenatchee</span>
 <span class='va'>lon</span> <span class='op'>&lt;-</span> <span class='op'>-</span><span class='fl'>120.325278</span>
 <span class='va'>lat</span> <span class='op'>&lt;-</span> <span class='fl'>47.423333</span>
@@ -169,7 +169,7 @@ against the incoming <code>locationTbl</code> and any matches are removed.</p>
 <span class='co'># Remove it</span>
 <span class='va'>locationTbl</span> <span class='op'>&lt;-</span> <span class='fu'>table_removeRecord</span><span class='op'>(</span><span class='va'>locationTbl</span>, <span class='va'>locationID</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span><span class='op'>(</span><span class='va'>locationTbl</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] 69 13</div><div class='input'>
+</div><div class='output co'>#&gt; [1] 68 13</div><div class='input'>
 <span class='co'># Test</span>
 <span class='fu'><a href='table_getLocationID.html'>table_getLocationID</a></span><span class='op'>(</span><span class='va'>locationTbl</span>, <span class='va'>lon</span>, <span class='va'>lat</span>, distanceThreshold <span class='op'>=</span> <span class='fl'>500</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] NA</div></pre>
@@ -184,7 +184,7 @@ against the incoming <code>locationTbl</code> and any matches are removed.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Jonathan Callahan, Eli Grosman.</p>
+  <p>Developed by Jonathan Callahan.</p>
 </div>
 
 <div class="pkgdown">

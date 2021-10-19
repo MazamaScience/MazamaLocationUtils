@@ -42,7 +42,7 @@
 <meta property="og:title" content="Idaho monitor locations dataset — id_monitors_500" />
 <meta property="og:description" content="The id_monitor_500 dataset provides a set of known
 locations associated with Idaho state air quality monitors.
-This dataset was generatedon 2019-10-21 by running:
+This dataset was generated on 2021-10-19 by running:
 
 library(PWFSLSmoke)
 library(MazamaLocationUtils)
@@ -55,7 +55,12 @@ lons &amp;lt;- monitor$meta$longitude
 lats &amp;lt;- monitor$meta$latitude
 
 table_initialize() &amp;lt;!-- %&amp;gt;% --&amp;gt;
-  table_addLocation(lons, lats, distanceThreshold = 500) &amp;lt;!-- %&amp;gt;% --&amp;gt;
+  table_addLocation(
+    lons, lats, 
+      distanceThreshold = 500,
+      elevationService = &quot;usgs&quot;,
+      addressService = &quot;photon&quot;
+    ) &amp;lt;!-- %&amp;gt;% --&amp;gt;
   table_save(&quot;id_monitors_500&quot;)
 
 " />
@@ -90,7 +95,7 @@ table_initialize() &amp;lt;!-- %&amp;gt;% --&amp;gt;
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
       </span>
     </div>
 
@@ -140,7 +145,7 @@ table_initialize() &amp;lt;!-- %&amp;gt;% --&amp;gt;
     <div class="ref-description">
     <p>The <code>id_monitor_500</code> dataset provides a set of known
 locations associated with Idaho state air quality monitors.
-This dataset was generatedon 2019-10-21 by running:</p>
+This dataset was generated on 2021-10-19 by running:</p>
 <pre>
 library(PWFSLSmoke)
 library(MazamaLocationUtils)
@@ -153,7 +158,12 @@ lons &lt;- monitor$meta$longitude
 lats &lt;- monitor$meta$latitude
 
 table_initialize() &lt;!-- %&gt;% --&gt;
-  table_addLocation(lons, lats, distanceThreshold = 500) &lt;!-- %&gt;% --&gt;
+  table_addLocation(
+    lons, lats, 
+      distanceThreshold = 500,
+      elevationService = "usgs",
+      addressService = "photon"
+    ) &lt;!-- %&gt;% --&gt;
   table_save("id_monitors_500")
 </pre>
 
@@ -164,7 +174,7 @@ table_initialize() &lt;!-- %&gt;% --&gt;
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A tibble with 34 rows and 13 columns of data.</p>
+    <p>A tibble with 30 rows and 13 columns of data.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><a href='or_monitors_500.html'>or_monitors_500</a></p>
@@ -181,7 +191,7 @@ table_initialize() &lt;!-- %&gt;% --&gt;
 
       <footer>
       <div class="copyright">
-  <p>Developed by Jonathan Callahan, Eli Grosman.</p>
+  <p>Developed by Jonathan Callahan.</p>
 </div>
 
 <div class="pkgdown">
