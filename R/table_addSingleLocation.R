@@ -111,7 +111,9 @@ table_addSingleLocation <- function(
   
   for ( name in additionalNames ) {
     
-    print(sprintf("Adding NA in place of actual metadata for %s", name))
+    if ( verbose ) 
+      message(sprintf("Using NA in place of actual metadata for %s", name))
+    
     singleRecordTbl[[name]] <- NA
     
   }

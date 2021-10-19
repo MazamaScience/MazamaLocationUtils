@@ -56,7 +56,7 @@ table_leafletAdd <- function(
       "longitude = ", locationTbl$longitude, ", ", "latitude = ", locationTbl$latitude, "<br>",
       "timezone = ", locationTbl$timezone, "<br>",
       "ISO = ", locationTbl$countryCode, ".", locationTbl$stateCode, "<br>",
-      "county = ", locationTbl$county, "<br>",
+      "county = ", locationTbl$countyName, "<br>",
       "address = ", locationTbl$houseNumber, ", ", locationTbl$street, ", ", locationTbl$city, ", ", 
       locationTbl$stateCode, ", ", locationTbl$zip, "<br>"
     )

@@ -94,7 +94,7 @@ coreMetadataNames <- c(
   "elevation",                # from https://nationalmap.gov/epqs/
   "countryCode",              # from MazamaSpatialUtils::getCountryCode()
   "stateCode",                # from MazamaSpatialUtils::getStateCode()
-  "county",                   # from MazamaSpatialUtils::getUSCounty()
+  "countyName",               # from MazamaSpatialUtils::getUSCounty()
   "timezone",                 # from MazamaSpatialUtils::getTimezone()
   "houseNumber",              # from https://photon.komoot.io/
   "street",                   # from https://photon.komoot.io/

@@ -5,7 +5,7 @@
 #' is returned:
 #' \itemize{
 #' \item{\code{stateCode}}
-#' \item{\code{county}}
+#' \item{\code{countyName}}
 #' \item{\code{censusBlock}}
 #' }
 #' The data from this function should be considered to be the gold standard for state and county.
@@ -74,7 +74,7 @@ location_getCensusBlock <- function(
     returnObj <- httr::content(r)
     censusList <- list(
       stateCode = returnObj$State$code,
-      county = returnObj$County$name,
+      countyName = returnObj$County$name,
       censusBlock = returnObj$Block$FIPS
     )
     

@@ -28,7 +28,7 @@
 #' \item{elevation}
 #' \item{countryCode}
 #' \item{stateCode}
-#' \item{county}
+#' \item{countyName}
 #' \item{timezone}
 #' \item{houseNumber}
 #' \item{street}
@@ -137,7 +137,7 @@ location_initialize <- function(
     useBuffering = TRUE
   )
   
-  county <- MazamaSpatialUtils::getUSCounty(
+  countyName <- MazamaSpatialUtils::getUSCounty(
     lon = longitude,
     lat = latitude,
     dataset = "USCensusCounties",
@@ -220,9 +220,9 @@ location_initialize <- function(
         # Trust address data over MazamaSpatialUtils result
         MazamaStateCode <- stateCode
         
-        # Change stateCode and reset possibly incorrect county
+        # Change stateCode and reset possibly incorrect countyName
         stateCode <- addressList$stateCode
-        county <- as.character(NA)
+        countyName <- as.character(NA)
         
         # Update locationName
         locationName <- paste0(
@@ -254,7 +254,7 @@ location_initialize <- function(
     "elevation" = elevation,
     "countryCode" = countryCode,
     "stateCode" = stateCode,
-    "county" = county,
+    "countyName" = countyName,
     "timezone" = timezone,
     "houseNumber" = addressList$houseNumber,
     "street" = addressList$street,

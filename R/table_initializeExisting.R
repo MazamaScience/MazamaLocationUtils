@@ -13,7 +13,7 @@
 #' \item{elevation}
 #' \item{countryCode}
 #' \item{stateCode}
-#' \item{county}
+#' \item{countyName}
 #' \item{timezone}
 #' \item{houseNumber}
 #' \item{street}
@@ -186,19 +186,19 @@ table_initializeExisting <- function(
     
   }
   
-  # * county -----
+  # * countyName -----
   
   # Slow so skip for now
   
-  # tbl_1 <- dplyr::filter(locationTbl, !is.na(.data$county))
-  # tbl_2 <- dplyr::filter(locationTbl, is.na(.data$county))
+  # tbl_1 <- dplyr::filter(locationTbl, !is.na(.data$countyName))
+  # tbl_2 <- dplyr::filter(locationTbl, is.na(.data$countyName))
   # 
   # if ( nrow(tbl_2) > 0 ) {
   #   
   #   if ( verbose ) 
   #     message(sprintf("Creating counties for %d locations ...", nrow(tbl_2)))
   #   
-  #   tbl_2$county <- MazamaSpatialUtils::getUSCounty(
+  #   tbl_2$countyName <- MazamaSpatialUtils::getUSCounty(
   #     lon = tbl_2$longitude,
   #     lat = tbl_2$latitude,
   #     dataset = "USCensusCounties",
@@ -219,7 +219,7 @@ table_initializeExisting <- function(
     if ( verbose ) 
       message(sprintf("Creating timezones for %d locations ...", nrow(tbl_2)))
     
-    tbl_2$county <- MazamaSpatialUtils::getTimezone(
+    tbl_2$countyName <- MazamaSpatialUtils::getTimezone(
       lon = tbl_2$longitude,
       lat = tbl_2$latitude,
       dataset = "OSMTimezones",

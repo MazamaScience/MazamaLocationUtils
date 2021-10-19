@@ -21,7 +21,7 @@ columns of core metadata:
 \item{elevation}
 \item{countryCode}
 \item{stateCode}
-\item{county}
+\item{countyName}
 \item{timezone}
 \item{houseNumber}
 \item{street}

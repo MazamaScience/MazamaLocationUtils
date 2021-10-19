@@ -1,3 +1,16 @@
+# MazamaLocationUtils 0.2.2
+
+* Rename `county` to `countyName`. (This change more closely matches spatial
+metadata found in other systems and fits with the pattern of `~Code`/`~Name` 
+pairs in **MazamaSpatialUtils** as is the case with `countryCode/CountryName` 
+and `stateCode/stateName`.)
+* Regenerated example datasets.
+* Updated tests to reflect regenerated example datasets.
+* Fixed bug in `table_findAdjacentDistances()` when only two locations are 
+adjacent.
+* Re-exporting location validation functions from **MazamaCoreUtils**.
+* `table_updateColumn()` now ignores `NA` values in `locationID`.
+
 # MazamaLocationUtils 0.2.1
 
 * Using **MazamaCoreUtils** version of `validateLonLat()`, `validateLonsLats()`,
