@@ -1,7 +1,7 @@
 # MazamaLocationUtils 0.2.3
 
-* Refactored `table_leaflet()` and `table_leafletAdd()` to allow more user
-control.
+* Refactored `table_leaflet()` and `table_leafletAdd()` with improved defaults
+and more flexibility.
 
 # MazamaLocationUtils 0.2.2
 

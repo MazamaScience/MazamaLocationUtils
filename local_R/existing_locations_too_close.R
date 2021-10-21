@@ -9,13 +9,17 @@ mazama_initialize()
 library(RAWSmet)
 
 # Get an existing set of RAWS location metadata
-meta <- fw13_createMetadata()
+meta <- fw13_createMeta()
 
 # > dim(meta)
 # [1] 1791    8
 
-# Create a set of known locations (without specifying a radius!)
-known_locations <- MazamaLocationUtils::table_initializeExisting(meta)
+# Create a set of known locations (with a small radius)
+known_locations <- 
+  MazamaLocationUtils::table_initializeExisting(
+    meta,
+    distanceThreshold = 1
+  )
 
 # > dim(known_locations)
 # [1] 1791   15
@@ -26,7 +30,10 @@ known_locations <- MazamaLocationUtils::table_initializeExisting(meta)
 
 # Use geodist to calculate all distances
 
-a <- geodist::geodist(known_locations)
+a <- 
+  known_locations %>%
+  dplyr::rename(x = longitude, y = latitude) %>% 
+  geodist::geodist()
 
 # > class(a)
 # [1] "matrix"

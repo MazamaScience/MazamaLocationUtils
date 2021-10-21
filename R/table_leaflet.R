@@ -101,15 +101,21 @@ table_leaflet <- function(
   maxRange <- max(diff(lonRange),diff(latRange), na.rm = TRUE)
   
   # Determine appropriate zoom level
-  if (maxRange > 20) {
+  if (maxRange > 250) {
+    zoom <- 2
+  } else if (maxRange > 150) {
+    zoom <- 2
+  } else if (maxRange > 100) {
+    zoom <- 3
+  } else if (maxRange > 50) {
     zoom <- 4
-  } else if (maxRange > 10) {
+  } else if (maxRange > 20) {
     zoom <- 5
-  } else if (maxRange > 5) {
+  } else if (maxRange > 10) {
     zoom <- 6
-  } else if (maxRange > 2) {
+  } else if (maxRange > 5) {
     zoom <- 7
-  } else if (maxRange > 1) {
+  } else if (maxRange > 2) {
     zoom <- 8
   } else if (maxRange > 0.5) {
     zoom <- 9
@@ -117,10 +123,14 @@ table_leaflet <- function(
     zoom <- 10
   } else if (maxRange > 0.1) {
     zoom <- 11
-  } else {
+  } else if (maxRange > 0.05) {
     zoom <- 12
+  } else if (maxRange > 0.02) {
+    zoom <- 13
+  } else {
+    zoom <- 14
   }
-  
+
   # * providerTiles -----
   
   # Convert maptype to a character string that addProviderTiles can read
