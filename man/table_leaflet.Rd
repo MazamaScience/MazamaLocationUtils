@@ -4,13 +4,7 @@
 \alias{table_leaflet}
 \title{Leaflet interactive map for known locations}
 \usage{
-table_leaflet(
-  locationTbl = NULL,
-  maptype = "terrain",
-  extraVars = NULL,
-  locationOnly = FALSE,
-  ...
-)
+table_leaflet(locationTbl = NULL, maptype = "terrain", extraVars = NULL, ...)
 }
 \arguments{
 \item{locationTbl}{Tibble of known locations.}
@@ -19,9 +13,6 @@ table_leaflet(
 
 \item{extraVars}{Character vector of addition \code{locationTbl} column names
 to be shown in leaflet popups.}
-
-\item{locationOnly}{Logical specifying whether to check for all standard
-columns.}
 
 \item{...}{Additional arguments passed to \code{leaflet::addCircleMarker()}.}
 }
@@ -47,4 +38,29 @@ If a character string not listed above is provided, it will be used as the
 underlying map tile if available. See
 \url{https://leaflet-extras.github.io/leaflet-providers/} for a list of
 "provider tiles" to use as the background map.
+}
+\examples{
+\dontrun{
+library(MazamaLocationUtils)
+
+# A table with all core metadata
+table_leaflet(wa_monitors_500
+  
+# A table missing some core metadata
+table_leaflet(
+  wa_airfire_meta,
+  extraVars = c("stateCode", "countyName", "msaName")
+)
+
+# Customizing the map
+table_leaflet(
+  wa_airfire_meta,
+  extraVars = c("stateCode", "countyName", "msaName"),
+  radius = 6,
+  color = "black",
+  weight = 2,
+  fillColor = "red",
+  fillOpacity = 0.3
+)
+}
 }

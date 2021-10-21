@@ -47,6 +47,10 @@ jon <- jon %>% table_addLocation(lons, lats, distanceThreshold = 500)
 
 table_save(jon, "jon")
 
+# ----- Leaflet
+
+table_leaflet(jon, radius = 5)
+
 # ----- Map
 
 maps::map("state", c("idaho", "oregon", "washington"))

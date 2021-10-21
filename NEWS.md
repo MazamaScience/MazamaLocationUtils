@@ -1,3 +1,8 @@
+# MazamaLocationUtils 0.2.3
+
+* Refactored `table_leaflet()` and `table_leafletAdd()` to allow more user
+control.
+
 # MazamaLocationUtils 0.2.2
 
 * Rename `county` to `countyName`. (This change more closely matches spatial

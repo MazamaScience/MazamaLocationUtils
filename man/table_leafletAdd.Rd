@@ -4,13 +4,7 @@
 \alias{table_leafletAdd}
 \title{Add to a leaflet interactive map for known locations}
 \usage{
-table_leafletAdd(
-  map = NULL,
-  locationTbl = NULL,
-  extraVars = NULL,
-  locationOnly = FALSE,
-  ...
-)
+table_leafletAdd(map = NULL, locationTbl = NULL, extraVars = NULL, ...)
 }
 \arguments{
 \item{map}{Leaflet map.}
@@ -19,9 +13,6 @@ table_leafletAdd(
 
 \item{extraVars}{Character vector of addition \code{locationTbl} column names
 to be shown in leaflet popups.}
-
-\item{locationOnly}{Logical specifying whether to check for all standard
-columns.}
 
 \item{...}{Additional arguments passed to \code{leaflet::addCircleMarker()}.}
 }

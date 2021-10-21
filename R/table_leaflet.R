@@ -4,8 +4,6 @@
 #' @param maptype Optional name of leaflet ProviderTiles to use, e.g. \code{terrain}.
 #' @param extraVars Character vector of addition \code{locationTbl} column names
 #' to be shown in leaflet popups.  
-#' @param locationOnly Logical specifying whether to check for all standard
-#' columns.
 #' @param ... Additional arguments passed to \code{leaflet::addCircleMarker()}.
 #'
 #' @description This function creates interactive maps that will be displayed in
@@ -33,18 +31,42 @@
 #' @importFrom MazamaCoreUtils stopIfNull
 #' @importFrom rlang .data
 #' @importFrom leaflet leaflet setView addProviderTiles addCircleMarkers
+#' 
+#' @examples
+#' \dontrun{
+#' library(MazamaLocationUtils)
+#' 
+#' # A table with all core metadata
+#' table_leaflet(wa_monitors_500
+#'   
+#' # A table missing some core metadata
+#' table_leaflet(
+#'   wa_airfire_meta,
+#'   extraVars = c("stateCode", "countyName", "msaName")
+#' )
+#' 
+#' # Customizing the map
+#' table_leaflet(
+#'   wa_airfire_meta,
+#'   extraVars = c("stateCode", "countyName", "msaName"),
+#'   radius = 6,
+#'   color = "black",
+#'   weight = 2,
+#'   fillColor = "red",
+#'   fillOpacity = 0.3
+#' )
+#' }
 
 table_leaflet <- function(
   locationTbl = NULL,
   maptype = "terrain",
   extraVars = NULL,
-  locationOnly = FALSE,
   ...
 ) {
   
   # ----- Validate parameters --------------------------------------------------
   
-  MazamaLocationUtils::validateLocationTbl(locationTbl, locationOnly = locationOnly)
+  MazamaLocationUtils::validateLocationTbl(locationTbl, locationOnly = TRUE)
   MazamaCoreUtils::stopIfNull(maptype)
   
   if ( !is.null(extraVars) ) {
@@ -54,51 +76,30 @@ table_leaflet <- function(
     }
   }
   
-  # ----- Create popup text ----------------------------------------------------
+  # Filter out missing location data
+  locationTbl <-
+    locationTbl %>%
+    dplyr::filter(!is.na(.data$latitude)) %>%
+    dplyr::filter(!is.na(.data$longitude))
   
-  if ( locationOnly ) {
-    
-    popupText <- paste0(
-      "longitude = ", locationTbl$longitude, ", ", "latitude = ", locationTbl$latitude, "<br>"
-    )
-    
-  } else {
-    
-    # Create popupText
-    popupText <- paste0(
-      "<b>", locationTbl$locationName, "</b><br>",
-      "locationID = ", locationTbl$locationID, "<br>",
-      "longitude = ", locationTbl$longitude, ", ", "latitude = ", locationTbl$latitude, "<br>",
-      "timezone = ", locationTbl$timezone, "<br>",
-      "ISO = ", locationTbl$countryCode, ".", locationTbl$stateCode, "<br>",
-      "county = ", locationTbl$countyName, "<br>",
-      "address = ", locationTbl$houseNumber, ", ", locationTbl$street, ", ", locationTbl$city, ", ", 
-      locationTbl$stateCode, ", ", locationTbl$zip, "<br>"
-    )
-    
-    # Add extra vars
-    for ( i in seq_along(popupText) ) {
-      
-      extraText <- vector("character", length(extraVars))
-      for ( j in seq_along(extraVars) ) {
-        var <- extraVars[j]
-        extraText[j] <- paste0(var, " = ", locationTbl[i, var], "<br>")
-      }
-      extraText <- paste0(extraText, collapse = "")
-      
-      popupText[i] <- paste0(popupText[i], "<hr>", extraText)
-    }
-    
-  }
-
-  locationTbl$popupText <- popupText
+  hasCoreMetadata <- all(coreMetadataNames %in% names(locationTbl))
   
-  # ----- Leaflet options ------------------------------------------------------
+  # * argsList -----
+  
+  argsList <- list(...)
+  
+  argsList$lng <- locationTbl$longitude
+  argsList$lat <- locationTbl$latitude
+  
+  # ----- Create base map ------------------------------------------------------
+  
+  # * zoom -----
   
   # Extract view information
   lonRange <- range(locationTbl$longitude, na.rm = TRUE)
   latRange <- range(locationTbl$latitude, na.rm = TRUE)
   maxRange <- max(diff(lonRange),diff(latRange), na.rm = TRUE)
+  
   # Determine appropriate zoom level
   if (maxRange > 20) {
     zoom <- 4
@@ -120,6 +121,8 @@ table_leaflet <- function(
     zoom <- 12
   }
   
+  # * providerTiles -----
+  
   # Convert maptype to a character string that addProviderTiles can read
   if ( missing(maptype) || maptype == 'terrain') {
     providerTiles <- "Esri.WorldTopoMap"
@@ -133,29 +136,108 @@ table_leaflet <- function(
     providerTiles <- maptype
   }
   
-  # ----- Create SPDF ----------------------------------------------------------
+  # * base map -----
   
-  # Filter out missing location data
-  locationTbl <-
-    locationTbl %>%
-    dplyr::filter(!is.na(.data$latitude)) %>%
-    dplyr::filter(!is.na(.data$longitude))
-  
-  # ----- Create leaflet map ---------------------------------------------------
-  
-  m <- 
+  argsList$map <- 
     leaflet::leaflet(locationTbl) %>%
     leaflet::setView(lng = mean(lonRange), lat = mean(latRange), zoom = zoom) %>%
-    leaflet::addProviderTiles(providerTiles) %>%
-    leaflet::addCircleMarkers(
-      popup = locationTbl$popupText,
-      lat = ~latitude,
-      lng = ~longitude,
-      ...
+    leaflet::addProviderTiles(providerTiles)
+  
+  # ----- Add circle markers ---------------------------------------------------
+  
+  # * weight -----
+  
+  if ( !"weight" %in% argsList ) 
+    argsList$weight <- 1
+  
+  # * popup text -----
+  
+  # Initialize empty popupText
+  popupText <- vector("character", nrow(locationTbl))
+  
+  # Create coreText
+  
+  if ( hasCoreMetadata ) {
+    
+    # Use guaranteed fields
+    coreText <- paste0(
+      "<b>", locationTbl$locationName, "</b><br>",
+      "locationID = ", locationTbl$locationID, "<br>",
+      "longitude = ", locationTbl$longitude, ", ", "latitude = ", locationTbl$latitude, "<br>",
+      "timezone = ", locationTbl$timezone, "<br>",
+      "ISO = ", locationTbl$countryCode, ".", locationTbl$stateCode, "<br>",
+      "county = ", locationTbl$countyName, "<br>",
+      "address = ", locationTbl$houseNumber, ", ", locationTbl$street, ", ", locationTbl$city, ", ", 
+      locationTbl$stateCode, ", ", locationTbl$zip, "<br>"
     )
+    
+    
+  } else {
+    
+    # Use reasonable best guesses to create 3 lines of core metadata
+    
+    tblNames <- names(locationTbl)
+    
+    # Bold location identifier at the top (in preference order)
+    if ( "locationName" %in% tblNames ) {
+      coreText_1 <-  paste0("<b>", locationTbl$locationName, "</b><br>")
+    } else if ( "siteName" %in% tblNames ) {
+      coreText_1 <-  paste0("<b>", locationTbl$siteName, "</b><br>")
+    } else if ( "AQSID" %in% tblNames ) {
+      coreText_1 <- paste0("<b>", locationTbl$AQSID, "</b><br>")
+    } else if ( "aqsID" %in% tblNames ) {
+      coreText_1 <- paste0("<b>", locationTbl$aqsID, "</b><br>")
+    } else if ( "aqsid" %in% tblNames ) {
+      coreText_1 <- paste0("<b>", locationTbl$aqsid, "</b><br>")
+    } else {
+      coreText_1 <- ""
+    }
+    
+    # US EPA AQSID if not already found
+    if ( "AQSID" %in% tblNames ) {
+      coreText_2 <-  paste0("AQSID = ", locationTbl$AQSID, "<br>")
+    } else if ( "aqsID" %in% tblNames ) {
+      coreText_2 <-  paste0("AQSID = ", locationTbl$aqsID, "<br>")
+    } else if ( "aqsid" %in% tblNames ) {
+      coreText_2 <-  paste0("AQSID = ", locationTbl$aqsid, "<br>")
+    } else {
+      coreText_2 <- ""
+    }
+
+    # Location
+    coreText_3 <- paste0(
+      "longitude = ", locationTbl$longitude, ", ", "latitude = ", locationTbl$latitude, "<br>"
+    )
+    
+    # Paste them together
+    coreText <- paste0(coreText_1, coreText_2, coreText_3)
+    
+  }
+  
+  # Add extra vars
+  for ( i in seq_along(popupText) ) {
+    
+    extraText <- vector("character", length(extraVars))
+    for ( j in seq_along(extraVars) ) {
+      var <- extraVars[j]
+      extraText[j] <- paste0(var, " = ", locationTbl[i, var], "<br>")
+    }
+    extraText <- paste0(extraText, collapse = "")
+    
+    popupText[i] <- paste0(coreText[i], "<hr>", extraText)
+    
+  }
+  
+  locationTbl$popupText <- popupText
+  
+  argsList$popup <- popupText
+  
+  # * add markers -----
+  
+  map <- do.call(leaflet::addCircleMarkers, argsList)
   
   # ----- Return ---------------------------------------------------------------
   
-  return(m)
+  return(map)
   
 }
