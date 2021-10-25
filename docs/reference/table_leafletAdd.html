@@ -41,7 +41,9 @@
 
 <meta property="og:title" content="Add to a leaflet interactive map for known locations — table_leafletAdd" />
 <meta property="og:description" content="This function adds interactive maps that will be displayed in
-  RStudio's 'Viewer' tab." />
+  RStudio's 'Viewer' tab. The default setting of `jitter` will move locations
+randomly within an ~50 meter radius so that overlapping locations can be 
+identified. Set `jitter = 0` to see precise locations." />
 
 
 
@@ -122,10 +124,18 @@
 
     <div class="ref-description">
     <p>This function adds interactive maps that will be displayed in
-  RStudio's 'Viewer' tab.</p>
+  RStudio's 'Viewer' tab. The default setting of `jitter` will move locations
+randomly within an ~50 meter radius so that overlapping locations can be 
+identified. Set `jitter = 0` to see precise locations.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>table_leafletAdd</span><span class='op'>(</span>map <span class='op'>=</span> <span class='cn'>NULL</span>, locationTbl <span class='op'>=</span> <span class='cn'>NULL</span>, extraVars <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>table_leafletAdd</span><span class='op'>(</span>
+  map <span class='op'>=</span> <span class='cn'>NULL</span>,
+  locationTbl <span class='op'>=</span> <span class='cn'>NULL</span>,
+  extraVars <span class='op'>=</span> <span class='cn'>NULL</span>,
+  jitter <span class='op'>=</span> <span class='fl'>5e-04</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -144,8 +154,14 @@
 to be shown in leaflet popups.</p></td>
     </tr>
     <tr>
+      <th>jitter</th>
+      <td><p>Amount to use to slightly adjust locations so that multiple
+monitors at the same location can be seen. Use zero or <code>NA</code> to see
+precise locations.</p></td>
+    </tr>
+    <tr>
       <th>...</th>
-      <td><p>Additional arguments passed to <code>leaflet::addCircleMarker()</code>.</p></td>
+      <td><p>Additional arguments passed to <code><a href='https://rdrr.io/pkg/leaflet/man/map-layers.html'>leaflet::addCircleMarkers()</a></code>.</p></td>
     </tr>
     </table>
 

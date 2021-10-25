@@ -4,10 +4,15 @@
 #' @param maptype Optional name of leaflet ProviderTiles to use, e.g. \code{terrain}.
 #' @param extraVars Character vector of addition \code{locationTbl} column names
 #' to be shown in leaflet popups.  
+#' @param jitter Amount to use to slightly adjust locations so that multiple
+#' monitors at the same location can be seen. Use zero or \code{NA} to see
+#' precise locations.
 #' @param ... Additional arguments passed to \code{leaflet::addCircleMarker()}.
 #'
 #' @description This function creates interactive maps that will be displayed in
-#'   RStudio's 'Viewer' tab.
+#' RStudio's 'Viewer' tab. The default setting of `jitter` will move locations
+#' randomly within an ~50 meter radius so that overlapping locations can be 
+#' identified. Set `jitter = 0` to see precise locations.
 #'
 #' @details The \code{maptype} argument is mapped onto leaflet "ProviderTile"
 #'   names. Current mappings include:
@@ -30,14 +35,14 @@
 #' @export 
 #' @importFrom MazamaCoreUtils stopIfNull
 #' @importFrom rlang .data
-#' @importFrom leaflet leaflet setView addProviderTiles addCircleMarkers
+#' @importFrom leaflet leaflet fitBounds addProviderTiles addCircleMarkers
 #' 
 #' @examples
 #' \dontrun{
 #' library(MazamaLocationUtils)
 #' 
 #' # A table with all core metadata
-#' table_leaflet(wa_monitors_500
+#' table_leaflet(wa_monitors_500)
 #'   
 #' # A table missing some core metadata
 #' table_leaflet(
@@ -61,6 +66,7 @@ table_leaflet <- function(
   locationTbl = NULL,
   maptype = "terrain",
   extraVars = NULL,
+  jitter = 5e-4,
   ...
 ) {
   
@@ -84,53 +90,19 @@ table_leaflet <- function(
   
   hasCoreMetadata <- all(coreMetadataNames %in% names(locationTbl))
   
+  if ( is.null(jitter) || is.na(jitter) ) {
+    jitter <- 0
+  }
+
   # * argsList -----
   
   argsList <- list(...)
   
-  argsList$lng <- locationTbl$longitude
-  argsList$lat <- locationTbl$latitude
+  argsList$lng <- jitter(locationTbl$longitude, amount = jitter)
+  argsList$lat <- jitter(locationTbl$latitude, amount = jitter)
   
   # ----- Create base map ------------------------------------------------------
   
-  # * zoom -----
-  
-  # Extract view information
-  lonRange <- range(locationTbl$longitude, na.rm = TRUE)
-  latRange <- range(locationTbl$latitude, na.rm = TRUE)
-  maxRange <- max(diff(lonRange),diff(latRange), na.rm = TRUE)
-  
-  # Determine appropriate zoom level
-  if (maxRange > 250) {
-    zoom <- 2
-  } else if (maxRange > 150) {
-    zoom <- 2
-  } else if (maxRange > 100) {
-    zoom <- 3
-  } else if (maxRange > 50) {
-    zoom <- 4
-  } else if (maxRange > 20) {
-    zoom <- 5
-  } else if (maxRange > 10) {
-    zoom <- 6
-  } else if (maxRange > 5) {
-    zoom <- 7
-  } else if (maxRange > 2) {
-    zoom <- 8
-  } else if (maxRange > 0.5) {
-    zoom <- 9
-  } else if (maxRange > 0.2) {
-    zoom <- 10
-  } else if (maxRange > 0.1) {
-    zoom <- 11
-  } else if (maxRange > 0.05) {
-    zoom <- 12
-  } else if (maxRange > 0.02) {
-    zoom <- 13
-  } else {
-    zoom <- 14
-  }
-
   # * providerTiles -----
   
   # Convert maptype to a character string that addProviderTiles can read
@@ -146,11 +118,17 @@ table_leaflet <- function(
     providerTiles <- maptype
   }
   
+  # * zoom -----
+  
+  # Extract view information
+  lonRange <- range(locationTbl$longitude, na.rm = TRUE)
+  latRange <- range(locationTbl$latitude, na.rm = TRUE)
+  
   # * base map -----
   
   argsList$map <- 
     leaflet::leaflet(locationTbl) %>%
-    leaflet::setView(lng = mean(lonRange), lat = mean(latRange), zoom = zoom) %>%
+    leaflet::fitBounds(lonRange[1], latRange[1], lonRange[2], latRange[2]) %>%
     leaflet::addProviderTiles(providerTiles)
   
   # ----- Add circle markers ---------------------------------------------------

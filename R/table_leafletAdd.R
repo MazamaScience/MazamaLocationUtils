@@ -4,10 +4,15 @@
 #' @param locationTbl Tibble of known locations.
 #' @param extraVars Character vector of addition \code{locationTbl} column names
 #' to be shown in leaflet popups.  
-#' @param ... Additional arguments passed to \code{leaflet::addCircleMarker()}.
+#' @param jitter Amount to use to slightly adjust locations so that multiple
+#' monitors at the same location can be seen. Use zero or \code{NA} to see
+#' precise locations.
+#' @param ... Additional arguments passed to \code{leaflet::addCircleMarkers()}.
 #'
 #' @description This function adds interactive maps that will be displayed in
-#'   RStudio's 'Viewer' tab.
+#'   RStudio's 'Viewer' tab. The default setting of `jitter` will move locations
+#' randomly within an ~50 meter radius so that overlapping locations can be 
+#' identified. Set `jitter = 0` to see precise locations.
 #'
 #' @return A leaflet "plot" object which, if not assigned, is rendered in
 #' Rstudio's 'Viewer' tab.
@@ -15,12 +20,13 @@
 #' @rdname table_leafletAdd
 #' @export 
 #' @importFrom MazamaCoreUtils stopIfNull
-#' @importFrom leaflet leaflet setView addProviderTiles addCircleMarkers
+#' @importFrom leaflet leaflet addCircleMarkers
 
 table_leafletAdd <- function(
   map = NULL,
   locationTbl = NULL,
   extraVars = NULL,
+  jitter = 5e-4,
   ...
 ) {
   
@@ -53,10 +59,16 @@ table_leafletAdd <- function(
   argsList <- list(...)
   
   argsList$map <- map
-  argsList$lng <- locationTbl$longitude
-  argsList$lat <- locationTbl$latitude
   
+  argsList$lng <- jitter(locationTbl$longitude, amount = jitter)
+  argsList$lat <- jitter(locationTbl$latitude, amount = jitter)
+
   # ----- Add circle markers ---------------------------------------------------
+  
+  # * color -----
+  
+  if ( !"color" %in% argsList ) 
+    argsList$color <- "red"
   
   # * weight -----
   

@@ -41,7 +41,9 @@
 
 <meta property="og:title" content="Leaflet interactive map for known locations — table_leaflet" />
 <meta property="og:description" content="This function creates interactive maps that will be displayed in
-  RStudio's 'Viewer' tab." />
+RStudio's 'Viewer' tab. The default setting of `jitter` will move locations
+randomly within an ~50 meter radius so that overlapping locations can be 
+identified. Set `jitter = 0` to see precise locations." />
 
 
 
@@ -122,10 +124,18 @@
 
     <div class="ref-description">
     <p>This function creates interactive maps that will be displayed in
-  RStudio's 'Viewer' tab.</p>
+RStudio's 'Viewer' tab. The default setting of `jitter` will move locations
+randomly within an ~50 meter radius so that overlapping locations can be 
+identified. Set `jitter = 0` to see precise locations.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>table_leaflet</span><span class='op'>(</span>locationTbl <span class='op'>=</span> <span class='cn'>NULL</span>, maptype <span class='op'>=</span> <span class='st'>"terrain"</span>, extraVars <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>table_leaflet</span><span class='op'>(</span>
+  locationTbl <span class='op'>=</span> <span class='cn'>NULL</span>,
+  maptype <span class='op'>=</span> <span class='st'>"terrain"</span>,
+  extraVars <span class='op'>=</span> <span class='cn'>NULL</span>,
+  jitter <span class='op'>=</span> <span class='fl'>5e-04</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -142,6 +152,12 @@
       <th>extraVars</th>
       <td><p>Character vector of addition <code>locationTbl</code> column names
 to be shown in leaflet popups.</p></td>
+    </tr>
+    <tr>
+      <th>jitter</th>
+      <td><p>Amount to use to slightly adjust locations so that multiple
+monitors at the same location can be seen. Use zero or <code>NA</code> to see
+precise locations.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -169,7 +185,30 @@ underlying map tile if available. See
 "provider tiles" to use as the background map.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/MazamaScience/MazamaLocationUtils'>MazamaLocationUtils</a></span><span class='op'>)</span>
+
+<span class='co'># A table with all core metadata</span>
+<span class='fu'>table_leaflet</span><span class='op'>(</span><span class='va'>wa_monitors_500</span><span class='op'>)</span>
+  
+<span class='co'># A table missing some core metadata</span>
+<span class='fu'>table_leaflet</span><span class='op'>(</span>
+  <span class='va'>wa_airfire_meta</span>,
+  extraVars <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"stateCode"</span>, <span class='st'>"countyName"</span>, <span class='st'>"msaName"</span><span class='op'>)</span>
+<span class='op'>)</span>
+
+<span class='co'># Customizing the map</span>
+<span class='fu'>table_leaflet</span><span class='op'>(</span>
+  <span class='va'>wa_airfire_meta</span>,
+  extraVars <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"stateCode"</span>, <span class='st'>"countyName"</span>, <span class='st'>"msaName"</span><span class='op'>)</span>,
+  radius <span class='op'>=</span> <span class='fl'>6</span>,
+  color <span class='op'>=</span> <span class='st'>"black"</span>,
+  weight <span class='op'>=</span> <span class='fl'>2</span>,
+  fillColor <span class='op'>=</span> <span class='st'>"red"</span>,
+  fillOpacity <span class='op'>=</span> <span class='fl'>0.3</span>
+<span class='op'>)</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

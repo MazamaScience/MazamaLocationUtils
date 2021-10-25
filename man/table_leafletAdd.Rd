@@ -4,7 +4,13 @@
 \alias{table_leafletAdd}
 \title{Add to a leaflet interactive map for known locations}
 \usage{
-table_leafletAdd(map = NULL, locationTbl = NULL, extraVars = NULL, ...)
+table_leafletAdd(
+  map = NULL,
+  locationTbl = NULL,
+  extraVars = NULL,
+  jitter = 5e-04,
+  ...
+)
 }
 \arguments{
 \item{map}{Leaflet map.}
@@ -14,7 +20,11 @@ table_leafletAdd(map = NULL, locationTbl = NULL, extraVars = NULL, ...)
 \item{extraVars}{Character vector of addition \code{locationTbl} column names
 to be shown in leaflet popups.}
 
-\item{...}{Additional arguments passed to \code{leaflet::addCircleMarker()}.}
+\item{jitter}{Amount to use to slightly adjust locations so that multiple
+monitors at the same location can be seen. Use zero or \code{NA} to see
+precise locations.}
+
+\item{...}{Additional arguments passed to \code{leaflet::addCircleMarkers()}.}
 }
 \value{
 A leaflet "plot" object which, if not assigned, is rendered in
@@ -22,5 +32,7 @@ Rstudio's 'Viewer' tab.
 }
 \description{
 This function adds interactive maps that will be displayed in
-  RStudio's 'Viewer' tab.
+  RStudio's 'Viewer' tab. The default setting of `jitter` will move locations
+randomly within an ~50 meter radius so that overlapping locations can be 
+identified. Set `jitter = 0` to see precise locations.
 }

@@ -4,7 +4,13 @@
 \alias{table_leaflet}
 \title{Leaflet interactive map for known locations}
 \usage{
-table_leaflet(locationTbl = NULL, maptype = "terrain", extraVars = NULL, ...)
+table_leaflet(
+  locationTbl = NULL,
+  maptype = "terrain",
+  extraVars = NULL,
+  jitter = 5e-04,
+  ...
+)
 }
 \arguments{
 \item{locationTbl}{Tibble of known locations.}
@@ -14,6 +20,10 @@ table_leaflet(locationTbl = NULL, maptype = "terrain", extraVars = NULL, ...)
 \item{extraVars}{Character vector of addition \code{locationTbl} column names
 to be shown in leaflet popups.}
 
+\item{jitter}{Amount to use to slightly adjust locations so that multiple
+monitors at the same location can be seen. Use zero or \code{NA} to see
+precise locations.}
+
 \item{...}{Additional arguments passed to \code{leaflet::addCircleMarker()}.}
 }
 \value{
@@ -22,7 +32,9 @@ Rstudio's 'Viewer' tab.
 }
 \description{
 This function creates interactive maps that will be displayed in
-  RStudio's 'Viewer' tab.
+RStudio's 'Viewer' tab. The default setting of `jitter` will move locations
+randomly within an ~50 meter radius so that overlapping locations can be 
+identified. Set `jitter = 0` to see precise locations.
 }
 \details{
 The \code{maptype} argument is mapped onto leaflet "ProviderTile"
@@ -44,7 +56,7 @@ underlying map tile if available. See
 library(MazamaLocationUtils)
 
 # A table with all core metadata
-table_leaflet(wa_monitors_500
+table_leaflet(wa_monitors_500)
   
 # A table missing some core metadata
 table_leaflet(
