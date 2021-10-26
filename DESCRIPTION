@@ -1,18 +1,17 @@
 Type: Package
 Package: MazamaLocationUtils
-Version: 0.2.3
+Version: 0.2.4
 Title: Manage Spatial Metadata for Known Locations
 Authors@R: c(
     person("Jonathan", "Callahan", email="jonathan.s.callahan@gmail.com", role=c("aut","cre")),
     person("Eli", "Grosman", email="eligrosman1@gmail.com", role=c("ctb")),
     person("Oliver", "Fogelin", email="oliverfogelin@gmail.com", role=c("ctb"))
     )
-Author: Jonathan Callahan [aut, cre],
-    Eli Grosman [ctb],
-    Oliver Fogelin [ctb]
 Maintainer: Jonathan Callahan <jonathan.s.callahan@gmail.com>
-Description: A suite of utility functions for discovering and managing metadata 
-    associated with spatially unique "known locations".
+Description: Utility functions for discovering and managing metadata 
+    associated with spatially unique "known locations". Applications include
+    all fields of environmental monitoring (e.g. air and water quality) where 
+    data are collected at stationary sites.
 License: GPL-3
 URL: https://github.com/MazamaScience/MazamaLocationUtils
 BugReports: https://github.com/MazamaScience/MazamaLocationUtils/issues

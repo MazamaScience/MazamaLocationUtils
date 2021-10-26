@@ -1,3 +1,7 @@
+# MazamaLocationUtils 0.2.4
+
+* Improved documentation.
+
 # MazamaLocationUtils 0.2.3
 
 * Refactored `table_leaflet()` and `table_leafletAdd()` with improved defaults
