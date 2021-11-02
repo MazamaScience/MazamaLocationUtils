@@ -101,7 +101,7 @@ pre-existing table of metadata." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.5</span>
       </span>
     </div>
 
@@ -196,7 +196,8 @@ pre-existing table of metadata.</p>
     <tr>
       <th>locationTbl</th>
       <td><p>Tibble of known locations. This input tibble need not be a 
-standardized "known location" with all required columns. They will be added.</p></td>
+standardized "known location" table with all required columns. Missing 
+columns will be added.</p></td>
     </tr>
     <tr>
       <th>stateDataset</th>
@@ -215,7 +216,8 @@ searching. (See ?MazamaSpatialUtils::getStateCode())</p></td>
     <tr>
       <th>measure</th>
       <td><p>One of "haversine" "vincenty", "geodesic", or "cheap" 
-specifying desired method of geodesic distance calculation. See <code><a href='https://rdrr.io/pkg/geodist/man/geodist.html'>?geodist::geodist</a></code>.</p></td>
+specifying desired method of geodesic distance calculation. See 
+<code><a href='https://rdrr.io/pkg/geodist/man/geodist.html'>?geodist::geodist</a></code>.</p></td>
     </tr>
     <tr>
       <th>verbose</th>
@@ -226,8 +228,8 @@ specifying desired method of geodesic distance calculation. See <code><a href='h
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>Known location tibble with the specified metadata columns. Any 
-locations whose circles (as defined by <code>distanceThreshold</code>) overlap will generate
-warning messages.</p>
+locations whose circles (as defined by <code>distanceThreshold</code>) overlap will
+generate warning messages.</p>
 <p>It is incumbent upon the user to address these issue by one of:</p>
 <ol>
 <li><p>reduce the distanceThreshold until no overlaps occur</p></li>

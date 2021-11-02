@@ -42,19 +42,21 @@
 #' calculated using \code{measure = "geodesic"}.
 #' 
 #' @param locationTbl Tibble of known locations. This input tibble need not be a 
-#' standardized "known location" with all required columns. They will be added.
+#' standardized "known location" table with all required columns. Missing 
+#' columns will be added.
 #' @param stateDataset Name of spatial dataset to use for determining state
 #' codes, Default: 'NaturalEarthAdm1'
 #' @param countryCodes Vector of country codes used to optimize spatial
 #' searching. (See ?MazamaSpatialUtils::getStateCode())
 #' @param distanceThreshold Distance in meters. 
 #' @param measure One of "haversine" "vincenty", "geodesic", or "cheap" 
-#' specifying desired method of geodesic distance calculation. See \code{?geodist::geodist}.
+#' specifying desired method of geodesic distance calculation. See 
+#' \code{?geodist::geodist}.
 #' @param verbose Logical controlling the generation of progress messages.
 #' 
 #' @return Known location tibble with the specified metadata columns. Any 
-#' locations whose circles (as defined by \code{distanceThreshold}) overlap will generate
-#' warning messages. 
+#' locations whose circles (as defined by \code{distanceThreshold}) overlap will
+#' generate warning messages. 
 #' 
 #' It is incumbent upon the user to address these issue by one of:
 #' 
@@ -92,9 +94,6 @@ table_initializeExisting <- function(
     ))
   }
   
-  if ( "locationID" %in% names(locationTbl) )
-    stop("Parameter 'locationTbl' already has a column named \"locationID\"")
-  
   if ( !is.numeric(distanceThreshold) )
     stop("Parameter 'distanceThreshold' must be a numeric value.")
   
@@ -105,7 +104,7 @@ table_initializeExisting <- function(
   # * locationID -----
   
   # locationID should have been added by table_add
-  if (anyNA(locationTbl$locationID)) {
+  if ( anyNA(locationTbl$locationID) ) {
     locationTbl$locationID <- location_createID(
       longitude = locationTbl$longitude,
       latitude = locationTbl$latitude
@@ -219,7 +218,7 @@ table_initializeExisting <- function(
     if ( verbose ) 
       message(sprintf("Creating timezones for %d locations ...", nrow(tbl_2)))
     
-    tbl_2$countyName <- MazamaSpatialUtils::getTimezone(
+    tbl_2$timezone <- MazamaSpatialUtils::getTimezone(
       lon = tbl_2$longitude,
       lat = tbl_2$latitude,
       dataset = "OSMTimezones",
@@ -307,7 +306,7 @@ locationTbl %%>%%
     # Paste the lines together
     warning(paste(lines, collapse = "\n"))
     
-  }
+  } # END overlapping
   
   # ----- Return ---------------------------------------------------------------
   

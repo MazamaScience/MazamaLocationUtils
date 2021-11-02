@@ -1,3 +1,7 @@
+# MazamaLocationUtils 0.2.5
+
+* Fix timezone assignment bug in `table_initializeExisting()`.
+
 # MazamaLocationUtils 0.2.4
 
 * Improved documentation.
