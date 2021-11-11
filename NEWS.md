@@ -1,3 +1,8 @@
+# MazamaLocationUtils 0.2.6
+
+* Removed `~APIKey()` functionality. Now importing this from 
+`MazamaCoreUtils` 0.4.10.
+
 # MazamaLocationUtils 0.2.5
 
 * Fix timezone assignment bug in `table_initializeExisting()`.
