@@ -2,6 +2,9 @@
 
 * Removed `~APIKey()` functionality. Now importing this from 
 `MazamaCoreUtils` 0.4.10.
+* Optimized `table_getLocationID()` and `table_getNearestDistance()` by only 
+calculating distance for unique locations. This helps tremendously when 
+`longitude` and `latitude` come from "tidy" dataframes.
 
 # MazamaLocationUtils 0.2.5
 

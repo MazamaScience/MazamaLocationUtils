@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.6</span>
       </span>
     </div>
 
@@ -117,6 +117,15 @@
       <small>Source: <a href='https://github.com/MazamaScience/MazamaLocationUtils/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="mazamalocationutils-026" class="section level1">
+<h1 class="page-header" data-toc-text="0.2.6">
+<a href="#mazamalocationutils-026" class="anchor"></a>MazamaLocationUtils 0.2.6<small> Unreleased </small>
+</h1>
+<ul>
+<li>Removed <code>~APIKey()</code> functionality. Now importing this from <code>MazamaCoreUtils</code> 0.4.10.</li>
+<li>Optimized <code><a href="../reference/table_getLocationID.html">table_getLocationID()</a></code> and <code><a href="../reference/table_getNearestDistance.html">table_getNearestDistance()</a></code> by only calculating distance for unique locations. This helps tremendously when <code>longitude</code> and <code>latitude</code> come from “tidy” dataframes.</li>
+</ul>
+</div>
     <div id="mazamalocationutils-025" class="section level1">
 <h1 class="page-header" data-toc-text="0.2.5">
 <a href="#mazamalocationutils-025" class="anchor"></a>MazamaLocationUtils 0.2.5<small> Unreleased </small>

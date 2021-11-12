@@ -245,17 +245,7 @@ table_initializeExisting <- function(
   
   # Slow web service so skip for now
 
-  # ----- Check for adjaceent locations ----------------------------------------
-  
-  # # Calculate distances between each location
-  # distances <- geodist::geodist(locationTbl, measure = "geodesic")
-  # 
-  # # Get distances that are less than the given distanceThreshold
-  # # NOTE: the distance between a location and itself is always zero
-  # distancesLessThanR <- (distances != 0) & (distances < distanceThreshold )
-  # 
-  # # Select the locations that are "adjacent".
-  # overlappingTbl <- which(distancesLessThanR > 0, arr.ind = TRUE)
+  # ----- Check for adjacent locations -----------------------------------------
   
   overlappingTbl <- table_findAdjacentDistances(locationTbl, distanceThreshold, measure)
 

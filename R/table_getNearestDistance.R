@@ -55,13 +55,24 @@ table_getNearestDistance <- function(
   
   distanceThreshold <- round(distanceThreshold)
 
+  # ----- Find unique locations ------------------------------------------------
+  
+  # NOTE:  For the case where the incoming longitude and latitude have many 
+  # NOTE:  duplicated locations (a "tidy" dataframe perhaps), we need to speed
+  # NOTE:  things up by only calculating distance for unique locations and then
+  # NOTE:  merging with all incoming locations.
+  
+  myTbl <- dplyr::tibble(longitude = longitude, latitude = latitude)
+  
+  myUniqueTbl <- myTbl %>% dplyr::distinct()
+  
   # ----- Calculate distances --------------------------------------------------
 
   distance <-
     geodist::geodist(
       y = cbind(
-        "x" = longitude,
-        "y" = latitude
+        "x" = myUniqueTbl$longitude,
+        "y" = myUniqueTbl$latitude
       ),
       x = cbind(
         "x" = locationTbl$longitude,
@@ -73,20 +84,30 @@ table_getNearestDistance <- function(
       measure = measure
     )
 
-  # NOTE:  distance matrix is nrow(locationTbl) X length(longitude)
+  # NOTE:  distance matrix is nrow(locationTbl) X nrow(myUniqueTbl)
 
-  # ----- Find locationIDs -----------------------------------------------------
-
-  nearestDistance <- rep(as.numeric(NA), length(longitude))
-
-  for ( index in seq_along(longitude) ) {
-
+  # ----- Find unique distances ------------------------------------------------
+  
+  myUniqueTbl$nearestDistance <- as.numeric(NA)
+  
+  for ( index in seq_len(nrow(myUniqueTbl)) ) {
+    
     if ( any(distance[,index] <= distanceThreshold) ) {
-      nearestDistance[index] <- min(distance[,index])
+      myUniqueTbl$nearestDistance[index] <-  min(distance[,index], na.rm = TRUE)
     }
-
+    
   }
-
+  
+  # ----- Merge with all locations ---------------------------------------------
+  
+  nearestDistance <- 
+    dplyr::full_join(
+      myTbl,
+      myUniqueTbl,
+      by = c("longitude", "latitude")
+    ) %>%
+    dplyr::pull(.data$nearestDistance)
+  
   # ----- Return ---------------------------------------------------------------
 
   return(nearestDistance)
