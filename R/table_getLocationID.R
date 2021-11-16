@@ -30,6 +30,7 @@
 #' 
 #' # Expanding the distanceThreshold will find one
 #' table_getLocationID(locationTbl, lon, lat, distanceThreshold = 5000)
+#' 
 #' @rdname table_getLocationID
 #' @export 
 #' @importFrom MazamaCoreUtils stopIfNull

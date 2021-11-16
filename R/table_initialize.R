@@ -27,7 +27,8 @@
 #' 
 #' # Create an empty Tbl
 #' emptyTbl <- table_initialize()
-#' print(emptyTbl)
+#' dplyr::glimpse(emptyTbl)
+#' 
 #' @rdname table_initialize
 #' @export 
 #' @importFrom MazamaCoreUtils stopIfNull

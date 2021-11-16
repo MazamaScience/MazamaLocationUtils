@@ -26,6 +26,7 @@
 #' lon <- -120.325278
 #' lat <- 47.423333
 #' locationID <- location_createID(lon, lat)
+#' print(locationID)
 #' @references \url{https://en.wikipedia.org/wiki/Decimal_degrees}
 #' @references \url{https://www.johndcook.com/blog/2017/01/10/probability-of-secure-hash-collisions/}
 #' @rdname location_createID

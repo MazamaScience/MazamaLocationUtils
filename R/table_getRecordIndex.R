@@ -22,6 +22,7 @@
 #' recordIndex <- table_getRecordIndex(locationTbl, locationID)
 #' 
 #' str(locationTbl[recordIndex,])
+#' 
 #' @rdname table_getRecordIndex
 #' @export 
 #' @importFrom MazamaCoreUtils stopIfNull

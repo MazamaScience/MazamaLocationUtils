@@ -31,6 +31,7 @@
 #' 
 #' # Expanding the distanceThreshold will find one
 #' table_getNearestDistance(locationTbl, lon, lat, distanceThreshold = 5000)
+#' 
 #' @rdname table_getNearestDistance
 #' @export
 #' @importFrom MazamaCoreUtils stopIfNull

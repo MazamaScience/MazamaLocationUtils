@@ -34,5 +34,6 @@ library(MazamaLocationUtils)
 
 # Create an empty Tbl
 emptyTbl <- table_initialize()
-print(emptyTbl)
+dplyr::glimpse(emptyTbl)
+
 }

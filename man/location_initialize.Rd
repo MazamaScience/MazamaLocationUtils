@@ -54,13 +54,20 @@ of core metadata:
 \donttest{
 library(MazamaLocationUtils)
 
-# Set up standard directories and spatial data
-spatialDataDir <- tempdir() # typically "~/Data/Spatial"
-mazama_initialize(spatialDataDir)
+# Fail gracefully if any resources are not available
+try({
 
-# Wenatchee
-lon <- -120.325278
-lat <- 47.423333
-locationRecord <- location_initialize(lon, lat)
+  # Set up standard directories and spatial data
+  spatialDataDir <- tempdir() # typically "~/Data/Spatial"
+  mazama_initialize(spatialDataDir)
+
+  # Wenatchee
+  lon <- -120.325278
+  lat <- 47.423333
+  
+  locationRecord <- location_initialize(lon, lat)
+  str(locationRecord)
+  
+}, silent = FALSE)
 }
 }

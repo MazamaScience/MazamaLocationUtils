@@ -18,11 +18,17 @@
 #' \donttest{
 #' library(MazamaLocationUtils)
 #' 
-#' lon <- -77.51
-#' lat <- 38.26
+#' # Fail gracefully if any resources are not available
+#' try({
 #' 
-#' censusList <- location_getCensusBlock(lon, lat)
-#' str(censusList)
+#'   # Wenatchee
+#'   lon <- -120.325278
+#'   lat <- 47.423333
+#' 
+#'   censusList <- location_getCensusBlock(lon, lat)
+#'   str(censusList)
+#'   
+#' }, silent = FALSE)
 #' }
 #' @references \url{https://geo.fcc.gov/api/census/#!/block/get_block_find}
 #' @rdname location_getCensusBlock

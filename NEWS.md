@@ -1,3 +1,8 @@
+# MazamaLocationUtils 0.2.7
+
+* All examples now meet the CRAN directive to avoid stopping if a web 
+resource is unavailable.
+
 # MazamaLocationUtils 0.2.6
 
 * Removed `~APIKey()` functionality. Now importing this from 

@@ -27,6 +27,7 @@
 #'   
 #' # Check the locationDataDir
 #' list.files(getLocationDataDir(), pattern = "table_save_example")
+#' 
 #' @details Backup files are saved with "YYYY-mm-ddTHH:MM:SS"
 #' @rdname table_save
 #' @export 
