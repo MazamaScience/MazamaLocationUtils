@@ -28,12 +28,12 @@
 #' names(locationTbl)
 #' 
 #' try({
-#' # Cannot remove "core" metadata
-#' locationTbl <-
-#'   locationTbl %>%
-#'   table_removeColumn("zip")
+#'   # Cannot remove "core" metadata
+#'   locationTbl <-
+#'     locationTbl %>%
+#'     table_removeColumn("zip")
 #' }, silent = FALSE)
-#' }
+#'
 #' @seealso \link{table_addColumn}
 #' @seealso \link{table_removeColumn}
 #' @rdname table_removeColumn

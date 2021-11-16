@@ -46,7 +46,7 @@ table_save(locationTbl, "table_save_example")
 # Add a column and save again
 locationTbl \%>\% 
   table_addColumn("my_column") \%>\% 
-  table_save(locationTbl, "table_save_example")
+  table_save("table_save_example")
   
 # Check the locationDataDir
 list.files(getLocationDataDir(), pattern = "table_save_example")

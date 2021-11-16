@@ -193,19 +193,24 @@ the street address. Default: NULL. Accepted values: "photon".</p></td>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/MazamaScience/MazamaLocationUtils'>MazamaLocationUtils</a></span><span class='op'>)</span>
 
-<span class='co'># Set up standard directories and spatial data</span>
-<span class='va'>spatialDataDir</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span><span class='op'>(</span><span class='op'>)</span> <span class='co'># typically "~/Data/Spatial"</span>
-<span class='fu'><a href='mazama_initialize.html'>mazama_initialize</a></span><span class='op'>(</span><span class='va'>spatialDataDir</span><span class='op'>)</span>
+<span class='co'># Fail gracefully if any resources are not available</span>
+<span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span>
 
-<span class='va'>locationTbl</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/get.html'>get</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>"wa_monitors_500"</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='co'># Set up standard directories and spatial data</span>
+  <span class='va'>spatialDataDir</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span><span class='op'>(</span><span class='op'>)</span> <span class='co'># typically "~/Data/Spatial"</span>
+  <span class='fu'><a href='mazama_initialize.html'>mazama_initialize</a></span><span class='op'>(</span><span class='va'>spatialDataDir</span><span class='op'>)</span>
 
-<span class='co'># Coulee City, WA</span>
-<span class='va'>lon</span> <span class='op'>&lt;-</span> <span class='op'>-</span><span class='fl'>119.290904</span>
-<span class='va'>lat</span> <span class='op'>&lt;-</span> <span class='fl'>47.611942</span>
+  <span class='va'>locationTbl</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/get.html'>get</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>"wa_monitors_500"</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='va'>locationTbl</span> <span class='op'>&lt;-</span> 
-  <span class='va'>locationTbl</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>table_addSingleLocation</span><span class='op'>(</span><span class='va'>lon</span>, <span class='va'>lat</span>, distanceThreshold <span class='op'>=</span> <span class='fl'>500</span><span class='op'>)</span>
+  <span class='co'># Coulee City, WA</span>
+  <span class='va'>lon</span> <span class='op'>&lt;-</span> <span class='op'>-</span><span class='fl'>119.290904</span>
+  <span class='va'>lat</span> <span class='op'>&lt;-</span> <span class='fl'>47.611942</span>
+
+  <span class='va'>locationTbl</span> <span class='op'>&lt;-</span> 
+    <span class='va'>locationTbl</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>table_addSingleLocation</span><span class='op'>(</span><span class='va'>lon</span>, <span class='va'>lat</span>, distanceThreshold <span class='op'>=</span> <span class='fl'>500</span><span class='op'>)</span>
+  
+<span class='op'>}</span>, silent <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 <span class='co'># }</span>
 
 </div></pre>

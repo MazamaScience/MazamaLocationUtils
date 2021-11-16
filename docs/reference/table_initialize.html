@@ -169,12 +169,23 @@ columns of core metadata:</p>
 
 <span class='co'># Create an empty Tbl</span>
 <span class='va'>emptyTbl</span> <span class='op'>&lt;-</span> <span class='fu'>table_initialize</span><span class='op'>(</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>emptyTbl</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 0 × 13</span>
-#&gt; <span style='color: #949494;'># … with 13 variables: locationID &lt;chr&gt;, locationName &lt;chr&gt;, longitude &lt;dbl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   latitude &lt;dbl&gt;, elevation &lt;dbl&gt;, countryCode &lt;chr&gt;, stateCode &lt;chr&gt;,</span>
-#&gt; <span style='color: #949494;'>#   countyName &lt;chr&gt;, timezone &lt;chr&gt;, houseNumber &lt;chr&gt;, street &lt;chr&gt;,</span>
-#&gt; <span style='color: #949494;'>#   city &lt;chr&gt;, zip &lt;chr&gt;</span></div></pre>
+<span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://pillar.r-lib.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>emptyTbl</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Rows: 0
+#&gt; Columns: 13
+#&gt; $ locationID   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> 
+#&gt; $ locationName <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> 
+#&gt; $ longitude    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 
+#&gt; $ latitude     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 
+#&gt; $ elevation    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 
+#&gt; $ countryCode  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> 
+#&gt; $ stateCode    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> 
+#&gt; $ countyName   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> 
+#&gt; $ timezone     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> 
+#&gt; $ houseNumber  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> 
+#&gt; $ street       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> 
+#&gt; $ city         <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> 
+#&gt; $ zip          <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> </div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -56,6 +56,7 @@ location_getSingleElevation_USGS <- function(
   
   # Get and parse the return
   r <- httr::GET(httr::build_url(url))
+  
   if ( httr::http_error(r) ) {
     
     elevation <- as.numeric(NA)
@@ -77,9 +78,9 @@ location_getSingleElevation_USGS <- function(
       # See https://nationalmap.gov/epqs/
       elevation <- ifelse(eq$Elevation < -999999, 0, eq$Elevation)
       
-      # TODO:  If we were being careful we would check the returned x,y
-      # TODO:  to see how much they differ from the requested lon,lat
-      # TODO:  Initial tests show the results to be pretty good.
+      # NOTE:  If we were being extra careful we would check the returned x,y
+      # NOTE:  to see how much they differ from the requested lon,lat.
+      # NOTE:  Initial tests show the results to be pretty good.
       
     } else {
       

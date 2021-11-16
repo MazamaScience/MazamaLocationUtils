@@ -175,11 +175,13 @@ existing tables sharing <code>collectionName</code>.</p></td>
 <span class='co'># Add a column and save again</span>
 <span class='va'>locationTbl</span> <span class='op'>%&gt;%</span> 
   <span class='fu'><a href='table_addColumn.html'>table_addColumn</a></span><span class='op'>(</span><span class='st'>"my_column"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>table_save</span><span class='op'>(</span><span class='va'>locationTbl</span>, <span class='st'>"table_save_example"</span><span class='op'>)</span>
+  <span class='fu'>table_save</span><span class='op'>(</span><span class='st'>"table_save_example"</span><span class='op'>)</span>
   
 <span class='co'># Check the locationDataDir</span>
 <span class='fu'><a href='https://rdrr.io/r/base/list.files.html'>list.files</a></span><span class='op'>(</span><span class='fu'><a href='getLocationDataDir.html'>getLocationDataDir</a></span><span class='op'>(</span><span class='op'>)</span>, pattern <span class='op'>=</span> <span class='st'>"table_save_example"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "table_save_example.rda"</div></pre>
+</div><div class='output co'>#&gt; [1] "table_save_example.2021-11-15T17:45:03.rda"
+#&gt; [2] "table_save_example.rda"                    </div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -165,16 +165,21 @@ are free. Default: NULL</p></td>
     <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/MazamaScience/MazamaLocationUtils'>MazamaLocationUtils</a></span><span class='op'>)</span>
 
-<span class='co'># Set up standard directories and spatial data</span>
-<span class='va'>spatialDataDir</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span><span class='op'>(</span><span class='op'>)</span> <span class='co'># typically "~/Data/Spatial"</span>
-<span class='fu'><a href='mazama_initialize.html'>mazama_initialize</a></span><span class='op'>(</span><span class='va'>spatialDataDir</span><span class='op'>)</span>
+<span class='co'># Fail gracefully if any resources are not available</span>
+<span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='op'>{</span>
 
-<span class='co'># Wenatchee</span>
-<span class='va'>longitude</span> <span class='op'>&lt;-</span> <span class='op'>-</span><span class='fl'>122.47</span>
-<span class='va'>latitude</span> <span class='op'>&lt;-</span> <span class='fl'>47.47</span>
-<span class='va'>apiKey</span> <span class='op'>&lt;-</span> <span class='va'>YOUR_PERSONAL_API_KEY</span>
+  <span class='co'># Set up standard directories and spatial data</span>
+  <span class='va'>spatialDataDir</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span><span class='op'>(</span><span class='op'>)</span> <span class='co'># typically "~/Data/Spatial"</span>
+  <span class='fu'><a href='mazama_initialize.html'>mazama_initialize</a></span><span class='op'>(</span><span class='va'>spatialDataDir</span><span class='op'>)</span>
 
-<span class='fu'>location_getSingleAddress_TexasAM</span><span class='op'>(</span><span class='va'>longitude</span>, <span class='va'>latitude</span>, <span class='va'>apiKey</span><span class='op'>)</span>
+  <span class='co'># Wenatchee</span>
+  <span class='va'>longitude</span> <span class='op'>&lt;-</span> <span class='op'>-</span><span class='fl'>122.47</span>
+  <span class='va'>latitude</span> <span class='op'>&lt;-</span> <span class='fl'>47.47</span>
+  <span class='va'>apiKey</span> <span class='op'>&lt;-</span> <span class='va'>YOUR_PERSONAL_API_KEY</span>
+
+  <span class='fu'>location_getSingleAddress_TexasAM</span><span class='op'>(</span><span class='va'>longitude</span>, <span class='va'>latitude</span>, <span class='va'>apiKey</span><span class='op'>)</span>
+  
+<span class='op'>}</span>, silent <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 <span class='op'>}</span>
 
 </div></pre>

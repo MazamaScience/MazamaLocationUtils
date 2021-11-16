@@ -20,6 +20,35 @@ Updated tibble of known locations.
 Remove the column matching \code{columnName}. This function 
 can be used in pipelines.
 }
+\examples{
+library(MazamaLocationUtils)
+
+# Starting table
+locationTbl <- get(data("wa_monitors_500")) 
+names(locationTbl)
+
+# Add a new column
+locationTbl <-
+  locationTbl \%>\%
+  table_addColumn("siteName")
+  
+names(locationTbl)
+
+# Now remove it
+locationTbl <-
+  locationTbl \%>\%
+  table_removeColumn("siteName")
+
+names(locationTbl)
+
+try({
+  # Cannot remove "core" metadata
+  locationTbl <-
+    locationTbl \%>\%
+    table_removeColumn("zip")
+}, silent = FALSE)
+
+}
 \seealso{
 \link{table_addColumn}
 

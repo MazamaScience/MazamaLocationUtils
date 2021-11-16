@@ -2,6 +2,8 @@
 
 * All examples now meet the CRAN directive to avoid stopping if a web 
 resource is unavailable.
+* Improved error messages in `table_load()` and `table_save()`.
+* Removed `table_export()`. Use `table_save()` instead.
 
 # MazamaLocationUtils 0.2.6
 

@@ -111,9 +111,6 @@ table_addSingleLocation <- function(
     
   additionalNames <- setdiff( names(locationTbl), names(singleRecordTbl))
   
-  # TODO:  Create additional spatial metadata by calling a function that
-  # TODO:  handles everything.
-  
   for ( name in additionalNames ) {
     
     if ( verbose ) 
