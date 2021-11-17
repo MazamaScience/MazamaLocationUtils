@@ -1,3 +1,7 @@
+# MazamaLocationUtils 0.2.8
+
+* Removed unused dependency on **digest**.
+
 # MazamaLocationUtils 0.2.7
 
 * All examples now meet the CRAN directive to avoid stopping if a web 
