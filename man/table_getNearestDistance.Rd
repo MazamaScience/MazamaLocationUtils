@@ -9,7 +9,7 @@ table_getNearestDistance(
   longitude = NULL,
   latitude = NULL,
   distanceThreshold = NULL,
-  measure = "geodesic"
+  measure = c("geodesic", "haversine", "vincenty", "cheap")
 )
 }
 \arguments{

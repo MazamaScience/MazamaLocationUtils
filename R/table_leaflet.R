@@ -64,7 +64,7 @@
 
 table_leaflet <- function(
   locationTbl = NULL,
-  maptype = "terrain",
+  maptype = c("terrain", "roadmap", "satellite", "toner"),
   extraVars = NULL,
   jitter = 5e-4,
   ...
@@ -73,7 +73,7 @@ table_leaflet <- function(
   # ----- Validate parameters --------------------------------------------------
   
   MazamaLocationUtils::validateLocationTbl(locationTbl, locationOnly = TRUE)
-  MazamaCoreUtils::stopIfNull(maptype)
+  maptype <- match.arg(maptype)
   
   if ( !is.null(extraVars) ) {
     unrecognizedVars <- setdiff(extraVars, names(locationTbl))

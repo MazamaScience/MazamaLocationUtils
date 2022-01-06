@@ -7,7 +7,7 @@
 table_findAdjacentLocations(
   locationTbl = NULL,
   distanceThreshold = NULL,
-  measure = "geodesic"
+  measure = c("geodesic", "haversine", "vincenty", "cheap")
 )
 }
 \arguments{

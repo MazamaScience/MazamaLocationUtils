@@ -76,7 +76,7 @@ table_initializeExisting <- function(
   stateDataset = "NaturalEarthAdm1",
   countryCodes = NULL,
   distanceThreshold = NULL,
-  measure = "geodesic",
+  measure = c("geodesic", "haversine", "vincenty", "cheap"),
   verbose = TRUE
 ) {
   
@@ -86,6 +86,7 @@ table_initializeExisting <- function(
   
   MazamaLocationUtils::validateLocationTbl(locationTbl, locationOnly = TRUE)
   MazamaCoreUtils::stopIfNull(distanceThreshold)
+  measure <- match.arg(measure)
   
   if ( !exists(stateDataset) ) {
     stop(paste0(

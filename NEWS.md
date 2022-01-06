@@ -1,3 +1,8 @@
+# MazamaLocationUtils 0.2.9
+
+* Function signatures now provide multiple options where appropriate and these
+are checked with `match.arg()`.
+
 # MazamaLocationUtils 0.2.8
 
 * Removed unused dependency on **digest**.

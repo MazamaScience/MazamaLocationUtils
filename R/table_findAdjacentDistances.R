@@ -43,13 +43,14 @@
 table_findAdjacentDistances <- function(
   locationTbl = NULL,
   distanceThreshold = NULL,
-  measure = "geodesic"
+  measure = c("geodesic", "haversine", "vincenty", "cheap")
 ) {
   
   # ----- Validate parameters --------------------------------------------------
   
   MazamaLocationUtils::validateLocationTbl(locationTbl, locationOnly = TRUE)
   MazamaCoreUtils::stopIfNull(distanceThreshold)
+  measure <- match.arg(measure)
   
   if ( !is.numeric(distanceThreshold) )
     stop("Parameter 'distanceThreshold' must be a numeric value.")

@@ -9,7 +9,7 @@ table_initializeExisting(
   stateDataset = "NaturalEarthAdm1",
   countryCodes = NULL,
   distanceThreshold = NULL,
-  measure = "geodesic",
+  measure = c("geodesic", "haversine", "vincenty", "cheap"),
   verbose = TRUE
 )
 }

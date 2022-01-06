@@ -6,7 +6,7 @@
 \usage{
 table_leaflet(
   locationTbl = NULL,
-  maptype = "terrain",
+  maptype = c("terrain", "roadmap", "satellite", "toner"),
   extraVars = NULL,
   jitter = 5e-04,
   ...
