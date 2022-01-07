@@ -2,6 +2,8 @@
 
 * Function signatures now provide multiple options where appropriate and these
 are checked with `match.arg()`.
+* Updated `table_load()` looks for .rda and then .csv versions.
+* Updated `table_save()` to avoid deprecated arguments to `readr::write_csv()`.
 
 # MazamaLocationUtils 0.2.8
 

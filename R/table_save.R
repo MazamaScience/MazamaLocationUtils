@@ -74,8 +74,8 @@ table_save <- function(
       
     } else if ( outputType == "csv" ) {
       
-      readr::write_csv(locationTbl, path = filePath)
-      
+      readr::write_csv(locationTbl, file = filePath)
+
     }
     
   }, silent = TRUE)
