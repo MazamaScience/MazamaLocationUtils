@@ -32,13 +32,13 @@ Rstudio's 'Viewer' tab.
 }
 \description{
 This function creates interactive maps that will be displayed in
-RStudio's 'Viewer' tab. The default setting of `jitter` will move locations
-randomly within an ~50 meter radius so that overlapping locations can be 
-identified. Set `jitter = 0` to see precise locations.
+RStudio's 'Viewer' tab. The default setting of \code{jitter} will move locations
+randomly within an ~50 meter radius so that overlapping locations can be
+identified. Set \code{jitter = 0} to see precise locations.
 }
 \details{
 The \code{maptype} argument is mapped onto leaflet "ProviderTile"
-  names. Current mappings include:
+names. Current mappings include:
 \enumerate{
 \item{"roadmap"}{ -- "OpenStreetMap"}
 \item{"satellite"}{ -- "Esri.WorldImagery"}

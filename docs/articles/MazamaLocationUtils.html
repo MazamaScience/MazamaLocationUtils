@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -230,8 +230,7 @@
   latitude <span class="op">=</span> <span class="va">lats</span>,
   distanceThreshold <span class="op">=</span> <span class="fl">50</span>
 <span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">city</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] NA       NA       "Tacoma" NA       NA       NA       NA       NA      
-##  [9] NA       NA       NA       NA       NA</code></pre>
+<pre><code>##  [1] NA NA NA NA NA NA NA NA NA NA NA NA NA</code></pre>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Any known locations within 500 meters</span>
 <span class="fu"><a href="../reference/table_getNearestLocation.html">table_getNearestLocation</a></span><span class="op">(</span>
@@ -241,8 +240,8 @@
   distanceThreshold <span class="op">=</span> <span class="fl">500</span>
 <span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">city</span><span class="op">)</span></code></pre></div>
 <pre><code>##  [1] NA            NA            "Tacoma"      NA            "Anacortes"  
-##  [6] "Quincy"      NA            "Shelton"     "Ellensburg"  NA           
-## [11] "Walla Walla" "Chehalis"    NA</code></pre>
+##  [6] NA            "Tulalip Bay" "Shelton"     "Ellensburg"  NA           
+## [11] "Walla Walla" "Chehalis"    "Tacoma"</code></pre>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># How about 5000 meters?</span>
 <span class="fu"><a href="../reference/table_getNearestLocation.html">table_getNearestLocation</a></span><span class="op">(</span>

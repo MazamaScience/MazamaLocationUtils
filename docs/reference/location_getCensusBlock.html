@@ -79,7 +79,7 @@ i.e. this information could and should be used to override information we get el
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -178,10 +178,8 @@ i.e. this information could and should be used to override information we get el
   <span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>censusList</span><span class='op'>)</span>
   
 <span class='op'>}</span>, silent <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; List of 3
-#&gt;  $ stateCode  : chr "WA"
-#&gt;  $ countyName : chr "Chelan"
-#&gt;  $ censusBlock: chr "530079613023026"</div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: FCC Census Block service failed for URL https://geo.fcc.gov/api/census/block/find?latitude=47.423333&amp;longitude=-120.325278&amp;showall=FALSE&amp;format=json</span></div><div class='output co'>#&gt; Error in location_getCensusBlock(lon, lat) : 
+#&gt;   object 'censusList' not found</div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

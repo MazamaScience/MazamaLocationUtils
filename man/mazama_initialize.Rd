@@ -7,14 +7,14 @@
 mazama_initialize(spatialDataDir = "~/Data/Spatial")
 }
 \arguments{
-\item{spatialDataDir}{Directory where spatial datasets are found, 
+\item{spatialDataDir}{Directory where spatial datasets are found,
 Default: "~/Data/Spatial"}
 }
 \value{
 No return value.
 }
 \description{
-Convenience function to initialize spatial data. Wraps the 
+Convenience function to initialize spatial data. Wraps the
 following setup lines:
 
 \preformatted{

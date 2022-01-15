@@ -11,7 +11,7 @@ A vector with 3 elements
 coreMetadataNames
 }
 \description{
-Character string identifiers of the different types of spatial 
+Character string identifiers of the different types of spatial
 metadata this package can generate.
 }
 \details{

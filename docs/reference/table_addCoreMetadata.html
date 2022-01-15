@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Addes missing metadata columns a known location table — table_addCoreMetadata • MazamaLocationUtils</title>
+<title>Adds missing metadata columns to a known location table — table_addCoreMetadata • MazamaLocationUtils</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="Addes missing metadata columns a known location table — table_addCoreMetadata" />
+<meta property="og:title" content="Adds missing metadata columns to a known location table — table_addCoreMetadata" />
 <meta property="og:description" content="An existing table will be amended to guarantee that it includes
 the following core metadata columns.
 
@@ -63,7 +63,7 @@ incoming tibble but all others are optional.
 If any of these core metadata columns are found, they will be retained.
 The locationID will be generated (anew if already found) from existing
 longitude and latitude data.
-Other core metadata columns will be filled with NA values of the 
+Other core metadata columns will be filled with NA values of the
 proper type.
 The result is a tibble with all of the core metadata columns. Theses columns
 must then be filled in to create a usable &quot;known locations&quot; table." />
@@ -98,7 +98,7 @@ must then be filled in to create a usable &quot;known locations&quot; table." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -140,7 +140,7 @@ must then be filled in to create a usable &quot;known locations&quot; table." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Addes missing metadata columns a known location table</h1>
+    <h1>Adds missing metadata columns to a known location table</h1>
     <small class="dont-index">Source: <a href='https://github.com/MazamaScience/MazamaLocationUtils/blob/master/R/table_addCoreMetadata.R'><code>R/table_addCoreMetadata.R</code></a></small>
     <div class="hidden name"><code>table_addCoreMetadata.Rd</code></div>
     </div>
@@ -169,7 +169,7 @@ incoming tibble but all others are optional.</p>
 <p>If any of these core metadata columns are found, they will be retained.</p>
 <p>The <code>locationID</code> will be generated (anew if already found) from existing
 longitude and latitude data.</p>
-<p>Other core metadata columns will be filled with <code>NA</code> values of the 
+<p>Other core metadata columns will be filled with <code>NA</code> values of the
 proper type.</p>
 <p>The result is a tibble with all of the core metadata columns. Theses columns
 must then be filled in to create a usable "known locations" table.</p>
@@ -182,7 +182,7 @@ must then be filled in to create a usable "known locations" table.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>locationTbl</th>
-      <td><p>Tibble of known locations. This input tibble need not be a 
+      <td><p>Tibble of known locations. This input tibble need not be a
 standardized "known location" with all required columns. They will be added.</p></td>
     </tr>
     </table>
@@ -194,7 +194,7 @@ standardized "known location" with all required columns. They will be added.</p>
 
     <p>No check is performed for overlapping locations. The returned tibble
 has the structure of a "known locations" table and is a good starting place
-investigation. But further work is required to produce a valid table of
+for investigation. But further work is required to produce a valid table of
 "known locations" associated with a specific spatial scale.</p>
 
   </div>

@@ -40,11 +40,11 @@
 
 
 <meta property="og:title" content="Manage Spatial Metadata for Known Locations — MazamaLocationUtils" />
-<meta property="og:description" content="A suite of utility functions for discovering and managing 
+<meta property="og:description" content="A suite of utility functions for discovering and managing
 metadata associated with sets of spatially unique &quot;known locations&quot;.
 This package is intended to be used in support of data management activities
 associated with fixed locations in space. The motivating fields include both
-air and water quality monitoring where fixed sensors report at regular time 
+air and water quality monitoring where fixed sensors report at regular time
 intervals." />
 
 
@@ -77,7 +77,7 @@ intervals." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -125,11 +125,11 @@ intervals." />
     </div>
 
     <div class="ref-description">
-    <p>A suite of utility functions for discovering and managing 
+    <p>A suite of utility functions for discovering and managing
 metadata associated with sets of spatially unique "known locations".</p>
 <p>This package is intended to be used in support of data management activities
 associated with fixed locations in space. The motivating fields include both
-air and water quality monitoring where fixed sensors report at regular time 
+air and water quality monitoring where fixed sensors report at regular time
 intervals.</p>
     </div>
 
@@ -138,9 +138,9 @@ intervals.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>When working with environmental monitoring time series, one of the first things
-you have to do is create unique identifiers for each individual time series. 
-In an ideal world, each environmental time series would have both a 
-<code>locationID</code> and a <code>sensorID</code> that uniquely identify the spatial location and 
+you have to do is create unique identifiers for each individual time series.
+In an ideal world, each environmental time series would have both a
+<code>locationID</code> and a <code>sensorID</code> that uniquely identify the spatial location and
 specific instrument making measurements. A unique <code>timeseriesID</code> could
 be produced as <code>locationID_sensorID</code>. Metadata associated with each
 time series would contain basic information needed for downstream analysis
@@ -155,20 +155,20 @@ including at least:</p><pre>
 <li><p>Time series would be accessed from a secondary <code>data</code> table with <code>timeseriesID</code>.</p></li>
 </ul>
 
-<p>Unfortunately, we are rarely supplied with a truly unique and truly spatial 
+<p>Unfortunately, we are rarely supplied with a truly unique and truly spatial
 <code>locationID</code>. Instead we often use <code>sensorID</code> or an associated non-spatial
 identifier as a standin for <code>locationID</code>.</p>
-<p>Complications we have seen include:</p>  
+<p>Complications we have seen include:</p>
 <ul>
-<li><p>GPS-reported longitude and latitude can have _jitter_ in the fourth or fifth 
+<li><p>GPS-reported longitude and latitude can have <em>jitter</em> in the fourth or fifth
 decimal place making it challenging to use them to create a unique <code>locationID</code>.</p></li>
-<li><p>Sensors are sometimes _repositioned_ in what the scientist considers the "same 
+<li><p>Sensors are sometimes <em>repositioned</em> in what the scientist considers the "same
 location".</p></li>
 <li><p>Data for a single sensor goes through different processing pipelines using
 different identifiers and is later brought together as two separate timeseries.</p></li>
-<li><p>The spatial scale of what constitutes a "single location" depends on the 
+<li><p>The spatial scale of what constitutes a "single location" depends on the
 instrumentation and scientific question being asked.</p></li>
-<li><p>Deriving location-based metadata from spatial datasets is computationally 
+<li><p>Deriving location-based metadata from spatial datasets is computationally
 intensive unless saved and identified with a unique <code>locationID</code>.</p></li>
 <li><p>Automated searches for spatial metadata occasionally produce incorrect results
 because of the non-infinite resolution of spatial datasets.</p></li>
@@ -179,17 +179,17 @@ of known locations for which CPU intensive spatial data calculations have
 already been performed. While requests to add new locations to the table may
 take some time, searches for spatial metadata associated with existing
 locations are simple lookups.</p>
-<p>Working in this manner will solve the problems initially mentioned but also 
+<p>Working in this manner will solve the problems initially mentioned but also
 provides further useful functionality.</p>
 <ul>
-<li><p>Administrators can correct entries in the <code>collectionName</code> table.  
-(_e.g._ locations in river bends that even high resolution spatial datasets mis-assign)</p></li>
-<li><p>Additional, non-automatable metadata can be added to <code>collectionName</code>. 
-(_e.g._ commonly used location names within a community of practice)</p></li>
+<li><p>Administrators can correct entries in the <code>collectionName</code> table.
+(<em>e.g.</em> locations in river bends that even high resolution spatial datasets mis-assign)</p></li>
+<li><p>Additional, non-automatable metadata can be added to <code>collectionName</code>.
+(<em>e.g.</em> commonly used location names within a community of practice)</p></li>
 <li><p>Different field campaigns can have separate <code>collectionName</code> tables.</p></li>
 <li><p><code>.csv</code> or <code>.rda</code> versions of well populated tables can be downloaded from a
 URL and used locally, giving scientists working with known locations instant
-access to spatial data that otherwise requires special skills, large datasets 
+access to spatial data that otherwise requires special skills, large datasets
 and lots of compute cycles.</p></li>
 </ul>
 

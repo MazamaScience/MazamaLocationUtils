@@ -75,7 +75,7 @@ incoming location, that distance in the vector will be NA." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -158,7 +158,7 @@ incoming location, that distance in the vector will be <code>NA</code>.</p>
     </tr>
     <tr>
       <th>measure</th>
-      <td><p>One of "haversine" "vincenty", "geodesic", or "cheap" 
+      <td><p>One of "haversine" "vincenty", "geodesic", or "cheap"
 specifying desired method of geodesic distance calculation. See <code><a href='https://rdrr.io/pkg/geodist/man/geodist.html'>?geodist::geodist</a></code>.</p></td>
     </tr>
     </table>
@@ -169,8 +169,8 @@ specifying desired method of geodesic distance calculation. See <code><a href='h
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>The measure <code>"cheap"</code> may be used to speed things up depending on
-the spatial scale being considered. Distances calculated with 
-<code>measure = "cheap"</code> will vary by a few meters compared with those 
+the spatial scale being considered. Distances calculated with
+<code>measure = "cheap"</code> will vary by a few meters compared with those
 calculated using <code>measure = "geodesic"</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

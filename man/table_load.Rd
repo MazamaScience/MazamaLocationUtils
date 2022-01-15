@@ -16,7 +16,7 @@ Tibble of known locations.
 Load a tibble of known locations from the preferred directory.
 
 The known location table must be named either \code{<collectionName>.rda}
-or \code{<collectionName>.csv}. If both are found, only 
+or \code{<collectionName>.csv}. If both are found, only
 \code{<collectionName>.rda} will be loaded.
 }
 \examples{

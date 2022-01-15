@@ -1,3 +1,10 @@
+# MazamaLocationUtils 0.3.0
+
+* Added `table_addOpenCageInfo()` with support for reverse geocoding using 
+**tidygeocoder**.
+* `mazama_initialize()` now only loads the high resolution datasets used in
+`location_initialize()`.
+
 # MazamaLocationUtils 0.2.9
 
 * Function signatures now provide multiple options where appropriate and these

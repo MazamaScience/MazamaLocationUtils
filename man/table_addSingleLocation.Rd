@@ -39,7 +39,7 @@ the street address. Default: NULL. Accepted values: "photon".}
 Updated tibble of known locations.
 }
 \description{
-Incoming \code{longitude} and \code{latitude} values are compared 
+Incoming \code{longitude} and \code{latitude} values are compared
 against the incoming \code{locationTbl} to see if they are already within
 \code{distanceThreshold} meters of an existing entry.  A new record is created for
 if the location is not already found in \code{locationTbl}.

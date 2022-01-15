@@ -62,7 +62,7 @@ location_getSingleAddress_Photon <- function(
   baseUrl = "https://photon.komoot.io/reverse",
   verbose = TRUE
 ) {
-  
+
   validateMazamaSpatialUtils()
   
   # ----- Validate parameters --------------------------------------------------
