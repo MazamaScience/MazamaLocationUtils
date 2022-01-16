@@ -37,7 +37,7 @@ Known location tibble with the specified metadata columns. Any
 locations whose circles (as defined by \code{distanceThreshold}) overlap will
 generate warning messages.
 
-It is incumbent upon the user to address these issue by one of:
+It is incumbent upon the user to address overlapping locations by one of:
 
 \enumerate{
 \item{reduce the distanceThreshold until no overlaps occur}
@@ -70,13 +70,14 @@ are optional.
 
 If any of these optional columns are found, they will be used and the often
 slow and sometimes slightly inaccurate steps to generate that information
-will be skipped for locations with that data. Any additional columns of
-information not part of the required core metadata will be retained.
+will be skipped for locations that have non-missing data. Any additional
+columns of information that are
+not part of the required core metadata will be retained.
 
 This method skips the assignment of columns like \code{elevation} and all
 address related fields that require web service requests.
 
-Compared to initializing a brand new table and populating one record at a
+Compared to initializing a brand new table and populating it one record at a
 time, this is a much faster way of creating a known location table from a
 pre-existing table of metadata.
 }

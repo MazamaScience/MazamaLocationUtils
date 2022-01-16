@@ -31,7 +31,7 @@ A leaflet "plot" object which, if not assigned, is rendered in
 Rstudio's 'Viewer' tab.
 }
 \description{
-This function adds interactive maps that will be displayed in
+This function adds a layer to an interactive map displayed in
 RStudio's 'Viewer' tab. The default setting of \code{jitter} will move locations
 randomly within an ~50 meter radius so that overlapping locations can be
 identified. Set \code{jitter = 0} to see precise locations.

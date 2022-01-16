@@ -17,7 +17,9 @@
 #' @param locationTbl Tibble of known locations.
 #' @param distanceThreshold Distance in meters.
 #' @param measure One of "haversine" "vincenty", "geodesic", or "cheap" 
-#' specifying desired method of geodesic distance calculation. See \code{?geodist::geodist}.
+#' specifying desired method of geodesic distance calculation. 
+#' 
+#' See \code{geodist::\link[geodist:geodist]{geodist}} for details.
 #' 
 #' @return Tibble of row indices and distances for those locations separated by
 #' less than \code{distanceThreshold} meters.

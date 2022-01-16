@@ -15,7 +15,10 @@
 #' @param latitude Vector of latitudes in decimal degrees N.
 #' @param distanceThreshold Distance in meters.
 #' @param measure One of "haversine" "vincenty", "geodesic", or "cheap" 
-#' specifying desired method of geodesic distance calculation. See \code{?geodist::geodist}.
+#' specifying desired method of geodesic distance calculation. 
+#' 
+#' See \code{geodist::\link[geodist:geodist]{geodist}} for details.
+#' 
 #' @return Vector of distances from known locations.
 #' @examples
 #' library(MazamaLocationUtils)

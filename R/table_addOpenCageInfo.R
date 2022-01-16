@@ -1,6 +1,6 @@
 #' @export 
 #' 
-#' @title Adds address fields to a known location table
+#' @title Add address fields to a known location table
 #' 
 #' @description The OpenCage reverse geocoding service is used to update an 
 #' existing table. Updated columns include:
@@ -66,6 +66,8 @@
 #' myTbl$timezone <- NA
 #' 
 #' dplyr::glimpse(myTbl)
+#' 
+#' Sys.setenv("OPENCAGE_KEY" = "<YOUR_KEY>")
 #' 
 #' table_addOpenCageInfo(myTbl) %>% 
 #'   dplyr::glimpse()

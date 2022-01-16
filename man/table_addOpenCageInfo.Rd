@@ -2,7 +2,7 @@
 % Please edit documentation in R/table_addOpenCageInfo.R
 \name{table_addOpenCageInfo}
 \alias{table_addOpenCageInfo}
-\title{Adds address fields to a known location table}
+\title{Add address fields to a known location table}
 \usage{
 table_addOpenCageInfo(
   locationTbl = NULL,
@@ -80,6 +80,8 @@ myTbl$countyName[3] <- "WRONG"
 myTbl$timezone <- NA
 
 dplyr::glimpse(myTbl)
+
+Sys.setenv("OPENCAGE_KEY" = "<YOUR_KEY>")
 
 table_addOpenCageInfo(myTbl) \%>\% 
   dplyr::glimpse()

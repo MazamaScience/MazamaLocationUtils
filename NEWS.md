@@ -1,3 +1,8 @@
+# MazamaLocationUtils 0.3.1
+
+* Updated `location_getCensusBlock()` to add `censusYear` argument.
+* Minor documentation improvements.
+
 # MazamaLocationUtils 0.3.0
 
 * Added `table_addOpenCageInfo()` with support for reverse geocoding using 

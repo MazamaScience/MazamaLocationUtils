@@ -22,7 +22,9 @@ table_getNearestDistance(
 \item{distanceThreshold}{Distance in meters.}
 
 \item{measure}{One of "haversine" "vincenty", "geodesic", or "cheap"
-specifying desired method of geodesic distance calculation. See \code{?geodist::geodist}.}
+specifying desired method of geodesic distance calculation.
+
+See \code{geodist::\link[geodist:geodist]{geodist}} for details.}
 }
 \value{
 Vector of distances from known locations.

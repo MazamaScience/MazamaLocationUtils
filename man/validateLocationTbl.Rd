@@ -18,5 +18,4 @@ Invisibly returns \code{TRUE} if no error message has been generated.
 \description{
 Ensures that the incoming table has numeric \code{longitude} and
 \code{latitude} columns.
-\code{longitude} and latitude.
 }

@@ -4,7 +4,8 @@
 #' 
 #' The known location table must be named either \code{<collectionName>.rda}
 #' or \code{<collectionName>.csv}. If both are found, only 
-#' \code{<collectionName>.rda} will be loaded.
+#' \code{<collectionName>.rda} will be loaded to ensure that columns will have
+#' the proper type assigned.
 #' 
 #' @param collectionName Character identifier for this table.
 #' @return Tibble of known locations.

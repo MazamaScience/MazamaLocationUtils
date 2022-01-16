@@ -43,7 +43,8 @@
 <meta property="og:description" content="Load a tibble of known locations from the preferred directory.
 The known location table must be named either &amp;lt;collectionName&amp;gt;.rda
 or &amp;lt;collectionName&amp;gt;.csv. If both are found, only
-&amp;lt;collectionName&amp;gt;.rda will be loaded." />
+&amp;lt;collectionName&amp;gt;.rda will be loaded to ensure that columns will have
+the proper type assigned." />
 
 
 
@@ -75,7 +76,7 @@ or &amp;lt;collectionName&amp;gt;.csv. If both are found, only
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
       </span>
     </div>
 
@@ -126,7 +127,8 @@ or &amp;lt;collectionName&amp;gt;.csv. If both are found, only
     <p>Load a tibble of known locations from the preferred directory.</p>
 <p>The known location table must be named either <code>&lt;collectionName&gt;.rda</code>
 or <code>&lt;collectionName&gt;.csv</code>. If both are found, only
-<code>&lt;collectionName&gt;.rda</code> will be loaded.</p>
+<code>&lt;collectionName&gt;.rda</code> will be loaded to ensure that columns will have
+the proper type assigned.</p>
     </div>
 
     <pre class="usage"><span class='fu'>table_load</span><span class='op'>(</span>collectionName <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>

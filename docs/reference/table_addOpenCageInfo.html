@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Adds address fields to a known location table — table_addOpenCageInfo • MazamaLocationUtils</title>
+<title>Add address fields to a known location table — table_addOpenCageInfo • MazamaLocationUtils</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="Adds address fields to a known location table — table_addOpenCageInfo" />
+<meta property="og:title" content="Add address fields to a known location table — table_addOpenCageInfo" />
 <meta property="og:description" content="The OpenCage reverse geocoding service is used to update an
 existing table. Updated columns include:
 
@@ -92,7 +92,7 @@ each each named with a prefix of &quot;opencage_&quot;." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
       </span>
     </div>
 
@@ -134,7 +134,7 @@ each each named with a prefix of &quot;opencage_&quot;." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Adds address fields to a known location table</h1>
+    <h1>Add address fields to a known location table</h1>
     <small class="dont-index">Source: <a href='https://github.com/MazamaScience/MazamaLocationUtils/blob/master/R/table_addOpenCageInfo.R'><code>R/table_addOpenCageInfo.R</code></a></small>
     <div class="hidden name"><code>table_addOpenCageInfo.Rd</code></div>
     </div>
@@ -229,6 +229,8 @@ updating a table with a large number of records.</p>
 
 <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://pillar.r-lib.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>myTbl</span><span class='op'>)</span>
 
+<span class='fu'><a href='https://rdrr.io/r/base/Sys.setenv.html'>Sys.setenv</a></span><span class='op'>(</span><span class='st'>"OPENCAGE_KEY"</span> <span class='op'>=</span> <span class='st'>"&lt;YOUR_KEY&gt;"</span><span class='op'>)</span>
+
 <span class='fu'>table_addOpenCageInfo</span><span class='op'>(</span><span class='va'>myTbl</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
   <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://pillar.r-lib.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='op'>)</span>
 
@@ -253,10 +255,8 @@ updating a table with a large number of records.</p>
 #&gt; $ houseNumber  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> NA, NA, NA
 #&gt; $ street       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> NA, NA, NA
 #&gt; $ city         <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "Garden City", NA, "Meridian"
-#&gt; $ zip          <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "83714", "83467", "83713"
-#&gt; Error in table_addOpenCageInfo(myTbl) : 
-#&gt;   Revese geocoding with OpenCage requires an API key 
-#&gt; Please set one with Sys.setenv("OPENCAGE_KEY" = "&lt;YOUR_KEY&gt;").</div><div class='input'><span class='co'># }</span>
+#&gt; $ zip          <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "83714", "83467", "83713"</div><div class='output co'>#&gt; <span class='warning'>Warning: Unauthorized (HTTP 401).</span></div><div class='output co'>#&gt; <span class='message'>Error: invalid API key</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Unauthorized (HTTP 401).</span></div><div class='output co'>#&gt; <span class='message'>Error: invalid API key</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Unauthorized (HTTP 401).</span></div><div class='output co'>#&gt; <span class='message'>Error: invalid API key</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Unknown or uninitialised column: `components.country_code`.</span></div><div class='output co'>#&gt; Error in locationTbl$countryCode[mask] &lt;- toupper(openCageTbl$components.country_code[mask]) : 
+#&gt;   replacement has length zero</div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -77,7 +77,7 @@ intervals." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
       </span>
     </div>
 
@@ -138,25 +138,27 @@ intervals.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>When working with environmental monitoring time series, one of the first things
-you have to do is create unique identifiers for each individual time series.
-In an ideal world, each environmental time series would have both a
-<code>locationID</code> and a <code>sensorID</code> that uniquely identify the spatial location and
-specific instrument making measurements. A unique <code>timeseriesID</code> could
-be produced as <code>locationID_sensorID</code>. Metadata associated with each
-time series would contain basic information needed for downstream analysis
-including at least:</p><pre>
-  timeseriesID, locationID, sensorID, longitude, latitude, ...
+you have to do is create unique identifiers for each individual time series. In
+an ideal world, each environmental time series would have both a
+<code>locationID</code> and a <code>deviceID</code> that uniquely identify the specific instrument
+making measurements and the physical location where measurements are made. A
+unique <code>timeseriesID</code> could
+be produced as <code>locationID_deviceID</code>. Metadata associated with each
+<code>timeseriesID</code> would contain basic information needed for downstream analysis
+including at least:</p>
+<pre>
+  timeseriesID, locationID, deviceID, longitude, latitude, ...
 </pre>
 
 <ul>
 <li><p>Multiple sensors placed at a location could be be grouped by <code>locationID</code>.</p></li>
-<li><p>An extended timeservers for a mobile sensor would group by <code>sensorID</code>.</p></li>
+<li><p>An extended timeservers for a mobile sensor would group by <code>deviceID</code>.</p></li>
 <li><p>Maps would be created using <code>longitude, latitude</code>.</p></li>
 <li><p>Time series would be accessed from a secondary <code>data</code> table with <code>timeseriesID</code>.</p></li>
 </ul>
 
 <p>Unfortunately, we are rarely supplied with a truly unique and truly spatial
-<code>locationID</code>. Instead we often use <code>sensorID</code> or an associated non-spatial
+<code>locationID</code>. Instead we often use <code>deviceID</code> or an associated non-spatial
 identifier as a standin for <code>locationID</code>.</p>
 <p>Complications we have seen include:</p>
 <ul>

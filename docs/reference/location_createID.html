@@ -41,20 +41,8 @@
 
 <meta property="og:title" content="Create one or more unique locationIDs — location_createID" />
 <meta property="og:description" content="A unique locationID is created for each incoming
-longitude and latitude. The following code is used to generate
-each locationID. See the references for details.
-
-# Retain accuracy up to ~.1m
-locationString &amp;lt;- paste0(
-  sprintf(&quot;%.7f&quot;, longitude),
-  &quot;_&quot;,
-  sprintf(&quot;%.7f&quot;, latitude)
-)
-  
-# Avoid collisions until billions of records
-locationID &amp;lt;- digest::digest(locationString, algo = &quot;xxhash64&quot;)  
-
-" />
+longitude and latitude.
+See MazamaCoreUtils::createLocationID for details." />
 
 
 
@@ -86,7 +74,7 @@ locationID &amp;lt;- digest::digest(locationString, algo = &quot;xxhash64&quot;)
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
       </span>
     </div>
 
@@ -135,20 +123,8 @@ locationID &amp;lt;- digest::digest(locationString, algo = &quot;xxhash64&quot;)
 
     <div class="ref-description">
     <p>A unique locationID is created for each incoming
-<code>longitude</code> and <code>latitude</code>. The following code is used to generate
-each locationID. See the references for details.</p>
-<pre>
-<span class='co'># Retain accuracy up to ~.1m</span>
-<span class='va'>locationString</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/sprintf.html'>sprintf</a></span><span class='op'>(</span><span class='st'>"%.7f"</span>, <span class='va'>longitude</span><span class='op'>)</span>,
-  <span class='st'>"_"</span>,
-  <span class='fu'><a href='https://rdrr.io/r/base/sprintf.html'>sprintf</a></span><span class='op'>(</span><span class='st'>"%.7f"</span>, <span class='va'>latitude</span><span class='op'>)</span>
-<span class='op'>)</span>
-  
-<span class='co'># Avoid collisions until billions of records</span>
-<span class='va'>locationID</span> <span class='op'>&lt;-</span> <span class='fu'>digest</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/digest/man/digest.html'>digest</a></span><span class='op'>(</span><span class='va'>locationString</span>, algo <span class='op'>=</span> <span class='st'>"xxhash64"</span><span class='op'>)</span>  
-</pre>
-
+<code>longitude</code> and <code>latitude</code>.</p>
+<p>See <code>MazamaCoreUtils::<a href='https://rdrr.io/pkg/MazamaCoreUtils/man/createLocationID.html'>createLocationID</a></code> for details.</p>
     </div>
 
     <pre class="usage"><span class='fu'>location_createID</span><span class='op'>(</span>longitude <span class='op'>=</span> <span class='cn'>NULL</span>, latitude <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>

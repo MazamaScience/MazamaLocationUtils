@@ -15,26 +15,28 @@ intervals.
 }
 \details{
 When working with environmental monitoring time series, one of the first things
-you have to do is create unique identifiers for each individual time series.
-In an ideal world, each environmental time series would have both a
-\code{locationID} and a \code{sensorID} that uniquely identify the spatial location and
-specific instrument making measurements. A unique \code{timeseriesID} could
-be produced as \code{locationID_sensorID}. Metadata associated with each
-time series would contain basic information needed for downstream analysis
+you have to do is create unique identifiers for each individual time series. In
+an ideal world, each environmental time series would have both a
+\code{locationID} and a \code{deviceID} that uniquely identify the specific instrument
+making measurements and the physical location where measurements are made. A
+unique \code{timeseriesID} could
+be produced as \code{locationID_deviceID}. Metadata associated with each
+\code{timeseriesID} would contain basic information needed for downstream analysis
 including at least:
+
 \preformatted{
-  timeseriesID, locationID, sensorID, longitude, latitude, ...
+  timeseriesID, locationID, deviceID, longitude, latitude, ...
 }
 
 \itemize{
 \item{Multiple sensors placed at a location could be be grouped by \code{locationID}.}
-\item{An extended timeservers for a mobile sensor would group by \code{sensorID}.}
+\item{An extended timeservers for a mobile sensor would group by \code{deviceID}.}
 \item{Maps would be created using \code{longitude, latitude}.}
 \item{Time series would be accessed from a secondary \code{data} table with \code{timeseriesID}.}
 }
 
 Unfortunately, we are rarely supplied with a truly unique and truly spatial
-\code{locationID}. Instead we often use \code{sensorID} or an associated non-spatial
+\code{locationID}. Instead we often use \code{deviceID} or an associated non-spatial
 identifier as a standin for \code{locationID}.
 
 Complications we have seen include:

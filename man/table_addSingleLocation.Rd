@@ -25,7 +25,7 @@ table_addSingleLocation(
 \item{distanceThreshold}{Distance in meters.}
 
 \item{stateDataset}{Name of spatial dataset to use for determining state
-codes, Default: 'NaturalEarthAdm1'}
+codes, Default: "NaturalEarthAdm1".}
 
 \item{elevationService}{Name of the elevation service to use for determining
 the elevation. Default: NULL. Accepted values: "usgs".}

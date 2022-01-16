@@ -77,7 +77,7 @@ of the specified distanceThreshold." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
       </span>
     </div>
 
@@ -153,7 +153,8 @@ of the specified <code>distanceThreshold</code>.</p>
     <tr>
       <th>measure</th>
       <td><p>One of "haversine" "vincenty", "geodesic", or "cheap"
-specifying desired method of geodesic distance calculation. See <code><a href='https://rdrr.io/pkg/geodist/man/geodist.html'>?geodist::geodist</a></code>.</p></td>
+specifying desired method of geodesic distance calculation.</p>
+<p>See <code>geodist::<a href='https://rdrr.io/pkg/geodist/man/geodist.html'>geodist</a></code> for details.</p></td>
     </tr>
     </table>
 
@@ -176,27 +177,15 @@ calculated using <code>measure = "geodesic"</code>.</p>
 <span class='co'># Any locations closer than 2 km?</span>
 <span class='va'>meta</span> <span class='op'>%&gt;%</span>
   <span class='fu'>table_findAdjacentLocations</span><span class='op'>(</span>distanceThreshold <span class='op'>=</span> <span class='fl'>2000</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>monitorID</span>, <span class='va'>siteName</span>, <span class='va'>timezone</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;                                                           monitorID siteName
-#&gt; lon_.122.671_lat_47.029_usfs.1078 lon_.122.671_lat_47.029_usfs.1078         
-#&gt; lon_.122.677_lat_47.028_usfs.1078 lon_.122.677_lat_47.028_usfs.1078         
-#&gt;                                              timezone
-#&gt; lon_.122.671_lat_47.029_usfs.1078 America/Los_Angeles
-#&gt; lon_.122.677_lat_47.028_usfs.1078 America/Los_Angeles</div><div class='input'>
+  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>siteName</span>, <span class='va'>timezone</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;                                   siteName            timezone
+#&gt; lon_.122.671_lat_47.029_usfs.1078          America/Los_Angeles
+#&gt; lon_.122.677_lat_47.028_usfs.1078          America/Los_Angeles</div><div class='input'>
 <span class='co'># How about 4 km?</span>
 <span class='va'>meta</span> <span class='op'>%&gt;%</span>
   <span class='fu'>table_findAdjacentLocations</span><span class='op'>(</span>distanceThreshold <span class='op'>=</span> <span class='fl'>4000</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>monitorID</span>, <span class='va'>siteName</span>, <span class='va'>timezone</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;                                                           monitorID
-#&gt; lon_.122.671_lat_47.029_usfs.1078 lon_.122.671_lat_47.029_usfs.1078
-#&gt; 530330057_01                                           530330057_01
-#&gt; 530330080_01                                           530330080_01
-#&gt; 530330057_01.1                                         530330057_01
-#&gt; lon_.122.677_lat_47.028_usfs.1078 lon_.122.677_lat_47.028_usfs.1078
-#&gt; 530330080_01.1                                         530330080_01
-#&gt; 530330030_01                                           530330030_01
-#&gt; 530331011_01                                           530331011_01
-#&gt;                                                siteName            timezone
+  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>siteName</span>, <span class='va'>timezone</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;                                                siteName            timezone
 #&gt; lon_.122.671_lat_47.029_usfs.1078                       America/Los_Angeles
 #&gt; 530330057_01                           Seattle-Duwamish America/Los_Angeles
 #&gt; 530330080_01                        Seattle-Beacon Hill America/Los_Angeles

@@ -16,7 +16,9 @@ table_findAdjacentDistances(
 \item{distanceThreshold}{Distance in meters.}
 
 \item{measure}{One of "haversine" "vincenty", "geodesic", or "cheap"
-specifying desired method of geodesic distance calculation. See \code{?geodist::geodist}.}
+specifying desired method of geodesic distance calculation.
+
+See \code{geodist::\link[geodist:geodist]{geodist}} for details.}
 }
 \value{
 Tibble of row indices and distances for those locations separated by

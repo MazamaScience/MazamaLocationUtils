@@ -1,5 +1,5 @@
 #'
-#' @title Adds missing metadata columns to a known location table
+#' @title Add missing core metadata columns to a known location table
 #' 
 #' @description An existing table will be amended to guarantee that it includes
 #' the following core metadata columns.

@@ -17,7 +17,9 @@
 #' @param locationTbl Tibble of known locations.
 #' @param distanceThreshold Distance in meters.
 #' @param measure One of "haversine" "vincenty", "geodesic", or "cheap" 
-#' specifying desired method of geodesic distance calculation. See \code{?geodist::geodist}.
+#' specifying desired method of geodesic distance calculation.
+#' 
+#' See \code{geodist::\link[geodist:geodist]{geodist}} for details.
 #' 
 #' @return Tibble of known locations separated by less than 
 #' \code{distanceThreshold} meters.
@@ -30,12 +32,12 @@
 #' # Any locations closer than 2 km?
 #' meta %>%
 #'   table_findAdjacentLocations(distanceThreshold = 2000) %>%
-#'   dplyr::select(monitorID, siteName, timezone)
+#'   dplyr::select(siteName, timezone)
 #' 
 #' # How about 4 km?
 #' meta %>%
 #'   table_findAdjacentLocations(distanceThreshold = 4000) %>%
-#'   dplyr::select(monitorID, siteName, timezone)
+#'   dplyr::select(siteName, timezone)
 #' 
 #' @rdname table_findAdjacentLocations
 #' @export 

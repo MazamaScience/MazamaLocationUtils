@@ -16,10 +16,10 @@
 #' \preformatted{
 #' MazamaSpatialUtils::setSpatialDataDir(spatialDataDir)
 #' 
-#' MazamaSpatialUtils::loadSpatialData("EEZCountries")
-#' MazamaSpatialUtils::loadSpatialData("OSMTimezones")
-#' MazamaSpatialUtils::loadSpatialData("NaturalEarthAdm1")
-#' MazamaSpatialUtils::loadSpatialData("USCensusCounties")
+#' MazamaSpatialUtils::loadSpatialData("EEZCountries.rda")
+#' MazamaSpatialUtils::loadSpatialData("OSMTimezones.rda")
+#' MazamaSpatialUtils::loadSpatialData("NaturalEarthAdm1.rda")
+#' MazamaSpatialUtils::loadSpatialData("USCensusCounties.rda")
 #' }
 #' 
 #' @examples

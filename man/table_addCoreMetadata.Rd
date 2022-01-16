@@ -2,7 +2,7 @@
 % Please edit documentation in R/table_addCoreMetadata.R
 \name{table_addCoreMetadata}
 \alias{table_addCoreMetadata}
-\title{Adds missing metadata columns to a known location table}
+\title{Add missing core metadata columns to a known location table}
 \usage{
 table_addCoreMetadata(locationTbl = NULL)
 }

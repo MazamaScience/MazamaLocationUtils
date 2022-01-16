@@ -27,7 +27,7 @@ table_updateColumn(
 Updated tibble of known locations.
 }
 \description{
-For matching \code{locationID} records the associated
+For matching \code{locationID}, records the associated
 \code{locationData} is used to replace any existing value in \code{columnName}.
 \code{NA} values in \code{locationID} will be ignored.
 }

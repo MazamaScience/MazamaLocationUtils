@@ -28,10 +28,10 @@ table_addLocation(
 codes, Default: 'NaturalEarthAdm1'}
 
 \item{elevationService}{Name of the elevation service to use for determining
-the elevation. Default: NULL. Accepted values: "usgs".}
+the elevation. Default: NULL skips this step. Accepted values: "usgs".}
 
 \item{addressService}{Name of the address service to use for determining
-the street address. Default: NULL. Accepted values: "photon".}
+the street address. Default: NULL skips this step. Accepted values: "photon".}
 
 \item{verbose}{Logical controlling the generation of progress messages.}
 }

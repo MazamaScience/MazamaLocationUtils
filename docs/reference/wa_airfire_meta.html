@@ -48,7 +48,7 @@ library(PWFSLSmoke)
 
 wa_airfire_meta &amp;lt;- 
   monitor_loadLatest() &amp;lt;!-- %&amp;gt;%  --&amp;gt;
-  monitor_subset(stateCodes = &quot;WA&quot;) &amp;lt;!-- %&amp;gt;% --&amp;gt;
+  monitor_subset(stateCodes = &quot;WA&quot;) %&amp;gt;%
   monitor_extractMeta()
  
 save(wa_airfire_meta, file = &quot;data/wa_airfire_meta.rda&quot;)
@@ -85,7 +85,7 @@ save(wa_airfire_meta, file = &quot;data/wa_airfire_meta.rda&quot;)
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
       </span>
     </div>
 
@@ -141,7 +141,7 @@ library(PWFSLSmoke)
 
 wa_airfire_meta &lt;- 
   monitor_loadLatest() &lt;!-- %&gt;%  --&gt;
-  monitor_subset(stateCodes = "WA") &lt;!-- %&gt;% --&gt;
+  monitor_subset(stateCodes = "WA") %&gt;%
   monitor_extractMeta()
  
 save(wa_airfire_meta, file = "data/wa_airfire_meta.rda")
