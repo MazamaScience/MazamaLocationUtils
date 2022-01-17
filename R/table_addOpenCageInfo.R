@@ -249,42 +249,42 @@ Please set one with Sys.setenv(\"OPENCAGE_KEY\" = \"<YOUR_KEY>\").")
   # * houseNumber -----
   
   if ( replaceExisting ) {
-    locationTbl$houseNumber <- openCageTbl$components.house_number
+    locationTbl$houseNumber <- as.character(openCageTbl$components.house_number)
   } else {
     mask <- is.na(locationTbl$houseNumber)
-    locationTbl$houseNumber[mask] <- openCageTbl$components.house_number[mask]
+    locationTbl$houseNumber[mask] <- as.character(openCageTbl$components.house_number[mask])
   }
   
   # * street -----
   
   if ( replaceExisting ) {
-    locationTbl$street <- openCageTbl$components.road
+    locationTbl$street <- as.character(openCageTbl$components.road)
   } else {
     mask <- is.na(locationTbl$street)
-    locationTbl$street[mask] <- openCageTbl$components.road[mask]
+    locationTbl$street[mask] <- as.character(openCageTbl$components.road[mask])
   }
   
   # * city -----
   
   if ( replaceExisting ) {
-    locationTbl$city <- openCageTbl$components.town
+    locationTbl$city <- as.character(openCageTbl$components.town)
   } else {
     mask <- is.na(locationTbl$city)
-    locationTbl$city[mask] <- openCageTbl$components.town[mask]
+    locationTbl$city[mask] <- as.character(openCageTbl$components.town[mask])
   }
   
   # NOTE:  Some OpenCage records are missing "town" but have "city" so add this
   # NOTE:  where records are still missing a value
   mask <- is.na(locationTbl$city)
-  locationTbl$city[mask] <- openCageTbl$components.city[mask]
+  locationTbl$city[mask] <- as.character(openCageTbl$components.city[mask])
   
   # * city -----
   
   if ( replaceExisting ) {
-    locationTbl$zip <- openCageTbl$components.postcode
+    locationTbl$zip <- as.character(openCageTbl$components.postcode)
   } else {
     mask <- is.na(locationTbl$zip)
-    locationTbl$zip[mask] <- openCageTbl$components.postcode[mask]
+    locationTbl$zip[mask] <- as.character(openCageTbl$components.postcode[mask])
   }
   
   # * address -----
@@ -294,10 +294,10 @@ Please set one with Sys.setenv(\"OPENCAGE_KEY\" = \"<YOUR_KEY>\").")
     locationTbl$address <- as.character(NA)
   
   if ( replaceExisting ) {
-    locationTbl$address <- openCageTbl$address
+    locationTbl$address <- as.character(openCageTbl$address)
   } else {
     mask <- is.na(locationTbl$address)
-    locationTbl$address[mask] <- openCageTbl$address[mask]
+    locationTbl$address[mask] <- as.character(openCageTbl$address[mask])
   }
 
   # ----- Add openCage ---------------------------------------------------------

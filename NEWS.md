@@ -1,3 +1,7 @@
+# MazamaLocationUtils 0.3.2
+
+* Ensure that address components are of class "character" throughout the code.
+
 # MazamaLocationUtils 0.3.1
 
 * Updated `location_getCensusBlock()` to add `censusYear` argument.
