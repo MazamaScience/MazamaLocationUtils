@@ -1,6 +1,7 @@
 # MazamaLocationUtils 0.3.2
 
 * Ensure that address components are of class "character" throughout the code.
+* Added `location_getOpenCageInfo()` to get OpenCage information for a single location.
 
 # MazamaLocationUtils 0.3.1
 

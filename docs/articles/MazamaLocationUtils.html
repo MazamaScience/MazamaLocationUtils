@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.2</span>
       </span>
     </div>
 
@@ -239,9 +239,9 @@
   latitude <span class="op">=</span> <span class="va">lats</span>,
   distanceThreshold <span class="op">=</span> <span class="fl">500</span>
 <span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">city</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] NA            NA            NA            "Auburn"      "Anacortes"  
-##  [6] "Quincy"      NA            "Shelton"     NA            "Wenatchee"  
-## [11] "Walla Walla" NA            "Tacoma"</code></pre>
+<pre><code>##  [1] NA          NA          "Tacoma"    "Auburn"    "Anacortes" NA         
+##  [7] NA          "Shelton"   NA          "Wenatchee" NA          "Chehalis" 
+## [13] NA</code></pre>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># How about 5000 meters?</span>
 <span class="fu"><a href="../reference/table_getNearestLocation.html">table_getNearestLocation</a></span><span class="op">(</span>
