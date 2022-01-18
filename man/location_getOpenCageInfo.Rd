@@ -41,6 +41,8 @@ library(MazamaLocationUtils)
 # Fail gracefully if any resources are not available
 try({
 
+  Sys.setenv("OPENCAGE_KEY" = "<YOUR_KEY>")
+
   # Wenatchee
   lon <- -120.325278
   lat <- 47.423333
