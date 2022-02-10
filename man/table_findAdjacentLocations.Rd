@@ -25,9 +25,10 @@ Tibble of known locations separated by less than
 \code{distanceThreshold} meters.
 }
 \description{
-Calculates distances between all locations within a known
-locations table and returns a tibble with the row indices and separation
-distances of those records separated by less than \code{distanceThreshold} meters.
+Calculate distances between all locations within a known
+locations table and return a tibble containing all records that have an
+adjacent location separated by less than \code{distanceThreshold} meters.
+The return tibble is ordered by separation distance.
 
 It is useful when working with new metadata tables to identify ajacent
 locations early on so that decisions can be made about the appropriateness
