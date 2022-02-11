@@ -42,8 +42,9 @@
 <meta property="og:title" content="Find distances between adjacent locations in a known locations table — table_findAdjacentDistances" />
 <meta property="og:description" content="Calculate distances between all locations within a known
 locations table and return a tibble with the row indices and separation
-distances of those records separated by less than distanceThreshold meters.
-It is useful when working with new metadata tables to identify ajacent
+distances of those records separated by less than distanceThreshold
+meters. Records are returned in order of distance.
+It is useful when working with new metadata tables to identify adjacent
 locations early on so that decisions can be made about the appropriateness
 of the specified distanceThreshold." />
 
@@ -77,7 +78,7 @@ of the specified distanceThreshold." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.3</span>
       </span>
     </div>
 
@@ -127,8 +128,9 @@ of the specified distanceThreshold." />
     <div class="ref-description">
     <p>Calculate distances between all locations within a known
 locations table and return a tibble with the row indices and separation
-distances of those records separated by less than <code>distanceThreshold</code> meters.</p>
-<p>It is useful when working with new metadata tables to identify ajacent
+distances of those records separated by less than <code>distanceThreshold</code>
+meters. Records are returned in order of distance.</p>
+<p>It is useful when working with new metadata tables to identify adjacent
 locations early on so that decisions can be made about the appropriateness
 of the specified <code>distanceThreshold</code>.</p>
     </div>

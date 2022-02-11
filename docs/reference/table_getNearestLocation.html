@@ -40,8 +40,10 @@
 
 
 <meta property="og:title" content="Return known locations — table_getNearestLocation" />
-<meta property="og:description" content="Returns a tibble of known locations from locationTbl, one
-for each incoming location. If no known location is found for a particular
+<meta property="og:description" content="Returns a tibble of the known locations from locationTbl
+that are closest to the vector of target locations specified by longitude
+and latitude. Only a single known location is returned for each
+incoming target location. If no known location is found for a particular
 incoming location, that record in the tibble will contain all NA." />
 
 
@@ -74,7 +76,7 @@ incoming location, that record in the tibble will contain all NA." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.3</span>
       </span>
     </div>
 
@@ -122,8 +124,10 @@ incoming location, that record in the tibble will contain all NA." />
     </div>
 
     <div class="ref-description">
-    <p>Returns a tibble of known locations from <code>locationTbl</code>, one
-for each incoming location. If no known location is found for a particular
+    <p>Returns a tibble of the known locations from <code>locationTbl</code>
+that are closest to the vector of target locations specified by <code>longitude</code>
+and <code>latitude</code>. Only a single known location is returned for each
+incoming target location. If no known location is found for a particular
 incoming location, that record in the tibble will contain all <code>NA</code>.</p>
     </div>
 
