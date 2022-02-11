@@ -4,6 +4,7 @@
 and to ensure they are returned in order of separation distance.
 * Corrected behavior when using `jitter = 0` in `table_leaflet()` and 
 `table_leafletAdd()`.
+* Added `table_filterByDistance()`.
 
 # MazamaLocationUtils 0.3.2
 

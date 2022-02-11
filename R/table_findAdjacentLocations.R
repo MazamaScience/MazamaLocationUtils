@@ -6,7 +6,7 @@
 #' adjacent location separated by less than \code{distanceThreshold} meters.
 #' The return tibble is ordered by separation distance.
 #' 
-#' It is useful when working with new metadata tables to identify ajacent
+#' It is useful when working with new metadata tables to identify adjacent
 #' locations early on so that decisions can be made about the appropriateness
 #' of the specified \code{distanceThreshold}.
 #' 
