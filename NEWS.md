@@ -1,3 +1,8 @@
+# MazamaLocationUtils 0.3.4
+
+* Updated `table_addOpenCageInfo()` to handle address components that are
+missing from the openCage results.
+
 # MazamaLocationUtils 0.3.3
 
 * Updated `table_findAdjacentLocations()` to only only return unique locations

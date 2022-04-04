@@ -92,7 +92,7 @@ each each named with a prefix of &quot;opencage_&quot;." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.4</span>
       </span>
     </div>
 
@@ -255,8 +255,55 @@ updating a table with a large number of records.</p>
 #&gt; $ houseNumber  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> NA, NA, NA
 #&gt; $ street       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> NA, NA, NA
 #&gt; $ city         <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "Garden City", NA, "Meridian"
-#&gt; $ zip          <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "83714", "83467", "83713"</div><div class='output co'>#&gt; <span class='warning'>Warning: Unauthorized (HTTP 401).</span></div><div class='output co'>#&gt; <span class='message'>Error: invalid API key</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Unauthorized (HTTP 401).</span></div><div class='output co'>#&gt; <span class='message'>Error: invalid API key</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Unauthorized (HTTP 401).</span></div><div class='output co'>#&gt; <span class='message'>Error: invalid API key</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Unknown or uninitialised column: `components.country_code`.</span></div><div class='output co'>#&gt; Error in locationTbl$countryCode[mask] &lt;- toupper(openCageTbl$components.country_code[mask]) : 
-#&gt;   replacement has length zero</div><div class='input'><span class='co'># }</span>
+#&gt; $ zip          <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "83714", "83467", "83713"</div><div class='output co'>#&gt; <span class='warning'>Warning: Unauthorized (HTTP 401).</span></div><div class='output co'>#&gt; <span class='message'>Error: invalid API key</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Unauthorized (HTTP 401).</span></div><div class='output co'>#&gt; <span class='message'>Error: invalid API key</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Unauthorized (HTTP 401).</span></div><div class='output co'>#&gt; <span class='message'>Error: invalid API key</span></div><div class='output co'>#&gt; Rows: 3
+#&gt; Columns: 14
+#&gt; $ locationID   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "b99de3f7013ba68d", "bc35ed0d07fd9ca2", "5d641f79aaf5df9b"
+#&gt; $ locationName <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "us.id_b99de3", "us.id_bc35ed", "us.id_5d641f"
+#&gt; $ longitude    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> -116.2694, -113.8903, -116.3479
+#&gt; $ latitude     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 43.64789, 45.18191, 43.60070
+#&gt; $ elevation    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 801.14, 1197.20, 811.96
+#&gt; $ countryCode  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> NA, "WRONG", "US"
+#&gt; $ stateCode    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "ID", "ID", "ID"
+#&gt; $ countyName   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "Ada", "Lemhi", "WRONG"
+#&gt; $ timezone     <span style='color: #949494; font-style: italic;'>&lt;lgl&gt;</span> NA, NA, NA
+#&gt; $ houseNumber  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> NA, NA, NA
+#&gt; $ street       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> NA, NA, NA
+#&gt; $ city         <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "Garden City", NA, "Meridian"
+#&gt; $ zip          <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "83714", "83467", "83713"
+#&gt; $ address      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> NA, NA, NA</div><div class='output co'>#&gt; <span class='warning'>Warning: Unauthorized (HTTP 401).</span></div><div class='output co'>#&gt; <span class='message'>Error: invalid API key</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Unauthorized (HTTP 401).</span></div><div class='output co'>#&gt; <span class='message'>Error: invalid API key</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Unauthorized (HTTP 401).</span></div><div class='output co'>#&gt; <span class='message'>Error: invalid API key</span></div><div class='output co'>#&gt; Rows: 3
+#&gt; Columns: 14
+#&gt; $ locationID   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "b99de3f7013ba68d", "bc35ed0d07fd9ca2", "5d641f79aaf5df9b"
+#&gt; $ locationName <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "us.id_b99de3", "us.id_bc35ed", "us.id_5d641f"
+#&gt; $ longitude    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> -116.2694, -113.8903, -116.3479
+#&gt; $ latitude     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 43.64789, 45.18191, 43.60070
+#&gt; $ elevation    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 801.14, 1197.20, 811.96
+#&gt; $ countryCode  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> NA, "WRONG", "US"
+#&gt; $ stateCode    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "ID", "ID", "ID"
+#&gt; $ countyName   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "Ada", "Lemhi", "WRONG"
+#&gt; $ timezone     <span style='color: #949494; font-style: italic;'>&lt;lgl&gt;</span> NA, NA, NA
+#&gt; $ houseNumber  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> NA, NA, NA
+#&gt; $ street       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> NA, NA, NA
+#&gt; $ city         <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "Garden City", NA, "Meridian"
+#&gt; $ zip          <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "83714", "83467", "83713"
+#&gt; $ address      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> NA, NA, NA</div><div class='output co'>#&gt; <span class='warning'>Warning: Unauthorized (HTTP 401).</span></div><div class='output co'>#&gt; <span class='message'>Error: invalid API key</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Unauthorized (HTTP 401).</span></div><div class='output co'>#&gt; <span class='message'>Error: invalid API key</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Unauthorized (HTTP 401).</span></div><div class='output co'>#&gt; <span class='message'>Error: invalid API key</span></div><div class='output co'>#&gt; Rows: 3
+#&gt; Columns: 17
+#&gt; $ locationID       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "b99de3f7013ba68d", "bc35ed0d07fd9ca2", "5d641f79aaf5…
+#&gt; $ locationName     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "us.id_b99de3", "us.id_bc35ed", "us.id_5d641f"
+#&gt; $ longitude        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> -116.2694, -113.8903, -116.3479
+#&gt; $ latitude         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 43.64789, 45.18191, 43.60070
+#&gt; $ elevation        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 801.14, 1197.20, 811.96
+#&gt; $ countryCode      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> NA, "WRONG", "US"
+#&gt; $ stateCode        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "ID", "ID", "ID"
+#&gt; $ countyName       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "Ada", "Lemhi", "WRONG"
+#&gt; $ timezone         <span style='color: #949494; font-style: italic;'>&lt;lgl&gt;</span> NA, NA, NA
+#&gt; $ houseNumber      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> NA, NA, NA
+#&gt; $ street           <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> NA, NA, NA
+#&gt; $ city             <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "Garden City", NA, "Meridian"
+#&gt; $ zip              <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "83714", "83467", "83713"
+#&gt; $ address          <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> NA, NA, NA
+#&gt; $ opencage_lat     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 43.64789, 45.18191, 43.60070
+#&gt; $ opencage_long    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> -116.2694, -113.8903, -116.3479
+#&gt; $ opencage_address <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> NA, NA, NA</div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
