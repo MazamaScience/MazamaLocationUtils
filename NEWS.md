@@ -1,3 +1,13 @@
+# MazamaLocationUtils 0.3.6
+
+* Added `table_getDistanceFromTarget()` and edited the description of other
+distance functions to make clear what each does.
+
+# MazamaLocationUtils 0.3.5
+
+* Removed `validateMazamaSpatialUtils()` test from `table_addCoreMetadata()` as
+this function just adds empty columns and does not need any spatial data.
+
 # MazamaLocationUtils 0.3.4
 
 * Updated `table_addOpenCageInfo()` to handle address components that are

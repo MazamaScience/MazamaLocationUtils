@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Validate proper setup of MazamaSpatialUtils — validateMazamaSpatialUtils • MazamaLocationUtils</title>
+<title>Return distances and directions from a target location to known locations — table_getDistanceFromTarget • MazamaLocationUtils</title>
 
 
 <!-- jquery -->
@@ -39,10 +39,11 @@
 
 
 
-<meta property="og:title" content="Validate proper setup of MazamaSpatialUtils — validateMazamaSpatialUtils" />
-<meta property="og:description" content="The MazamaSpatialUtils package mus be properly installed
-and initialized before using functions from the MazamaLocationUtils
-package. This function tests for this." />
+<meta property="og:title" content="Return distances and directions from a target location to known locations — table_getDistanceFromTarget" />
+<meta property="og:description" content="Returns a tibble with the same number of rows as locationTbl
+containing the distance and direction from the target location specified by
+longitude and latitude to each known location found in
+locationTbl." />
 
 
 
@@ -116,24 +117,71 @@ package. This function tests for this." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Validate proper setup of MazamaSpatialUtils</h1>
-    <small class="dont-index">Source: <a href='https://github.com/MazamaScience/MazamaLocationUtils/blob/master/R/utils.R'><code>R/utils.R</code></a></small>
-    <div class="hidden name"><code>validateMazamaSpatialUtils.Rd</code></div>
+    <h1>Return distances and directions from a target location to known locations</h1>
+    <small class="dont-index">Source: <a href='https://github.com/MazamaScience/MazamaLocationUtils/blob/master/R/table_getDistanceFromTarget.R'><code>R/table_getDistanceFromTarget.R</code></a></small>
+    <div class="hidden name"><code>table_getDistanceFromTarget.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>The <span class="pkg">MazamaSpatialUtils</span> package mus be properly installed
-and initialized before using functions from the <span class="pkg">MazamaLocationUtils</span>
-package. This function tests for this.</p>
+    <p>Returns a tibble with the same number of rows as <code>locationTbl</code>
+containing the distance and direction from the target location specified by
+<code>longitude</code> and <code>latitude</code> to each known location found in
+<code>locationTbl</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>validateMazamaSpatialUtils</span><span class='op'>(</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>table_getDistanceFromTarget</span><span class='op'>(</span>
+  locationTbl <span class='op'>=</span> <span class='cn'>NULL</span>,
+  longitude <span class='op'>=</span> <span class='cn'>NULL</span>,
+  latitude <span class='op'>=</span> <span class='cn'>NULL</span>,
+  measure <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"geodesic"</span>, <span class='st'>"haversine"</span>, <span class='st'>"vincenty"</span>, <span class='st'>"cheap"</span><span class='op'>)</span>
+<span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>locationTbl</th>
+      <td><p>Tibble of known locations.</p></td>
+    </tr>
+    <tr>
+      <th>longitude</th>
+      <td><p>Target longitude in decimal degrees E.</p></td>
+    </tr>
+    <tr>
+      <th>latitude</th>
+      <td><p>Target latitude in decimal degrees N.</p></td>
+    </tr>
+    <tr>
+      <th>measure</th>
+      <td><p>One of "haversine" "vincenty", "geodesic", or "cheap"
+specifying desired method of geodesic distance calculation.</p></td>
+    </tr>
+    </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Invisibly returns <code>TRUE</code> if no error message has been generated.</p>
+    <p>Tibble of distances in meters and cardinal directions from a target location.</p>
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
+    <p>Only a single target location is allowed.</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/MazamaScience/MazamaLocationUtils'>MazamaLocationUtils</a></span><span class='op'>)</span>
+
+<span class='va'>locationTbl</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/get.html'>get</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>"wa_monitors_500"</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='va'>locationTbl</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>table_getDistanceFromTarget</span><span class='op'>(</span>
+    longitude <span class='op'>=</span> <span class='op'>-</span><span class='fl'>117.3647</span>, 
+    latitude <span class='op'>=</span> <span class='fl'>47.6725</span>
+  <span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://pillar.r-lib.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Rows: 68
+#&gt; Columns: 3
+#&gt; $ locationID          <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "ddbb565d51fe74ba", "f4ac27b3de8b9c19", "efce6225e…
+#&gt; $ distanceFromTarget  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 374043, 248109, 200160, 218032, 17119, 52398, 3686…
+#&gt; $ directionFromTarget <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "W", "W", "W", "W", "W", "W", "W", "W", "W", "NE",…</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

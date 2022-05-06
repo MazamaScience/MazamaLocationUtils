@@ -40,12 +40,14 @@
 
 
 <meta property="og:title" content="Return distances to nearest known locations — table_getNearestDistance" />
-<meta property="og:description" content="Returns distances between known locations in locationTbl,
-and a vector of target locations specified by longitude and latitude.
-Only a single distance to the closest known location is returned for each
-incoming target location. If no known location is found within
-distanceThreshold meters for a particular
-incoming location, that distance in the vector will be NA." />
+<meta property="og:description" content="Returns distances between target locations and the closest
+location found in locationTbl (if any). Target locations are specified
+with longitude and latitude.
+For each target location, only a single distance to the closest known location
+is returned. If no known location is found within
+distanceThreshold, the distance associated with that target location
+will be NA. The length and order of resulting distances will match the
+order of the incoming target locations." />
 
 
 
@@ -77,7 +79,7 @@ incoming location, that distance in the vector will be NA." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.6</span>
       </span>
     </div>
 
@@ -125,12 +127,14 @@ incoming location, that distance in the vector will be NA." />
     </div>
 
     <div class="ref-description">
-    <p>Returns distances between known locations in <code>locationTbl</code>,
-and a vector of target locations specified by <code>longitude</code> and <code>latitude</code>.
-Only a single distance to the closest known location is returned for each
-incoming target location. If no known location is found within
-<code>distanceThreshold</code> meters for a particular
-incoming location, that distance in the vector will be <code>NA</code>.</p>
+    <p>Returns distances between target locations and the closest
+location found in <code>locationTbl</code> (if any). Target locations are specified
+with <code>longitude</code> and <code>latitude</code>.</p>
+<p>For each target location, only a single distance to the closest known location
+is returned. If no known location is found within
+<code>distanceThreshold</code>, the distance associated with that target location
+will be <code>NA</code>. The length and order of resulting distances will match the
+order of the incoming target locations.</p>
     </div>
 
     <pre class="usage"><span class='fu'>table_getNearestDistance</span><span class='op'>(</span>
@@ -150,11 +154,11 @@ incoming location, that distance in the vector will be <code>NA</code>.</p>
     </tr>
     <tr>
       <th>longitude</th>
-      <td><p>Vector of longitudes in decimal degrees E.</p></td>
+      <td><p>Vector of target longitudes in decimal degrees E.</p></td>
     </tr>
     <tr>
       <th>latitude</th>
-      <td><p>Vector of latitudes in decimal degrees N.</p></td>
+      <td><p>Vector of target latitudes in decimal degrees N.</p></td>
     </tr>
     <tr>
       <th>distanceThreshold</th>
@@ -163,20 +167,30 @@ incoming location, that distance in the vector will be <code>NA</code>.</p>
     <tr>
       <th>measure</th>
       <td><p>One of "haversine" "vincenty", "geodesic", or "cheap"
-specifying desired method of geodesic distance calculation.</p>
-<p>See <code>geodist::<a href='https://rdrr.io/pkg/geodist/man/geodist.html'>geodist</a></code> for details.</p></td>
+specifying desired method of geodesic distance calculation.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Vector of distances from known locations.</p>
+    <p>Vector of closest distances between target locations and known locations.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>The measure <code>"cheap"</code> may be used to speed things up depending on
 the spatial scale being considered. Distances calculated with
 <code>measure = "cheap"</code> will vary by a few meters compared with those
 calculated using <code>measure = "geodesic"</code>.</p>
+<p>See <code>geodist::<a href='https://rdrr.io/pkg/geodist/man/geodist.html'>geodist</a></code> for details.</p>
+    <h2 class="hasAnchor" id="use-case"><a class="anchor" href="#use-case"></a>Use Case</h2>
+
+    
+
+<p>You may have a set of locations of interest for which you want to assess whether
+any monitoring locations are nearby. In this case, the locations of interest
+will provide <code>longitude</code> and <code>latitude</code> while <code>locationTbl</code>
+will be the known location table associated with the monitoring locations.</p>
+<p>The resulting vector of distances will tell you the distance, for each
+target location, to the nearst monitoring location.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/MazamaScience/MazamaLocationUtils'>MazamaLocationUtils</a></span><span class='op'>)</span>
