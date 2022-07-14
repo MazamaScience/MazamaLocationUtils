@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.7</span>
       </span>
     </div>
 
@@ -117,12 +117,24 @@
       <small>Source: <a href='https://github.com/MazamaScience/MazamaLocationUtils/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="mazamalocationutils-037" class="section level1">
+<h1 class="page-header" data-toc-text="0.3.7">
+<a href="#mazamalocationutils-037" class="anchor"></a>MazamaLocationUtils 0.3.7<small> Unreleased </small>
+</h1>
+<ul>
+<li>Updated <code><a href="../reference/table_updateColumn.html">table_updateColumn()</a></code> to ignore incoming
+<code>locationIDs</code> that are not found in the
+<code>locationTbl</code>.</li>
+</ul>
+</div>
     <div id="mazamalocationutils-036" class="section level1">
 <h1 class="page-header" data-toc-text="0.3.6">
 <a href="#mazamalocationutils-036" class="anchor"></a>MazamaLocationUtils 0.3.6<small> Unreleased </small>
 </h1>
 <ul>
-<li>Added <code><a href="../reference/table_getDistanceFromTarget.html">table_getDistanceFromTarget()</a></code> and edited the description of other distance functions to make clear what each does.</li>
+<li>Added <code><a href="../reference/table_getDistanceFromTarget.html">table_getDistanceFromTarget()</a></code> and edited the
+description of other distance functions to make clear what each
+does.</li>
 </ul>
 </div>
     <div id="mazamalocationutils-035" class="section level1">
@@ -130,7 +142,9 @@
 <a href="#mazamalocationutils-035" class="anchor"></a>MazamaLocationUtils 0.3.5<small> Unreleased </small>
 </h1>
 <ul>
-<li>Removed <code><a href="../reference/validateMazamaSpatialUtils.html">validateMazamaSpatialUtils()</a></code> test from <code><a href="../reference/table_addCoreMetadata.html">table_addCoreMetadata()</a></code> as this function just adds empty columns and does not need any spatial data.</li>
+<li>Removed <code><a href="../reference/validateMazamaSpatialUtils.html">validateMazamaSpatialUtils()</a></code> test from
+<code><a href="../reference/table_addCoreMetadata.html">table_addCoreMetadata()</a></code> as this function just adds empty
+columns and does not need any spatial data.</li>
 </ul>
 </div>
     <div id="mazamalocationutils-034" class="section level1">
@@ -138,7 +152,8 @@
 <a href="#mazamalocationutils-034" class="anchor"></a>MazamaLocationUtils 0.3.4<small> Unreleased </small>
 </h1>
 <ul>
-<li>Updated <code><a href="../reference/table_addOpenCageInfo.html">table_addOpenCageInfo()</a></code> to handle address components that are missing from the openCage results.</li>
+<li>Updated <code><a href="../reference/table_addOpenCageInfo.html">table_addOpenCageInfo()</a></code> to handle address
+components that are missing from the openCage results.</li>
 </ul>
 </div>
     <div id="mazamalocationutils-033" class="section level1">
@@ -146,8 +161,11 @@
 <a href="#mazamalocationutils-033" class="anchor"></a>MazamaLocationUtils 0.3.3<small> 2022-02-11 </small>
 </h1>
 <ul>
-<li>Updated <code><a href="../reference/table_findAdjacentLocations.html">table_findAdjacentLocations()</a></code> to only only return unique locations and to ensure they are returned in order of separation distance.</li>
-<li>Corrected behavior when using <code>jitter = 0</code> in <code><a href="../reference/table_leaflet.html">table_leaflet()</a></code> and <code><a href="../reference/table_leafletAdd.html">table_leafletAdd()</a></code>.</li>
+<li>Updated <code><a href="../reference/table_findAdjacentLocations.html">table_findAdjacentLocations()</a></code> to only only
+return unique locations and to ensure they are returned in order of
+separation distance.</li>
+<li>Corrected behavior when using <code>jitter = 0</code> in
+<code><a href="../reference/table_leaflet.html">table_leaflet()</a></code> and <code><a href="../reference/table_leafletAdd.html">table_leafletAdd()</a></code>.</li>
 <li>Added <code><a href="../reference/table_filterByDistance.html">table_filterByDistance()</a></code>.</li>
 </ul>
 </div>
@@ -156,8 +174,10 @@
 <a href="#mazamalocationutils-032" class="anchor"></a>MazamaLocationUtils 0.3.2<small> Unreleased </small>
 </h1>
 <ul>
-<li>Ensure that address components are of class “character” throughout the code.</li>
-<li>Added <code><a href="../reference/location_getOpenCageInfo.html">location_getOpenCageInfo()</a></code> to get OpenCage information for a single location.</li>
+<li>Ensure that address components are of class “character” throughout
+the code.</li>
+<li>Added <code><a href="../reference/location_getOpenCageInfo.html">location_getOpenCageInfo()</a></code> to get OpenCage
+information for a single location.</li>
 </ul>
 </div>
     <div id="mazamalocationutils-031" class="section level1">
@@ -165,7 +185,8 @@
 <a href="#mazamalocationutils-031" class="anchor"></a>MazamaLocationUtils 0.3.1<small> 2022-01-16 </small>
 </h1>
 <ul>
-<li>Updated <code><a href="../reference/location_getCensusBlock.html">location_getCensusBlock()</a></code> to add <code>censusYear</code> argument.</li>
+<li>Updated <code><a href="../reference/location_getCensusBlock.html">location_getCensusBlock()</a></code> to add
+<code>censusYear</code> argument.</li>
 <li>Minor documentation improvements.</li>
 </ul>
 </div>
@@ -174,9 +195,11 @@
 <a href="#mazamalocationutils-030" class="anchor"></a>MazamaLocationUtils 0.3.0<small> Unreleased </small>
 </h1>
 <ul>
-<li>Added <code><a href="../reference/table_addOpenCageInfo.html">table_addOpenCageInfo()</a></code> with support for reverse geocoding using <strong>tidygeocoder</strong>.</li>
+<li>Added <code><a href="../reference/table_addOpenCageInfo.html">table_addOpenCageInfo()</a></code> with support for reverse
+geocoding using <strong>tidygeocoder</strong>.</li>
 <li>
-<code><a href="../reference/mazama_initialize.html">mazama_initialize()</a></code> now only loads the high resolution datasets used in <code><a href="../reference/location_initialize.html">location_initialize()</a></code>.</li>
+<code><a href="../reference/mazama_initialize.html">mazama_initialize()</a></code> now only loads the high resolution
+datasets used in <code><a href="../reference/location_initialize.html">location_initialize()</a></code>.</li>
 </ul>
 </div>
     <div id="mazamalocationutils-029" class="section level1">
@@ -184,9 +207,12 @@
 <a href="#mazamalocationutils-029" class="anchor"></a>MazamaLocationUtils 0.2.9<small> Unreleased </small>
 </h1>
 <ul>
-<li>Function signatures now provide multiple options where appropriate and these are checked with <code><a href="https://rdrr.io/r/base/match.arg.html">match.arg()</a></code>.</li>
-<li>Updated <code><a href="../reference/table_load.html">table_load()</a></code> looks for .rda and then .csv versions.</li>
-<li>Updated <code><a href="../reference/table_save.html">table_save()</a></code> to avoid deprecated arguments to <code><a href="https://readr.tidyverse.org/reference/write_delim.html">readr::write_csv()</a></code>.</li>
+<li>Function signatures now provide multiple options where appropriate
+and these are checked with <code><a href="https://rdrr.io/r/base/match.arg.html">match.arg()</a></code>.</li>
+<li>Updated <code><a href="../reference/table_load.html">table_load()</a></code> looks for .rda and then .csv
+versions.</li>
+<li>Updated <code><a href="../reference/table_save.html">table_save()</a></code> to avoid deprecated arguments to
+<code><a href="https://readr.tidyverse.org/reference/write_delim.html">readr::write_csv()</a></code>.</li>
 </ul>
 </div>
     <div id="mazamalocationutils-028" class="section level1">
@@ -202,9 +228,12 @@
 <a href="#mazamalocationutils-027" class="anchor"></a>MazamaLocationUtils 0.2.7<small> 2021-11-16 </small>
 </h1>
 <ul>
-<li>All examples now meet the CRAN directive to avoid stopping if a web resource is unavailable.</li>
-<li>Improved error messages in <code><a href="../reference/table_load.html">table_load()</a></code> and <code><a href="../reference/table_save.html">table_save()</a></code>.</li>
-<li>Removed <code>table_export()</code>. Use <code><a href="../reference/table_save.html">table_save()</a></code> instead.</li>
+<li>All examples now meet the CRAN directive to avoid stopping if a web
+resource is unavailable.</li>
+<li>Improved error messages in <code><a href="../reference/table_load.html">table_load()</a></code> and
+<code><a href="../reference/table_save.html">table_save()</a></code>.</li>
+<li>Removed <code>table_export()</code>. Use <code><a href="../reference/table_save.html">table_save()</a></code>
+instead.</li>
 </ul>
 </div>
     <div id="mazamalocationutils-026" class="section level1">
@@ -212,8 +241,12 @@
 <a href="#mazamalocationutils-026" class="anchor"></a>MazamaLocationUtils 0.2.6<small> Unreleased </small>
 </h1>
 <ul>
-<li>Removed <code>~APIKey()</code> functionality. Now importing this from <code>MazamaCoreUtils</code> 0.4.10.</li>
-<li>Optimized <code><a href="../reference/table_getLocationID.html">table_getLocationID()</a></code> and <code><a href="../reference/table_getNearestDistance.html">table_getNearestDistance()</a></code> by only calculating distance for unique locations. This helps tremendously when <code>longitude</code> and <code>latitude</code> come from “tidy” dataframes.</li>
+<li>Removed <code>~APIKey()</code> functionality. Now importing this
+from <code>MazamaCoreUtils</code> 0.4.10.</li>
+<li>Optimized <code><a href="../reference/table_getLocationID.html">table_getLocationID()</a></code> and
+<code><a href="../reference/table_getNearestDistance.html">table_getNearestDistance()</a></code> by only calculating distance for
+unique locations. This helps tremendously when <code>longitude</code>
+and <code>latitude</code> come from “tidy” dataframes.</li>
 </ul>
 </div>
     <div id="mazamalocationutils-025" class="section level1">
@@ -221,7 +254,8 @@
 <a href="#mazamalocationutils-025" class="anchor"></a>MazamaLocationUtils 0.2.5<small> Unreleased </small>
 </h1>
 <ul>
-<li>Fix timezone assignment bug in <code><a href="../reference/table_initializeExisting.html">table_initializeExisting()</a></code>.</li>
+<li>Fix timezone assignment bug in
+<code><a href="../reference/table_initializeExisting.html">table_initializeExisting()</a></code>.</li>
 </ul>
 </div>
     <div id="mazamalocationutils-024" class="section level1">
@@ -237,7 +271,9 @@
 <a href="#mazamalocationutils-023" class="anchor"></a>MazamaLocationUtils 0.2.3<small> Unreleased </small>
 </h1>
 <ul>
-<li>Refactored <code><a href="../reference/table_leaflet.html">table_leaflet()</a></code> and <code><a href="../reference/table_leafletAdd.html">table_leafletAdd()</a></code> with improved defaults and more flexibility.</li>
+<li>Refactored <code><a href="../reference/table_leaflet.html">table_leaflet()</a></code> and
+<code><a href="../reference/table_leafletAdd.html">table_leafletAdd()</a></code> with improved defaults and more
+flexibility.</li>
 </ul>
 </div>
     <div id="mazamalocationutils-022" class="section level1">
@@ -245,13 +281,21 @@
 <a href="#mazamalocationutils-022" class="anchor"></a>MazamaLocationUtils 0.2.2<small> Unreleased </small>
 </h1>
 <ul>
-<li>Rename <code>county</code> to <code>countyName</code>. (This change more closely matches spatial metadata found in other systems and fits with the pattern of <code>~Code</code>/<code>~Name</code> pairs in <strong>MazamaSpatialUtils</strong> as is the case with <code>countryCode/CountryName</code> and <code>stateCode/stateName</code>.)</li>
+<li>Rename <code>county</code> to <code>countyName</code>. (This change
+more closely matches spatial metadata found in other systems and fits
+with the pattern of <code>~Code</code>/<code>~Name</code> pairs in
+<strong>MazamaSpatialUtils</strong> as is the case with
+<code>countryCode/CountryName</code> and
+<code>stateCode/stateName</code>.)</li>
 <li>Regenerated example datasets.</li>
 <li>Updated tests to reflect regenerated example datasets.</li>
-<li>Fixed bug in <code><a href="../reference/table_findAdjacentDistances.html">table_findAdjacentDistances()</a></code> when only two locations are adjacent.</li>
-<li>Re-exporting location validation functions from <strong>MazamaCoreUtils</strong>.</li>
+<li>Fixed bug in <code><a href="../reference/table_findAdjacentDistances.html">table_findAdjacentDistances()</a></code> when only
+two locations are adjacent.</li>
+<li>Re-exporting location validation functions from
+<strong>MazamaCoreUtils</strong>.</li>
 <li>
-<code><a href="../reference/table_updateColumn.html">table_updateColumn()</a></code> now ignores <code>NA</code> values in <code>locationID</code>.</li>
+<code><a href="../reference/table_updateColumn.html">table_updateColumn()</a></code> now ignores <code>NA</code> values
+in <code>locationID</code>.</li>
 </ul>
 </div>
     <div id="mazamalocationutils-021" class="section level1">
@@ -259,7 +303,9 @@
 <a href="#mazamalocationutils-021" class="anchor"></a>MazamaLocationUtils 0.2.1<small> Unreleased </small>
 </h1>
 <ul>
-<li>Using <strong>MazamaCoreUtils</strong> version of <code><a href="../reference/validateLonLat.html">validateLonLat()</a></code>, <code><a href="../reference/validateLonsLats.html">validateLonsLats()</a></code>, <code>createLocationID()</code>.</li>
+<li>Using <strong>MazamaCoreUtils</strong> version of
+<code><a href="../reference/validateLonLat.html">validateLonLat()</a></code>, <code><a href="../reference/validateLonsLats.html">validateLonsLats()</a></code>,
+<code>createLocationID()</code>.</li>
 <li>Removed dependency on <strong>sp</strong> package.</li>
 </ul>
 </div>
@@ -267,20 +313,39 @@
 <h1 class="page-header" data-toc-text="0.2.0">
 <a href="#mazamalocationutils-020" class="anchor"></a>MazamaLocationUtils 0.2.0<small> 2021-10-05 </small>
 </h1>
-<p>Version 0.2.x focuses on usability improvements after initial work with the package.</p>
+<p>Version 0.2.x focuses on usability improvements after initial work
+with the package.</p>
 <ul>
-<li><strong>Renamed <code>radius</code> to <code>distanceThreshold</code> throughout for clarity.</strong></li>
-<li>Updated <code><a href="../reference/table_initializeExisting.html">table_initializeExisting()</a></code> to only perform spatial searches where data are missing in the incoming table. This greatly speeds up performance.</li>
-<li>New <code><a href="../reference/table_leafletAdd.html">table_leafletAdd()</a></code> function to make it easier to compare “known locations” tables."</li>
-<li>New <code><a href="../reference/table_addCoreMetadata.html">table_addCoreMetadata()</a></code> function adds columns of <code>NA</code> values for any missing core metadata but does not perform any spatial calculations.</li>
-<li>New <code><a href="../reference/table_findAdjacentLocations.html">table_findAdjacentLocations()</a></code> function returns a tibble of all locations that are too close (<em>i.e.</em> separated by &lt; <code>distanceThreshold</code>).</li>
+<li><strong>Renamed <code>radius</code> to
+<code>distanceThreshold</code> throughout for clarity.</strong></li>
+<li>Updated <code><a href="../reference/table_initializeExisting.html">table_initializeExisting()</a></code> to only perform
+spatial searches where data are missing in the incoming table. This
+greatly speeds up performance.</li>
+<li>New <code><a href="../reference/table_leafletAdd.html">table_leafletAdd()</a></code> function to make it easier to
+compare “known locations” tables.”</li>
+<li>New <code><a href="../reference/table_addCoreMetadata.html">table_addCoreMetadata()</a></code> function adds columns of
+<code>NA</code> values for any missing core metadata but does not
+perform any spatial calculations.</li>
+<li>New <code><a href="../reference/table_findAdjacentLocations.html">table_findAdjacentLocations()</a></code> function returns a
+tibble of all locations that are too close (<em>i.e.</em> separated by
+&lt; <code>distanceThreshold</code>).</li>
 <li>
-<code>table_findOverlappingLocations()</code> renamed to <code><a href="../reference/table_findAdjacentDistances.html">table_findAdjacentDistances()</a></code>.</li>
-<li>Added <code>measure</code> argument to <code><a href="../reference/table_findAdjacentLocations.html">table_findAdjacentLocations()</a></code>, <code><a href="../reference/table_findAdjacentDistances.html">table_findAdjacentDistances()</a></code>, <code><a href="../reference/table_getLocationID.html">table_getLocationID()</a></code> and <code><a href="../reference/table_getNearestDistance.html">table_getNearestDistance()</a></code>.</li>
-<li>Added <code>na.rm</code> argument to <code><a href="../reference/validateLonsLats.html">validateLonsLats()</a></code>.</li>
-<li>Improved validation of arguments in all <code>table_~()</code> functions.</li>
-<li>Update function arguments to consistently use <code>locationTbl</code> whenever an incoming table includes <code>longitude</code> and <code>latitude</code> variables.</li>
-<li>New <code><a href="../reference/table_leaflet.html">table_leaflet()</a></code> function to display locations and metadata.</li>
+<code>table_findOverlappingLocations()</code> renamed to
+<code><a href="../reference/table_findAdjacentDistances.html">table_findAdjacentDistances()</a></code>.</li>
+<li>Added <code>measure</code> argument to
+<code><a href="../reference/table_findAdjacentLocations.html">table_findAdjacentLocations()</a></code>,
+<code><a href="../reference/table_findAdjacentDistances.html">table_findAdjacentDistances()</a></code>,
+<code><a href="../reference/table_getLocationID.html">table_getLocationID()</a></code> and
+<code><a href="../reference/table_getNearestDistance.html">table_getNearestDistance()</a></code>.</li>
+<li>Added <code>na.rm</code> argument to
+<code><a href="../reference/validateLonsLats.html">validateLonsLats()</a></code>.</li>
+<li>Improved validation of arguments in all <code>table_~()</code>
+functions.</li>
+<li>Update function arguments to consistently use
+<code>locationTbl</code> whenever an incoming table includes
+<code>longitude</code> and <code>latitude</code> variables.</li>
+<li>New <code><a href="../reference/table_leaflet.html">table_leaflet()</a></code> function to display locations and
+metadata.</li>
 </ul>
 </div>
     <div id="mazamalocationutils-0113" class="section level1">
@@ -296,12 +361,20 @@
 <a href="#mazamalocationutils-0112" class="anchor"></a>MazamaLocationUtils 0.1.12<small> Unreleased </small>
 </h1>
 <ul>
-<li>Updated <code><a href="../reference/location_getSingleAddress_Photon.html">location_getSingleAddress_Photon()</a></code> to remove <strong>revgeo</strong> dependency.</li>
-<li>Updated to require <strong>geodist</strong> 0.0.6.007 to handle errors finding longitude and latitude columns in the passed in tibble.</li>
+<li>Updated <code><a href="../reference/location_getSingleAddress_Photon.html">location_getSingleAddress_Photon()</a></code> to remove
+<strong>revgeo</strong> dependency.</li>
+<li>Updated to require <strong>geodist</strong> 0.0.6.007 to handle
+errors finding longitude and latitude columns in the passed in
+tibble.</li>
 <li>
-<code><a href="https://rdrr.io/pkg/geodist/man/geodist.html">geodist::geodist()</a></code> is now always called with <code>measure = "geodesic"</code> to avoid warning messages from <code>geodist()</code> about inaccuracies with <code>measure = "cheap"</code> (the <code>geodist()</code> default).</li>
+<code><a href="https://rdrr.io/pkg/geodist/man/geodist.html">geodist::geodist()</a></code> is now always called with
+<code>measure = "geodesic"</code> to avoid warning messages from
+<code>geodist()</code> about inaccuracies with
+<code>measure = "cheap"</code> (the <code>geodist()</code>
+default).</li>
 <li>
-<code><a href="../reference/mazama_initialize.html">mazama_initialize()</a></code> now installs required datasets if they are missing.</li>
+<code><a href="../reference/mazama_initialize.html">mazama_initialize()</a></code> now installs required datasets if
+they are missing.</li>
 <li>Updated to require <strong>MazamaSpatialUtils</strong> 0.7.</li>
 </ul>
 </div>
@@ -310,7 +383,8 @@
 <a href="#mazamalocationutils-0111" class="anchor"></a>MazamaLocationUtils 0.1.11<small> Unreleased </small>
 </h1>
 <ul>
-<li>Added unit test for <code>table_findOverlappingLocations()</code>.</li>
+<li>Added unit test for
+<code>table_findOverlappingLocations()</code>.</li>
 </ul>
 </div>
     <div id="mazamalocationutils-0110" class="section level1">
@@ -318,9 +392,16 @@
 <a href="#mazamalocationutils-0110" class="anchor"></a>MazamaLocationUtils 0.1.10<small> Unreleased </small>
 </h1>
 <ul>
-<li>Added <code><a href="../reference/table_initializeExisting.html">table_initializeExisting()</a></code> for fast conversion of an existing table of spatial metadata into a standardized “known location” table.</li>
-<li>Added <code>table_findOverlappingLocations()</code> to help choose an appropriate radius when initializing from an existing metadata table.</li>
-<li>Added <code>addressService</code> argument to <code><a href="../reference/table_addLocation.html">table_addLocation()</a></code>, <code>table_addSingleLocation() and</code>location_initialize()` to skip the address step that requires web services.</li>
+<li>Added <code><a href="../reference/table_initializeExisting.html">table_initializeExisting()</a></code> for fast conversion of
+an existing table of spatial metadata into a standardized “known
+location” table.</li>
+<li>Added <code>table_findOverlappingLocations()</code> to help choose
+an appropriate radius when initializing from an existing metadata
+table.</li>
+<li>Added <code>addressService</code> argument to
+<code><a href="../reference/table_addLocation.html">table_addLocation()</a></code>,
+<code>table_addSingleLocation() and</code>location_initialize()` to skip
+the address step that requires web services.</li>
 </ul>
 </div>
     <div id="mazamalocationutils-019" class="section level1">
@@ -345,7 +426,8 @@
 <a href="#mazamalocationutils-017" class="anchor"></a>MazamaLocationUtils 0.1.7<small> Unreleased </small>
 </h1>
 <ul>
-<li>Added support for API keys with <code><a href="../reference/setAPIKey.html">setAPIKey()</a></code> and <code><a href="../reference/getAPIKey.html">getAPIKey()</a></code>.</li>
+<li>Added support for API keys with <code><a href="../reference/setAPIKey.html">setAPIKey()</a></code> and
+<code><a href="../reference/getAPIKey.html">getAPIKey()</a></code>.</li>
 </ul>
 </div>
     <div id="mazamalocationutils-016" class="section level1">
@@ -353,7 +435,8 @@
 <a href="#mazamalocationutils-016" class="anchor"></a>MazamaLocationUtils 0.1.6<small> 2019-11-20 </small>
 </h1>
 <ul>
-<li>Updated checks and explicit instructions for installing required spatial data.</li>
+<li>Updated checks and explicit instructions for installing required
+spatial data.</li>
 </ul>
 </div>
     <div id="mazamalocationutils-015" class="section level1">
@@ -361,7 +444,8 @@
 <a href="#mazamalocationutils-015" class="anchor"></a>MazamaLocationUtils 0.1.5<small> Unreleased </small>
 </h1>
 <ul>
-<li>Changed examples from \code{\dontrun} to \code{\donttest} per CRAN suggestion.</li>
+<li>Changed examples from \code{\dontrun} to \code{\donttest} per CRAN
+suggestion.</li>
 </ul>
 </div>
     <div id="mazamalocationutils-014" class="section level1">
@@ -396,7 +480,8 @@
 <ul>
 <li>Removed <code>getLoations()</code>
 </li>
-<li>Added <code>getLocationID()</code> and <code>getNearestLocation()</code>
+<li>Added <code>getLocationID()</code> and
+<code>getNearestLocation()</code>
 </li>
 <li>Various cleanup/refactor</li>
 </ul>

@@ -34,7 +34,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.7</span>
       </span>
     </div>
 
@@ -87,46 +87,101 @@ data are collected at stationary sites.</code></pre>
 <div id="background" class="section level2">
 <h2 class="hasAnchor">
 <a href="#background" class="anchor"></a>Background</h2>
-<p>This package is intended for use in data management activities associated with fixed locations in space. The motivating fields include air and water quality monitoring where fixed sensors report at regular time intervals.</p>
-<p>When working with environmental monitoring time series, one of the first things you have to do is create unique identifiers for each individual time series. In an ideal world, each environmental time series would have both a <code>locationID</code> and a <code>deviceID</code> that uniquely identify the specific instrument making measurements and the physical location where measurements are made. A unique <code>timeseriesID</code> could be produced as <code>locationID_deviceID</code>. Metadata associated with each <code>timeseriesID</code> would contain basic information needed for downstream analysis including at least:</p>
+<p>This package is intended for use in data management activities
+associated with fixed locations in space. The motivating fields include
+air and water quality monitoring where fixed sensors report at regular
+time intervals.</p>
+<p>When working with environmental monitoring time series, one of the
+first things you have to do is create unique identifiers for each
+individual time series. In an ideal world, each environmental time
+series would have both a <code>locationID</code> and a
+<code>deviceID</code> that uniquely identify the specific instrument
+making measurements and the physical location where measurements are
+made. A unique <code>timeseriesID</code> could be produced as
+<code>locationID_deviceID</code>. Metadata associated with each
+<code>timeseriesID</code> would contain basic information needed for
+downstream analysis including at least:</p>
 <p><code>timeseriesID, locationID, deviceID, longitude, latitude, ...</code></p>
 <ul>
-<li>An extended time series for a mobile sensor would group by <code>deviceID</code>.</li>
-<li>Multiple sensors placed at a single location could be be grouped by <code>locationID</code>.</li>
+<li>An extended time series for a mobile sensor would group by
+<code>deviceID</code>.</li>
+<li>Multiple sensors placed at a single location could be be grouped by
+<code>locationID</code>.</li>
 <li>Maps would be created using <code>longitude, latitude</code>.</li>
-<li>Time series measurements would be accessed from a secondary <code>data</code> table with <code>timeseriesID</code> column names.</li>
+<li>Time series measurements would be accessed from a secondary
+<code>data</code> table with <code>timeseriesID</code> column
+names.</li>
 </ul>
-<p>Unfortunately, we are rarely supplied with a truly unique and truly spatial <code>locationID</code>. Instead we often use <code>deviceID</code> or an associated non-spatial identifier as a stand-in for <code>locationID</code>.</p>
+<p>Unfortunately, we are rarely supplied with a truly unique and truly
+spatial <code>locationID</code>. Instead we often use
+<code>deviceID</code> or an associated non-spatial identifier as a
+stand-in for <code>locationID</code>.</p>
 <p>Complications we have seen include:</p>
 <ul>
-<li>GPS-reported longitude and latitude can have <em>jitter</em> in the fourth or fifth decimal place making it challenging to use them to create a unique <code>locationID</code>.</li>
-<li>Sensors are sometimes <em>repositioned</em> in what the scientist considers the “same location”.</li>
-<li>Data from a single sensor goes through different processing pipelines using different identifiers and is later brought together as two separate timeseries.</li>
-<li>The spatial scale of what constitutes a “single location” depends on the instrumentation and scientific question being asked.</li>
-<li>Deriving location-based metadata from spatial datasets is computationally intensive unless saved and identified with a unique <code>locationID</code>.</li>
-<li>Automated searches for spatial metadata occasionally produce incorrect results because of the non-infinite resolution of spatial datasets and must be corrected by hand.</li>
+<li>GPS-reported longitude and latitude can have <em>jitter</em> in the
+fourth or fifth decimal place making it challenging to use them to
+create a unique <code>locationID</code>.</li>
+<li>Sensors are sometimes <em>repositioned</em> in what the scientist
+considers the “same location”.</li>
+<li>Data from a single sensor goes through different processing
+pipelines using different identifiers and is later brought together as
+two separate timeseries.</li>
+<li>The spatial scale of what constitutes a “single location” depends on
+the instrumentation and scientific question being asked.</li>
+<li>Deriving location-based metadata from spatial datasets is
+computationally intensive unless saved and identified with a unique
+<code>locationID</code>.</li>
+<li>Automated searches for spatial metadata occasionally produce
+incorrect results because of the non-infinite resolution of spatial
+datasets and must be corrected by hand.</li>
 </ul>
 </div>
 <div id="a-solution" class="section level2">
 <h2 class="hasAnchor">
 <a href="#a-solution" class="anchor"></a>A Solution</h2>
-<p>A solution to all these problems is possible if we store spatial metadata in simple tables in a standard directory. These tables will be referred to as <em>collections</em>. Location lookups can be performed with geodesic distance calculations where a longitude-latitude pair is assigned to a pre-existing <em>known location</em> if it is within <code>distanceThreshold</code> meters of that location. These lookups will be extremely fast.</p>
-<p>If no previously <em>known location</em> is found, the relatively slow (seconds) creation of a new <em>known location</em> metadata record can be performed and then added to the growing collection.</p>
-<p>For collections of stationary environmental monitors that only number in the thousands, this entire <em>collection</em> can be stored as either a <code>.rda</code> or <code>.csv</code> file and will be under a megabyte in size making it fast to load. This small size also makes it possible to save multiple <em>known locations</em> files, each created with different locations and different distance thresholds to address the needs of different scientific studies.</p>
+<p>A solution to all these problems is possible if we store spatial
+metadata in simple tables in a standard directory. These tables will be
+referred to as <em>collections</em>. Location lookups can be performed
+with geodesic distance calculations where a longitude-latitude pair is
+assigned to a pre-existing <em>known location</em> if it is within
+<code>distanceThreshold</code> meters of that location. These lookups
+will be extremely fast.</p>
+<p>If no previously <em>known location</em> is found, the relatively
+slow (seconds) creation of a new <em>known location</em> metadata record
+can be performed and then added to the growing collection.</p>
+<p>For collections of stationary environmental monitors that only number
+in the thousands, this entire <em>collection</em> can be stored as
+either a <code>.rda</code> or <code>.csv</code> file and will be under a
+megabyte in size making it fast to load. This small size also makes it
+possible to save multiple <em>known locations</em> files, each created
+with different locations and different distance thresholds to address
+the needs of different scientific studies.</p>
 </div>
 <div id="immediate-advantages" class="section level2">
 <h2 class="hasAnchor">
 <a href="#immediate-advantages" class="anchor"></a>Immediate Advantages</h2>
-<p>Working in this manner will solve the problems initially mentioned but also provides further useful functionality:</p>
+<p>Working in this manner will solve the problems initially mentioned
+but also provides further useful functionality:</p>
 <ul>
-<li>Administrators can correct entries in an individual <em>collection</em>. (<em>e.g.</em> locations in river bends that even high resolution spatial datasets mis-assign)</li>
-<li>Additional, non-automatable metadata can be added to a <em>collection</em>. (<em>e.g.</em> commonly used location names within a community of practice)</li>
-<li>Different field campaigns can maintain separate <em>collections</em>.</li>
+<li>Administrators can correct entries in an individual
+<em>collection</em>. (<em>e.g.</em> locations in river bends that even
+high resolution spatial datasets mis-assign)</li>
+<li>Additional, non-automatable metadata can be added to a
+<em>collection</em>. (<em>e.g.</em> commonly used location names within
+a community of practice)</li>
+<li>Different field campaigns can maintain separate
+<em>collections</em>.</li>
 <li>
-<code>.csv</code> or <code>.rda</code> versions of well populated tables can be downloaded from a URL and used locally, giving scientists and analysts working with known locations instant access to location-specific spatial metadata data that otherwise requires special software and skills, large datasets and many compute cycles to generate.</li>
+<code>.csv</code> or <code>.rda</code> versions of well populated
+tables can be downloaded from a URL and used locally, giving scientists
+and analysts working with known locations instant access to
+location-specific spatial metadata data that otherwise requires special
+software and skills, large datasets and many compute cycles to
+generate.</li>
 </ul>
 <hr>
-<p>This project is supported with funding from the US Forest Service.</p>
+<p>This project is supported with funding from the US Forest
+Service.</p>
 </div>
 </div>
 

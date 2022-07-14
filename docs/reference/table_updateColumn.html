@@ -40,9 +40,13 @@
 
 
 <meta property="og:title" content="Update a column of metadata in a table — table_updateColumn" />
-<meta property="og:description" content="For matching locationID, records the associated
-locationData is used to replace any existing value in columnName.
-NA values in locationID will be ignored." />
+<meta property="og:description" content="Updates records in a location table. Records are identified
+by locationID and the data found in locationData is used to
+replace any existing value in the columnName column.
+locationID and locationData must be of the same length.
+Any NA values in locationID will be ignored.
+If columnName is not a named column within locationTbl, a new
+column will be created." />
 
 
 
@@ -74,7 +78,7 @@ NA values in locationID will be ignored." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.7</span>
       </span>
     </div>
 
@@ -122,9 +126,13 @@ NA values in locationID will be ignored." />
     </div>
 
     <div class="ref-description">
-    <p>For matching <code>locationID</code>, records the associated
-<code>locationData</code> is used to replace any existing value in <code>columnName</code>.
-<code>NA</code> values in <code>locationID</code> will be ignored.</p>
+    <p>Updates records in a location table. Records are identified
+by <code>locationID</code> and the data found in <code>locationData</code> is used to
+replace any existing value in the <code>columnName</code> column.
+<code>locationID</code> and <code>locationData</code> must be of the same length.
+Any <code>NA</code> values in <code>locationID</code> will be ignored.</p>
+<p>If <code>columnName</code> is not a named column within <code>locationTbl</code>, a new
+column will be created.</p>
     </div>
 
     <pre class="usage"><span class='fu'>table_updateColumn</span><span class='op'>(</span>
@@ -144,7 +152,8 @@ NA values in locationID will be ignored." />
     </tr>
     <tr>
       <th>columnName</th>
-      <td><p>Name to use for the new column.</p></td>
+      <td><p>Name of an existing/new column in <code>locationTbl</code> whose data
+will be updated/created.</p></td>
     </tr>
     <tr>
       <th>locationID</th>
@@ -152,7 +161,8 @@ NA values in locationID will be ignored." />
     </tr>
     <tr>
       <th>locationData</th>
-      <td><p>Vector of data to used at matching records.</p></td>
+      <td><p>Vector of data to be inserted at records identified by
+<code>locationID</code>.</p></td>
     </tr>
     <tr>
       <th>verbose</th>

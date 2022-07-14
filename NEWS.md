@@ -1,3 +1,8 @@
+# MazamaLocationUtils 0.3.7
+
+* Updated `table_updateColumn()` to ignore incoming `locationIDs` that are not 
+found in the `locationTbl`.
+
 # MazamaLocationUtils 0.3.6
 
 * Added `table_getDistanceFromTarget()` and edited the description of other
