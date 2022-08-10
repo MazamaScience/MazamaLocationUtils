@@ -40,8 +40,9 @@
 
 
 <meta property="og:title" content="Get elevation data from a USGS web service — location_getSingleElevation_USGS" />
-<meta property="og:description" content="USGS APIs are used to determine the elevation associated with
-the longitude and latitude." />
+<meta property="og:description" content="USGS APIs are used to determine the elevation in meters
+associated with the longitude and latitude.
+Note: The conversion factor for meters to feet is 3.28084." />
 
 
 
@@ -73,7 +74,7 @@ the longitude and latitude." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.8</span>
       </span>
     </div>
 
@@ -121,8 +122,9 @@ the longitude and latitude." />
     </div>
 
     <div class="ref-description">
-    <p>USGS APIs are used to determine the elevation associated with
-the <code>longitude</code> and <code>latitude</code>.</p>
+    <p>USGS APIs are used to determine the elevation in meters
+associated with the <code>longitude</code> and <code>latitude</code>.</p>
+<p><em>Note: The conversion factor for meters to feet is 3.28084.</em></p>
     </div>
 
     <pre class="usage"><span class='fu'>location_getSingleElevation_USGS</span><span class='op'>(</span>

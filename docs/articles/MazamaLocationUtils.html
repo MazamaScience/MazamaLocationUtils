@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.8</span>
       </span>
     </div>
 
@@ -294,10 +294,10 @@ longitudes and latitudes that are not currently in our table.</p>
   latitude <span class="op">=</span> <span class="va">lats</span>,
   distanceThreshold <span class="op">=</span> <span class="fl">500</span>
 <span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">city</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] "Okanogan County" NA                "Tacoma"          "Auburn"         
-##  [5] NA                NA                "Tulalip Bay"     NA               
-##  [9] NA                "Wenatchee"       NA                NA               
-## [13] "Tacoma"</code></pre>
+<pre><code>##  [1] "Okanogan County" NA                "Tacoma"          NA               
+##  [5] "Anacortes"       "Quincy"          "Tulalip Bay"     NA               
+##  [9] "Ellensburg"      NA                "Walla Walla"     "Chehalis"       
+## [13] NA</code></pre>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># How about 5000 meters?</span>
 <span class="fu"><a href="../reference/table_getNearestLocation.html">table_getNearestLocation</a></span><span class="op">(</span>

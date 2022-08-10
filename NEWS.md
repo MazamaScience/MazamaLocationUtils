@@ -1,3 +1,7 @@
+# MazamaLocationUtils 0.3.8
+
+* Updated documentation in `location_getSingleElevation_USGS()`.
+
 # MazamaLocationUtils 0.3.7
 
 * Updated `table_updateColumn()` to ignore incoming `locationIDs` that are not 
