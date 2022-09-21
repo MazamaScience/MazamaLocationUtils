@@ -1,3 +1,8 @@
+# MazamaLocationUtils 0.3.9
+
+* Updated `location_getSingleElevation_USGS()` to use the new web service at
+https://apps.nationalmap.gov/pqs/.
+
 # MazamaLocationUtils 0.3.8
 
 * Updated documentation in `location_getSingleElevation_USGS()`.
