@@ -1,3 +1,7 @@
+# MazamaLocationUtils 0.3.10
+
+* Added `na.rm = TRUE` to all calls to `any(...)` in various `table_~()` functions.
+
 # MazamaLocationUtils 0.3.9
 
 * Updated `location_getSingleElevation_USGS()` to use the new web service at
