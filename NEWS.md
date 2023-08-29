@@ -1,3 +1,9 @@
+# MazamaLocationUtils 0.3.11
+
+* Added `algorithm argument` to location_createID() to select between "digest"
+and "geohash".
+* Addressed CRAN package documentation issue.
+
 # MazamaLocationUtils 0.3.10
 
 * Added `na.rm = TRUE` to all calls to `any(...)` in various `table_~()` functions.

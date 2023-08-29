@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.10</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.11</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../articles/MazamaLocationUtils.html">Get started</a>
 </li>
@@ -55,7 +51,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/MazamaScience/MazamaLocationUtils/">
+  <a href="https://github.com/MazamaScience/MazamaLocationUtils/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -70,24 +66,25 @@
 
       
 
-      </header><script src="MazamaLocationUtils_files/header-attrs-2.14/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Introduction to MazamaLocationUtils</h1>
-                        <h4 class="author">Mazama Science</h4>
+                        <h4 data-toc-skip class="author">Mazama
+Science</h4>
             
-            <h4 class="date">2022-01-16</h4>
+            <h4 data-toc-skip class="date">2022-01-16</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/MazamaScience/MazamaLocationUtils/blob/master/vignettes/MazamaLocationUtils.Rmd"><code>vignettes/MazamaLocationUtils.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/MazamaScience/MazamaLocationUtils/blob/HEAD/vignettes/MazamaLocationUtils.Rmd" class="external-link"><code>vignettes/MazamaLocationUtils.Rmd</code></a></small>
       <div class="hidden name"><code>MazamaLocationUtils.Rmd</code></div>
 
     </div>
 
     
     
-<div id="background" class="section level1">
-<h1 class="hasAnchor">
-<a href="#background" class="anchor"></a>Background</h1>
+<div class="section level2">
+<h2 id="background">Background<a class="anchor" aria-label="anchor" href="#background"></a>
+</h2>
 <p>This package is intended for use in data management activities
 associated with fixed locations in space. The motivating fields include
 air and water quality monitoring where fixed sensors report at regular
@@ -137,9 +134,9 @@ incorrect results because of the non-infinite resolution of spatial
 datasets and must be corrected by hand.</li>
 </ul>
 </div>
-<div id="functionality" class="section level1">
-<h1 class="hasAnchor">
-<a href="#functionality" class="anchor"></a>Functionality</h1>
+<div class="section level2">
+<h2 id="functionality">Functionality<a class="anchor" aria-label="anchor" href="#functionality"></a>
+</h2>
 <p>A solution to all these problems is possible if we store spatial
 metadata in simple tables in a standard directory. These tables will be
 referred to as <em>collections</em>. Location lookups can be performed
@@ -158,62 +155,62 @@ possible to store multiple <em>known locations</em> files, each created
 with different locations and different distance thresholds to address
 the needs of different scientific studies.</p>
 </div>
-<div id="example-usage" class="section level1">
-<h1 class="hasAnchor">
-<a href="#example-usage" class="anchor"></a>Example Usage</h1>
+<div class="section level2">
+<h2 id="example-usage">Example Usage<a class="anchor" aria-label="anchor" href="#example-usage"></a>
+</h2>
 <p>The package comes with some example <em>known locations</em>
 tables.</p>
 <p>Lets take some metadata we have for air quality monitors in
 Washington state and create a <em>known locations</em> table for
 them.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">wa</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"wa_airfire_meta"</span>, package <span class="op">=</span> <span class="st">"MazamaLocationUtils"</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">wa</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] "monitorID"             "longitude"             "latitude"             
-##  [4] "elevation"             "timezone"              "countryCode"          
-##  [7] "stateCode"             "siteName"              "agencyName"           
-## [10] "countyName"            "msaName"               "monitorType"          
-## [13] "siteID"                "instrumentID"          "aqsID"                
-## [16] "pwfslID"               "pwfslDataIngestSource" "telemetryAggregator"  
-## [19] "telemetryUnitID"</code></pre>
-<div id="creating-a-known-locations-table" class="section level2">
-<h2 class="hasAnchor">
-<a href="#creating-a-known-locations-table" class="anchor"></a>Creating a Known Locations table</h2>
+<code class="sourceCode R"><span><span class="va">wa</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/get.html" class="external-link">get</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"wa_airfire_meta"</span>, package <span class="op">=</span> <span class="st">"MazamaLocationUtils"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">wa</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##  [1] "monitorID"             "longitude"             "latitude"             </span></span>
+<span><span class="co">##  [4] "elevation"             "timezone"              "countryCode"          </span></span>
+<span><span class="co">##  [7] "stateCode"             "siteName"              "agencyName"           </span></span>
+<span><span class="co">## [10] "countyName"            "msaName"               "monitorType"          </span></span>
+<span><span class="co">## [13] "siteID"                "instrumentID"          "aqsID"                </span></span>
+<span><span class="co">## [16] "pwfslID"               "pwfslDataIngestSource" "telemetryAggregator"  </span></span>
+<span><span class="co">## [19] "telemetryUnitID"</span></span></code></pre>
+<div class="section level3">
+<h3 id="creating-a-known-locations-table">Creating a Known Locations table<a class="anchor" aria-label="anchor" href="#creating-a-known-locations-table"></a>
+</h3>
 <p>We can create a <em>known locations</em> table for them with a
 minimum 500 meter separation between distinct locations:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/MazamaScience/MazamaLocationUtils">MazamaLocationUtils</a></span><span class="op">)</span>
-
-<span class="co"># Initialize with standard directories</span>
-<span class="fu"><a href="../reference/mazama_initialize.html">mazama_initialize</a></span><span class="op">(</span><span class="op">)</span>
-<span class="fu"><a href="../reference/setLocationDataDir.html">setLocationDataDir</a></span><span class="op">(</span><span class="st">"./data"</span><span class="op">)</span>
-
-<span class="va">wa_monitors_500</span> <span class="op">&lt;-</span>
-  <span class="fu"><a href="../reference/table_initialize.html">table_initialize</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/table_addLocation.html">table_addLocation</a></span><span class="op">(</span><span class="va">wa</span><span class="op">$</span><span class="va">longitude</span>, <span class="va">wa</span><span class="op">$</span><span class="va">latitude</span>, distanceThreshold <span class="op">=</span> <span class="fl">500</span><span class="op">)</span> </code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/MazamaScience/MazamaLocationUtils" class="external-link">MazamaLocationUtils</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Initialize with standard directories</span></span>
+<span><span class="fu"><a href="../reference/mazama_initialize.html">mazama_initialize</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/setLocationDataDir.html">setLocationDataDir</a></span><span class="op">(</span><span class="st">"./data"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">wa_monitors_500</span> <span class="op">&lt;-</span></span>
+<span>  <span class="fu"><a href="../reference/table_initialize.html">table_initialize</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="../reference/table_addLocation.html">table_addLocation</a></span><span class="op">(</span><span class="va">wa</span><span class="op">$</span><span class="va">longitude</span>, <span class="va">wa</span><span class="op">$</span><span class="va">latitude</span>, distanceThreshold <span class="op">=</span> <span class="fl">500</span><span class="op">)</span> </span></code></pre></div>
 <p>Right now, our <em>known locations</em> table contains only
 automatically generated spatial metadata:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">wa_monitors_500</span><span class="op">)</span></code></pre></div>
-<pre><code>## Rows: 68
-## Columns: 13
-## $ locationID   &lt;chr&gt; "ddbb565d51fe74ba", "f4ac27b3de8b9c19", "efce6225e8b2b1b8…
-## $ locationName &lt;chr&gt; "us.wa_ddbb56", "us.wa_f4ac27", "us.wa_efce62", "us.wa_3b…
-## $ longitude    &lt;dbl&gt; -122.3383, -120.6647, -120.0231, -120.1051, -117.5890, -1…
-## $ latitude     &lt;dbl&gt; 47.55998, 47.59880, 47.83861, 48.35412, 47.64535, 47.8852…
-## $ elevation    &lt;dbl&gt; 3.19, 361.69, 338.56, 473.18, 729.72, 730.84, 13.03, 175.…
-## $ countryCode  &lt;chr&gt; "US", "US", "US", "US", "US", "US", "US", "US", "US", "US…
-## $ stateCode    &lt;chr&gt; "WA", "WA", "WA", "WA", "WA", "WA", "WA", "WA", "WA", "WA…
-## $ countyName   &lt;chr&gt; "King", "Chelan", "Chelan", "Okanogan", "Spokane", "Steve…
-## $ timezone     &lt;chr&gt; "America/Los_Angeles", "America/Los_Angeles", "America/Lo…
-## $ houseNumber  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
-## $ street       &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
-## $ city         &lt;chr&gt; "Seattle", "Leavenworth", "Chelan", "Okanogan County", "A…
-## $ zip          &lt;chr&gt; "98106", "98826", "98816", "98856", "99001", "99040", "98…</code></pre>
+<code class="sourceCode R"><span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">wa_monitors_500</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Rows: 68</span></span>
+<span><span class="co">## Columns: 13</span></span>
+<span><span class="co">## $ locationID   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "ddbb565d51fe74ba", "f4ac27b3de8b9c19", "efce6225e8b2b1b8…</span></span>
+<span><span class="co">## $ locationName <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "us.wa_ddbb56", "us.wa_f4ac27", "us.wa_efce62", "us.wa_3b…</span></span>
+<span><span class="co">## $ longitude    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> -122.3383, -120.6647, -120.0231, -120.1051, -117.5890, -1…</span></span>
+<span><span class="co">## $ latitude     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 47.55998, 47.59880, 47.83861, 48.35412, 47.64535, 47.8852…</span></span>
+<span><span class="co">## $ elevation    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 3.19, 361.69, 338.56, 473.18, 729.72, 730.84, 13.03, 175.…</span></span>
+<span><span class="co">## $ countryCode  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "US", "US", "US", "US", "US", "US", "US", "US", "US", "US…</span></span>
+<span><span class="co">## $ stateCode    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "WA", "WA", "WA", "WA", "WA", "WA", "WA", "WA", "WA", "WA…</span></span>
+<span><span class="co">## $ countyName   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "King", "Chelan", "Chelan", "Okanogan", "Spokane", "Steve…</span></span>
+<span><span class="co">## $ timezone     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "America/Los_Angeles", "America/Los_Angeles", "America/Lo…</span></span>
+<span><span class="co">## $ houseNumber  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</span></span>
+<span><span class="co">## $ street       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</span></span>
+<span><span class="co">## $ city         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Seattle", "Leavenworth", "Chelan", "Okanogan County", "A…</span></span>
+<span><span class="co">## $ zip          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "98106", "98826", "98816", "98856", "99001", "99040", "98…</span></span></code></pre>
 </div>
-<div id="merging-external-metadata" class="section level2">
-<h2 class="hasAnchor">
-<a href="#merging-external-metadata" class="anchor"></a>Merging external metadata</h2>
+<div class="section level3">
+<h3 id="merging-external-metadata">Merging external metadata<a class="anchor" aria-label="anchor" href="#merging-external-metadata"></a>
+</h3>
 <p>Perhaps we would like to import some of the original metadata into
 our new table. This is a very common use case where non-spatial metadata
 like site name or agency responsible for a monitor can be added.</p>
@@ -221,125 +218,126 @@ like site name or agency responsible for a monitor can be added.</p>
 locations</em> table is already large and we are only providing
 additional metadata for a subset of the records.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Use a subset of the wa metadata</span>
-<span class="va">wa_indices</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">65</span>,<span class="fl">5</span><span class="op">)</span>
-<span class="va">wa_sub</span> <span class="op">&lt;-</span> <span class="va">wa</span><span class="op">[</span><span class="va">wa_indices</span>,<span class="op">]</span>
-
-<span class="co"># Use a generic name for the location table</span>
-<span class="va">locationTbl</span> <span class="op">&lt;-</span> <span class="va">wa_monitors_500</span>
-
-<span class="co"># Find the location IDs associated with our subset</span>
-<span class="va">locationID</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/table_getLocationID.html">table_getLocationID</a></span><span class="op">(</span>
-  <span class="va">locationTbl</span>, 
-  longitude <span class="op">=</span> <span class="va">wa_sub</span><span class="op">$</span><span class="va">longitude</span>, 
-  latitude <span class="op">=</span> <span class="va">wa_sub</span><span class="op">$</span><span class="va">latitude</span>, 
-  distanceThreshold <span class="op">=</span> <span class="fl">500</span>
-<span class="op">)</span>
-
-<span class="co"># Now add the "siteName" column for our subset of locations</span>
-<span class="va">locationData</span> <span class="op">&lt;-</span> <span class="va">wa_sub</span><span class="op">$</span><span class="va">siteName</span>
-<span class="va">locationTbl</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/table_updateColumn.html">table_updateColumn</a></span><span class="op">(</span>
-  <span class="va">locationTbl</span>, 
-  columnName <span class="op">=</span> <span class="st">"siteName"</span>, 
-  locationID <span class="op">=</span> <span class="va">locationID</span>, 
-  locationData <span class="op">=</span> <span class="va">locationData</span>
-<span class="op">)</span>
-
-<span class="co"># Lets see how we did</span>
-<span class="va">locationTbl_indices</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/table_getRecordIndex.html">table_getRecordIndex</a></span><span class="op">(</span><span class="va">locationTbl</span>, <span class="va">locationID</span><span class="op">)</span>
-<span class="va">locationTbl</span><span class="op">[</span><span class="va">locationTbl_indices</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"city"</span>, <span class="st">"siteName"</span><span class="op">)</span><span class="op">]</span></code></pre></div>
-<pre><code>## # A tibble: 13 × 2
-##    city            siteName                  
-##    &lt;chr&gt;           &lt;chr&gt;                     
-##  1 Okanogan County Twisp-Ewell St            
-##  2 &lt;NA&gt;            &lt;NA&gt;                      
-##  3 Tacoma          Tacoma-Alexander Ave      
-##  4 Auburn          Auburn 29th St            
-##  5 Anacortes       Anacortes-202 Ave (SO-AQS)
-##  6 Quincy          Quincy 3rd                
-##  7 Tulalip Bay     Tulalip-Totem Beach Rd    
-##  8 Shelton         Shelton-W Franklin        
-##  9 Ellensburg      Ellensburg-Ruby St        
-## 10 Wenatchee       Wenatchee-Fifth St        
-## 11 Walla Walla     Walla Walla-12th St       
-## 12 Chehalis        Chehalis-Market Blvd      
-## 13 Tacoma          Tacoma-S 36th St</code></pre>
+<code class="sourceCode R"><span><span class="co"># Use a subset of the wa metadata</span></span>
+<span><span class="va">wa_indices</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">65</span>,<span class="fl">5</span><span class="op">)</span></span>
+<span><span class="va">wa_sub</span> <span class="op">&lt;-</span> <span class="va">wa</span><span class="op">[</span><span class="va">wa_indices</span>,<span class="op">]</span></span>
+<span></span>
+<span><span class="co"># Use a generic name for the location table</span></span>
+<span><span class="va">locationTbl</span> <span class="op">&lt;-</span> <span class="va">wa_monitors_500</span></span>
+<span></span>
+<span><span class="co"># Find the location IDs associated with our subset</span></span>
+<span><span class="va">locationID</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/table_getLocationID.html">table_getLocationID</a></span><span class="op">(</span></span>
+<span>  <span class="va">locationTbl</span>, </span>
+<span>  longitude <span class="op">=</span> <span class="va">wa_sub</span><span class="op">$</span><span class="va">longitude</span>, </span>
+<span>  latitude <span class="op">=</span> <span class="va">wa_sub</span><span class="op">$</span><span class="va">latitude</span>, </span>
+<span>  distanceThreshold <span class="op">=</span> <span class="fl">500</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Now add the "siteName" column for our subset of locations</span></span>
+<span><span class="va">locationData</span> <span class="op">&lt;-</span> <span class="va">wa_sub</span><span class="op">$</span><span class="va">siteName</span></span>
+<span><span class="va">locationTbl</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/table_updateColumn.html">table_updateColumn</a></span><span class="op">(</span></span>
+<span>  <span class="va">locationTbl</span>, </span>
+<span>  columnName <span class="op">=</span> <span class="st">"siteName"</span>, </span>
+<span>  locationID <span class="op">=</span> <span class="va">locationID</span>, </span>
+<span>  locationData <span class="op">=</span> <span class="va">locationData</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Lets see how we did</span></span>
+<span><span class="va">locationTbl_indices</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/table_getRecordIndex.html">table_getRecordIndex</a></span><span class="op">(</span><span class="va">locationTbl</span>, <span class="va">locationID</span><span class="op">)</span></span>
+<span><span class="va">locationTbl</span><span class="op">[</span><span class="va">locationTbl_indices</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"city"</span>, <span class="st">"siteName"</span><span class="op">)</span><span class="op">]</span></span></code></pre></div>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 13 × 2</span></span></span>
+<span><span class="co">##    city            siteName                  </span></span>
+<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> Okanogan County Twisp-Ewell St            </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> <span style="color: #BB0000;">NA</span>              <span style="color: #BB0000;">NA</span>                        </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> Tacoma          Tacoma-Alexander Ave      </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> Auburn          Auburn 29th St            </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> Anacortes       Anacortes-202 Ave (SO-AQS)</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> Quincy          Quincy 3rd                </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> Tulalip Bay     Tulalip-Totem Beach Rd    </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> Shelton         Shelton-W Franklin        </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> Ellensburg      Ellensburg-Ruby St        </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span> Wenatchee       Wenatchee-Fifth St        </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">11</span> Walla Walla     Walla Walla-12th St       </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">12</span> Chehalis        Chehalis-Market Blvd      </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">13</span> Tacoma          Tacoma-S 36th St</span></span></code></pre>
 <p>Very nice. We have added <code>siteName</code> to our known locations
 table for a more detailed description of each monitors’ location.</p>
 </div>
-<div id="finding-known-locations" class="section level2">
-<h2 class="hasAnchor">
-<a href="#finding-known-locations" class="anchor"></a>Finding known locations</h2>
+<div class="section level3">
+<h3 id="finding-known-locations">Finding known locations<a class="anchor" aria-label="anchor" href="#finding-known-locations"></a>
+</h3>
 <p>The whole point of a known locations table is to speed up access to
 spatial and other metadata. Here’s how we can use it with a set of
 longitudes and latitudes that are not currently in our table.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Create new locations near our known locations</span>
-<span class="va">lons</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/jitter.html">jitter</a></span><span class="op">(</span><span class="va">wa_sub</span><span class="op">$</span><span class="va">longitude</span><span class="op">)</span> 
-<span class="va">lats</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/jitter.html">jitter</a></span><span class="op">(</span><span class="va">wa_sub</span><span class="op">$</span><span class="va">latitude</span><span class="op">)</span>
-
-<span class="co"># Any known locations within 50 meters?</span>
-<span class="fu"><a href="../reference/table_getNearestLocation.html">table_getNearestLocation</a></span><span class="op">(</span>
-  <span class="va">wa_monitors_500</span>,
-  longitude <span class="op">=</span> <span class="va">lons</span>,
-  latitude <span class="op">=</span> <span class="va">lats</span>,
-  distanceThreshold <span class="op">=</span> <span class="fl">50</span>
-<span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">city</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] NA NA NA NA NA NA NA NA NA NA NA NA NA</code></pre>
+<code class="sourceCode R"><span><span class="co"># Create new locations near our known locations</span></span>
+<span><span class="va">lons</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/jitter.html" class="external-link">jitter</a></span><span class="op">(</span><span class="va">wa_sub</span><span class="op">$</span><span class="va">longitude</span><span class="op">)</span> </span>
+<span><span class="va">lats</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/jitter.html" class="external-link">jitter</a></span><span class="op">(</span><span class="va">wa_sub</span><span class="op">$</span><span class="va">latitude</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Any known locations within 50 meters?</span></span>
+<span><span class="fu"><a href="../reference/table_getNearestLocation.html">table_getNearestLocation</a></span><span class="op">(</span></span>
+<span>  <span class="va">wa_monitors_500</span>,</span>
+<span>  longitude <span class="op">=</span> <span class="va">lons</span>,</span>
+<span>  latitude <span class="op">=</span> <span class="va">lats</span>,</span>
+<span>  distanceThreshold <span class="op">=</span> <span class="fl">50</span></span>
+<span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">city</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##  [1] NA NA NA NA NA NA NA NA NA NA NA NA NA</span></span></code></pre>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Any known locations within 500 meters</span>
-<span class="fu"><a href="../reference/table_getNearestLocation.html">table_getNearestLocation</a></span><span class="op">(</span>
-  <span class="va">wa_monitors_500</span>,
-  longitude <span class="op">=</span> <span class="va">lons</span>,
-  latitude <span class="op">=</span> <span class="va">lats</span>,
-  distanceThreshold <span class="op">=</span> <span class="fl">500</span>
-<span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">city</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] NA            NA            "Tacoma"      "Auburn"      NA           
-##  [6] NA            "Tulalip Bay" "Shelton"     "Ellensburg"  NA           
-## [11] NA            "Chehalis"    "Tacoma"</code></pre>
+<code class="sourceCode R"><span><span class="co"># Any known locations within 500 meters</span></span>
+<span><span class="fu"><a href="../reference/table_getNearestLocation.html">table_getNearestLocation</a></span><span class="op">(</span></span>
+<span>  <span class="va">wa_monitors_500</span>,</span>
+<span>  longitude <span class="op">=</span> <span class="va">lons</span>,</span>
+<span>  latitude <span class="op">=</span> <span class="va">lats</span>,</span>
+<span>  distanceThreshold <span class="op">=</span> <span class="fl">500</span></span>
+<span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">city</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##  [1] "Okanogan County" NA                "Tacoma"          NA               </span></span>
+<span><span class="co">##  [5] NA                NA                "Tulalip Bay"     "Shelton"        </span></span>
+<span><span class="co">##  [9] "Ellensburg"      NA                NA                NA               </span></span>
+<span><span class="co">## [13] "Tacoma"</span></span></code></pre>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># How about 5000 meters?</span>
-<span class="fu"><a href="../reference/table_getNearestLocation.html">table_getNearestLocation</a></span><span class="op">(</span>
-  <span class="va">wa_monitors_500</span>,
-  longitude <span class="op">=</span> <span class="va">lons</span>,
-  latitude <span class="op">=</span> <span class="va">lats</span>,
-  distanceThreshold <span class="op">=</span> <span class="fl">5000</span>
-<span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">city</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] "Okanogan County" NA                "Tacoma"          "Auburn"         
-##  [5] "Anacortes"       "Quincy"          "Tulalip Bay"     "Shelton"        
-##  [9] "Ellensburg"      "Wenatchee"       "Walla Walla"     "Chehalis"       
-## [13] "Tacoma"</code></pre>
+<code class="sourceCode R"><span><span class="co"># How about 5000 meters?</span></span>
+<span><span class="fu"><a href="../reference/table_getNearestLocation.html">table_getNearestLocation</a></span><span class="op">(</span></span>
+<span>  <span class="va">wa_monitors_500</span>,</span>
+<span>  longitude <span class="op">=</span> <span class="va">lons</span>,</span>
+<span>  latitude <span class="op">=</span> <span class="va">lats</span>,</span>
+<span>  distanceThreshold <span class="op">=</span> <span class="fl">5000</span></span>
+<span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">city</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##  [1] "Okanogan County" NA                "Tacoma"          "Auburn"         </span></span>
+<span><span class="co">##  [5] "Anacortes"       "Quincy"          "Tulalip Bay"     "Shelton"        </span></span>
+<span><span class="co">##  [9] "Ellensburg"      "Wenatchee"       "Walla Walla"     "Chehalis"       </span></span>
+<span><span class="co">## [13] "Tacoma"</span></span></code></pre>
 </div>
 </div>
-<div id="standard-setup" class="section level1">
-<h1 class="hasAnchor">
-<a href="#standard-setup" class="anchor"></a>Standard Setup</h1>
+<div class="section level2">
+<h2 id="standard-setup">Standard Setup<a class="anchor" aria-label="anchor" href="#standard-setup"></a>
+</h2>
 <p>Before using <strong>MazamaLocationUtils</strong> you must first
 install <strong>MazamaSpatialUtils</strong> and then install core
 spatial data with:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(MazamaSpatialUtils)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">setSpatialDataDir</span>(<span class="st">"~/Data/Spatial"</span>)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">installSpatialData</span>(<span class="st">"EEZCountries"</span>)</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">installSpatialData</span>(<span class="st">"OSMTimezones"</span>)</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">installSpatialData</span>(<span class="st">"NaturalEarthAdm1"</span>)</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">installSpatialData</span>(<span class="st">"USCensusCounties"</span>)</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>Once the required datasets have been installed, the easiest way to set things </span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>up each session is with<span class="sc">:</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>  <span class="fu">library</span>(MazamaSpatialUtils)</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>  <span class="fu">setSpatialDataDir</span>(<span class="st">"~/Data/Spatial"</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>  </span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a>  <span class="fu">installSpatialData</span>(<span class="st">"EEZCountries"</span>)</span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a>  <span class="fu">installSpatialData</span>(<span class="st">"OSMTimezones"</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a>  <span class="fu">installSpatialData</span>(<span class="st">"NaturalEarthAdm1"</span>)</span>
+<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a>  <span class="fu">installSpatialData</span>(<span class="st">"USCensusCounties"</span>)</span>
+<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a>Once the required datasets have been installed, the easiest way to set things </span>
+<span id="cb14-10"><a href="#cb14-10" tabindex="-1"></a>up each session is with<span class="sc">:</span></span></code></pre></div>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R">  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/MazamaScience/MazamaLocationUtils">MazamaLocationUtils</a></span><span class="op">)</span>
-  <span class="fu"><a href="../reference/mazama_initialize.html">mazama_initialize</a></span><span class="op">(</span><span class="op">)</span>
-  <span class="fu"><a href="../reference/setLocationDataDir.html">setLocationDataDir</a></span><span class="op">(</span><span class="st">"~/Data/KnownLocations"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/MazamaScience/MazamaLocationUtils" class="external-link">MazamaLocationUtils</a></span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="../reference/mazama_initialize.html">mazama_initialize</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="../reference/setLocationDataDir.html">setLocationDataDir</a></span><span class="op">(</span><span class="st">"~/Data/KnownLocations"</span><span class="op">)</span></span></code></pre></div>
 <p><code><a href="../reference/mazama_initialize.html">mazama_initialize()</a></code> assumes spatial data are installed
 in the standard location and is just a wrapper for:</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R">  <span class="fu">MazamaSpatialUtils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/MazamaSpatialUtils/man/setSpatialDataDir.html">setSpatialDataDir</a></span><span class="op">(</span><span class="st">"~/Data/Spatial"</span><span class="op">)</span>
-  
-  <span class="fu">MazamaSpatialUtils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/MazamaSpatialUtils/man/loadSpatialData.html">loadSpatialData</a></span><span class="op">(</span><span class="st">"EEZCountries.rda"</span><span class="op">)</span>
-  <span class="fu">MazamaSpatialUtils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/MazamaSpatialUtils/man/loadSpatialData.html">loadSpatialData</a></span><span class="op">(</span><span class="st">"OSMTimezones.rda"</span><span class="op">)</span>
-  <span class="fu">MazamaSpatialUtils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/MazamaSpatialUtils/man/loadSpatialData.html">loadSpatialData</a></span><span class="op">(</span><span class="st">"NaturalEarthAdm1.rda"</span><span class="op">)</span>
-  <span class="fu">MazamaSpatialUtils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/MazamaSpatialUtils/man/loadSpatialData.html">loadSpatialData</a></span><span class="op">(</span><span class="st">"USCensusCounties.rda"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span>  <span class="fu">MazamaSpatialUtils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/MazamaSpatialUtils/man/setSpatialDataDir.html" class="external-link">setSpatialDataDir</a></span><span class="op">(</span><span class="st">"~/Data/Spatial"</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="fu">MazamaSpatialUtils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/MazamaSpatialUtils/man/loadSpatialData.html" class="external-link">loadSpatialData</a></span><span class="op">(</span><span class="st">"EEZCountries.rda"</span><span class="op">)</span></span>
+<span>  <span class="fu">MazamaSpatialUtils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/MazamaSpatialUtils/man/loadSpatialData.html" class="external-link">loadSpatialData</a></span><span class="op">(</span><span class="st">"OSMTimezones.rda"</span><span class="op">)</span></span>
+<span>  <span class="fu">MazamaSpatialUtils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/MazamaSpatialUtils/man/loadSpatialData.html" class="external-link">loadSpatialData</a></span><span class="op">(</span><span class="st">"NaturalEarthAdm1.rda"</span><span class="op">)</span></span>
+<span>  <span class="fu">MazamaSpatialUtils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/MazamaSpatialUtils/man/loadSpatialData.html" class="external-link">loadSpatialData</a></span><span class="op">(</span><span class="st">"USCensusCounties.rda"</span><span class="op">)</span></span></code></pre></div>
 <p>Every time you <code><a href="../reference/table_save.html">table_save()</a></code> your location table, a
 backup will be created so you can experiment without losing your work.
 File sizes are pretty tiny so you don’t have to worry about filling up
@@ -360,11 +358,13 @@ your disk.</p>
 
 
       <footer><div class="copyright">
-  <p>Developed by Jonathan Callahan.</p>
+  <p></p>
+<p>Developed by Jonathan Callahan.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>
@@ -372,6 +372,8 @@ your disk.</p>
 
   
 
+
+  
 
   </body>
 </html>
