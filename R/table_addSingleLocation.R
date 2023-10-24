@@ -1,4 +1,3 @@
-
 #' @title Add a single new known location record to a table
 #' 
 #' @description Incoming \code{longitude} and \code{latitude} values are compared 
@@ -32,6 +31,8 @@
 #'   initializeMazamaSpatialUtils(spatialDataDir)
 #' 
 #'   locationTbl <- get(data("wa_monitors_500"))
+#'   
+#'   nrow(locationTbl)
 #' 
 #'   # Coulee City, WA
 #'   lon <- -119.290904
@@ -40,6 +41,8 @@
 #'   locationTbl <- 
 #'     locationTbl %>%
 #'     table_addSingleLocation(lon, lat, distanceThreshold = 500)
+#'     
+#'   nrow(locationTbl)
 #'   
 #' }, silent = FALSE)
 #' }

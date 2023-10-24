@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.0</span>
       </span>
     </div>
 
@@ -28,6 +28,16 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/Developer_Style_Guide.html">Developer Style Guide</a>
+    </li>
+  </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -51,7 +61,17 @@
     </div>
 
     <div class="section level2">
-<h2 class="page-header" data-toc-text="0.3.11" id="mazamalocationutils-0311">MazamaLocationUtils 0.3.11<a class="anchor" aria-label="anchor" href="#mazamalocationutils-0311"></a></h2>
+<h2 class="page-header" data-toc-text="0.4.0" id="mazamalocationutils-040">MazamaLocationUtils 0.4.0<a class="anchor" aria-label="anchor" href="#mazamalocationutils-040"></a></h2>
+<ul><li>Renamed <code>zip</code> to <code>postalCode</code> in the core metadata.</li>
+<li>
+<code><a href="../reference/location_createID.html">location_createID()</a></code> now defaults to the <code>"geohash"</code> algorithm.</li>
+<li>Renamed <code>mazama_initialize()</code> to <code><a href="../reference/initializeMazamaSpatialUtils.html">initializeMazamaSpatialUtils()</a></code>.</li>
+<li>Updated example data to October, 2023.</li>
+<li>Added “Developer Style Guide” vignette.</li>
+<li>Improved documentation.</li>
+</ul></div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.3.11" id="mazamalocationutils-0311">MazamaLocationUtils 0.3.11<small>2023-09-06</small><a class="anchor" aria-label="anchor" href="#mazamalocationutils-0311"></a></h2>
 <ul><li>Added <code>algorithm argument</code> to location_createID() to select between “digest” and “geohash”.</li>
 <li>Addressed CRAN package documentation issue.</li>
 </ul></div>
@@ -103,7 +123,7 @@
 <h2 class="page-header" data-toc-text="0.3.0" id="mazamalocationutils-030">MazamaLocationUtils 0.3.0<a class="anchor" aria-label="anchor" href="#mazamalocationutils-030"></a></h2>
 <ul><li>Added <code><a href="../reference/table_addOpenCageInfo.html">table_addOpenCageInfo()</a></code> with support for reverse geocoding using <strong>tidygeocoder</strong>.</li>
 <li>
-<code><a href="../reference/mazama_initialize.html">mazama_initialize()</a></code> now only loads the high resolution datasets used in <code><a href="../reference/location_initialize.html">location_initialize()</a></code>.</li>
+<code>mazama_initialize()</code> now only loads the high resolution datasets used in <code><a href="../reference/location_initialize.html">location_initialize()</a></code>.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.2.9" id="mazamalocationutils-029">MazamaLocationUtils 0.2.9<a class="anchor" aria-label="anchor" href="#mazamalocationutils-029"></a></h2>
@@ -150,7 +170,7 @@
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.2.1" id="mazamalocationutils-021">MazamaLocationUtils 0.2.1<a class="anchor" aria-label="anchor" href="#mazamalocationutils-021"></a></h2>
-<ul><li>Using <strong>MazamaCoreUtils</strong> version of <code><a href="../reference/validateLonLat.html">validateLonLat()</a></code>, <code><a href="../reference/validateLonsLats.html">validateLonsLats()</a></code>, <code><a href="https://rdrr.io/pkg/MazamaCoreUtils/man/createLocationID.html" class="external-link">createLocationID()</a></code>.</li>
+<ul><li>Using <strong>MazamaCoreUtils</strong> version of <code><a href="../reference/validateLonLat.html">validateLonLat()</a></code>, <code><a href="../reference/validateLonsLats.html">validateLonsLats()</a></code>, <code>createLocationID()</code>.</li>
 <li>Removed dependency on <strong>sp</strong> package.</li>
 </ul></div>
     <div class="section level2">
@@ -180,7 +200,7 @@
 <li>
 <code><a href="https://rdrr.io/pkg/geodist/man/geodist.html" class="external-link">geodist::geodist()</a></code> is now always called with <code>measure = "geodesic"</code> to avoid warning messages from <code>geodist()</code> about inaccuracies with <code>measure = "cheap"</code> (the <code>geodist()</code> default).</li>
 <li>
-<code><a href="../reference/mazama_initialize.html">mazama_initialize()</a></code> now installs required datasets if they are missing.</li>
+<code>mazama_initialize()</code> now installs required datasets if they are missing.</li>
 <li>Updated to require <strong>MazamaSpatialUtils</strong> 0.7.</li>
 </ul></div>
     <div class="section level2">
@@ -204,7 +224,7 @@
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.1.7" id="mazamalocationutils-017">MazamaLocationUtils 0.1.7<a class="anchor" aria-label="anchor" href="#mazamalocationutils-017"></a></h2>
-<ul><li>Added support for API keys with <code><a href="../reference/setAPIKey.html">setAPIKey()</a></code> and <code><a href="../reference/getAPIKey.html">getAPIKey()</a></code>.</li>
+<ul><li>Added support for API keys with <code><a href="../reference/APIKeys.html">setAPIKey()</a></code> and <code><a href="../reference/APIKeys.html">getAPIKey()</a></code>.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.1.6" id="mazamalocationutils-016">MazamaLocationUtils 0.1.6<small>2019-11-20</small><a class="anchor" aria-label="anchor" href="#mazamalocationutils-016"></a></h2>

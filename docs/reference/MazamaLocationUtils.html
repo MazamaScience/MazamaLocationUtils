@@ -22,7 +22,7 @@ intervals.'><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.0</span>
       </span>
     </div>
 
@@ -33,6 +33,16 @@ intervals.'><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/Developer_Style_Guide.html">Developer Style Guide</a>
+    </li>
+  </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -81,20 +91,20 @@ including at least:</p>
   timeseriesID, locationID, deviceID, longitude, latitude, ...
 </code></pre></div>
 
-<ul><li><p>Multiple sensors placed at a location could be be grouped by <code>locationID</code>.</p></li>
-<li><p>An extended timeservers for a mobile sensor would group by <code>deviceID</code>.</p></li>
+<ul><li><p>An extended time series for an occasionally re-positioned sensor would group by <code>deviceID</code>.</p></li>
+<li><p>Multiple sensors placed at a single location could be be grouped by <code>locationID</code>.</p></li>
 <li><p>Maps would be created using <code>longitude, latitude</code>.</p></li>
 <li><p>Time series would be accessed from a secondary <code>data</code> table with <code>timeseriesID</code>.</p></li>
 </ul><p>Unfortunately, we are rarely supplied with a truly unique and truly spatial
 <code>locationID</code>. Instead we often use <code>deviceID</code> or an associated non-spatial
-identifier as a standin for <code>locationID</code>.</p>
+identifier as a stand-in for <code>locationID</code>.</p>
 <p>Complications we have seen include:</p>
 <ul><li><p>GPS-reported longitude and latitude can have <em>jitter</em> in the fourth or fifth
 decimal place making it challenging to use them to create a unique <code>locationID</code>.</p></li>
-<li><p>Sensors are sometimes <em>repositioned</em> in what the scientist considers the "same
+<li><p>Sensors are sometimes <em>re-positioned</em> in what the scientist considers the "same
 location".</p></li>
 <li><p>Data for a single sensor goes through different processing pipelines using
-different identifiers and is later brought together as two separate timeseries.</p></li>
+different identifiers and is later brought together as two separate time series.</p></li>
 <li><p>The spatial scale of what constitutes a "single location" depends on the
 instrumentation and scientific question being asked.</p></li>
 <li><p>Deriving location-based metadata from spatial datasets is computationally

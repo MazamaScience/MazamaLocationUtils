@@ -21,7 +21,7 @@ incoming location, that record in the tibble will contain all NA."><!-- mathjax 
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.0</span>
       </span>
     </div>
 
@@ -32,6 +32,16 @@ incoming location, that record in the tibble will contain all NA."><!-- mathjax 
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/Developer_Style_Guide.html">Developer Style Guide</a>
+    </li>
+  </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -122,13 +132,13 @@ incoming location, that record in the tibble will contain all <code>NA</code>.</
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ houseNumber : chr NA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ street      : chr NA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ city        : chr NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ zip         : chr NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ postalCode  : chr NA</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Expanding the distanceThreshold will find one</span></span></span>
 <span class="r-in"><span><span class="fu">table_getNearestLocation</span><span class="op">(</span><span class="va">locationTbl</span>, <span class="va">lon</span>, <span class="va">lat</span>, distanceThreshold <span class="op">=</span> <span class="fl">5000</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> tibble [1 × 13] (S3: tbl_df/tbl/data.frame)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ locationID  : chr "8e54314f43eb8746"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ locationName: chr "us.wa_8e5431"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ locationID  : chr "c26mvd3xm6"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ locationName: chr "us.wa_c26mvd"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ longitude   : num -120</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ latitude    : num 47.4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ elevation   : num 249</span>
@@ -139,7 +149,7 @@ incoming location, that record in the tibble will contain all <code>NA</code>.</
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ houseNumber : chr NA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ street      : chr NA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ city        : chr "Wenatchee"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ zip         : chr "98801"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ postalCode  : chr "98801"</span>
 </code></pre></div>
     </div>
   </div>

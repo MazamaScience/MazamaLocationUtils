@@ -21,7 +21,7 @@ assigned to a known location in locationTbl."><!-- mathjax --><script src="https
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.0</span>
       </span>
     </div>
 
@@ -32,6 +32,16 @@ assigned to a known location in locationTbl."><!-- mathjax --><script src="https
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/Developer_Style_Guide.html">Developer Style Guide</a>
+    </li>
+  </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -92,8 +102,9 @@ assigned to a known location in <code>locationTbl</code>.</p>
 
 
 <dt>measure</dt>
-<dd><p>One of "haversine" "vincenty", "geodesic", or "cheap"
-specifying desired method of geodesic distance calculation. See <code><a href="https://rdrr.io/pkg/geodist/man/geodist.html" class="external-link">?geodist::geodist</a></code>.</p></dd>
+<dd><p>One of "geodesic", "haversine", "vincenty" or "cheap"
+specifying desired method of geodesic distance calculation.
+See <code><a href="https://rdrr.io/pkg/geodist/man/geodist.html" class="external-link">geodist</a></code>.</p></dd>
 
 </dl></div>
     <div id="value">
@@ -124,7 +135,7 @@ calculated using <code>measure = "geodesic"</code>.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Expanding the distanceThreshold will find one</span></span></span>
 <span class="r-in"><span><span class="fu">table_getLocationID</span><span class="op">(</span><span class="va">locationTbl</span>, <span class="va">lon</span>, <span class="va">lat</span>, distanceThreshold <span class="op">=</span> <span class="fl">5000</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "8e54314f43eb8746"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "c26mvd3xm6"</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

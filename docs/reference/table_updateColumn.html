@@ -23,7 +23,7 @@ column will be created."><!-- mathjax --><script src="https://cdnjs.cloudflare.c
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.0</span>
       </span>
     </div>
 
@@ -34,6 +34,16 @@ column will be created."><!-- mathjax --><script src="https://cdnjs.cloudflare.c
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/Developer_Style_Guide.html">Developer Style Guide</a>
+    </li>
+  </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -134,40 +144,36 @@ will be updated/created.</p></dd>
 <span class="r-in"><span>    distanceThreshold <span class="op">=</span> <span class="fl">500</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-in"><span>  </span></span>
-<span class="r-in"><span><span class="va">locationData</span> <span class="op">&lt;-</span> <span class="va">wa_sub</span><span class="op">$</span><span class="va">siteName</span></span></span>
+<span class="r-in"><span><span class="va">locationData</span> <span class="op">&lt;-</span> <span class="va">wa_sub</span><span class="op">$</span><span class="va">AQSID</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">locationTbl</span> <span class="op">&lt;-</span> </span></span>
-<span class="r-in"><span>  <span class="fu">table_updateColumn</span><span class="op">(</span><span class="va">locationTbl</span>, <span class="st">"siteName"</span>, <span class="va">locationID</span>, <span class="va">locationData</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu">table_updateColumn</span><span class="op">(</span><span class="va">locationTbl</span>, <span class="st">"AQSID"</span>, <span class="va">locationID</span>, <span class="va">locationData</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Look at the data we attempted to merge</span></span></span>
-<span class="r-in"><span><span class="va">wa</span><span class="op">$</span><span class="va">siteName</span><span class="op">[</span><span class="va">wa_indices</span><span class="op">]</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "Twisp-Ewell St"             "Cheeka Peak"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "Tacoma-Alexander Ave"       "Auburn 29th St"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "Anacortes-202 Ave (SO-AQS)" "Quincy 3rd"                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "Tulalip-Totem Beach Rd"     "Shelton-W Franklin"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "Ellensburg-Ruby St"         "Wenatchee-Fifth St"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "Walla Walla-12th St"        "Chehalis-Market Blvd"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "Tacoma-S 36th St"          </span>
+<span class="r-in"><span><span class="va">wa</span><span class="op">$</span><span class="va">AQSID</span><span class="op">[</span><span class="va">wa_indices</span><span class="op">]</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "530710006"    "840MM0510008" "840530250003" "530450007"    "530470010"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] "530330030"    "840MM0370180" "530150015"    "530330023"    "530070011"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "530570015"    "840MM0399990" "530750005"   </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># And two columns from the updated locationTbl</span></span></span>
 <span class="r-in"><span><span class="va">locationTbl_indices</span> <span class="op">&lt;-</span> <span class="fu"><a href="table_getRecordIndex.html">table_getRecordIndex</a></span><span class="op">(</span><span class="va">locationTbl</span>, <span class="va">locationID</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">locationTbl</span><span class="op">[</span><span class="va">locationTbl_indices</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"city"</span>, <span class="st">"siteName"</span><span class="op">)</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="va">locationTbl</span><span class="op">[</span><span class="va">locationTbl_indices</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"city"</span>, <span class="st">"AQSID"</span><span class="op">)</span><span class="op">]</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 13 × 2</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    city            siteName                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Okanogan County Twisp-Ewell St            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> <span style="color: #BB0000;">NA</span>              <span style="color: #BB0000;">NA</span>                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Tacoma          Tacoma-Alexander Ave      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Auburn          Auburn 29th St            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Anacortes       Anacortes-202 Ave (SO-AQS)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Quincy          Quincy 3rd                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Tulalip Bay     Tulalip-Totem Beach Rd    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Shelton         Shelton-W Franklin        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Ellensburg      Ellensburg-Ruby St        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Wenatchee       Wenatchee-Fifth St        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> Walla Walla     Walla Walla-12th St       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> Chehalis        Chehalis-Market Blvd      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> Tacoma          Tacoma-S 36th St          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    city         AQSID       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Burbank      530710006   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Newport      840MM0510008</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Soap Lake    840530250003</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Shelton      530450007   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Winthrop     530470010   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Seattle      530330030   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Cle Elum     840MM0370180</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Longview     530150015   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Enumclaw     530330023   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Wenatchee    530070011   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> Mount Vernon 530570015   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> White Salmon 840MM0399990</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> LaCrosse     530750005   </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

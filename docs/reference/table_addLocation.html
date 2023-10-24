@@ -20,7 +20,7 @@ each location that is not already found in locationTbl."><!-- mathjax --><script
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.0</span>
       </span>
     </div>
 
@@ -31,6 +31,16 @@ each location that is not already found in locationTbl."><!-- mathjax --><script
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/Developer_Style_Guide.html">Developer Style Guide</a>
+    </li>
+  </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -138,7 +148,7 @@ the street address. Default: NULL skips this step. Accepted values: "photon".</p
 <span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="co"># Set up standard directories and spatial data</span></span></span>
 <span class="r-in"><span>  <span class="va">spatialDataDir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># typically "~/Data/Spatial"</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="mazama_initialize.html">mazama_initialize</a></span><span class="op">(</span><span class="va">spatialDataDir</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="initializeMazamaSpatialUtils.html">initializeMazamaSpatialUtils</a></span><span class="op">(</span><span class="va">spatialDataDir</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="va">locationTbl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/get.html" class="external-link">get</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"wa_monitors_500"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
@@ -154,21 +164,21 @@ the street address. Default: NULL skips this step. Accepted values: "photon".</p
 <span class="r-in"><span>  </span></span>
 <span class="r-in"><span><span class="op">}</span>, silent <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Working on -119.2909040, 47.6119420 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Rows: 69</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rows: 79</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Columns: 13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ locationID   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "ddbb565d51fe74ba", "f4ac27b3de8b9c19", "efce6225e8b2b1b8…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ locationName <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "us.wa_ddbb56", "us.wa_f4ac27", "us.wa_efce62", "us.wa_3b…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ longitude    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> -122.3383, -120.6647, -120.0231, -120.1051, -117.5890, -1…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ latitude     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 47.55998, 47.59880, 47.83861, 48.35412, 47.64535, 47.8852…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ elevation    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 3.19, 361.69, 338.56, 473.18, 729.72, 730.84, 13.03, 175.…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ locationID   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "c2913q48uk", "c28f8z9xq8", "c23hfxrdne", "c2k9v9bjcy", "…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ locationName <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "us.wa_c2913q", "us.wa_c28f8z", "us.wa_c23hfx", "us.wa_c2…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ longitude    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> -122.2852, -122.6600, -122.2233, -117.1801, -119.0084, -1…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ latitude     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 48.06534, 48.29440, 47.28140, 46.72450, 46.20010, 48.5200…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ elevation    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 12.9, 18.8, 34.8, 768.7, 114.7, 6.1, 64.5, 240.5, 247.5, …</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ countryCode  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "US", "US", "US", "US", "US", "US", "US", "US", "US", "US…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ stateCode    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "WA", "WA", "WA", "WA", "WA", "WA", "WA", "WA", "WA", "WA…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ countyName   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "King", "Chelan", "Chelan", "Okanogan", "Spokane", "Steve…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ countyName   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Snohomish", "Island", "King", "Whitman", "Walla Walla", …</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ timezone     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "America/Los_Angeles", "America/Los_Angeles", "America/Lo…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ houseNumber  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ street       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ city         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Seattle", "Leavenworth", "Chelan", "Okanogan County", "A…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ zip          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "98106", "98826", "98816", "98856", "99001", "99040", "98…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ city         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Tulalip Bay", "Oak Harbor", "Auburn", "Pullman", "Burban…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ postalCode   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "98207", "98277", "98002", "99163", "99323", "98221", "98…</span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>

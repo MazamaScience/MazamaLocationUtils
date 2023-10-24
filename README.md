@@ -32,7 +32,7 @@ including at least:
 
 `timeseriesID, locationID, deviceID, longitude, latitude, ...`
 
-* An extended time series for a mobile sensor would group by `deviceID`.
+* An extended time series for an occasionally repositioned sensor would group by `deviceID`.
 * Multiple sensors placed at a single location could be be grouped by `locationID`.
 * Maps would be created using `longitude, latitude`.
 * Time series measurements would be accessed from a secondary `data` table with 
@@ -46,10 +46,10 @@ Complications we have seen include:
 
 * GPS-reported longitude and latitude can have _jitter_ in the fourth or fifth 
 decimal place making it challenging to use them to create a unique `locationID`.
-* Sensors are sometimes _repositioned_ in what the scientist considers the "same 
+* Sensors are sometimes _re-positioned_ in what the scientist considers the "same 
 location".
 * Data from a single sensor goes through different processing pipelines using
-different identifiers and is later brought together as two separate timeseries.
+different identifiers and is later brought together as two separate time series.
 * The spatial scale of what constitutes a "single location" depends on the 
 instrumentation and scientific question being asked.
 * Deriving location-based metadata from spatial datasets is computationally 
@@ -74,13 +74,13 @@ added to the growing collection.
 For collections of stationary environmental monitors that only number in the 
 thousands, this entire _collection_ can be stored as either a 
 `.rda` or `.csv` file and will be under a megabyte in size making it fast to 
-load. This small size also makes it possible to save multiple _known locations_ 
-files, each created with different locations and different distance thresholds
+load. This small size also makes it possible to save multiple _collections_ 
+files, each created with different locations and/or different distance thresholds
 to address the needs of different scientific studies.
 
 ## Immediate Advantages
 
-Working in this manner will solve the problems initially mentioned but also 
+Working in this manner solves the problems initially mentioned but also 
 provides further useful functionality:
 
 * Administrators can correct entries in an individual _collection_.  (_e.g._ 

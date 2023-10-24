@@ -21,7 +21,7 @@ the proper type assigned."><!-- mathjax --><script src="https://cdnjs.cloudflare
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.0</span>
       </span>
     </div>
 
@@ -32,6 +32,16 @@ the proper type assigned."><!-- mathjax --><script src="https://cdnjs.cloudflare
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/Developer_Style_Guide.html">Developer Style Guide</a>
+    </li>
+  </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -94,7 +104,7 @@ the proper type assigned.</p>
 <span class="r-in"><span><span class="co"># Load an example table and check the dimensions</span></span></span>
 <span class="r-in"><span><span class="va">locationTbl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/get.html" class="external-link">get</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"wa_monitors_500"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">locationTbl</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 68 13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 78 13</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Save it as "table_load_example"</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="table_save.html">table_save</a></span><span class="op">(</span><span class="va">locationTbl</span>, <span class="st">"table_load_example"</span><span class="op">)</span></span></span>
@@ -102,7 +112,7 @@ the proper type assigned.</p>
 <span class="r-in"><span><span class="co"># Load it and check the dimensions</span></span></span>
 <span class="r-in"><span><span class="va">my_table</span> <span class="op">&lt;-</span> <span class="fu">table_load</span><span class="op">(</span><span class="st">"table_load_example"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">my_table</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 68 13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 78 13</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Check the locationDataDir</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span><span class="fu"><a href="getLocationDataDir.html">getLocationDataDir</a></span><span class="op">(</span><span class="op">)</span>, pattern <span class="op">=</span> <span class="st">"table_load_example"</span><span class="op">)</span></span></span>

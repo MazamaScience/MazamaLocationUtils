@@ -5,24 +5,24 @@
 #' This dataset was generated on 2023-10-24 by running:
 #' 
 #' \preformatted{
-# library(AirMonitor)
-# library(MazamaLocationUtils)
-# 
-# initializeMazamaSpatialUtils()
-# setLocationDataDir("./data")
-# 
-# monitor <- monitor_loadLatest() \%>\% monitor_filter(stateCode == "ID")
-# lons <- monitor$meta$longitude
-# lats <- monitor$meta$latitude
-# 
-# table_initialize() \%>\%
-#   table_addLocation(
-#     lons, lats,
-#     distanceThreshold = 500,
-#     elevationService = "usgs",
-#     addressService = "photon"
-#   ) \%>\%
-#   table_save("id_monitors_500")
+#' library(AirMonitor)
+#' library(MazamaLocationUtils)
+#' 
+#' initializeMazamaSpatialUtils()
+#' setLocationDataDir("./data")
+#' 
+#' monitor <- monitor_loadLatest() \%>\% monitor_filter(stateCode == "ID")
+#' lons <- monitor$meta$longitude
+#' lats <- monitor$meta$latitude
+#' 
+#' table_initialize() \%>\%
+#'   table_addLocation(
+#'     lons, lats,
+#'     distanceThreshold = 500,
+#'     elevationService = "usgs",
+#'     addressService = "photon"
+#'   ) \%>\%
+#'   table_save("id_monitors_500")
 #' }
 #' 
 #' @seealso \link{or_monitors_500}
@@ -69,24 +69,24 @@
 #' This dataset was generated on 2023-10-24 by running:
 #' 
 #' \preformatted{
-# library(AirMonitor)
-# library(MazamaLocationUtils)
-# 
-# initializeMazamaSpatialUtils()
-# setLocationDataDir("./data")
-# 
-# monitor <- monitor_loadLatest() \%>\% monitor_filter(stateCode == "WA")
-# lons <- monitor$meta$longitude
-# lats <- monitor$meta$latitude
-# 
-# table_initialize() \%>\%
-#   table_addLocation(
-#     lons, lats,
-#     distanceThreshold = 500,
-#     elevationService = "usgs",
-#     addressService = "photon"
-#   ) \%>\%
-#   table_save("wa_monitors_500")
+#' library(AirMonitor)
+#' library(MazamaLocationUtils)
+#' 
+#' initializeMazamaSpatialUtils()
+#' setLocationDataDir("./data")
+#' 
+#' monitor <- monitor_loadLatest() \%>\% monitor_filter(stateCode == "WA")
+#' lons <- monitor$meta$longitude
+#' lats <- monitor$meta$latitude
+#' 
+#' table_initialize() \%>\%
+#'   table_addLocation(
+#'     lons, lats,
+#'     distanceThreshold = 500,
+#'     elevationService = "usgs",
+#'     addressService = "photon"
+#'   ) \%>\%
+#'   table_save("wa_monitors_500")
 #' }
 #' 
 #' @seealso \link{id_monitors_500}
@@ -101,18 +101,18 @@
 #' This dataset was generated on 2023-10-24 by running:
 #' 
 #' \preformatted{
-# library(AirMonitor)
-# 
-# wa_airfire_meta <-
-#   airnow_loadLatest() \%>\%
-#   monitor_filter(stateCode == "WA") \%>\%
-#   monitor_getMeta() \%>\%
-#   # On 2023-10-24, this metdata still uses zip instead of postalCode
-#   dplyr::rename(postalCode = zip) \%>\%
-#   # Remove internal fields
-#   dplyr::select(-dplyr::starts_with("airnow_"))
-# 
-# save(wa_airfire_meta, file = "data/wa_airfire_meta.rda")
+#' library(AirMonitor)
+#' 
+#' wa_airfire_meta <-
+#'   airnow_loadLatest() \%>\%
+#'   monitor_filter(stateCode == "WA") \%>\%
+#'   monitor_getMeta() \%>\%
+#'   # On 2023-10-24, this metdata still uses zip instead of postalCode
+#'   dplyr::rename(postalCode = zip) \%>\%
+#'   # Remove internal fields
+#'   dplyr::select(-dplyr::starts_with("airnow_"))
+#' 
+#' save(wa_airfire_meta, file = "data/wa_airfire_meta.rda")
 #' }
 "wa_airfire_meta"
 

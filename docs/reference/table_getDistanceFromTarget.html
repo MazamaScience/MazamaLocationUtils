@@ -20,7 +20,7 @@ locationTbl."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/lib
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.0</span>
       </span>
     </div>
 
@@ -31,6 +31,16 @@ locationTbl."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/lib
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/Developer_Style_Guide.html">Developer Style Guide</a>
+    </li>
+  </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -85,7 +95,7 @@ containing the distance and direction from the target location specified by
 
 
 <dt>measure</dt>
-<dd><p>One of "haversine" "vincenty", "geodesic", or "cheap"
+<dd><p>One of "geodesic", "haversine", "vincenty" or "cheap"
 specifying desired method of geodesic distance calculation.</p></dd>
 
 </dl></div>
@@ -112,11 +122,11 @@ specifying desired method of geodesic distance calculation.</p></dd>
 <span class="r-in"><span>    latitude <span class="op">=</span> <span class="fl">47.6725</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span> </span></span>
 <span class="r-in"><span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Rows: 68</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rows: 78</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Columns: 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ locationID          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "ddbb565d51fe74ba", "f4ac27b3de8b9c19", "efce6225e…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ distanceFromTarget  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 374043, 248109, 200160, 218032, 17119, 52398, 3686…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ directionFromTarget <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "W", "W", "W", "W", "W", "W", "W", "W", "W", "NE",…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ locationID          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "c2913q48uk", "c28f8z9xq8", "c23hfxrdne", "c2k9v9b…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ distanceFromTarget  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 370640, 401207, 368734, 106318, 206044, 402052, 41…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ directionFromTarget <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "W", "W", "W", "S", "SW", "W", "W", "W", "W", "NE"…</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

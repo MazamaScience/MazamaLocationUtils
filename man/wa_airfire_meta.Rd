@@ -16,6 +16,18 @@ state air quality monitor metadata used by the USFS AirFire group.
 This dataset was generated on 2023-10-24 by running:
 
 \preformatted{
+library(AirMonitor)
+
+wa_airfire_meta <-
+  airnow_loadLatest() \%>\%
+  monitor_filter(stateCode == "WA") \%>\%
+  monitor_getMeta() \%>\%
+  # On 2023-10-24, this metdata still uses zip instead of postalCode
+  dplyr::rename(postalCode = zip) \%>\%
+  # Remove internal fields
+  dplyr::select(-dplyr::starts_with("airnow_"))
+
+save(wa_airfire_meta, file = "data/wa_airfire_meta.rda")
 }
 }
 \keyword{datasets}

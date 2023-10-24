@@ -16,6 +16,24 @@ locations associated with Washington state air quality monitors.
 This dataset was generated on 2023-10-24 by running:
 
 \preformatted{
+library(AirMonitor)
+library(MazamaLocationUtils)
+
+initializeMazamaSpatialUtils()
+setLocationDataDir("./data")
+
+monitor <- monitor_loadLatest() \%>\% monitor_filter(stateCode == "WA")
+lons <- monitor$meta$longitude
+lats <- monitor$meta$latitude
+
+table_initialize() \%>\%
+  table_addLocation(
+    lons, lats,
+    distanceThreshold = 500,
+    elevationService = "usgs",
+    addressService = "photon"
+  ) \%>\%
+  table_save("wa_monitors_500")
 }
 }
 \seealso{

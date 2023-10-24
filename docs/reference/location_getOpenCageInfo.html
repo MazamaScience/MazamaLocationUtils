@@ -20,7 +20,7 @@ information could and should be used to override information we get elsewhere.">
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.0</span>
       </span>
     </div>
 
@@ -31,6 +31,16 @@ information could and should be used to override information we get elsewhere.">
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/Developer_Style_Guide.html">Developer Style Guide</a>
+    </li>
+  </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -90,7 +100,7 @@ information could and should be used to override information we get elsewhere.</
     <p>The OpenCage service requires an API key which can be obtained from
 their web site. This API key must be set as an environment variable with:</p>
 <div class="sourceCode"><pre><code><span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span><span class="st">"OPENCAGE_KEY"</span> <span class="op">=</span> <span class="st">"&lt;your api key&gt;"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span><span class="st">"OPENCAGE_KEY"</span> <span class="op">=</span> <span class="st">"YOUR_PERSONAL_API_KEY"</span><span class="op">)</span></span></code></pre></div>
 
 <p>The OpenCage "free trial" level allows for 1 request/sec and a maximum of
 2500 requests per day.</p>
@@ -108,11 +118,11 @@ their web site. This API key must be set as an environment variable with:</p>
 <span class="r-in"><span><span class="co"># Fail gracefully if any resources are not available</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span><span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span><span class="st">"OPENCAGE_KEY"</span> <span class="op">=</span> <span class="st">"&lt;YOUR_KEY&gt;"</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="co"># Wenatchee</span></span></span>
 <span class="r-in"><span>  <span class="va">lon</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="fl">120.325278</span></span></span>
 <span class="r-in"><span>  <span class="va">lat</span> <span class="op">&lt;-</span> <span class="fl">47.423333</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span><span class="st">"OPENCAGE_KEY"</span> <span class="op">=</span> <span class="st">"YOUR_PERSONAL_API_KEY"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="va">openCageTbl</span> <span class="op">&lt;-</span> <span class="fu">location_getOpenCageInfo</span><span class="op">(</span><span class="va">lon</span>, <span class="va">lat</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">openCageTbl</span><span class="op">)</span></span></span>

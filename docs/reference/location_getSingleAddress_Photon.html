@@ -8,7 +8,7 @@ street
 city
 stateCode
 stateName
-zip
+postalCode
 countryCode
 countryName
 
@@ -34,7 +34,7 @@ the conversion algorithm."><!-- mathjax --><script src="https://cdnjs.cloudflare
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.0</span>
       </span>
     </div>
 
@@ -45,6 +45,16 @@ the conversion algorithm."><!-- mathjax --><script src="https://cdnjs.cloudflare
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/Developer_Style_Guide.html">Developer Style Guide</a>
+    </li>
+  </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -77,7 +87,7 @@ is returned:</p>
 <li><p><code>city</code></p></li>
 <li><p><code>stateCode</code></p></li>
 <li><p><code>stateName</code></p></li>
-<li><p><code>zip</code></p></li>
+<li><p><code>postalCode</code></p></li>
 <li><p><code>countryCode</code></p></li>
 <li><p><code>countryName</code></p></li>
 </ul><p>The function makes an effort to convert both <code>state</code> and <code>country</code>
@@ -134,7 +144,7 @@ the conversion algorithm.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="co"># Set up standard directories and spatial data</span></span></span>
 <span class="r-in"><span>  <span class="va">spatialDataDir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># typically "~/Data/Spatial"</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="mazama_initialize.html">mazama_initialize</a></span><span class="op">(</span><span class="va">spatialDataDir</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="initializeMazamaSpatialUtils.html">initializeMazamaSpatialUtils</a></span><span class="op">(</span><span class="va">spatialDataDir</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="co"># Wenatchee</span></span></span>
 <span class="r-in"><span>  <span class="va">lon</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="fl">120.325278</span></span></span>
@@ -150,7 +160,7 @@ the conversion algorithm.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ city       : chr "Wenatchee"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ stateName  : chr "Washington"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ stateCode  : chr "WA"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ zip        : chr "98801"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ postalCode : chr "98801"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ countryName: chr "United States"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ countryCode: chr "US"</span>
 <span class="r-in"><span><span class="co"># }</span></span></span>

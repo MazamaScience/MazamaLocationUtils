@@ -24,7 +24,7 @@ order of the incoming target locations."><!-- mathjax --><script src="https://cd
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.0</span>
       </span>
     </div>
 
@@ -35,6 +35,16 @@ order of the incoming target locations."><!-- mathjax --><script src="https://cd
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/Developer_Style_Guide.html">Developer Style Guide</a>
+    </li>
+  </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -98,7 +108,7 @@ order of the incoming target locations.</p>
 
 
 <dt>measure</dt>
-<dd><p>One of "haversine" "vincenty", "geodesic", or "cheap"
+<dd><p>One of "geodesic", "haversine", "vincenty" or "cheap"
 specifying desired method of geodesic distance calculation.</p></dd>
 
 </dl></div>
@@ -114,7 +124,7 @@ specifying desired method of geodesic distance calculation.</p></dd>
 the spatial scale being considered. Distances calculated with
 <code>measure = "cheap"</code> will vary by a few meters compared with those
 calculated using <code>measure = "geodesic"</code>.</p>
-<p>See <code>geodist::<a href="https://rdrr.io/pkg/geodist/man/geodist.html" class="external-link">geodist</a></code> for details.</p>
+<p>See <code><a href="https://rdrr.io/pkg/geodist/man/geodist.html" class="external-link">geodist</a></code> for details.</p>
     </div>
     <div id="use-case">
     <h2>Use Case</h2>

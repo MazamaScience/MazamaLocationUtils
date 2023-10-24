@@ -16,14 +16,14 @@
 #' # Add a new column
 #' locationTbl <-
 #'   locationTbl %>%
-#'   table_addColumn("siteName")
+#'   table_addColumn("AQSID")
 #'   
 #' names(locationTbl)
 #'
 #' # Now remove it
 #' locationTbl <-
 #'   locationTbl %>%
-#'   table_removeColumn("siteName")
+#'   table_removeColumn("AQSID")
 #' 
 #' names(locationTbl)
 #' 

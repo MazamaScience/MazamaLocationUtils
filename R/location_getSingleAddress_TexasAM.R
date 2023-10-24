@@ -7,7 +7,7 @@
 #' @param latitude Single latitude in decimal degrees N.
 #' @param verbose Logical controlling the generation of progress messages.
 #' @param apiKey Texas A&M Geocoding requires an API key. The first 2500 requests
-#' are free. Default: NULL
+#' are free.
 #' 
 #' @return Numeric elevation value.
 #' 

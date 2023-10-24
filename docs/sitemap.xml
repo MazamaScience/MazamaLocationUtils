@@ -7,6 +7,9 @@
     <loc>/LICENSE-text.html</loc>
   </url>
   <url>
+    <loc>/articles/Developer_Style_Guide.html</loc>
+  </url>
+  <url>
     <loc>/articles/MazamaLocationUtils.html</loc>
   </url>
   <url>
@@ -44,6 +47,9 @@
   </url>
   <url>
     <loc>/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>/reference/initializeMazamaSpatialUtils.html</loc>
   </url>
   <url>
     <loc>/reference/location_createID.html</loc>

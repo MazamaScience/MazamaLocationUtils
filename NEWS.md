@@ -1,9 +1,11 @@
 # MazamaLocationUtils 0.4.0
 
 * Renamed `zip` to `postalCode` in the core metadata.
-* `location_createID() now defaults to the `"geohash"` algorithm.
+* `location_createID()` now defaults to the `"geohash"` algorithm.
 * Renamed `mazama_initialize()` to `initializeMazamaSpatialUtils()`.
 * Updated example data to October, 2023.
+* Added "Developer Style Guide" vignette.
+* Improved documentation.
 
 # MazamaLocationUtils 0.3.11
 
