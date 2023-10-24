@@ -45,7 +45,7 @@ try({
   # Cannot remove "core" metadata
   locationTbl <-
     locationTbl \%>\%
-    table_removeColumn("zip")
+    table_removeColumn("longitude")
 }, silent = FALSE)
 
 }

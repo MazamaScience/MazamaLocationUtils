@@ -102,7 +102,7 @@ coreMetadataNames <- c(
   "houseNumber",          # from MazamaLocationUtils::getSingleAddress_Photon()
   "street",               # from MazamaLocationUtils::getSingleAddress_Photon()
   "city",                 # from MazamaLocationUtils::getSingleAddress_Photon()
-  "zip"                   # from MazamaLocationUtils::getSingleAddress_Photon()
+  "postalCode"            # from MazamaLocationUtils::getSingleAddress_Photon()
 )
 
 # ----- Internal Package State -------------------------------------------------

@@ -7,7 +7,7 @@
 location_createID(
   longitude = NULL,
   latitude = NULL,
-  algorithm = c("digest", "geohash")
+  algorithm = c("geohash", "digest")
 )
 }
 \arguments{
@@ -15,7 +15,7 @@ location_createID(
 
 \item{latitude}{Vector of latitudes in decimal degrees N.}
 
-\item{algorithm}{Algorithm to use -- either \code{"digest"} or \code{"geohash"}.}
+\item{algorithm}{Algorithm to use -- either \code{"geohash"} or \code{"digest"}.}
 }
 \value{
 Vector of character locationIDs.

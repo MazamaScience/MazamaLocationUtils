@@ -47,7 +47,7 @@ of core metadata:
 \item{houseNumber}
 \item{street}
 \item{city}
-\item{zip}
+\item{postalCode}
 }
 }
 \examples{
@@ -59,7 +59,7 @@ try({
 
   # Set up standard directories and spatial data
   spatialDataDir <- tempdir() # typically "~/Data/Spatial"
-  mazama_initialize(spatialDataDir)
+  initializeMazamaSpatialUtils(spatialDataDir)
 
   # Wenatchee
   lon <- -120.325278

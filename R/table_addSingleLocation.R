@@ -29,7 +29,7 @@
 #' 
 #'   # Set up standard directories and spatial data
 #'   spatialDataDir <- tempdir() # typically "~/Data/Spatial"
-#'   mazama_initialize(spatialDataDir)
+#'   initializeMazamaSpatialUtils(spatialDataDir)
 #' 
 #'   locationTbl <- get(data("wa_monitors_500"))
 #' 

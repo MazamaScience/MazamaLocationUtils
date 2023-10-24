@@ -18,7 +18,7 @@
 #' \item{houseNumber}
 #' \item{street}
 #' \item{city}
-#' \item{zip}
+#' \item{postalCode}
 #' }
 #' 
 #' The \code{longitude} and \code{latitude} columns are required but all others
@@ -243,7 +243,7 @@ table_initializeExisting <- function(
   
   # Slow web service so skip for now
 
-  # * zip -----
+  # * postalCode -----
   
   # Slow web service so skip for now
 

@@ -5,7 +5,7 @@ test_that("existing locationID is ignored", {
   skip_on_cran()
   skip_on_travis()
 
-  mazama_initialize()
+  initializeMazamaSpatialUtils()
   data("wa_airfire_meta")
 
   meta <-

@@ -30,7 +30,7 @@ the following core metadata columns.
 \item{houseNumber}
 \item{street}
 \item{city}
-\item{zip}
+\item{postalCode}
 }
 
 The \code{longitude} and \code{latitude} columns are required to exist in the

@@ -33,7 +33,7 @@
 #' \item{houseNumber}
 #' \item{street}
 #' \item{city}
-#' \item{zip}
+#' \item{postalCode}
 #' }
 #' 
 #' @examples
@@ -45,7 +45,7 @@
 #' 
 #'   # Set up standard directories and spatial data
 #'   spatialDataDir <- tempdir() # typically "~/Data/Spatial"
-#'   mazama_initialize(spatialDataDir)
+#'   initializeMazamaSpatialUtils(spatialDataDir)
 #' 
 #'   # Wenatchee
 #'   lon <- -120.325278
@@ -103,7 +103,8 @@ location_initialize <- function(
   
   locationID <- location_createID(
     longitude = longitude,
-    latitude = latitude
+    latitude = latitude,
+    algorithm = "geohash"
   )
   
   if ( is.null(elevationService) ) {
@@ -181,7 +182,7 @@ location_initialize <- function(
       "houseNumber" = as.character(NA),
       "street" = as.character(NA),
       "city" = as.character(NA),
-      "zip" = as.character(NA)
+      "postalCode" = as.character(NA)
     )
     
   } else {
@@ -192,7 +193,7 @@ location_initialize <- function(
         "houseNumber" = as.character(NA),
         "street" = as.character(NA),
         "city" = as.character(NA),
-        "zip" = as.character(NA)
+        "postalCode" = as.character(NA)
       )
       
     } else {
@@ -266,7 +267,7 @@ location_initialize <- function(
     "houseNumber" = as.character(addressList$houseNumber),
     "street" = as.character(addressList$street),
     "city" = as.character(addressList$city),
-    "zip" = as.character(addressList$zip)
+    "postalCode" = as.character(addressList$postalCode)
   )
   
   return(locationTbl)

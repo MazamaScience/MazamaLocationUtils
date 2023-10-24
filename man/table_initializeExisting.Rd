@@ -62,7 +62,7 @@ searches for required columns:
 \item{houseNumber}
 \item{street}
 \item{city}
-\item{zip}
+\item{postalCode}
 }
 
 The \code{longitude} and \code{latitude} columns are required but all others

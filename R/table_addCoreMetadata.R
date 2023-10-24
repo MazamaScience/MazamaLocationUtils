@@ -17,7 +17,7 @@
 #' \item{houseNumber}
 #' \item{street}
 #' \item{city}
-#' \item{zip}
+#' \item{postalCode}
 #' }
 #' 
 #' The \code{longitude} and \code{latitude} columns are required to exist in the
@@ -123,10 +123,10 @@ table_addCoreMetadata <- function(
     locationTbl$city <- as.character(NA)
   }
   
-  # * zip -----
+  # * postalCode -----
   
-  if ( !"zip" %in% incomingTblColumns ) {
-    locationTbl$zip <- as.character(NA)
+  if ( !"postalCode" %in% incomingTblColumns ) {
+    locationTbl$postalCode <- as.character(NA)
   }
   
   # ----- Reorganize locationTbl -----------------------------------------------
@@ -135,7 +135,7 @@ table_addCoreMetadata <- function(
     "locationID", "locationName", 
     "longitude", "latitude", "elevation", 
     "countryCode", "stateCode", "countyName", "timezone", 
-    "houseNumber", "street", "city", "zip"
+    "houseNumber", "street", "city", "postalCode"
   )
   
   extraColumns <- setdiff(incomingTblColumns, requiredColumns)
