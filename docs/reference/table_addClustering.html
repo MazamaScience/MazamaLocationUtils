@@ -28,7 +28,7 @@ cluster::pam(...)$clusinfo[,'av_diss'] to determine the number of clusters."><!-
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.1</span>
       </span>
     </div>
 
@@ -140,26 +140,40 @@ two-stage approach seems to work well in. practice.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
-    <div class="dont-index"><p><a href="clusterByDistance.html">clusterByDistance</a></p>
-<p>#' @examples
-library(MazamaLocationUtils)Fremont, Seattle 47.6504, -122.3509Magnolia, Seattle 47.6403, -122.3997Downtown Seattle 47.6055, -122.3370</p>
-<p>fremont_x &lt;- jitter(rep(-122.3509, 10), .0005)
-fremont_y &lt;- jitter(rep(47.6504, 10), .0005)</p>
-<p>magnolia_x &lt;- jitter(rep(-122.3997, 8), .0005)
-magnolia_y &lt;- jitter(rep(47.6403, 8), .0005)</p>
-<p>downtown_x &lt;- jitter(rep(-122.3370, 3), .0005)
-downtown_y &lt;- jitter(rep(47.6055, 3), .0005)Apply clustering</p>
-<p>tbl &lt;-
-dplyr::tibble(
-longitude = c(fremont_x, magnolia_x, downtown_x),
-latitude = c(fremont_y, magnolia_y, downtown_y)
-) %&gt;%
-table_addClustering(
-clusterDiameter = 1000
-)</p>
-<p>plot(tbl$longitude, tbl$latitude, pch = tbl$clusterID)</p></div>
+    <div class="dont-index"><p><a href="clusterByDistance.html">clusterByDistance</a></p></div>
     </div>
 
+    <div id="ref-examples">
+    <h2>Examples</h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/MazamaScience/MazamaLocationUtils" class="external-link">MazamaLocationUtils</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Fremont, Seattle 47.6504, -122.3509</span></span></span>
+<span class="r-in"><span><span class="co"># Magnolia, Seattle 47.6403, -122.3997</span></span></span>
+<span class="r-in"><span><span class="co"># Downtown Seattle 47.6055, -122.3370</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">fremont_x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/jitter.html" class="external-link">jitter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="op">-</span><span class="fl">122.3509</span>, <span class="fl">10</span><span class="op">)</span>, <span class="fl">.0005</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">fremont_y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/jitter.html" class="external-link">jitter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">47.6504</span>, <span class="fl">10</span><span class="op">)</span>, <span class="fl">.0005</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">magnolia_x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/jitter.html" class="external-link">jitter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="op">-</span><span class="fl">122.3997</span>, <span class="fl">8</span><span class="op">)</span>, <span class="fl">.0005</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">magnolia_y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/jitter.html" class="external-link">jitter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">47.6403</span>, <span class="fl">8</span><span class="op">)</span>, <span class="fl">.0005</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">downtown_x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/jitter.html" class="external-link">jitter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="op">-</span><span class="fl">122.3370</span>, <span class="fl">3</span><span class="op">)</span>, <span class="fl">.0005</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">downtown_y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/jitter.html" class="external-link">jitter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">47.6055</span>, <span class="fl">3</span><span class="op">)</span>, <span class="fl">.0005</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Apply clustering</span></span></span>
+<span class="r-in"><span><span class="va">tbl</span> <span class="op">&lt;-</span></span></span>
+<span class="r-in"><span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    longitude <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">fremont_x</span>, <span class="va">magnolia_x</span>, <span class="va">downtown_x</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    latitude <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">fremont_y</span>, <span class="va">magnolia_y</span>, <span class="va">downtown_y</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">table_addClustering</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    clusterDiameter <span class="op">=</span> <span class="fl">1000</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">tbl</span><span class="op">$</span><span class="va">longitude</span>, <span class="va">tbl</span><span class="op">$</span><span class="va">latitude</span>, pch <span class="op">=</span> <span class="va">tbl</span><span class="op">$</span><span class="va">clusterID</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="table_addClustering-1.png" alt="" width="700" height="433"></span>
+</code></pre></div>
+    </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top"><h2 data-toc-skip>Contents</h2>

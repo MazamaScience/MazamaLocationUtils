@@ -38,7 +38,7 @@
 #' 
 #' @seealso \link{clusterByDistance}
 #' 
-#' #' @examples
+#' @examples
 #' library(MazamaLocationUtils)
 #'
 #' # Fremont, Seattle 47.6504, -122.3509

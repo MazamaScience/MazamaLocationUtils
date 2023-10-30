@@ -52,14 +52,12 @@ clustered locations that are still too close to eachother, another round
 of clustering is performed using the results of the previous attempt. This
 two-stage approach seems to work well in. practice.
 }
-\references{
-\href{https://working-with-data.mazamascience.com/2021/07/15/when-k-means-clustering-fails/}{When k-means clustering fails}
-}
-\seealso{
-\link{clusterByDistance}
+\examples{
+library(MazamaLocationUtils)
 
-#' @examples
-library(MazamaLocationUtils)Fremont, Seattle 47.6504, -122.3509Magnolia, Seattle 47.6403, -122.3997Downtown Seattle 47.6055, -122.3370
+# Fremont, Seattle 47.6504, -122.3509
+# Magnolia, Seattle 47.6403, -122.3997
+# Downtown Seattle 47.6055, -122.3370
 
 fremont_x <- jitter(rep(-122.3509, 10), .0005)
 fremont_y <- jitter(rep(47.6504, 10), .0005)
@@ -68,16 +66,23 @@ magnolia_x <- jitter(rep(-122.3997, 8), .0005)
 magnolia_y <- jitter(rep(47.6403, 8), .0005)
 
 downtown_x <- jitter(rep(-122.3370, 3), .0005)
-downtown_y <- jitter(rep(47.6055, 3), .0005)Apply clustering
+downtown_y <- jitter(rep(47.6055, 3), .0005)
 
+# Apply clustering
 tbl <-
-dplyr::tibble(
-longitude = c(fremont_x, magnolia_x, downtown_x),
-latitude = c(fremont_y, magnolia_y, downtown_y)
-) \%>\%
-table_addClustering(
-clusterDiameter = 1000
-)
+  dplyr::tibble(
+    longitude = c(fremont_x, magnolia_x, downtown_x),
+    latitude = c(fremont_y, magnolia_y, downtown_y)
+  ) \%>\%
+  table_addClustering(
+    clusterDiameter = 1000
+  )
 
 plot(tbl$longitude, tbl$latitude, pch = tbl$clusterID)
+}
+\references{
+\href{https://working-with-data.mazamascience.com/2021/07/15/when-k-means-clustering-fails/}{When k-means clustering fails}
+}
+\seealso{
+\link{clusterByDistance}
 }

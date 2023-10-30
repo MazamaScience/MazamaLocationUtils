@@ -1,3 +1,7 @@
+# MazamaLocationUtils 0.4.1
+
+* Documentation fixes for CRAN submission.
+
 # MazamaLocationUtils 0.4.0
 
 * Added `clusterByDistance()` and `table_addClustering()` functions.
