@@ -2,7 +2,9 @@
 [![Downloads](http://cranlogs.r-pkg.org/badges/MazamaLocationUtils)](https://cran.r-project.org/package=MazamaLocationUtils)
 [![DOI](https://zenodo.org/badge/215816820.svg)](https://zenodo.org/badge/latestdoi/215816820)
 
-A dedicated Slack channel has been created for announcements, support and to help build a community of practice around this open source package. You may request an invitation to join from jonathan.callahan@dri.com.
+A dedicated Slack channel has been created for announcements, support and to 
+help build a community of practice around this open source package. You may 
+request an invitation to join from <jonathan.callahan@dri.com>.
 
 # MazamaLocationUtils
 
@@ -95,5 +97,10 @@ special software and skills, large datasets and many compute cycles to generate.
 
 ----
 
-This project is supported with funding from the US Forest Service.
+Development of this R package has been supported with funding from the 
+following institutions:
 
+* USFS [AirFire Research Team](https://www.airfire.org)
+
+Questions regarding further development of the package should be directed to 
+<jonathan.callahan@dri.edu>.

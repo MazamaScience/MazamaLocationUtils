@@ -8,7 +8,7 @@
 \alias{showAPIKeys}
 \title{API keys for data services.}
 \format{
-List of character strings.
+Character strings.
 }
 \description{
 This package maintains an internal set of API keys which

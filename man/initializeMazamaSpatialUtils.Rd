@@ -35,7 +35,7 @@ try({
   MazamaSpatialUtils::setSpatialDataDir(spatialDataDir)
 
   exists("NaturalEarthAdm1")
-  initializeMazamaSpatialData(spatialDataDir)
+  initializeMazamaSpatialUtils(spatialDataDir)
   exists("NaturalEarthAdm1")
   class(NaturalEarthAdm1)
   

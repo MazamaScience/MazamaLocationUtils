@@ -10,6 +10,7 @@ location_initialize(
   stateDataset = "NaturalEarthAdm1",
   elevationService = NULL,
   addressService = NULL,
+  precision = 10,
   verbose = TRUE
 )
 }
@@ -25,6 +26,8 @@ the elevation. Default: NULL skips this step. Accepted values: "usgs".}
 
 \item{addressService}{Name of the address service to use for determining
 the street address. Default: NULL skips this step. Accepted values: "photon".}
+
+\item{precision}{\code{precision} argument passed on to \link{location_createID}.}
 
 \item{verbose}{Logical controlling the generation of progress messages.}
 }

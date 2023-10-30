@@ -7,7 +7,8 @@
 location_createID(
   longitude = NULL,
   latitude = NULL,
-  algorithm = c("geohash", "digest")
+  algorithm = c("geohash", "digest"),
+  precision = 10
 )
 }
 \arguments{
@@ -16,6 +17,8 @@ location_createID(
 \item{latitude}{Vector of latitudes in decimal degrees N.}
 
 \item{algorithm}{Algorithm to use -- either \code{"geohash"} or \code{"digest"}.}
+
+\item{precision}{\code{precision} argument used when encoding with \code{"geohash"}.}
 }
 \value{
 Vector of character locationIDs.
@@ -24,13 +27,19 @@ Vector of character locationIDs.
 A unique locationID is created for each incoming
 \code{longitude} and \code{latitude}.
 
-See \code{MazamaCoreUtils::\link[MazamaCoreUtils:createLocationID]{createLocationID}} for details.
-}
-\note{
-This function calls \code{geohashTools::\link[geohashTools:gh_encode]{gh_encode}} with
-\code{precision = 10} which results in a maximum error of 0.6 meters which
+See \code{geohashTools::\link[geohashTools:gh_encode]{gh_encode}} for details.
+
+At \code{precision = 10}, this results in a maximum error of 0.6 meters which
 is more than precise enough for environmental monitoring studies making use
 of this package.
+
+An excellent way to become familiar with geohash is through the
+\href{https://geohash.softeng.co}{GeoHash Explorer}.
+}
+\note{
+The \code{"digest"} algorithm is deprecated but provided for backwards
+compatibility with databases that were built using locationIDs generated
+with this algorithm.
 }
 \examples{
 library(MazamaLocationUtils)
@@ -41,8 +50,8 @@ lat <- 47.423333
 locationID <- location_createID(lon, lat)
 print(locationID)
 
-geohashID <- location_createID(lon, lat, algorithm = "geohash")
-print(geohashID)
+location_createID(lon, lat, algorithm = "geohash")
+location_createID(lon, lat, algorithm = "geohash", precision = 7)
 
 }
 \references{

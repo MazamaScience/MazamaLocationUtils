@@ -34,6 +34,9 @@
     <loc>/reference/apiKeys.html</loc>
   </url>
   <url>
+    <loc>/reference/clusterByDistance.html</loc>
+  </url>
+  <url>
     <loc>/reference/coreMetadataNames.html</loc>
   </url>
   <url>
@@ -89,6 +92,9 @@
   </url>
   <url>
     <loc>/reference/showAPIKeys.html</loc>
+  </url>
+  <url>
+    <loc>/reference/table_addClustering.html</loc>
   </url>
   <url>
     <loc>/reference/table_addColumn.html</loc>

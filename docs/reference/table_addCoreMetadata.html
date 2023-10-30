@@ -115,7 +115,7 @@ must then be filled in to create a usable "known locations" table.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">table_addCoreMetadata</span><span class="op">(</span>locationTbl <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">table_addCoreMetadata</span><span class="op">(</span>locationTbl <span class="op">=</span> <span class="cn">NULL</span>, precision <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -123,6 +123,10 @@ must then be filled in to create a usable "known locations" table.</p>
     <dl><dt>locationTbl</dt>
 <dd><p>Tibble of known locations. This input tibble need not be a
 standardized "known location" with all required columns. They will be added.</p></dd>
+
+
+<dt>precision</dt>
+<dd><p><code>precision</code> argument passed on to <a href="location_createID.html">location_createID</a>.</p></dd>
 
 </dl></div>
     <div id="value">

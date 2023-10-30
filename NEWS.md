@@ -1,5 +1,6 @@
 # MazamaLocationUtils 0.4.0
 
+* Added `clusterByDistance()` and `table_addClustering()` functions.
 * Renamed `zip` to `postalCode` in the core metadata.
 * `location_createID()` now defaults to the `"geohash"` algorithm.
 * Renamed `mazama_initialize()` to `initializeMazamaSpatialUtils()`.

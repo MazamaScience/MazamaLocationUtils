@@ -18,6 +18,7 @@ BugReports: https://github.com/MazamaScience/MazamaLocationUtils/issues
 Depends:
     R (>= 4.0)
 Imports:
+    cluster,
     dplyr,
     geodist (>= 0.0.8),
     httr,
@@ -26,7 +27,7 @@ Imports:
     lubridate,
     magrittr,
     methods,
-    MazamaCoreUtils (>= 0.4.16),
+    MazamaCoreUtils (>= 0.5.0),
     MazamaSpatialUtils (>= 0.8.6),
     readr,
     rlang,

@@ -101,6 +101,7 @@ of core metadata:</p><ul><li><p>locationID</p></li>
 <span>  stateDataset <span class="op">=</span> <span class="st">"NaturalEarthAdm1"</span>,</span>
 <span>  elevationService <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  addressService <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  precision <span class="op">=</span> <span class="fl">10</span>,</span>
 <span>  verbose <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -127,6 +128,10 @@ the elevation. Default: NULL skips this step. Accepted values: "usgs".</p></dd>
 <dt>addressService</dt>
 <dd><p>Name of the address service to use for determining
 the street address. Default: NULL skips this step. Accepted values: "photon".</p></dd>
+
+
+<dt>precision</dt>
+<dd><p><code>precision</code> argument passed on to <a href="location_createID.html">location_createID</a>.</p></dd>
 
 
 <dt>verbose</dt>

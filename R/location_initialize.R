@@ -14,6 +14,7 @@
 #' the elevation. Default: NULL skips this step. Accepted values: "usgs".
 #' @param addressService Name of the address service to use for determining
 #' the street address. Default: NULL skips this step. Accepted values: "photon".
+#' @param precision \code{precision} argument passed on to \link{location_createID}.
 #' @param verbose Logical controlling the generation of progress messages.
 #' 
 #' @return Tibble with a single new known location.
@@ -63,6 +64,7 @@ location_initialize <- function(
   stateDataset = "NaturalEarthAdm1",
   elevationService = NULL,
   addressService = NULL,
+  precision = 10,
   verbose = TRUE
 ) {
   
@@ -73,6 +75,7 @@ location_initialize <- function(
   validateLonLat(longitude, latitude)
   
   MazamaCoreUtils::stopIfNull(stateDataset)
+  MazamaCoreUtils::stopIfNull(precision)
   
   if ( !exists(stateDataset) ) {
     stop(paste0(
@@ -104,7 +107,8 @@ location_initialize <- function(
   locationID <- location_createID(
     longitude = longitude,
     latitude = latitude,
-    algorithm = "geohash"
+    algorithm = "geohash",
+    precision = precision
   )
   
   if ( is.null(elevationService) ) {
