@@ -48,13 +48,15 @@ location_createID <- function(
 ) {
   
   algorithm <- match.arg(algorithm)
-
-  # TODO:  use precision here when MazamaCoreUtils provides it
-  returnVal <- MazamaCoreUtils::createLocationID(longitude, latitude, algorithm)
   
-  if ( algorithm == "geohash" ) {
-    returnVal <- returnVal %>% stringr::str_sub(1, precision)
-  }
+  returnVal <- 
+    MazamaCoreUtils::createLocationID(
+      longitude = longitude, 
+      latitude = latitude, 
+      algorithm = algorithm,
+      precision = precision,
+      invalidID = as.character(NA)
+    )
   
   return(returnVal)
   

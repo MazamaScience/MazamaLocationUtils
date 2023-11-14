@@ -1,6 +1,6 @@
 Type: Package
 Package: MazamaLocationUtils
-Version: 0.4.1
+Version: 0.4.2
 Title: Manage Spatial Metadata for Known Locations
 Authors@R: c(
     person("Jonathan", "Callahan", email="jonathan.s.callahan@gmail.com", role=c("aut","cre")),
@@ -27,7 +27,7 @@ Imports:
     lubridate,
     magrittr,
     methods,
-    MazamaCoreUtils (>= 0.5.0),
+    MazamaCoreUtils (>= 0.5.1),
     MazamaSpatialUtils (>= 0.8.6),
     readr,
     rlang,

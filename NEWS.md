@@ -1,3 +1,9 @@
+# MazamaLocationUtils 0.4.2
+
+* Add uniqueness of `locationID` to `validateLocationTable()`.
+* `table_save()` now supports a vector of `outputType` formats and will save
+the location table in multiple formats.
+
 # MazamaLocationUtils 0.4.1
 
 * Documentation fixes for CRAN submission.
