@@ -1,3 +1,7 @@
+# MazamaLocationUtils 0.4.3
+
+* Apdated `location_getSingleElevation_USGS()` to use new USGS API.
+
 # MazamaLocationUtils 0.4.2
 
 * Add uniqueness of `locationID` to `validateLocationTable()`.
