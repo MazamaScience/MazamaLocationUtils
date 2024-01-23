@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.3</span>
       </span>
     </div>
 
@@ -54,6 +54,9 @@
   <ul class="dropdown-menu" role="menu">
 <li>
       <a href="../articles/Developer_Style_Guide.html">Developer Style Guide</a>
+    </li>
+    <li>
+      <a href="../articles/MazamaLocationUtils/MazamaLocationUtils.html">A Capitalized Title: Something about a Package \pkg{foo}</a>
     </li>
   </ul>
 </li>
@@ -303,7 +306,9 @@ longitudes and latitudes that are not currently in our table.</p>
 <span>  latitude <span class="op">=</span> <span class="va">lats</span>,</span>
 <span>  distanceThreshold <span class="op">=</span> <span class="fl">50</span></span>
 <span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">city</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##  [1] NA NA NA NA NA NA NA NA NA NA NA NA NA</span></span></code></pre>
+<pre><code><span><span class="co">##  [1] NA         NA         NA         NA         NA         NA        </span></span>
+<span><span class="co">##  [7] NA         NA         "Enumclaw" NA         NA         NA        </span></span>
+<span><span class="co">## [13] NA</span></span></code></pre>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Any known locations within 250 meters</span></span>
 <span><span class="fu"><a href="../reference/table_getNearestLocation.html">table_getNearestLocation</a></span><span class="op">(</span></span>
@@ -312,8 +317,8 @@ longitudes and latitudes that are not currently in our table.</p>
 <span>  latitude <span class="op">=</span> <span class="va">lats</span>,</span>
 <span>  distanceThreshold <span class="op">=</span> <span class="fl">250</span></span>
 <span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">city</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##  [1] "Burbank"   "Newport"   "Soap Lake" NA          NA          "Seattle"  </span></span>
-<span><span class="co">##  [7] NA          "Longview"  NA          "Wenatchee" NA          NA         </span></span>
+<pre><code><span><span class="co">##  [1] NA          NA          "Soap Lake" NA          NA          "Seattle"  </span></span>
+<span><span class="co">##  [7] NA          "Longview"  "Enumclaw"  "Wenatchee" NA          NA         </span></span>
 <span><span class="co">## [13] "LaCrosse"</span></span></code></pre>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># How about 5000 meters?</span></span>
