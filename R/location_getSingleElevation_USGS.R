@@ -30,7 +30,7 @@
 #' }, silent = FALSE)
 #' }
 #' 
-#' @references \url{https://epqs.nationalmap.gov/v1/docs}
+#' @references \url{https://apps.nationalmap.gov/epqs/}
 #' 
 location_getSingleElevation_USGS <- function(
   longitude = NULL,
