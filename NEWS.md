@@ -1,6 +1,6 @@
 # MazamaLocationUtils 0.4.3
 
-* Apdated `location_getSingleElevation_USGS()` to use new USGS API.
+* Updated `location_getSingleElevation_USGS()` to use new USGS API.
 
 # MazamaLocationUtils 0.4.2
 
