@@ -1,3 +1,8 @@
+# MazamaLocationUtils 0.4.4
+
+* Fixed bug in `clusterByDistance()` which could fail when incoming tibbles
+had very few rows.
+
 # MazamaLocationUtils 0.4.3
 
 * Updated `location_getSingleElevation_USGS()` to use new USGS API.

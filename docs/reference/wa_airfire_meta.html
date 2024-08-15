@@ -34,7 +34,7 @@ save(wa_airfire_meta, file = "data/wa_airfire_meta.rda")
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MazamaLocationUtils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.4</span>
       </span>
     </div>
 
@@ -86,9 +86,9 @@ This dataset was generated on 2023-10-24 by running:</p>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/MazamaScience/AirMonitor" class="external-link">AirMonitor</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">wa_airfire_meta</span> <span class="op">&lt;-</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/AirMonitor/man/airnow_loadLatest.html" class="external-link">airnow_loadLatest</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/AirMonitor/man/monitor_filterMeta.html" class="external-link">monitor_filter</a></span><span class="op">(</span><span class="va">stateCode</span> <span class="op">==</span> <span class="st">"WA"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/AirMonitor/man/monitor_getDataFrame.html" class="external-link">monitor_getMeta</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://mazamascience.github.io/AirMonitor/reference/airnow_loadLatest.html" class="external-link">airnow_loadLatest</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://mazamascience.github.io/AirMonitor/reference/monitor_filterMeta.html" class="external-link">monitor_filter</a></span><span class="op">(</span><span class="va">stateCode</span> <span class="op">==</span> <span class="st">"WA"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://mazamascience.github.io/AirMonitor/reference/monitor_getDataFrame.html" class="external-link">monitor_getMeta</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="co"># On 2023-10-24, this metdata still uses zip instead of postalCode</span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html" class="external-link">rename</a></span><span class="op">(</span>postalCode <span class="op">=</span> <span class="va">zip</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="co"># Remove internal fields</span></span>
