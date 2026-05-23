@@ -1,5 +1,3 @@
-context("table_getLocationID")
-
 test_that("correct locationID is returned", {
   locationTbl <- get(data("wa_monitors_500"))
   

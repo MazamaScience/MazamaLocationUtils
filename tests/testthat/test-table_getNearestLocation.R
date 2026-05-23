@@ -1,5 +1,3 @@
-context("table_getNearestLocation")
-
 test_that("table_getNearestLocation() works", {
   
   locationTbl <- get(data("wa_monitors_500"))

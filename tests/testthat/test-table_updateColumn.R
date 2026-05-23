@@ -1,5 +1,3 @@
-context("table_updateColumn")
-
 test_that("table_updateColumn() works with no data", {
   locationTbl <- get(data("wa_monitors_500"))
   testTbl <- table_updateColumn(locationTbl, "AQSID")

@@ -6,7 +6,13 @@
 \usage{
 validateLonsLats(longitude = NULL, latitude = NULL, na.rm = FALSE)
 }
+\arguments{
+\item{longitude}{Vector of longitudes in decimal degrees E.}
+
+\item{latitude}{Vector of latitudes in decimal degrees N.}
+
+\item{na.rm}{Logical specifying whether to remove NA values.}
+}
 \description{
 See \code{\link[MazamaCoreUtils:validateLonsLats]{MazamaCoreUtils::validateLonsLats()}} for details.
 }
-\keyword{internal}

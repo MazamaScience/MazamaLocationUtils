@@ -1,5 +1,3 @@
-context("table_updateSingleRecord")
-
 test_that("table_updateSingleRecord() works", {
   locationTbl <- get(data("wa_monitors_500"))
   

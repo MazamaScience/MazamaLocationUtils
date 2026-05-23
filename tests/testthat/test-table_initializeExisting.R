@@ -1,9 +1,7 @@
-context("table_initializeExisting")
-
 test_that("existing locationID is ignored", {
-  
+
   skip_on_cran()
-  skip_on_travis()
+  skip_on_ci()
   
   initializeMazamaSpatialUtils()
   data("wa_airfire_meta")

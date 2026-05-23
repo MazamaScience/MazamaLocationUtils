@@ -1,5 +1,3 @@
-context("clusterByDistance")
-
 test_that("clustering works for small tables", {
   
   # ?cluster::pam says: 

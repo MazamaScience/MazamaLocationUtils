@@ -1,5 +1,3 @@
-context("table_getRecordIndex")
-
 test_that("correct index is returned", {
   locationTbl <- get(data("wa_monitors_500"))
   

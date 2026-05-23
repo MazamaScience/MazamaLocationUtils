@@ -6,7 +6,11 @@
 \usage{
 validateLonLat(longitude = NULL, latitude = NULL)
 }
+\arguments{
+\item{longitude}{Single longitude in decimal degrees E.}
+
+\item{latitude}{Single latitude in decimal degrees N.}
+}
 \description{
 See \code{\link[MazamaCoreUtils:validateLonLat]{MazamaCoreUtils::validateLonLat()}} for details.
 }
-\keyword{internal}

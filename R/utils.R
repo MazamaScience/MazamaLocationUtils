@@ -38,6 +38,10 @@ validateMazamaSpatialUtils <- function() {
 #' @description
 #' See [MazamaCoreUtils::validateLonsLats()] for details.
 #'
+#' @param longitude Vector of longitudes in decimal degrees E.
+#' @param latitude Vector of latitudes in decimal degrees N.
+#' @param na.rm Logical specifying whether to remove NA values.
+#'
 #' @name validateLonsLats
 #' @rdname validateLonsLats
 #' @export
@@ -49,6 +53,9 @@ NULL
 #' @title Validate longitude and latitude values
 #' @description
 #' See [MazamaCoreUtils::validateLonLat()] for details.
+#'
+#' @param longitude Single longitude in decimal degrees E.
+#' @param latitude Single latitude in decimal degrees N.
 #'
 #' @name validateLonLat
 #' @rdname validateLonLat

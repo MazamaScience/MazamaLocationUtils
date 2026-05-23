@@ -1,8 +1,6 @@
-context("table_addLocation")
-
 test_that("table_addLocation() works", {
   skip_on_cran()
-  skip_on_travis()
+  skip_on_ci()
   
   initializeMazamaSpatialUtils()
   locationTbl <- get(data("wa_monitors_500"))

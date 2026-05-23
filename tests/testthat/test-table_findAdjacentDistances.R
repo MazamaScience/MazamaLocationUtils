@@ -1,5 +1,3 @@
-context("table_findAdjacentDistances")
-
 test_that("bad/missing input generates an error", {
   
   # tbl not a dataframe

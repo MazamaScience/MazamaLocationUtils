@@ -30,42 +30,30 @@
 #' dplyr::glimpse(emptyTbl)
 #' 
 #' @rdname table_initialize
-#' @export 
-#' @importFrom MazamaCoreUtils stopIfNull
-#' @importFrom dplyr tibble filter
-#' @importFrom rlang .data
+#' @export
+#' @importFrom dplyr tibble
 table_initialize <- function() {
-  
-  # ----- Validate parameters --------------------------------------------------
-  
 
   # ----- Create empty tibble --------------------------------------------------
-  
-  # Build up a tibble with a single record full of NAs
+
   locationTbl <- dplyr::tibble(
-    "locationID" = as.character(NA),
-    "locationName" = as.character(NA),
-    "longitude" = as.numeric(NA),
-    "latitude" = as.numeric(NA),
-    "elevation" = as.numeric(NA),
-    "countryCode" = as.character(NA),
-    "stateCode" = as.character(NA),
-    "countyName" = as.character(NA),
-    "timezone" = as.character(NA),
-    "houseNumber" = as.character(NA),
-    "street" = as.character(NA),
-    "city" = as.character(NA),
-    "postalCode" = as.character(NA)
+    "locationID"   = character(0),
+    "locationName" = character(0),
+    "longitude"    = numeric(0),
+    "latitude"     = numeric(0),
+    "elevation"    = numeric(0),
+    "countryCode"  = character(0),
+    "stateCode"    = character(0),
+    "countyName"   = character(0),
+    "timezone"     = character(0),
+    "houseNumber"  = character(0),
+    "street"       = character(0),
+    "city"         = character(0),
+    "postalCode"   = character(0)
   )
-  
-  # Now search for an ID we won't find to end up with an empty tibble with 
-  # the correct column names.
-  locationTbl <-
-    locationTbl %>%
-    dplyr::filter(.data$locationID == "Rumplestiltskin")
 
   # ----- Return ---------------------------------------------------------------
-  
+
   return(locationTbl)
-  
+
 }
