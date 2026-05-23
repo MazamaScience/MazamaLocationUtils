@@ -63,7 +63,7 @@ table_load <- function(
           show_col_types = FALSE
         )
       } else {
-        stop(sprintf("No '%s' collection table found in ", collectionName, dataDir))
+        stop(sprintf("No '%s' collection table found in %s", collectionName, dataDir))
       }
     }
     

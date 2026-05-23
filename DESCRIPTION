@@ -24,7 +24,6 @@ Imports:
     httr,
     jsonlite,
     leaflet,
-    lubridate,
     magrittr,
     methods,
     MazamaCoreUtils (>= 0.6.0),

@@ -33,9 +33,8 @@
 #' 
 #' @details Backup files are saved with "YYYY-mm-ddTHH:MM:SS"
 #' @rdname table_save
-#' @export 
+#' @export
 #' @importFrom MazamaCoreUtils stopIfNull
-#' @importFrom lubridate now
 table_save <- function(
     locationTbl = NULL,
     collectionName = NULL,
@@ -50,7 +49,7 @@ table_save <- function(
   
   for ( type in outputType ) {
     if ( !type %in% c("rda", "csv") ) 
-      stop("outputType '%s' is not supported.", type)
+      stop(sprintf("outputType '%s' is not supported.", type))
   }
   
   dataDir <- getLocationDataDir()
@@ -68,7 +67,7 @@ table_save <- function(
       if ( backup && file.exists(filePath) ) {
         backupName <- paste0(
           collectionName, ".",
-          strftime(lubridate::now(), "%Y-%m-%dT%H:%M:%S"),
+          format(Sys.time(), "%Y-%m-%dT%H:%M:%S"),
           ".rda"
         )
         backupPath <- file.path(dataDir, backupName)

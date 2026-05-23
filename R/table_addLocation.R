@@ -173,12 +173,12 @@ table_addLocation <- function(
     if ( "try-error" %in% result ) {
       # Warn but don't stop
       warning(sprintf(
-        "Skipping with error: ", geterrmessage()
+        "Skipping with error: %s", geterrmessage()
       ))
     }
-    
+
     # Be _somewhat_ careful with memory
-    if ( 1 %% 10 == 0 ) {
+    if ( i %% 10 == 0 ) {
       gc()
     }
     

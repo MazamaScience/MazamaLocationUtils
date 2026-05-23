@@ -40,7 +40,6 @@ validateMazamaSpatialUtils <- function() {
 #'
 #' @name validateLonsLats
 #' @rdname validateLonsLats
-#' @keywords internal
 #' @export
 #' @importFrom MazamaCoreUtils validateLonsLats
 #' @usage validateLonsLats(longitude = NULL, latitude = NULL, na.rm = FALSE)
@@ -53,7 +52,6 @@ NULL
 #'
 #' @name validateLonLat
 #' @rdname validateLonLat
-#' @keywords internal
 #' @export
 #' @importFrom MazamaCoreUtils validateLonLat
 #' @usage validateLonLat(longitude = NULL, latitude = NULL)
