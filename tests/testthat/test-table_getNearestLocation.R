@@ -1,9 +1,8 @@
 test_that("table_getNearestLocation() works", {
   
   locationTbl <- get(data("wa_monitors_500"))
-  
-  emptyRecord <- table_initialize()    # zero rows
-  emptyRecord[1,1] <- as.character(NA) # one row, all NA
+
+  emptyRecord <- locationTbl[NA_integer_, ]  # one row, all NA, same schema as locationTbl
   wenatcheeRecord <- locationTbl %>% dplyr::filter(city == "Wenatchee")
   
   # Wenatchee

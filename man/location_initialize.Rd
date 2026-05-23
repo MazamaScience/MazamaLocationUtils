@@ -47,10 +47,15 @@ of core metadata:
 \item{stateCode}
 \item{countyName}
 \item{timezone}
+\item{postalCode}
+}
+
+When \code{addressService} is specified, the following optional address fields
+are also populated:
+\itemize{
 \item{houseNumber}
 \item{street}
 \item{city}
-\item{postalCode}
 }
 }
 \examples{

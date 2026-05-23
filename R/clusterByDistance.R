@@ -152,11 +152,9 @@ clusterByDistance <- function(
   # NOTE:  we can end up never satisfying max(meters) < clusterDiameter. In this
   # NOTE:  case, every location represents a separate cluster
   if ( nrow(tbl) <= clusterCount ) {
-    for ( i in seq_len(nrow(tbl)) ) {
-      tbl$clusterLon[i] <- as.numeric(tbl[[lonVar]][i])
-      tbl$clusterLat[i] <- as.numeric(tbl[[latVar]][i])
-      tbl$clusterID[i] <- i
-    }
+    tbl$clusterLon <- as.numeric(tbl[[lonVar]])
+    tbl$clusterLat <- as.numeric(tbl[[latVar]])
+    tbl$clusterID  <- as.character(seq_len(nrow(tbl)))
     return(tbl)
   }
 

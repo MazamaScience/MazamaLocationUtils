@@ -14,9 +14,6 @@
 #' \item{stateCode}
 #' \item{countyName}
 #' \item{timezone}
-#' \item{houseNumber}
-#' \item{street}
-#' \item{city}
 #' \item{postalCode}
 #' }
 #' 
@@ -109,24 +106,6 @@ table_addCoreMetadata <- function(
     locationTbl$timezone <- as.character(NA)
   }
   
-  # * houseNumber -----
-  
-  if ( !"houseNumber" %in% incomingTblColumns ) {
-    locationTbl$houseNumber <- as.character(NA)
-  }
-  
-  # * street -----
-  
-  if ( !"street" %in% incomingTblColumns ) {
-    locationTbl$street <- as.character(NA)
-  }
-  
-  # * city -----
-  
-  if ( !"city" %in% incomingTblColumns ) {
-    locationTbl$city <- as.character(NA)
-  }
-  
   # * postalCode -----
   
   if ( !"postalCode" %in% incomingTblColumns ) {
@@ -136,10 +115,10 @@ table_addCoreMetadata <- function(
   # ----- Reorganize locationTbl -----------------------------------------------
   
   requiredColumns <- c(
-    "locationID", "locationName", 
-    "longitude", "latitude", "elevation", 
-    "countryCode", "stateCode", "countyName", "timezone", 
-    "houseNumber", "street", "city", "postalCode"
+    "locationID", "locationName",
+    "longitude", "latitude", "elevation",
+    "countryCode", "stateCode", "countyName", "timezone",
+    "postalCode"
   )
   
   extraColumns <- setdiff(incomingTblColumns, requiredColumns)

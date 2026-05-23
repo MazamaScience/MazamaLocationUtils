@@ -14,9 +14,6 @@
 #' \item{stateCode}
 #' \item{countyName}
 #' \item{timezone}
-#' \item{houseNumber}
-#' \item{street}
-#' \item{city}
 #' \item{postalCode}
 #' }
 #' 
@@ -46,9 +43,6 @@ table_initialize <- function() {
     "stateCode"    = character(0),
     "countyName"   = character(0),
     "timezone"     = character(0),
-    "houseNumber"  = character(0),
-    "street"       = character(0),
-    "city"         = character(0),
     "postalCode"   = character(0)
   )
 

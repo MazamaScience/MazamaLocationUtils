@@ -25,9 +25,6 @@ coreMetadataNames <- c(
   "stateCode",            # from MazamaSpatialUtils::getStateCode()
   "countyName",           # from MazamaSpatialUtils::getUSCounty()
   "timezone",             # from MazamaSpatialUtils::getTimezone()
-  "houseNumber",
-  "street",
-  "city",
   "postalCode"
 )
 }

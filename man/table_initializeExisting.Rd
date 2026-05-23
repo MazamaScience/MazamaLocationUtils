@@ -62,9 +62,6 @@ searches for required columns:
 \item{stateCode}
 \item{countyName}
 \item{timezone}
-\item{houseNumber}
-\item{street}
-\item{city}
 \item{postalCode}
 }
 

@@ -15,9 +15,6 @@
 #' \item{stateCode}
 #' \item{countyName}
 #' \item{timezone}
-#' \item{houseNumber}
-#' \item{street}
-#' \item{city}
 #' \item{postalCode}
 #' }
 #' 
@@ -235,20 +232,8 @@ table_initializeExisting <- function(
     
   }
   
-  # * houseNumber -----
-  
-  # Slow web service so skip for now
-  
-  # * street -----
-  
-  # Slow web service so skip for now
-  
-  # * city -----
-  
-  # Slow web service so skip for now
-
   # * postalCode -----
-  
+
   # Slow web service so skip for now
 
   # ----- Check for adjacent locations -----------------------------------------

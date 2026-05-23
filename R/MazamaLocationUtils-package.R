@@ -97,9 +97,6 @@
 #'   "stateCode",            # from MazamaSpatialUtils::getStateCode()
 #'   "countyName",           # from MazamaSpatialUtils::getUSCounty()
 #'   "timezone",             # from MazamaSpatialUtils::getTimezone()
-#'   "houseNumber",
-#'   "street",
-#'   "city",
 #'   "postalCode"
 #' )
 #' }
@@ -114,9 +111,6 @@ coreMetadataNames <- c(
   "stateCode",            # from MazamaSpatialUtils::getStateCode()
   "countyName",           # from MazamaSpatialUtils::getUSCounty()
   "timezone",             # from MazamaSpatialUtils::getTimezone()
-  "houseNumber",          # from MazamaLocationUtils::getSingleAddress_Photon()
-  "street",               # from MazamaLocationUtils::getSingleAddress_Photon()
-  "city",                 # from MazamaLocationUtils::getSingleAddress_Photon()
   "postalCode"            # from MazamaLocationUtils::getSingleAddress_Photon()
 )
 
