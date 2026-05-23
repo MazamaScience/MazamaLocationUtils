@@ -1,6 +1,6 @@
 Type: Package
 Package: MazamaLocationUtils
-Version: 0.4.4
+Version: 0.4.5
 Title: Manage Spatial Metadata for Known Locations
 Authors@R: c(
     person("Jonathan", "Callahan", email="jonathan.s.callahan@gmail.com", role=c("aut","cre")),
@@ -20,15 +20,15 @@ Depends:
 Imports:
     cluster,
     dplyr,
-    geodist (>= 0.0.8),
+    geodist (>= 0.1.0),
     httr,
     jsonlite,
     leaflet,
     lubridate,
     magrittr,
     methods,
-    MazamaCoreUtils (>= 0.5.1),
-    MazamaSpatialUtils (>= 0.8.6),
+    MazamaCoreUtils (>= 0.6.0),
+    MazamaSpatialUtils (>= 0.8.7),
     readr,
     rlang,
     stringr,
@@ -40,7 +40,9 @@ Suggests:
     rmarkdown,
     roxygen2
 Encoding: UTF-8
+Language: en-US
+Repository: CRAN
 VignetteBuilder: knitr
 LazyData: true
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.3
 Roxygen: list(markdown = TRUE)
